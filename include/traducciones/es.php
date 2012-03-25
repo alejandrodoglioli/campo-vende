@@ -5,10 +5,10 @@ $traduccion_idiomas = "Idiomas";
 $traduccion_contacto = "Contacto";
 $traduccion_mapaweb = "Mapaweb";
 $traduccion_buscar = "Buscar";
-$traduccion_secciones = "Categor�as";
-$traduccion_etiquetas = "Lo m�s buscado";
+$traduccion_secciones = "Categorías";
+$traduccion_etiquetas = "Lo más buscado";
 $traduccion_copyright= "Copyright (c) 2012. Todos los derechos reservados.";
-$traduccion_disenadopor= "Dise�ado por";
+$traduccion_disenadopor= "Diseñado por";
 $traduccion_slogannewsletter= "Suscribete al NewsLetter";
 
 //Traducciones Contacto
@@ -21,7 +21,7 @@ $traduccion_enviar = "Enviar";
 $traduccion_graciascontacto = "Pronto nos pondremos en contacto con ud. Gracias por su comentario a ";
 
 //Traducciones Buscar
-$traduccion_vermas = "Ver M�s";
+$traduccion_vermas = "Ver Más";
 
 //Traducciones Secciones
 $traduccion_camposrequeridos = "Los campos con * son requeridos.";
