@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /js/
+Disallow: /admin/
+Disallow: /include/
+Disallow: /css/
+Disallow: /modulos/
+Disallow: /templates/

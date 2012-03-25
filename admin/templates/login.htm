@@ -1,0 +1,47 @@
+<html>
+<head>
+<title>{title} - {empresa}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<link href="css/style.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+<div id="header"><h1>Administration</h1>
+</div>
+<table cellspacing="5" cellpadding="6" id="login">
+  <tr>
+       <td id="login_form"><form method=POST action="{urlSite}/admin/index.php" name="flogin">
+        <table cellpadding="1">
+          <tr>
+            <td>Username</td>
+          </tr>
+          <tr>
+            <td><input name="login" type="text" class="login" size="15"></td>
+          </tr>
+
+          <tr>
+            <td>Password</td>
+          </tr>
+          <tr>
+            <td><input type="password" name="password" /></td>
+          </tr>
+          <tr>
+            <td>
+			<input type="hidden" name="action" id="action" value="login">
+			<input name="Submit" type="submit" class="aceptar" value="Aceptar" style=" cursor:pointer">
+			</td>
+
+          </tr>
+        </table>
+      </form></td>
+  </tr>
+</table>
+
+<script language="javascript" type="text/javascript">
+document.flogin.login.focus()
+</script>
+
+</body>
+</html>

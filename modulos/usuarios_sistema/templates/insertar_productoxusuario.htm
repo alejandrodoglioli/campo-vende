@@ -1,0 +1,365 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="{idioma}"><!-- InstanceBegin template="/Templates/plantilla.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>{title} - {title_empresa}</title>
+<!-- InstanceEndEditable -->
+
+<meta http-equiv="Content-Type" content="text/html; charset={charset}" />
+<!-- InstanceBeginEditable name="head" -->
+<link href="/admin/css/style.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="/admin/css/tab/tab.js"></script>
+<link rel="stylesheet" type="text/css" href="/admin/css/tab/tab.css" />
+<script type="text/javascript" src="/admin/js/fckeditor/fckeditor.js"></script>
+<script type="text/javascript" src="/admin/js/jsrsClient.js"></script>
+<script type="text/javascript" src="/admin/js/funciones_generales.js"></script>
+<script type="text/javascript" src="/include/funciones.js"></script>
+<script type="text/javascript">
+function pedir_subsecciones(valor){
+var id_subseccion = valor;
+	jsrsExecute("../modulos/productos/include/include.remotescripting.php", parsear_subsecciones, "obtenerSubsecciones",Array(id_subseccion));
+}
+
+function parsear_subsecciones(retorno){
+	document.getElementById("subsecciones").innerHTML=retorno;
+}
+</script>
+
+<!-- InstanceEndEditable -->
+
+<meta name="Keywords" content="{keywords}" />
+<meta name="Description" content="{titulo} - {description}" />
+<meta name="DC.Title" content="{title}" />
+<meta http-equiv="DC.Description" content="{titulo} - {description}" />
+<meta name="DC.Keywords" content="{keywords}" />
+<meta name="Language" content="{idioma}" />
+<meta name="robots" content="all" />
+<meta name="revisit-after" content="30 days" />
+<meta name="distribution" content="global" />
+<meta name="resource-type" content="document" />
+<meta name="robots" content="all" />
+
+<meta name="copyright" content="Copyright � - Alejandro Javier Doglioli" />
+
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://www.e-directorioempresa.com/{idioma}/feed" /> 
+     
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+<script type="text/JavaScript" src="/js/funciones.js"></script>
+
+<!--[if IE]> 
+<style>
+#blog {padding-top: 30px;}
+#blog h2{padding-left: 40px;padding-bottom: 30px;}
+</style> <![endif]-->
+</head>
+<body {onload} >
+<div id="contenedorlinksuperior">
+	<div id="linksuperior">
+		<ul>
+			<li>{link_login_salir}</li>
+			<li>Bienvenido a {empresa} {usuario_logueado}|</li>
+		</ul>
+	</div>
+</div>
+<div id="wrapper">
+	<div id="header">
+    	<div id="logo"> 
+    		<b>{empresa}</b>
+			<p><em>{slogan}</em></p>
+		</div>
+		
+		<div id="search">
+			<form method="post" action="/{idioma}/buscar/">
+					<div>
+						<input type="text" name="texto" id="texto" size="20" value="Busca en {empresa}..." onfocus="if (this.value == 'Busca en {empresa}...') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Busca en {empresa}...';}"/>
+						<input type="submit" class="botonbuscar" value="{traduccion_buscar}" />
+					</div>
+				</form>
+		</div>
+		
+		<div id="flags">
+				<!-- BEGIN block_idiomas -->
+				<p><a href="/{idioma_bandera}/" title="{nombre_idioma}"><img src="{image_idioma}" alt="{nombre_idioma}"/></a></p>
+				<!-- END block_idiomas -->
+		</div>
+	</div>
+	<!-- end #header -->
+	<div id="menu">
+		<ul>
+				<!-- BEGIN block_menu_principal -->
+				<li  class="{classmenu}"><a href="{path}" title="{seccion}" >{seccion}</a>
+					{subseccion}				</li>
+				<!-- END block_menu_principal -->
+				<!-- BEGIN block_menu_principal_modulo -->
+				<li class="{classmenu}"><a href="{path}" title="{seccion}" >{seccion}</a></li>
+				<!-- END block_menu_principal_modulo -->
+				<li class="{classmenucontacto}"><a href="/{idioma}/contacto.htm" rel="nofollow" title="{traduccion_contacto}">{traduccion_contacto}</a></li>
+				<li class="{classmenumapaweb}"><a href="/{idioma}/mapaweb.htm" title="{traduccion_mapaweb}">{traduccion_mapaweb}</a></li>
+			</ul>
+	</div>
+	<!-- end #menu -->
+	<div id="page">
+		<div id="content">
+			<div id="breadcrumb"><a href="/{idioma}/" title="Home">Home</a><!-- InstanceBeginEditable name="BreadCrumb" -->{breadcrum}<!-- InstanceEndEditable --></div>
+			<div id="banner"><img src="/images/img07.jpg" alt="" /></div>
+			<div class="post">
+				
+				
+				<h1 class="title">{titulo}</h1>			
+
+				<!-- InstanceBeginEditable name="contenido" -->
+<div class="task">
+   <div class="enabled" onmouseover="className='hover'" onmouseout="className='enabled'" onclick="location='/{idioma}/listar_productoxusuario'"><img src="/admin/images/list_enabled.png" alt="Listar" />Listar</div>
+    <div class="enabled" onmouseover="className='hover'" onmouseout="className='enabled'" onclick="location='/{idioma}/insertar_productoxusuario'"><img src="/admin/images/insert_enabled.png" alt="Insertar" />Insertar</div>
+    <div class="disabled"><img src="/admin/images/update_disabled.png" alt="Editar" />Editar</div>
+
+  <div class="disabled"><img src="/admin/images/delete_disabled.png" alt="Borrar" />Borrar</div>
+  <div class="disabled"><img src="/admin/images/save_disabled.png" alt="Guardar" />Guardar</div>
+  <div class="disabled"><img src="/admin/images/cancel_disabled.png" alt="Cancelar" />Cancelar</div>
+  <div class="enabled" onmouseover="className='hover'" onmouseout="className='enabled'" onclick="location='/{idioma}/logout_productoxusuario'"><img src="/admin/images/logout.png" alt="Salir" />Salir</div>
+</div>
+<div class="heading">{categoria_modulo}</div>
+<div class="description">You can edit your product categories here.</div>
+<div id="list">
+	<form  id="forminsertarproducto" action="/{idioma}/insertar_productoxusuario_ok" method="post" enctype="multipart/form-data">
+<input name="cant_imagenes" id="cant_imagenes"  type="hidden" value="1" />
+  <div class="tab" id="tab">
+    
+    <div class="pages">
+      <div class="page">
+
+        <div id="tabmini">
+          <div class="tabs">
+		  <!-- BEGIN block_idioma -->
+             <a>{nombre_idioma}</a>
+		  <!-- END block_idioma --> 
+          </div>
+          <div class="pages">
+             <!-- BEGIN block_idiomas1 -->
+			 <div class="page">
+              <div class="minipad">
+                <table>
+				  <tr>
+                    <td width="185"><span class="required">*</span> Nombre Producto:</td>
+                    <td><input id="titulo_{lenguaje1}" name="titulo_{lenguaje1}" value="" />
+                      </td>
+                  </tr>
+				 
+                  <tr>
+                    <td valign="top"><span class="required">*</span>Descripci�n:</td>
+                    <td><textarea name="contenido_{lenguaje1}" id="contenido_{lenguaje1}">{contenido}</textarea>
+                      </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+			<!-- END block_idiomas1 -->
+
+        <div class="pad">
+          <table>
+		    <tr>
+                    <td valign="top"><span class="required">*</span>Categor�a</td>
+                    <td>
+						<select name="nombre_padre" id="nombre_padre" onChange="pedir_subsecciones(this.value);">
+							<option value="0">Sin Categor�a Padre</option>
+							<!-- BEGIN block_padre -->
+							<option value="{id}" style="color:{color}">{nombre_padre}</option>
+							<!-- END block_padre -->
+						</select>
+                      </td>
+             </tr>
+			 <tr>
+					<td valign="top">Subcategoria</td>
+                    <td id="subsecciones">{subsecciones}</td>
+			 </tr>
+			<tr>
+                 <td valign="top">C�digo Video:</td>
+                 <td><input name="video" id="video" value="" size="50"  /></td>
+            </tr>
+			<tr>
+				 <td colspan="2">
+						<strong>Im�genes del producto</strong>
+					</td>
+					</tr>
+				  <tr>
+				  	<td colspan="2">
+					<div id="my1Div" style=" width:100%;  padding:7px 0px; clear:both">
+						  <table cellpadding="0" cellspacing="1" border="0" style="border:1px solid #dcdcdc;padding:10px;">
+								<tr>
+									<td valign="top" width="180">Nombre:</td>
+									<td><input name="nombre_imagen_1" id="nombre_imagen_1" value=""  type="text" size="50"  /></td>
+								</tr>
+								<tr>
+									<td valign="top">Path:</td>
+									<td><input name="path_imagen_1" id="path_imagen_1" value=""  type="file" size="69"  /></td>
+								</tr>
+								<tr>
+									<td valign="top">Imagen principio?</td>
+									<td><input name="principio_imagen_1" id="principio_imagen_1" value=""  type="checkbox"   /></td>
+								</tr>
+								<tr>
+									<td valign="top">Publicado</td>
+									<td><input name="publicado_imagen_1" id="publicado_imagen_1" value=""  type="checkbox"   /></td>
+								</tr>
+							</table>
+							</div>
+					</td>
+                  </tr>
+				  <tr><td colspan="2"><a href="#" title="Eliminar �ltima" onClick="eliminarFoto(document.getElementById('cant_imagenes').value); return false;" style="text-decoration:underline;color:#FF0000">Eliminar �ltima</a> - <a href="#" title="A�adir m�s fotos" onClick="addFoto(document.getElementById('cant_imagenes').value); return false;" style="text-decoration:underline;color:#FF0000">A�adir m�s Im�genes</a></td></tr>
+          </table>
+        </div>
+
+
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<div style="text-align:center">
+	<input type="button" value="Aceptar" onclick="validarFormularioInsertarProductoxusuario();" />
+	<input type="reset" value="Cancelar" onclick="history.back(-1);" />
+</div>	
+  <script type="text/javascript"><!--
+  tabview_initialize('tab');
+  //--></script>
+  <script type="text/javascript"><!--
+  tabview_initialize('tabmini');
+  //--></script>
+  <script type="text/javascript"><!--
+    function actualizar(){
+	  <!-- BEGIN block_idiomas3 -->
+	  	  var oFCKeditor_{lenguaje3} = FCKeditorAPI.GetInstance('contenido_{lenguaje3}') ;
+		  var Mensaje=oFCKeditor_{lenguaje3}.GetXHTML(); 
+		  document.getElementById('contenido_{lenguaje3}').value = Mensaje;
+	  <!-- END block_idiomas3 -->
+	  }
+	  
+  var sBasePath           = document.location.href.replace(/es\/insertar_productoxusuario\.*/, 'admin/js/fckeditor/');
+    <!-- BEGIN block_idiomas2 -->
+	var oFCKeditor          = new FCKeditor('contenido_{lenguaje2}');
+	  oFCKeditor.BasePath = sBasePath;
+	  oFCKeditor.Value	  = document.getElementById('contenido_{lenguaje2}').value;
+	  oFCKeditor.Width    = '570';
+	  oFCKeditor.Height   = '300';
+	  oFCKeditor.ReplaceTextarea();
+   <!-- END block_idiomas2 -->  	
+  	  
+  //--></script>
+</form>
+</div>
+
+  
+	<!-- InstanceEndEditable -->
+				
+				<!-- InstanceBeginEditable name="noticias" --><!-- InstanceEndEditable -->
+				
+				
+			</div>
+			<div style="clear: both;">&nbsp;
+			  <p>&nbsp;</p>
+			</div>
+		</div>
+		<!-- end #content -->
+		<div id="sidebar">
+					
+		    <ul id="menulateral">
+				
+				<li>
+					<h2>{traduccion_secciones} {categoria_seccion}</h2>
+					<ul id="lotes">
+						<!-- BEGIN block_secciones -->
+						<li {onmouse} >
+						<a href="{path}" title="{seccion}" class="{classmenulateral}">{seccion}</a>
+						{submenu}
+						</li>
+						<!-- END block_secciones -->
+					</ul>
+				</li>
+			</ul>
+<!-- 			<ul>	 -->
+<!-- 				<li> -->
+<!-- 					<div class="menu"> -->
+<!-- 					  <h2>Newsletter</h2> -->
+<!-- 						<h3>{traduccion_slogannewsletter}</h3> -->
+<!-- 						<form action="/{idioma}/gracias-newsletter.htm" name="formnewsletter" id="formnewsletter" enctype="multipart/form-data" method="post"> -->
+<!-- 						<p class="center"><label>Nombre:</label> <input id="nombre_contacto" name="nombre_contacto" type="text"/></p> -->
+<!-- 						<p class="center"><label>Apellido:</label> <input id="apellido_contacto" name="apellido_contacto" type="text" /></p> -->
+<!-- 						<p class="center"><label>Email:</label> <input id="email_contacto" name="email_contacto" type="text" /></p> -->
+<!-- 						<p class="center" style="margin-top:10px;"><input type="button" value="Subscribirse" class="boton" onclick="validarFormNewsletter()" /></p> -->
+<!-- 						</form> -->
+<!-- 					</div>	 -->
+<!-- 				</li> -->
+<!-- 			</ul> -->
+			<ul>	
+				<li>
+					<div class="menu">
+						<h2>{traduccion_etiquetas}</h2>
+						<p class="tag">
+							<!-- BEGIN tags -->
+							<a href="/{idioma}/{enlace}.htm" title="{anchortag}" style="font-size:{tam}" >{anchortag}</a>
+							<!-- END tags -->
+						</p>
+					</div>
+				</li>
+			</ul>			  
+			<ul>
+			  <li>
+					<h2>Cotizaci�n Dolar</h2>
+			  </li> 
+			  <!-- cotizacion-dolar.com.ar 234x90px Classic CD --> 
+	<div style="border: 1px solid rgb (90, 90, 90); background: #FFFFFF none repeat scroll 0% 50%; text-align: center; width: auto; height: 90px; line-height: 100%;">
+<script type="text/javascript" language="JavaScript1.1" src="http://www.cotizacion-dolar.com.ar/recursos-webmaster/classic-cd/dolar_euro_234x90_orange.js">
+</script><small><a style="border: 0px none ; font-size: 8pt; color: #000000;
+text-decoration: none; font-family: sans-serif,Helvetica,Arial;" href="http://www.cotizacion-dolar.com.ar" target="_top"
+title="Cotizaci&oacute;n actualizada del d&oacute;lar, euro, real, peso uruguayo, peso chileno en Argentina">cotizacion</a>
+- <a style="border: 0px none ; font-size: 8pt; color: #000000; text-decoration: none; font-family: sans-serif,Helvetica,Arial;"
+href="http://www.cotizacion-dolar.com.ar/cotizacion_hoy.php" target="_top" title="Cotizaci&oacute;n del d&oacute;lar
+hoy - ver m&aacute;s monedas">dolar hoy</a></small></div> <!-- fin c�digo -->
+
+          </ul>
+      </div>
+		
+		<!-- end #sidebar -->
+		<div style="clear: both;">&nbsp;</div>
+		
+	
+				
+			</div>
+	</div>
+	<!-- end #page -->
+</div>
+<div id="footer-content">
+	<div class="column1">
+		<p id="copyright"></p>
+	</div>
+	<div class="column2">
+		<ul class="list">
+			<li><a href="/{idioma}/feed" title="RSS"><img src="/images/rss.jpg" alt="RSS" width="60" /></a></li>
+			<li><a href="http://validator.w3.org/check?uri={url_actual}" title="Valid HTML 4.01 Transitional"><img src="http://validator.w3.org/images/valid_icons/valid-xhtml10" alt="Valid HTML 4.01 Transitional" title="Valid XHTML 1.0 Transitional" /></a></li>
+			<li><a href="http://jigsaw.w3.org/css-validator/check?uri=www.deviajeyturismo.com" title="CSS V�lido"><img src="http://jigsaw.w3.org/css-validator/images/vcss" alt="�CSS V�lido!" title="�CSS V�lido!" /></a></li>
+		</ul>
+	</div>
+</div>
+<div id="footer">
+	<p> (c) 2011 {traduccion_copyright} <br />	{traduccion_disenadopor} <a href="http://www.alejandro-doglioli.com.ar/">Alejandro Doglioli</a></p>
+</div>
+<!-- end #footer -->
+
+
+<!--Estadisticas-->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-2581103-17']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<!--Fin estadisticas-->
+</body>
+<!-- InstanceEnd --></html>
