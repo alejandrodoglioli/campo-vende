@@ -58,6 +58,17 @@
 
 		<div id="menu">
 			<ul>
+			<li style="width:100%;margin-bottom:15px;">
+						<div id="search">
+			<form method="post" action="/{idioma}/buscar/">
+					<div>
+						<input type="text" name="texto" id="texto" size="20" value="Busca en {empresa}..." onfocus="if (this.value == 'Busca en {empresa}...') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Busca en {empresa}...';}"/>
+						<input type="submit" class="botonbuscar" value="{traduccion_buscar}" />
+					</div>
+				</form>
+			</div>
+
+			</li>
 					<!-- BEGIN block_menu_principal -->
 					<li  class="{classmenu}"><a href="{path}" title="{seccion}" >{seccion}</a>
 						{subseccion}				</li>
@@ -76,14 +87,6 @@
 	<!-- end #menu -->
 	<div id="page">
 		<div id="content">
-			<div id="search">
-			<form method="post" action="/{idioma}/buscar/">
-					<div>
-						<input type="text" name="texto" id="texto" size="20" value="Busca en {empresa}..." onfocus="if (this.value == 'Busca en {empresa}...') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Busca en {empresa}...';}"/>
-						<input type="submit" class="botonbuscar" value="{traduccion_buscar}" />
-					</div>
-				</form>
-			</div>
 			
 			<div id="breadcrumb"><a href="/{idioma}/" title="Home">Home</a><!-- InstanceBeginEditable name="BreadCrumb" -->{breadcrum}<!-- InstanceEndEditable --></div>
 			<div class="post">
