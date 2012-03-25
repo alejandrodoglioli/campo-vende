@@ -67,6 +67,11 @@
 <div id="contenedorlinksuperior">
 	<div id="linksuperior">
 		<ul>
+			<li style="margin-left:10px;">
+				<!-- BEGIN block_idiomas -->
+				<p><a href="/{idioma_bandera}/" title="{nombre_idioma}"><img src="{image_idioma}" alt="{nombre_idioma}"/></a></p>
+				<!-- END block_idiomas -->
+			</li>
 			<li>{link_login_salir}</li>
 			<li>Bienvenido a {empresa} {usuario_logueado}|</li>
 		</ul>
@@ -75,44 +80,41 @@
 <div id="wrapper">
 	<div id="header">
     	<div id="logo"> 
-    		<b>{empresa}</b>
-			<p><em>{slogan}</em></p>
+			<b>Campo Vende</b>
+    		<!--<b>{empresa}</b>
+			<p><em>{slogan}</em></p> -->
 		</div>
-		
-		<div id="search">
+
+		<div id="menu">
+			<ul>
+					<!-- BEGIN block_menu_principal -->
+					<li  class="{classmenu}"><a href="{path}" title="{seccion}" >{seccion}</a>
+						{subseccion}				</li>
+					<!-- END block_menu_principal -->
+					<!-- BEGIN block_menu_principal_modulo -->
+					<li class="{classmenu}"><a href="{path}" title="{seccion}" >{seccion}</a></li>
+					<!-- END block_menu_principal_modulo -->
+					<li class="{classmenucontacto}"><a href="/{idioma}/contacto.htm" rel="nofollow" title="{traduccion_contacto}">{traduccion_contacto}</a></li>
+					<li class="{classmenumapaweb}"><a href="/{idioma}/mapaweb.htm" title="{traduccion_mapaweb}">{traduccion_mapaweb}</a></li>
+				</ul>
+		</div>	
+		<div style="clear:both"></div>	
+	</div>
+	<!-- end #header -->
+	
+	<!-- end #menu -->
+	<div id="page">
+		<div id="content">
+			<div id="search">
 			<form method="post" action="/{idioma}/buscar/">
 					<div>
 						<input type="text" name="texto" id="texto" size="20" value="Busca en {empresa}..." onfocus="if (this.value == 'Busca en {empresa}...') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Busca en {empresa}...';}"/>
 						<input type="submit" class="botonbuscar" value="{traduccion_buscar}" />
 					</div>
 				</form>
-		</div>
-		
-		<div id="flags">
-				<!-- BEGIN block_idiomas -->
-				<p><a href="/{idioma_bandera}/" title="{nombre_idioma}"><img src="{image_idioma}" alt="{nombre_idioma}"/></a></p>
-				<!-- END block_idiomas -->
-		</div>
-	</div>
-	<!-- end #header -->
-	<div id="menu">
-		<ul>
-				<!-- BEGIN block_menu_principal -->
-				<li  class="{classmenu}"><a href="{path}" title="{seccion}" >{seccion}</a>
-					{subseccion}				</li>
-				<!-- END block_menu_principal -->
-				<!-- BEGIN block_menu_principal_modulo -->
-				<li class="{classmenu}"><a href="{path}" title="{seccion}" >{seccion}</a></li>
-				<!-- END block_menu_principal_modulo -->
-				<li class="{classmenucontacto}"><a href="/{idioma}/contacto.htm" rel="nofollow" title="{traduccion_contacto}">{traduccion_contacto}</a></li>
-				<li class="{classmenumapaweb}"><a href="/{idioma}/mapaweb.htm" title="{traduccion_mapaweb}">{traduccion_mapaweb}</a></li>
-			</ul>
-	</div>
-	<!-- end #menu -->
-	<div id="page">
-		<div id="content">
+			</div>
+			
 			<div id="breadcrumb"><a href="/{idioma}/" title="Home">Home</a><!-- InstanceBeginEditable name="BreadCrumb" -->{breadcrum}<!-- InstanceEndEditable --></div>
-			<div id="banner"><img src="/images/img07.jpg" alt="" /></div>
 			<div class="post">
 				
 				
@@ -244,7 +246,7 @@ hoy - ver m&aacute;s monedas">dolar hoy</a></small></div> <!-- fin c?digo -->
 </div>
 <div id="footer-content">
 	<div class="column1">
-		<p id="copyright"></p>
+		<p id="copyright"> (c) 2011 {traduccion_copyright} <br />	{traduccion_disenadopor} <a href="http://www.alejandro-doglioli.com.ar/">Alejandro Doglioli</a></p>
 	</div>
 	<div class="column2">
 		<ul class="list">
@@ -253,9 +255,6 @@ hoy - ver m&aacute;s monedas">dolar hoy</a></small></div> <!-- fin c?digo -->
 			<li><a href="http://jigsaw.w3.org/css-validator/check?uri=www.deviajeyturismo.com" title="CSS V?lido"><img src="http://jigsaw.w3.org/css-validator/images/vcss" alt="?CSS V?lido!" title="?CSS V?lido!" /></a></li>
 		</ul>
 	</div>
-</div>
-<div id="footer">
-	<p> (c) 2011 {traduccion_copyright} <br />	{traduccion_disenadopor} <a href="http://www.alejandro-doglioli.com.ar/">Alejandro Doglioli</a></p>
 </div>
 <!-- end #footer -->
 
