@@ -299,7 +299,7 @@ color:#463517;
 
 #sidebar {
 	float: left;
-	width: 205px;
+	width: 240px;
 	padding: 0px;
 	color: #787878;
 }
@@ -514,7 +514,7 @@ textarea,textarea:focus,textarea:visited  {border:1px solid #cedeef;background-c
 #lotes li ul {padding-left:10px;display:none;}
 
 /*menu lateral*/
-ul#menulateral{margin:0;padding:5px;list-style-type:none;display:block;font:bold 12px Helvetica, Verdana, Arial, sans-serif;line-height:165%;width:200px;}
+ul#menulateral{margin:0;padding:5px;list-style-type:none;display:block;font:bold 12px Helvetica, Verdana, Arial, sans-serif;line-height:165%;width:230px;}
 /*borde*/
 ul#menulateral li ul li{margin:0;padding:0;border-bottom:2px solid #000099;}
 ul#menulateral li a{display:block;text-decoration:none;color:#000000;padding: 5px 10px 0 10px;width:180px;height:20px;}
