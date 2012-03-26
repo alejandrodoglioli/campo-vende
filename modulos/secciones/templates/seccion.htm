@@ -168,12 +168,12 @@
 							<input name="id_seccion" id="id_seccion" type="hidden" value="{id_seccion}" />
 							<input name="id_subseccion" id="id_subseccion" type="hidden" value="{id_subseccion}" />
 							<input name="id_subsubseccion" id="id_subsubseccion" type="hidden" value="{id_subseccion}" />
-								<p>* {traduccion_nombre}:<br /> <input id="nombre" name="nombre" type="text" value="" size="65" onfocus="this.className=''"/></p>
-								<p>{traduccion_email}:<br /> <input id="email" name="email"  type="text" value="" size="65" /></p>
+								<p>* {traduccion_nombre}:<br /> <input id="nombre" name="nombre" type="text" value="" size="55" onfocus="this.className=''"/></p>
+								<p>{traduccion_email}:<br /> <input id="email" name="email"  type="text" value="" size="55" /></p>
 								<p>* {traduccion_comentario}: <br /><textarea id="comentario" name="comentario" cols="75" rows="5" onfocus="this.className=''"></textarea></p>
 								<p style="height:90px;">* Por favor ingrese el codigo que ve en la imagen, sino puede leerlo actualize la pagina.
 								<br /><img src="/include/crear-imagen.php?captcha_texto={captcha_texto_session}" alt="captcha"/><br /><input name="texto_ingresado" type="text" id="texto_ingresado" size="38" onfocus="this.className=''"/></p>
-								<p style="width:200px;margin-right:auto;margin-left:auto;"><input type="button" class="boton" value="{traduccion_enviar}" onclick="return validarFormularioComentario('{captcha_texto_session}');"/></p>
+								<p style="width:200px;margin-right:auto;margin-left:auto;"><input type="button" class="botonbuscar" value="{traduccion_enviar}" onclick="return validarFormularioComentario('{captcha_texto_session}');"/></p>
 								<p>{traduccion_camposrequeridos}</p>								
 							</form>
 						</div>
