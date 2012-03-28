@@ -519,7 +519,7 @@ ul#menulateral{margin:0;padding:5px;list-style-type:none;display:block;font:bold
 ul#menulateral li ul li{margin:0;padding:0;border-bottom:2px solid #000099;}
 ul#menulateral li a{display:block;text-decoration:none;color:#000000;padding: 5px 10px 0 10px;width:210px;}
 /*cuando paso por arriba, color de fondo*/
-ul#menulateral li a:hover{background:#BAD1F8 url("/images/vert-one_arrow.gif") no-repeat 0 13px;}
+ul#menulateral li a:hover{background:#BAD1F8 url("/images/vert-one_arrow.gif") no-repeat 0 7px;}
 /*seleccion que qeuda, color de fondo*/
 ul#menulateral li a.current,ul#menulateral li a.current:hover{background:#BAD1F8 url("images/vert-one_arrow.gif") no-repeat 0 13px;}
 
