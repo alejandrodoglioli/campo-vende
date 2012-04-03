@@ -169,10 +169,10 @@ $result2=mysql_query("select si.*,s.id_padre from ".$tof_secciones." s join ".$t
 			$t->set_var("anchor", $row1[nombre]);
 			$t->set_var("contenido_subcategoria", substr(strip_tags($row1[contenido]),0,150)."...");
 //select la imagen
-			$result=mysql_query("select id,path,nombre,principio from ".$tof_imagenesxproductos." where (id_producto=".$row1[id]." or id_producto=".$row1[id].") and publicado=1");
+			$result=mysql_query("select id,path,nombre,principio from ".$tof_imagenesxproductos." where (id_producto=".$row[id]." or id_producto=".$row1[id].") and publicado=1");
 			if(mysql_num_rows($result)){
 				$rowimagen=mysql_fetch_array($result);
-				$t->set_var("imagen_subcategoria", '<p style="width:30%;float:left"><a href="/'.$idioma.'/'.strtolower(sacar_acentos(str_replace(" ","-" ,$row[nombre]))).'/'.strtolower(sacar_acentos(str_replace(" ","-" ,$row1[nombre])))."-".$row[id]."-".$row1[id].'.htm"  ><img src="'.$rowimagen[path].'" alt="'.$rowimagen[nombre].'" width="150" height="150"/></a></p>');
+				$t->set_var("imagen_producto", '<p style="width:30%;float:left"><a href="/'.$idioma.'/'.strtolower(sacar_acentos(str_replace(" ","-" ,$row[nombre]))).'/'.strtolower(sacar_acentos(str_replace(" ","-" ,$row1[nombre])))."-".$row[id]."-".$row1[id].'.htm"  ><img src="'.$rowimagen[path].'" alt="'.$rowimagen[nombre].'" width="150" height="150"/></a></p>');
 			}
 						
 			$t->parse("_b_productos","b_productos",true);		
@@ -224,6 +224,8 @@ $result2=mysql_query("select si.*,s.id_padre from ".$tof_secciones." s join ".$t
 	$t->set_var("id_producto", $id_producto);	
 	$t->set_var("titulo", $row[nombre]);
 	$t->set_var("contenido", $row[contenido]);
+	//$t->set_var("imagen_producto", '<p style="width:30%;float:left"><a href="/'.$idioma.'/'.strtolower(sacar_acentos(str_replace(" ","-" ,$row[nombre]))).'/'.strtolower(sacar_acentos(str_replace(" ","-" ,$row1[nombre])))."-".$row[id]."-".$row1[id].'.htm"  ><img src="/images/productos/_P1030880.JPG" alt="'.$rowimagen[nombre].'" width="150" height="150"/></a></p>');
+		
 	
 	if (isset($row[video]) and ($row[video]!=NULL))
 		$t->set_var("video", 
@@ -251,7 +253,7 @@ $result2=mysql_query("select si.*,s.id_padre from ".$tof_secciones." s join ".$t
 		$t->set_block("pl","block_imagenes_principio","_block_imagenes_principio");	
 		while($row=mysql_fetch_array($result)){
 			if($row[principio]==0){
-				$t->set_var("imagen", '<p style="width:30%;float:left"><a href="'.$row[path].'"  rel="opendialog"><img src="'.$row[path].'" alt="'.$row[nombre].'" width="150" height="150" /></a></p>');
+				$t->set_var("imagen_producto", '<p style="width:30%;float:left"><a href="'.$row[path].'"  rel="opendialog"><img src="'.$row[path].'" alt="'.$row[nombre].'" width="150" height="150" /></a></p>');
 				$t->parse("_block_imagenes","block_imagenes",true);
 			}else{
 				$t->set_var("imagen_principio", '<p style="width:30%;float:left"><a href="'.$row[path].'"  rel="opendialog"><img src="'.$row[path].'" alt="'.$row[nombre].'" width="150" height="150" /></a></p>');
@@ -336,8 +338,8 @@ global $tof_productos,$tof_productosxidioma,$tof_comentariosxproductos,$tof_come
 	mysql_query("insert into ".$tof_comentariosxproductosxidioma." values(".$last_id.",'".$idioma."','".$nombre."','".$email."','".$comentario."')");
 
 	$t->set_var("titulo", "Gracias por su comentario");
-	$t->set_var("contenido", "Gracias por su comentario, el mismo será publicado cuando sea validado por nuestro equipo.");
-	$t->set_var("description", "Gracias por su comentario, el mismo será publicado cuando sea validado por nuestro equipo.");
+	$t->set_var("contenido", "Gracias por su comentario, el mismo serï¿½ publicado cuando sea validado por nuestro equipo.");
+	$t->set_var("description", "Gracias por su comentario, el mismo serï¿½ publicado cuando sea validado por nuestro equipo.");
 	$t->set_var("title", "Gracias por su comentario");
 	$t->set_var("keywords", "");
 	$t->set_var("idioma", $idioma);

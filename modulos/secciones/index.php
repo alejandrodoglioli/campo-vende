@@ -18,6 +18,7 @@ return chr($valor_aleatorio);
 }
 
 function mostrar_seccion(){
+	
 	global $tof_secciones,$tof_seccionesxidioma,$tof_productos,$tof_productosxidioma,$tof_comentariosxsecciones,$tof_comentariosxseccionesxidioma,$tof_imagenesxproductos,$tof_imagenesxsecciones,$id_seccion,$id_subseccion,$id_subsubseccion,$idioma;
 
 	$captcha_texto = "";
@@ -103,7 +104,6 @@ function mostrar_seccion(){
 		
 		
 	}elseif (isset($id_subseccion)){
-
 		$id_secc=$id_subseccion;
 
 		$t->set_var("id_subseccion",$id_secc);
@@ -137,7 +137,6 @@ function mostrar_seccion(){
 		}
 		
 		$resultProducto=mysql_query("select si.* from ".$tof_productos." s join ".$tof_productosxidioma." si on (s.id=si.id) where s.id_seccion=".$id_subseccion." and si.idioma='".$idioma."' order by nombre limit 180");
-		
 		$t->set_block("pl","b_productos","_b_productos");	
 		while($rowProducto=mysql_fetch_array($resultProducto)){
 			$entro=1;
@@ -148,12 +147,14 @@ function mostrar_seccion(){
 			$t->set_var("producto", "/".strtolower(sacar_acentos(str_replace(" ","-" ,$rowProducto[nombre]))));
 			$t->set_var("id_producto", "_".$rowProducto[id]);
 			$t->set_var("anchor", $rowProducto[nombre]);
+			$t->set_var("contenido_producto", $rowProducto[description]);
 			
 			//select la imagen
 			$resultImages=mysql_query("select id,path,nombre,principio from ".$tof_imagenesxproductos." where id_producto=".$rowProducto[id]." and publicado=1");
 			if(mysql_num_rows($resultImages)){
 				$rowimagen=mysql_fetch_array($resultImages);
 				$t->set_var("imagen_producto", '<p style="width:30%;float:left"><a href="/'.$idioma.'/'.strtolower(sacar_acentos(str_replace(" ","-" ,$row[nombre]))).'/'.strtolower(sacar_acentos(str_replace(" ","-" ,$row1[nombre])))."-".$row[id]."-".$row1[id].'.htm"  ><img src="'.$rowimagen[path].'" alt="'.$rowimagen[nombre].'" width="150" height="150"/></a></p>');
+				
 			}
 						
 
@@ -209,11 +210,14 @@ function mostrar_seccion(){
 			$t->set_var("id_producto", "_".$rowProducto[id]);
 			$t->set_var("anchor", $rowProducto[nombre]);
 			$t->set_var("contenido_subcategoria", substr(strip_tags($rowProducto[contenido]),0,150)."...");
-//select la imagen
+			$t->set_var("contenido_producto",$rowProducto[description]);
+//select la imagen estaaaaaaa
 			$result=mysql_query("select id,path,nombre,principio from ".$tof_imagenesxproductos." where id_producto=".$rowProducto[id]." and publicado=1");
 			if(mysql_num_rows($result)){
 				$rowimagen=mysql_fetch_array($result);
-				$t->set_var("imagen_producto", '<p style="width:30%;float:left"><a href="/'.$idioma.'/'.strtolower(sacar_acentos(str_replace(" ","-" ,$row[nombre]))).'/'.strtolower(sacar_acentos(str_replace(" ","-" ,$row1[nombre])))."-".$row[id]."-".$row1[id].'.htm"  ><img src="'.$rowimagen[path].'" alt="'.$rowimagen[nombre].'" width="150" height="150"/></a></p>');
+			//	$t->set_var("imagen_producto", '<p style="width:30%;float:left"><a href="/'.$idioma.'/'.strtolower(sacar_acentos(str_replace(" ","-" ,$row[nombre]))).'/'.strtolower(sacar_acentos(str_replace(" ","-" ,$row1[nombre])))."-".$row[id]."-".$row1[id].'.htm" rel="opendialog" ><img src="'.$rowimagen[path].'" alt="'.$rowimagen[nombre].'" width="150" height="150"/></a></p>');
+				$t->set_var("imagen_producto", '<p style="width:30%;float:left"><a href="'.$rowimagen[path].'"  rel="opendialog"><img src="'.$rowimagen[path].'" alt="'.$rowimagen[nombre].'" alt="'.$rowimagen[nombre].'" width="150" height="150" /></a></p>');
+				
 			}
 						
 			$t->parse("_b_productos","b_productos",true);		
@@ -379,8 +383,8 @@ global $tof_secciones,$tof_seccionesxidioma,$tof_comentariosxsecciones,$tof_come
 	mysql_query("insert into ".$tof_comentariosxseccionesxidioma." values(".$last_id.",'".$idioma."','".$nombre."','".$email."','".$comentario."')");
 
 	$t->set_var("titulo", "Gracias por su comentario");
-	$t->set_var("contenido", "Gracias por su comentario, el mismo será publicado cuando sea validado por nuestro equipo.");
-	$t->set_var("description", "Gracias por su comentario, el mismo será publicado cuando sea validado por nuestro equipo.");
+	$t->set_var("contenido", "Gracias por su comentario, el mismo serï¿½ publicado cuando sea validado por nuestro equipo.");
+	$t->set_var("description", "Gracias por su comentario, el mismo serï¿½ publicado cuando sea validado por nuestro equipo.");
 	$t->set_var("title", "Gracias por su comentario");
 	$t->set_var("keywords", "");
 	$t->set_var("idioma", $idioma);

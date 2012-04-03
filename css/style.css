@@ -481,8 +481,8 @@ color:#463517;
 .noticia p.imagen {width:75px;float:left;padding-right:0px;margin-right:15px;margin-top:0;padding-top:0;}
 
 .destacados ul,#enlacesubcaegorias ul,#enlacesproductos ul {width:100%;float:left;padding:0;margin:0}
-.destacados ul li,#enlacesubcaegorias ul li {border: 1px solid #8D9AB0;margin-bottom:15px;float:left;margin-right:5px;list-style:none;padding-left:25px;background:url(../images/flecha.jpeg) no-repeat;font-weight:bold;background-color:#CEECF5}
-#enlacesproductos ul li {border: 1px solid #8D9AB0;margin-bottom:15px;float:left;margin-right:5px;list-style:none;padding-left:25px;background:url(../images/flecha.jpeg) no-repeat;font-weight:bold;background-color:#CEECF5;width:90%;}
+.destacados ul li,#enlacesubcaegorias ul li {border: 1px solid #8D9AB0;margin-bottom:15px;float:left;margin-right:5px;list-style:none;padding-left:25px;background:url(../images/flecha.jpeg) no-repeat;font-weight:bold;background-color:#fff}
+#enlacesproductos ul li {border: 1px solid #8D9AB0;margin-bottom:15px;float:left;margin-right:5px;list-style:none;padding-left:25px;background:url(../images/flecha.jpeg) no-repeat;background-color:#BAD1F8;width:90%;border-radius:15px;}
 .destacados p{width:125px;float:left;margin-right:5px;}
 
 .banner{margin:auto;width:160px;margin-top:25px;}
