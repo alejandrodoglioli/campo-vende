@@ -275,9 +275,9 @@ function mostrar_seccion(){
 	if (isset($row[video]) and ($row[video]!=NULL))
 		$t->set_var("video", 
 		'<!-- Video 1-->
-		<p class="meta">&nbsp;</p>
-		<p class="meta">Videos Hacienda</p>
+		
 		<div class="entry">	
+		<p class="meta">Videos Hacienda</p>
 		<iframe width="480" height="390" frameborder="0" allowfullscreen="" src="http://www.youtube.com/embed/'.$row[video].'"></iframe></div>
 		<!-- Fin video-->');
 

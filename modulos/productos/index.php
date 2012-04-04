@@ -230,9 +230,8 @@ $result2=mysql_query("select si.*,s.id_padre from ".$tof_secciones." s join ".$t
 	if (isset($row[video]) and ($row[video]!=NULL))
 		$t->set_var("video", 
 		'<!-- Video 1-->
-		<p class="meta">&nbsp;</p>
+		<div class="entry" style="float:left;width:100%;">	
 		<p class="meta">Videos Hacienda</p>
-		<div class="entry">	
 		<iframe width="480" height="390" frameborder="0" allowfullscreen="" src="http://www.youtube.com/embed/'.$row[video].'"></iframe></div>
 		<!-- Fin video-->');
 
@@ -247,10 +246,11 @@ $result2=mysql_query("select si.*,s.id_padre from ".$tof_secciones." s join ".$t
 	$t->set_var("keywords", $row[keywords]);
 	$t->set_var("idioma", $row[idioma]);
 	
-	$result=mysql_query("select id,path,nombre,principio from ".$tof_imagenesxproductos." where (id_producto=".$id_secc." or id_producto=".$row[id_padre].") and publicado=1");
+	$result=mysql_query("select id,path,nombre,principio from ".$tof_imagenesxproductos." where id_producto=".$id_producto." and publicado=1");
+	
 	if(mysql_num_rows($result)){
-		$t->set_block("pl","block_imagenes","_block_imagenes");	
 		$t->set_block("pl","block_imagenes_principio","_block_imagenes_principio");	
+		$t->set_block("pl","block_imagenes","_block_imagenes");	
 		while($row=mysql_fetch_array($result)){
 			if($row[principio]==0){
 				$t->set_var("imagen_producto", '<p style="width:30%;float:left"><a href="'.$row[path].'"  rel="opendialog"><img src="'.$row[path].'" alt="'.$row[nombre].'" width="150" height="150" /></a></p>');
