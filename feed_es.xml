@@ -6,12 +6,36 @@
 	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
 	>
 						<channel>
-							<title>RSS de http://dev.campo.com</title>
-							<link>http://dev.campo.comfeed.xml</link>
+							<title>RSS de http://prod.campo-vende.com.ar</title>
+							<link>http://prod.campo-vende.com.arfeed.xml</link>
 							<description>RSS de Alojandome.com</description>
 							<language>es</language>
 							<sy:updatePeriod>hourly</sy:updatePeriod>
 							<sy:updateFrequency>1</sy:updateFrequency>
 
+						<item>
+							<title>El partido es difícil pero se puede empatar</title>
+							<link>http://prod.campo-vende.com.ar/es/noticias/el-partido-es-dificil-pero-se-puede-empatar-1.htm</link>
+							<pubDate>2012-02-05 00:00:00</pubDate>
+							<description>Con las lluvias de esta semana, la soja y los maíces tardíos aun pueden rendir bien en muchos camp</description>
+						</item>
+						<item>
+							<title>Con la ganadería en la mira</title>
+							<link>http://prod.campo-vende.com.ar/es/noticias/con-la-ganaderia-en-la-mira-2.htm</link>
+							<pubDate>2012-02-05 00:00:00</pubDate>
+							<description>La hacienda se viene arrinconando en los suelos marginales. Allí, la grama rhodes da pelea, aun con</description>
+						</item>
+						<item>
+							<title>El manejo</title>
+							<link>http://prod.campo-vende.com.ar/es/noticias/el-manejo-3.htm</link>
+							<pubDate>2012-02-05 00:00:00</pubDate>
+							<description></description>
+						</item>
+						<item>
+							<title>Seguro contra todo riesgo</title>
+							<link>http://prod.campo-vende.com.ar/es/noticias/seguro-contra-todo-riesgo-4.htm</link>
+							<pubDate>2012-02-05 00:00:00</pubDate>
+							<description>Productores de varias zonas del país cuentan cómo el silo los ayuda a enfrentar los cíclicos per</description>
+						</item>
 	</channel>
 </rss>

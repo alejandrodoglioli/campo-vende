@@ -27,10 +27,10 @@ setearVariablesComunes(&$t);
 		$inicio = 0;
 	}
 	
-	if (isset($_SESSION['user'])){
+	/*if (isset($_SESSION['user'])){
 		$filtro=" and id_usuario=".$_SESSION['user'];
 	}else
-		$filtro="";
+		$filtro="";*/
 	
 	if(isset($id_padre) and ($id_padre<>0)){
 		$result=mysql_query("select si.*,s.publicado,s.id_seccion,se.nombre as nombre_seccion,u.nombre as nombre_usuario,u.apellido from ".$tof_productos." s join ".$tof_productosxidioma." si on (s.id=si.id) join ".$tof_seccionesxidioma." se on (se.id=s.id_seccion) left join ".$tof_usuarios_sistema." u on (s.id_usuario=u.id) where s.id_seccion=".$id_padre." and si.idioma='".$default_idioma."' ".$filtro." order by nombre limit ".$inicio.",".$row_per_page);
@@ -38,6 +38,7 @@ setearVariablesComunes(&$t);
 		}
 	else{
 		$result=mysql_query("select si.*,s.publicado,s.id_seccion,se.nombre as nombre_seccion,u.nombre as nombre_usuario, u.apellido from ".$tof_productos." s join ".$tof_productosxidioma." si on (s.id=si.id) join ".$tof_seccionesxidioma." se on (se.id=s.id_seccion) left join ".$tof_usuarios_sistema." u on (s.id_usuario=u.id) where si.idioma='".$default_idioma."' and se.idioma='".$default_idioma."'".$filtro." order by nombre limit ".$inicio.",".$row_per_page);
+		
 		
 		$resultcant=mysql_query("select count(*) as cant from ".$tof_productos." s join ".$tof_productosxidioma." si on (s.id=si.id) join ".$tof_seccionesxidioma." se on (se.id=s.id_seccion) where si.idioma='".$default_idioma."' and se.idioma='".$default_idioma."'".$filtro."");
 		}

@@ -24,7 +24,7 @@ $path_images ="/images/";
 $cant_fotos_home=6;
 
 
-$urlSite="http://www.campo-vende.com.ar";
+$urlSite="http://prod.campo-vende.com.ar";
        
 $lang="es";
 $charset="ISO-8859-1";

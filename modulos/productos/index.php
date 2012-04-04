@@ -247,7 +247,7 @@ $result2=mysql_query("select si.*,s.id_padre from ".$tof_secciones." s join ".$t
 	$t->set_var("idioma", $row[idioma]);
 	
 	$result=mysql_query("select id,path,nombre,principio from ".$tof_imagenesxproductos." where id_producto=".$id_producto." and publicado=1");
-	
+		
 	if(mysql_num_rows($result)){
 		$t->set_block("pl","block_imagenes_principio","_block_imagenes_principio");	
 		$t->set_block("pl","block_imagenes","_block_imagenes");	
@@ -257,7 +257,7 @@ $result2=mysql_query("select si.*,s.id_padre from ".$tof_secciones." s join ".$t
 				$t->parse("_block_imagenes","block_imagenes",true);
 			}else{
 				$t->set_var("imagen_principio", '<p style="width:30%;float:left"><a href="'.$row[path].'"  rel="opendialog"><img src="'.$row[path].'" alt="'.$row[nombre].'" width="150" height="150" /></a></p>');
-				//$t->parse("_block_imagenes_principio","block_imagenes_principio",true);			
+	//			$t->parse("_block_imagenes_principio","block_imagenes_principio",true);			
 			}
 		}	
 	}
