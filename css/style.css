@@ -474,7 +474,7 @@ color:#463517;
 #formcomentario p{padding:0; margin:0;}
 #comentarios div {border-bottom:1px solid #cedeef}
 
-.noticia{float:left;border:2px solid #0033CC;width:705px;padding:10px;margin-top:5px;background-color: #E0ECF8}
+.noticia{float:left;border:2px solid #0033CC;width:705px;padding:10px;margin-top:5px;background-color: #BAD1F8;border-radius:15px;}
 .noticia .headline {font-size:12px;font-style:italic;margin-bottom:15px;}
 .noticia .fechapublicacion {font-size:10px;margin:0;}
 .noticia p{margin:0;}
@@ -526,3 +526,205 @@ ul#menulateral li a.current,ul#menulateral li a.current:hover{background:#BAD1F8
 /*USUARIOS*/
 #usuario{width:100%;}
 #usuario .login{float:left;margin-right:10px;padding:10px;}
+
+
+
+
+
+
+
+
+
+
+#cuerpo_producto {
+    background-color:#ffffff;
+    border: 3px double #000066;
+    float: left;
+    margin-bottom: 8px;
+    padding: 8px;
+	width:600px;
+}
+
+#cuerpo_producto .titulo_producto {
+float:left;
+width:100%;
+font-size:16px;
+text-align:center;
+padding-bottom:10px;
+}
+
+
+#contenido_producto .columna_izq{
+    float: left;
+    width: 180px;
+	border:double;
+		}
+	
+#contenido_producto .columna_der{
+	float: left;
+    margin-bottom: 9px;
+    padding-left:20px;
+    width: 380px;
+	}
+	
+.pie_producto{
+width:100%;
+float:left;
+}	
+	
+
+#primera_col .imagen_producto {
+width:300px;
+}
+
+#contenido_imagen{
+    width:200px; 
+	float:left;
+	background-color:#CCCCCC;
+	
+	
+}
+#contenido_imagen .imagen_principal{
+	padding:0px 0px 0px 0px;
+	border:solid  #32639A;
+}
+#contenido_imagen .imagen_izq{
+   padding:0px 0px 0px 0px;
+	float:left;
+	border:solid  #32639A;
+}
+#contenido_imagen .imagen_der{
+  padding:0px 0px 0px 0px;
+	float:right;
+	border:solid #32639A;
+}
+
+
+    a.opacity img {
+	filter:alpha(opacity=100);
+    -moz-opacity: 1.0;
+    opacity: 1.0;}
+
+    a.opacity:hover img {
+    
+    filter:alpha(opacity=50);
+    -moz-opacity: 0.9;
+    opacity: 0.7;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    .preguntasv {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #DDDDDD;
+    float: left;
+    padding: 16px 10px 0 13px;
+    text-align: center;
+    width: 905px;
+}
+.preguntasv h2 {
+    float: left;
+    font-size: 17px;
+    font-weight: bold;
+    margin: 0;
+}
+.preguntasv span {
+    color: #3466CB;
+    font-size: 12px;
+}
+.preguntasv .hacer_pregunta {
+    color: #333333;
+    float: right;
+    font-size: 10px;
+}
+.preguntasv .cont_titulo {
+    float: left;
+    padding-bottom: 18px;
+    width: 100%;
+}
+#preguntasRespv {
+    color: #333333;
+    float: left;
+    text-align: left;
+    width: 100%;
+}
+#preguntasRespv p {
+    font-size: 12px;
+}
+#preguntasRespv .preguntav {
+    background: none repeat scroll 0 0 #F5F5F5;
+    margin-bottom: 2px;
+    padding: 10px;
+}
+#preguntasRespv .respuestav {
+    background: none repeat scroll 0 0 #F5F5F5;
+    margin-bottom: 6px;
+    padding: 10px 10px 10px 28px;
+}
+#preguntasRespv .respuestav span {
+    color: #006600;
+}
+.a_pregunta {
+    padding-top: 10px;
+    text-align: center;
+    width: 100%;
+}
+
+
+.ca-container_tienda {
+    height: 120px;
+    margin: 50px auto 20px;
+    position: relative;
+    width: 600px;
+}
+.ca-wrapper {
+    height: 100%;
+    position: relative;
+    width: 100%;
+}
+.ca-item {
+    float: left;
+    height: 100%;
+    position: relative;
+    text-align: center;
+    width: 200px;
+}
+.ca-item-main {
+    background: none repeat scroll 0 0 #FFFFFF;
+    bottom: 5px;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    left: 5px;
+    overflow: hidden;
+    padding: 20px;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+}
+.ca-nav span {
+    background: url("../imagenes/arrows.png") no-repeat scroll left top transparent;
+    cursor: pointer;
+    height: 38px;
+    left: -40px;
+    margin-top: -19px;
+    opacity: 0.7;
+    position: absolute;
+    text-indent: -9000px;
+    top: 50%;
+    width: 25px;
+    z-index: 100;
+}
+.ca-nav span.ca-nav-next {
+    background-position: right top;
+    left: auto;
+    right: -40px;
+}
+.ca-nav span:hover {
+    opacity: 1;
+}
+

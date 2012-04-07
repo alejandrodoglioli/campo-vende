@@ -169,30 +169,157 @@
 								</ul>
 
 						</div>
-						
-						<div id="formcomentario">
-						<div id="comentarios" style="{comentariosvisibles}">
-						<h3>Comentarios de {titulo}:</h3>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                           {titulo}
 						<!-- BEGIN block_comentarios -->
-						<div>
-							<strong>{nombre}</strong> - {fecha_publicacion}<br />
-							{comentario}						 </div>
+						  
+							 <strong>{nombre}</strong> - {fecha_publicacion}
+						  	{comentario}						 
 						<!-- END block_comentarios -->
-						</div>
-						<h3>{traduccion_escribasucomentario} {titulo}:</h3>
-							<form id="formComentario"  enctype="multipart/form-data" method="post" action="/{idioma}/gracias-comentario.htm">
-							<input name="id_seccion" id="id_seccion" type="hidden" value="{id_seccion}" />
-							<input name="id_subseccion" id="id_subseccion" type="hidden" value="{id_subseccion}" />
-							<input name="id_subsubseccion" id="id_subsubseccion" type="hidden" value="{id_subseccion}" />
-								<p>* {traduccion_nombre}:<br /> <input id="nombre" name="nombre" type="text" value="" size="55" onfocus="this.className=''"/></p>
-								<p>{traduccion_email}:<br /> <input id="email" name="email"  type="text" value="" size="55" /></p>
-								<p>* {traduccion_comentario}: <br /><textarea id="comentario" name="comentario" cols="75" rows="5" onfocus="this.className=''"></textarea></p>
-								<p style="height:90px;">* Por favor ingrese el codigo que ve en la imagen, sino puede leerlo actualize la pagina.
-								<br /><img src="/include/crear-imagen.php?captcha_texto={captcha_texto_session}" alt="captcha"/><br /><input name="texto_ingresado" type="text" id="texto_ingresado" size="38" onfocus="this.className=''"/></p>
-								<p style="width:200px;margin-right:auto;margin-left:auto;"><input type="button" class="botonbuscar" value="{traduccion_enviar}" onclick="return validarFormularioComentario('{captcha_texto_session}');"/></p>
-								<p>{traduccion_camposrequeridos}</p>								
-							</form>
-						</div>
+                        
+                        
+                        
+                                                
+	<div id="adSenses" </div>
+	<div class="preguntasv">
+       		<div class="cont_titulo">
+                <h2>Preguntas</h2>
+                <a href="#" onclick="mostrar_popup();"  title="Hacer una pregunta" class="hacer_pregunta" style="display:">Hacer una pregunta</a>
+            </div>
+            <ul id="preguntasRespv">
+            	
+            	<li class="preguntav">
+                	<strong>04/04/2012 | <span>Marcos_81</span></strong>
+                	<p>Ya la vendiste?? 
+                    </p>
+                    <p style="display:none;"><a class="responder" href="#" onclick="mostrar_responder(240293);" style="display:;">Responder</a></p>
+                </li>
+                <li class="respuestav">
+                	<strong></strong>
+                	<p>
+                    </p>
+                </li>          
+
+            	<li class="preguntav">
+                	<strong>04/04/2012 | <span>pupu64</span></strong>
+                	<p>hola como esta de patente y cuantos km tine.gracias
+                    </p>
+                    <p style="display:none;"><a class="responder" href="#" onclick="mostrar_responder(240220);" style="display:;">Responder</a></p>
+                </li>
+                <li class="respuestav">
+                	<strong></strong>
+                	<p>
+                    </p>
+                </li>          
+
+            	<li class="preguntav">
+                	<strong>28/03/2012 | <span>mdelc</span></strong>
+                	<p>todavia la tenés ,ofrezco treinta y dos <br />
+
+                    </p>
+                    <p style="display:none;"><a class="responder" href="#" onclick="mostrar_responder(238864);" style="display:none;">Responder</a></p>
+                </li>
+                <li class="respuestav">
+                	<strong></strong>
+                	<p>llamame y lo vemos
+                    </p>
+                </li>          
+
+            	<li class="preguntav">
+                	<strong>24/03/2012 | <span>javierar</span></strong>
+                	<p>hola te interesa 3oooo de contado es lo que llego.gracias
+                    </p>
+                    <p style="display:none;"><a class="responder" href="#" onclick="mostrar_responder(237902);" style="display:none;">Responder</a></p>
+                </li>
+                <li class="respuestav">
+                	<strong></strong>
+                	<p>si me interesa pero te hago unas cuotas si queres porque el valor es de treita y cinco
+                    </p>
+                </li>          
+
+            	<li class="preguntav">
+                	<strong>21/03/2012 | <span>JAC31</span></strong>
+                	<p>hola aceptas permutas??, tengo 2 peugeot 504 un 95 diesel y un 94 gnc, saludos gracias
+                    </p>
+                    <p style="display:none;"><a class="responder" href="#" onclick="mostrar_responder(237391);" style="display:none;">Responder</a></p>
+                </li>
+                <li class="respuestav">
+                	<strong></strong>
+                	<p>no gracias
+                    </p>
+                </li>          
+
+            	<li class="preguntav">
+                	<strong>20/03/2012 | <span>Matias S</span></strong>
+                	<p>me tomas un tempra publicado aca y diferencia de contado
+                    </p>
+                    <p style="display:none;"><a class="responder" href="#" onclick="mostrar_responder(237132);" style="display:none;">Responder</a></p>
+                </li>
+                <li class="respuestav">
+                	<strong></strong>
+                	<p>no secesito la plata gracias igual
+                    </p>
+                </li>          
+
+            	<li class="preguntav">
+                	<strong>13/03/2012 | <span>naty77</span></strong>
+                	<p>hola disculpa te dejo mi direccion y mi numero fijo *** DATOS DE CONTACTO NO PERMITIDOS *** la direccion es 25 de febrero 576 barrio 17 de agosto gracias
+                    </p>
+                    <p style="display:none;"><a class="responder" href="#" onclick="mostrar_responder(235455);" style="display:none;">Responder</a></p>
+                </li>
+                <li class="respuestav">
+                	<strong></strong>
+                	<p>hola se borro tu tel.. si queres mira mis datos y llamame gracias
+                    </p>
+                </li>          
+
+            	<li class="preguntav">
+                	<strong>13/03/2012 | <span>yalovet</span></strong>
+                	<p>hola tengo un megane modelo 98 full  muy bueno si te interesa vemos diferencia
+                    </p>
+                    <p style="display:none;"><a class="responder" href="#" onclick="mostrar_responder(235439);" style="display:none;">Responder</a></p>
+                </li>
+                <li class="respuestav">
+                	<strong></strong>
+                	<p>hola  tendria que verla  mira mis datos y llamame.<br />
+
+                    </p>
+                </li>          
+
+            	<li class="preguntav">
+                	<strong>12/03/2012 | <span>lobo69</span></strong>
+                	<p>tengo un corsa 2002 1.7 diesel 3 puertas te interesa  espero respuesta gracias<br />
+
+                    </p>
+                    <p style="display:none;"><a class="responder" href="#" onclick="mostrar_responder(235191);" style="display:none;">Responder</a></p>
+                </li>
+                <li class="respuestav">
+                	<strong></strong>
+                	<p>llamame y lo vemos
+                    </p>
+                </li>          
+
+            </ul>
+            <p class="cont_pregunta" style="display:none;">
+				<img alt="Hacer una pregunta" src="/imagenes/hacer_una_pregunta_des.jpg"/>
+            </p>
+			<p class="cont_pregunta" style="display:;">
+            <a  title="Hacer una pregunta" href="#" style="display: ">
+				<img onclick="mostrar_popup();" alt="Hacer una pregunta" src="/imagenes/hacer_una_pregunta.jpg"/>
+			</a>
+            </p>
+    </div>
+</div>
+                        
+                        
+
+		
 	<!-- InstanceEndEditable -->
 				
 				<!-- InstanceBeginEditable name="noticias" --><!-- InstanceEndEditable -->
