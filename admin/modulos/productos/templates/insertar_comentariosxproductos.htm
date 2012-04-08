@@ -25,23 +25,15 @@
 <!-- librería que declara la función Calendar.setup, que ayuda a generar un calendario en unas pocas líneas de código -->
 <script type="text/javascript" src="/admin/js/jscalendar/calendar-setup.js"></script>
 <script type="text/javascript">
-function pedir_subproductos(valor){
-var id_producto = valor;
-	jsrsExecute("../modulos/productos/include/include.remotescripting.php", parsear_subproductos, "obtenerSubproductos",Array(id_producto));
+function pedir_productos(valor){
+var id_seccion = valor;
+	jsrsExecute("../modulos/productos/include/include.remotescripting.php", parsear_productos, "obtenerProductos",Array(id_seccion));
 }
 
-function parsear_subproductos(retorno){
-	document.getElementById("subproductos").innerHTML=retorno;
+function parsear_productos(retorno){
+	document.getElementById("productos").innerHTML=retorno;
 }
 
-function pedir_subsubproductos(valor){
-var id_producto = valor;
-	jsrsExecute("../modulos/productos/include/include.remotescripting.php", parsear_subsubproductos, "obtenerSubSubproductos",Array(id_producto));
-}
-
-function parsear_subsubproductos(retorno){
-	document.getElementById("subsubproductos").innerHTML=retorno;
-}
 </script>
 <!-- InstanceEndEditable -->
 </head>
@@ -178,10 +170,10 @@ function parsear_subsubproductos(retorno){
         <div class="pad">
           <table>
 		  <tr>
-                    <td valign="top"><span class="required">*</span>producto</td>
+                    <td valign="top"><span class="required">*</span>Sección</td>
                     <td>
-						<select name="nombre_producto" id="nombre_producto" onChange="pedir_subproductos(this.value);">
-							<option value="0">Sin producto Padre</option>
+						<select name="nombre_seccion" id="nombre_seccion" onChange="pedir_productos(this.value);">
+							<option value="0">Sección Padre</option>
 							<!-- BEGIN block_padre -->
 							<option value="{id}" style="color:{color}">{nombre_padre}</option>
 							<!-- END block_padre -->
@@ -189,12 +181,8 @@ function parsear_subsubproductos(retorno){
                       </td>
              </tr>
 			 <tr>
-					<td valign="top"><span class="required">*</span>Subproducto</td>
-                    <td id="subproductos">{subproductos}</td>
-			 </tr>
-			  <tr>
-					<td valign="top"><span class="required">*</span>SubSubproducto</td>
-                    <td id="subsubproductos">{subsubproductos}</td>
+					<td valign="top"><span class="required">*</span>Producto</td>
+                    <td id="productos">{productos}</td>
 			 </tr>
 			<tr>
               <td width="185">Publicado:</td>

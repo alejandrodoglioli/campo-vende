@@ -308,7 +308,7 @@ function mostrar_seccion(){
 			}
 		}	
 	}
-	
+/*	Saque comentarios de secciones
 	$result=mysql_query("select si.*,s.fecha_publicacion from ".$tof_comentariosxsecciones." s join ".$tof_comentariosxseccionesxidioma." si on (s.id=si.id) where s.id_seccion=".$id_secc." and publicado=1 and si.idioma='".$idioma."' order by fecha_publicacion desc");
 
 	if(mysql_num_rows($result)){
@@ -323,7 +323,7 @@ function mostrar_seccion(){
 	}else{
 		$t->set_var("comentariosvisibles", "display:none;");
 	}
-	
+	*/
 	setearMenu(&$t,$id_secc);
 	setearVariablesComunes(&$t);
 	setearBanners(&$t,$id_secc);

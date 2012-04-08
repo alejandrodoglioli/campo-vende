@@ -27,24 +27,17 @@
 <script type="text/javascript" src="/admin/js/jscalendar/calendar-setup.js"></script>
 
 <script type="text/javascript">
-function pedir_subproductos(valor){
-var id_producto = valor;
-	jsrsExecute("../modulos/productos/include/include.remotescripting.php", parsear_subproductos, "obtenerSubproductos",Array(id_producto));
+function pedir_productos(valor){
+var id_seccion = valor;
+	jsrsExecute("../modulos/productos/include/include.remotescripting.php", parsear_productos, "obtenerProductos",Array(id_seccion));
 }
 
-function parsear_subproductos(retorno){
-	document.getElementById("subproductos").innerHTML=retorno;
+function parsear_productos(retorno){
+	document.getElementById("productos").innerHTML=retorno;
 }
 
-function pedir_subsubproductos(valor){
-var id_producto = valor;
-	jsrsExecute("../modulos/productos/include/include.remotescripting.php", parsear_subsubproductos, "obtenerSubSubproductos",Array(id_producto));
-}
-
-function parsear_subsubproductos(retorno){
-	document.getElementById("subsubproductos").innerHTML=retorno;
-}
 </script>
+
 <!-- InstanceEndEditable -->
 </head>
 
@@ -181,10 +174,10 @@ function parsear_subsubproductos(retorno){
         <div class="pad">
           <table>
 		  	<tr>
-                  <td valign="top"><span class="required">*</span>producto Padre:</td>
+                  <td valign="top"><span class="required">*</span>Sección Padre:</td>
                     <td>
-						<select name="nombre_padre" id="nombre_padre" onChange="pedir_subproductos(this.value);">
-							<option value="0">Sin producto Padre</option>
+						<select name="nombre_seccion" id="nombre_seccion" onChange="pedir_productos(this.value);">
+							<option value="0">Sin seccion Padre</option>
 							<!-- BEGIN block_padre -->
 							<option value="{id_padre}" {selected}>{nombre_padre}</option>
 							<!-- END block_padre -->
@@ -192,24 +185,13 @@ function parsear_subsubproductos(retorno){
                       </td>
              </tr>
 			 <tr>
-                  <td valign="top"><span class="required">*</span>Subproducto Padre:</td>
-                    <td id="subproductos">
-						<select id="nombre_subpadre" name="nombre_subpadre" onChange="pedir_subsubproductos(this.value);">
-							<option id="0" name="0" value="0" >Sin Subproducto Padre</option>
-							<!-- BEGIN block_spadre -->
-							<option value="{id_sub_padre}" {selected_sub}>{nombre_sub_padre}</option>
-							<!-- END block_spadre -->
-						</select>
-                      </td>
-              </tr>
-			  <tr>
-                  <td valign="top"><span class="required">*</span>SubSubproducto Padre:</td>
-                    <td id="subsubproductos">
-						<select id="nombre_subsubpadre" name="nombre_subsubpadre">
-							<option id="0" name="0" value="0" >Sin SubSubproducto Padre</option>
-							<!-- BEGIN block_sspadre -->
-							<option value="{id_sub_sub_padre}" {selected_subsub}>{nombre_sub_sub_padre}</option>
-							<!-- END block_sspadre -->
+                  <td valign="top"><span class="required">*</span>Producto:</td>
+                    <td id="productos">
+						<select id="nombre_producto" name="nombre_producto">
+							<option id="0" name="0" value="0" >Sin producto Padre</option>
+							<!-- BEGIN block_producto -->
+							<option value="{id_producto}" {selected_producto}>{nombre_producto}</option>
+							<!-- END block_producto -->
 						</select>
                       </td>
               </tr>

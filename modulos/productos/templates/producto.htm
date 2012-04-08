@@ -245,24 +245,40 @@ CONTADO, TARJETAS DE CREDITO, CHEQUES, CREDITOS PERSONALES, CREDITOS BANCARIOS.<
 						</div>
 						
                         
-                        
-                        
+        	<div class="preguntasv">
+       		<div class="cont_titulo">
+                <h2>Preguntas</h2>
+                <a href="#" onclick="mostrar_popup();"  title="Hacer una pregunta" class="hacer_pregunta" style="display:">Hacer una pregunta</a>
+            </div>
+            <ul id="preguntasRespv">
+            	
+				<!-- BEGIN block_comentarios -->
+            	<li class="preguntav">
+                	<strong>{fecha_publicacion} | <span>{nombre}</span></strong>
+                	<p>{comentario}</p>
+                    <p style="display:none;"><a class="responder" href="#" onclick="mostrar_responder(240293);" style="display:;">Responder</a></p>
+                </li>
+				<!-- END block_comentarios -->
+				
+                <li class="respuestav">
+                	<strong></strong>
+                	<p>llamame y lo vemos
+                    </p>
+                </li>          
+
+            </ul>
+            <p class="cont_pregunta" style="display:none;">
+				<img alt="Hacer una pregunta" src="/imagenes/hacer_una_pregunta_des.jpg"/>
+            </p>
+			<p class="cont_pregunta" style="display:;">
+            <a  title="Hacer una pregunta" href="#" style="display: ">
+				<img onclick="mostrar_popup();" alt="Hacer una pregunta" src="/imagenes/hacer_una_pregunta.jpg"/>
+			</a>
+            </p>
+    </div>
 
                         
-                        
-                        
-                        
-                        
-						<div id="formcomentario">
-						<div id="comentarios" style="{comentariosvisibles}">
-						<h3>Comentarios de {titulo}:</h3>
-						<!-- BEGIN block_comentarios -->
-						<div>
-							<strong>{nombre}</strong> - {fecha_publicacion}<br />
-							{comentario}						 
-                         </div>
-						<!-- END block_comentarios -->
-						</div>
+
 						<h3>{traduccion_escribasucomentario} {titulo}:</h3>
 							<form id="formComentario"  enctype="multipart/form-data" method="post" action="/{idioma}/gracias-comentario.htm">
 							<input name="id_producto" id="id_producto" type="hidden" value="{id_producto}" />

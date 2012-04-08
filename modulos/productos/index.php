@@ -262,8 +262,8 @@ $result2=mysql_query("select si.*,s.id_padre from ".$tof_secciones." s join ".$t
 		}	
 	}
 	
-	$result=mysql_query("select si.*,s.fecha_publicacion from ".$tof_comentariosxproductos." s join ".$tof_comentariosxproductosxidioma." si on (s.id=si.id) where s.id_producto=".$id_secc." and publicado=1 and si.idioma='".$idioma."' order by fecha_publicacion desc");
-
+	$result=mysql_query("select si.*,s.fecha_publicacion from ".$tof_comentariosxproductos." s join ".$tof_comentariosxproductosxidioma." si on (s.id=si.id) where s.id_producto=".$id_producto." and publicado=1 and si.idioma='".$idioma."' order by fecha_publicacion desc");
+	
 	if(mysql_num_rows($result)){
 		$t->set_var("comentariosvisibles", "");
 		$t->set_block("pl","block_comentarios","_block_comentarios");	
