@@ -526,7 +526,7 @@ ul#menulateral li a.current,ul#menulateral li a.current:hover{background:#BAD1F8
 /*USUARIOS*/
 #usuario{width:100%;}
 #usuario .login{float:left;margin-right:10px;padding:10px;}
-
+.left{float:left}
 
 
 
