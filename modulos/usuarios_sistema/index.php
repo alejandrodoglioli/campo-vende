@@ -56,7 +56,7 @@ function mostrar_login(){
 	$name_tpl="login.htm";
 	$t = new Template("./templates", "remove");
 	$t->set_file("pl", $name_tpl);
-
+echo "hola";
 	setearMenu(&$t);
 	setearVariablesComunes(&$t);
 	setearBanners(&$t,0);
@@ -101,8 +101,12 @@ function registrar_usuario_sistema(){
 }
 
 function insertar_usuarios_sistema_ok(){
+<<<<<<< HEAD
 	alert("pepe");
 	global $tof_usuarios_sistema,$nombre_usuario,$apellido_usuario,$email_usuario,$password_usuario,$domicilio_usuario,$ciudad_usuario,$provincia_usuario,$cp_usuario,$telefono_usuario,$celular_usuario,$es_comercio_usuario;
+=======
+	global $tof_usuarios_sistema,$nombre_usuario,$apellido_usuario,$email_usuario,$password_usuario,$domicilio_usuario,$ciudad_usuario,$provincia_usuario,$cp_usuario,$telefono_usuario,$celular_usuario,$es_comercio_usuario,$idioma;
+>>>>>>> a8c34de7ac4bc038805f632151ea6891314ee044
 
 	if (isset($es_comercio_usuario))
 		$es_comercio_usuario=1;
@@ -111,21 +115,31 @@ function insertar_usuarios_sistema_ok(){
 echo "sisisisisi";
 	mysql_query("insert into ".$tof_usuarios_sistema." values('NULL','".$nombre_usuario."','".$apellido_usuario."','".$email_usuario."','".$password_usuario."','".$domicilio_usuario."','".$ciudad_usuario."','".$provincia_usuario."','".$cp_usuario."','".$telefono_usuario."','".$celular_usuario."',".$es_comercio_usuario.",'NULL','NULL','NULL')");
 	
-	$last_id=mysql_insert_id();
-			
-	listar_usuario_sistema($last_id);
+	$id=mysql_insert_id();
+	
+	$_SESSION['user_sistema']=$id;
+	$_SESSION['email_sistema']=$email_usuario;
+	$_SESSION['pass_sistema']=$password_usuario;
+	$_SESSION['nombre_user_sistema']=$result[nombre_usuario]." ".$result[apellido_usuario];		
+	
+	mostrar_usuario_sistema();
 }
 
-function mostrar_usuario_sistema(){
+function mostrar_usuario_sistema($id_usuario=NULL){
 	global $tof_usuarios_sistema,$tof_productos,$tof_productosxidioma,$tof_secciones,$tof_seccionesxidioma,$idioma,$row_per_page,$inicio;
-	$id_usuario=$_SESSION['user_sistema'];
+
 	$name_tpl="listar_productosxusuario.htm";
 	$t = new Template("./modulos/usuarios_sistema/templates", "remove");
 	$t->set_file("pl", $name_tpl);
 	
-	setearMenu(&$t);
-	setearVariablesComunes(&$t);
-	//setearBanners(&$t,0);
+	
+	if(!isset($id_usuario))
+		$id_usuario=$_SESSION['user_sistema'];
+	
+	$name_tpl="listar_productosxusuario.htm";
+	$t = new Template("./modulos/usuarios_sistema/templates", "remove");
+	$t->set_file("pl", $name_tpl);
+	
 	$t->set_var("title", "Listar productos usuario");
 	$t->set_var("categoria_modulo", "usuario");
 
@@ -193,10 +207,16 @@ function mostrar_usuario_sistema(){
 		$t->parse("_block_padre","block_padre",true);
 	}
 	
+	
+	
 	$result=mysql_query("select * from ".$tof_usuarios_sistema." u where u.id=".$id_usuario);
 	$row=mysql_fetch_array($result);
-	$t->set_var("usuario", $row[nombre]." ".$row[apellido]);
+	$t->set_var("usuario_logueado", $row[nombre]." ".$row[apellido]);
 	$t->set_var("titulo", "Bienvenido");
+	
+	setearMenu(&$t);
+	setearVariablesComunes(&$t);
+	
 	$t->parse("MAIN", "pl");
     $t->p("MAIN");
 	
@@ -277,7 +297,7 @@ function insertar_productoxusuario(){
 }
 
 function insertar_productoxusuario_ok(){
-	global $tof_productos, $tof_productosxidioma,$tof_idioma,$tof_imagenesxproductos,$path_images,$path_galeria_productos;
+	global $tof_productos, $tof_productosxidioma,$tof_idioma,$tof_imagenesxproductos,$path_images,$path_galeria_productos,$idioma;
 	global $publicado,$orden, $nombre_padre,$nombre_subseccion,$menu_lateral,$cant_imagenes,$video;
 	
 	$id_usuario=$_SESSION['user_sistema'];
@@ -378,7 +398,7 @@ function insertar_productoxusuario_ok(){
 	}	
 	
 	mostrar_usuario_sistema();
-}
+	}
 
 function editar_productoxusuario(){
 	global $tof_productos, $tof_productosxidioma,$tof_secciones, $tof_seccionesxidioma,$tof_imagenesxproductos,$tof_tipoproducto,$tof_idioma,$id_producto,$tof_usuarios_sistema,$idioma;

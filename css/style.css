@@ -57,9 +57,9 @@ h2 a {
 	
 }
 
-/* Header */
+/* header-frontend */
 
-#header {
+#header-frontend {
 	width: 1000px;
 	margin: 0px auto;
 	padding: 0px;
@@ -731,4 +731,5 @@ width:300px;
 .ca-nav span:hover {
     opacity: 1;
 }
+
 
