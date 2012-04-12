@@ -1,7 +1,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="{idioma}"><!-- InstanceBegin template="/Templates/plantilla.dwt" codeOutsideHTMLIsLocked="false" -->
+<html xmlns:fb="http://ogp.me/ns/fb#" xmlns="http://www.w3.org/1999/xhtml" xml:lang="{idioma}"><!-- InstanceBegin template="/Templates/plantilla.dwt" codeOutsideHTMLIsLocked="false" -->
 <head> 
-
+<meta property="og:title" content="Campo Vende" />
+<meta property="og:type" content="company" />
+<meta property="og:url" content="http://prod.campo-vende.com.ar" />
+<meta property="og:image" content="" />
+<meta property="og:site_name" content="Campo Vende" />
+<meta property="fb:admins" content="660286282" />
 <!--link rel="icon" 
       type="image/png" 
       href="/images/favicon.png" /-->
@@ -45,6 +50,14 @@
 </style> <![endif]-->
 </head>
 <body {onload} >
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 <div id="contenedorlinksuperior">
 	<div id="linksuperior">
 		<ul>
@@ -55,12 +68,14 @@
 			</li>
 			<li>{link_login_salir}</li>
 			<li>Bienvenido a {empresa} {usuario_logueado}|</li>
+            
 		</ul>
    
 	</div>
 </div>
 <div id="wrapper">
 	<div id="header">
+    
 	  <div id="logo"--> 
 			<b><a href="/" title="{empresa}"><img src="/images/logootro.jpg" alt="Campo-Vende" width="190" height="150" /></a></b>
     		<!--<b>{empresa}</b>
@@ -86,7 +101,9 @@
          </ul>
          </div>     
 		<div id="menu">
+        
 			<ul>
+            
 			<li style="width:100%;margin-bottom:50px;"></li>
 <!-- BEGIN block_menu_principal -->
 					<li  class="{classmenu}"><a href="{path}" title="{seccion}" >{seccion}</a>
@@ -199,9 +216,14 @@
 </div>
 <div id="footer-content">
 	<div class="column1">
+    
 		<p id="copyright">{traduccion_copyright} <br />	{traduccion_disenadopor} <a href="http://www.alejandro-doglioli.com.ar/">Alejandro Doglioli</a></p>
 	</div>
+    <div class="columnmedio">
+    <fb:like href="http://prod.campo-vende.com.ar" send="true" layout="button_count" width="300" show_faces="true" action="recommend" font="lucida grande"></fb:like>
+    </div>
 	<div class="column2">
+    
 		<ul class="list">
 			<li><a href="/{idioma}/feed" title="RSS"><img src="/images/rss.jpg" alt="RSS" width="60" /></a></li>
 			<li><a href="http://validator.w3.org/check?uri={url_actual}" title="Valid HTML 4.01 Transitional"><img src="http://validator.w3.org/images/valid_icons/valid-xhtml10" alt="Valid HTML 4.01 Transitional" title="Valid XHTML 1.0 Transitional" /></a></li>

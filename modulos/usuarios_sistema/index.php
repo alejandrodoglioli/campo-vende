@@ -101,14 +101,15 @@ function registrar_usuario_sistema(){
 }
 
 function insertar_usuarios_sistema_ok(){
+	alert("pepe");
 	global $tof_usuarios_sistema,$nombre_usuario,$apellido_usuario,$email_usuario,$password_usuario,$domicilio_usuario,$ciudad_usuario,$provincia_usuario,$cp_usuario,$telefono_usuario,$celular_usuario,$es_comercio_usuario;
 
 	if (isset($es_comercio_usuario))
 		$es_comercio_usuario=1;
 	else
 		$es_comercio_usuario=0;
-
-	mysql_query("insert into ".$tof_usuarios_sistema." values('NULL','".$nombre_usuario."','".$apellido_usuario."','".$email_usuario."','".$password_usuario."','".$domicilio_usuario."','".$ciudad_usuario."','".$provincia_usuario."','".$cp_usuario."','".$telefono_usuario."','".$celular_usuario."',".$es_comercio_usuario.")");
+echo "sisisisisi";
+	mysql_query("insert into ".$tof_usuarios_sistema." values('NULL','".$nombre_usuario."','".$apellido_usuario."','".$email_usuario."','".$password_usuario."','".$domicilio_usuario."','".$ciudad_usuario."','".$provincia_usuario."','".$cp_usuario."','".$telefono_usuario."','".$celular_usuario."',".$es_comercio_usuario.",'NULL','NULL','NULL')");
 	
 	$last_id=mysql_insert_id();
 			

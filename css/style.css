@@ -401,9 +401,12 @@ color:#463517;
 
 #footer-content .column1 {
 	float: left;
-	width: 570px;
+	width: 300px;
 }
-
+#footer-content .columnmedio {
+	float: left;
+	width: 270px;
+}
 #footer-content .column2 {
 	float: right;
 	width: 273px;
@@ -526,14 +529,14 @@ ul#menulateral li a.current,ul#menulateral li a.current:hover{background:#BAD1F8
 /*USUARIOS*/
 #usuario{width:100%;}
 #usuario .login{float:left;margin-right:10px;padding:10px;}
+.left{float:left}
 
 
 
 
 
 
-
-
+/* cuerpo de productos*/
 
 
 #cuerpo_producto {
@@ -542,7 +545,7 @@ ul#menulateral li a.current,ul#menulateral li a.current:hover{background:#BAD1F8
     float: left;
     margin-bottom: 8px;
     padding: 8px;
-	width:600px;
+	width:95%;
 }
 
 #cuerpo_producto .titulo_producto {
@@ -564,7 +567,7 @@ padding-bottom:10px;
 	float: left;
     margin-bottom: 9px;
     padding-left:20px;
-    width: 380px;
+    width: 400px;
 	}
 	
 .pie_producto{
@@ -617,7 +620,7 @@ width:300px;
     
     
     
-    
+  /* formulario de preguntas*/  
     
     
     .preguntasv {
@@ -626,12 +629,13 @@ width:300px;
     float: left;
     padding: 16px 10px 0 13px;
     text-align: center;
-    width: 875px;
+    width: 95%;
+	margin-top:30px;
 }
 .preguntasv h2 {
     float: left;
-    font-size: 17px;
-    font-weight: bold;
+    font-size: 12px;
+    font-weight: lighter;
     margin: 0;
 }
 .preguntasv span {

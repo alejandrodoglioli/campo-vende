@@ -187,7 +187,6 @@ function validarFormularioInsertarUsuario(){
 		error+="El password no y la confirmaci�n del password son distintos.\n";
 	}
 
-
 	if (error=="")
 		document.getElementById("formInsertarUsuario").submit();
 	else
