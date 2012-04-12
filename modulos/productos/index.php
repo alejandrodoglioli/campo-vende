@@ -335,6 +335,8 @@ global $tof_productos,$tof_productosxidioma,$tof_comentariosxproductos,$tof_come
 	mysql_query("insert into ".$tof_comentariosxproductos." values('NULL','".date("Y-m-d")."',0,".$id_secc.")");
 	$last_id = mysql_insert_id();
 	
+
+	
 	mysql_query("insert into ".$tof_comentariosxproductosxidioma." values(".$last_id.",'".$idioma."','".$nombre."','".$email."','".$comentario."')");
 
 	$t->set_var("titulo", "Gracias por su comentario");

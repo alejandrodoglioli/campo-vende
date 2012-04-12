@@ -254,9 +254,8 @@ function setearMenu(&$t,$id_seccion=''){
 	
 
 	$t->set_var("idioma", $idioma);
-	
 	$result=mysql_query("select si.nombre,s.id from ".$tof_secciones." s join ".$tof_seccionesxidioma." si on (s.id=si.id) where si.idioma='".$idioma."' and s.publicado=1 and id_padre=0 and menu_lateral=0 order by s.orden");
-	
+		
 	$t->set_block("pl","block_menu_principal","_block_menu_principal");	
 	while($row=mysql_fetch_array($result)){
 		if ($row[nombre]!="Home"){

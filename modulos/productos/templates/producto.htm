@@ -2,13 +2,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="{idioma}"><!-- InstanceBegin template="/Templates/plantilla.dwt" codeOutsideHTMLIsLocked="false" -->
 <head> 
 
-<!--link rel="icon" 
-      type="image/png" 
-      href="/images/favicon.png" /-->
-      
+     
       <link rel="shortcut icon" href="/images/favicon.ico" >
 
-   <!--link rel="icon" type="image/gif" href="/images/animated_favicon1.gif" -->
+
    
    
 <!-- InstanceBeginEditable name="doctitle" -->
@@ -47,6 +44,127 @@
 		});
 
 	</script>
+	
+		<link rel="stylesheet" href="/js/jquery/css/ui-lightness/jquery-ui-1.8.17.custom.css" type="text/css" media="all" />
+	
+			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+			<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js" type="text/javascript"></script>
+			<script src="http://jquery-ui.googlecode.com/svn/tags/latest/external/jquery.bgiframe-2.1.2.js" type="text/javascript"></script>
+			<script src="http://jquery-ui.googlecode.com/svn/tags/latest/ui/minified/i18n/jquery-ui-i18n.min.js" type="text/javascript"></script>
+			
+	<style>
+		body { font-size: 62.5%; }
+		label, input { display:block; }
+		input.text { margin-bottom:12px; width:95%; padding: .4em; }
+		fieldset { padding:0; border:0; margin-top:25px; }
+		h1 { font-size: 1.2em; margin: .6em 0; }
+		div#users-contain { width: 350px; margin: 20px 0; }
+		div#users-contain table { margin: 1em 0; border-collapse: collapse; width: 100%; }
+		div#users-contain table td, div#users-contain table th { border: 1px solid #eee; padding: .6em 10px; text-align: left; }
+		.ui-dialog .ui-state-error { padding: .3em; }
+		.validateTips { border: 1px solid transparent; padding: 0.3em; }
+	</style>
+	<script>
+	$(function() {
+		// a workaround for a flaw in the demo system (http://dev.jqueryui.com/ticket/4375), ignore!
+		$( "#dialog:ui-dialog" ).dialog( "destroy" );
+		
+		var nombre = $( "#nombre" ),
+			email = $( "#email" ),
+			comentario = $( "#comentario" ),
+			allFields = $( [] ).add( nombre ).add( email ).add( comentario ),
+			captcha = $( "#captcha" ),
+			tips = $( ".validateTips" );
+
+		function updateTips( t ) {
+			tips
+				.text( t )
+				.addClass( "ui-state-highlight" );
+			setTimeout(function() {
+				tips.removeClass( "ui-state-highlight", 1500 );
+			}, 500 );
+		}
+
+		function checkLength( o, n, min, max ) {
+			if ( o.val().length > max || o.val().length < min ) {
+				o.addClass( "ui-state-error" );
+				updateTips( "Length of " + n + " must be between " +
+					min + " and " + max + "." );
+				return false;
+			} else {
+				return true;
+			}
+		}
+
+		function checkCaptcha(o) {
+			if ( o.val()!= '{captcha_texto_session}') {
+				o.addClass( "ui-state-error" );
+				updateTips( "El captcha no coincide (respete mayúsculas y minúsculas).");
+				return false;
+			} else {
+				return true;
+			}
+		}
+
+		function checkRegexp( o, regexp, n ) {
+			if ( !( regexp.test( o.val() ) ) ) {
+				o.addClass( "ui-state-error" );
+				updateTips( n );
+				return false;
+			} else {
+				return true;
+			}
+		}
+		
+
+		
+		$( "#dialog-form" ).dialog({
+			autoOpen: false,
+			height: 300,
+			width: 350,
+			modal: true,
+			buttons: {
+				"Create an account": function() {
+					var bValid = true;
+					allFields.removeClass( "ui-state-error" );
+
+					bValid = bValid && checkLength( nombre, "nombre usuario", 3, 16 );
+					bValid = bValid && checkLength( email, "email", 6, 80 );
+					bValid = bValid && checkLength( comentario, "comentario", 5, 10000 );
+					bValid = bValid && checkCaptcha( captcha );
+
+					bValid = bValid && checkRegexp( nombre, /^[a-z]([0-9a-z_])+$/i, "Nombre usuario debe ser caracteres a-z, 0-9, begin with a letter." );
+					// From jquery.validate.js (by joern), contributed by Scott Gonzalez: http://projects.scottsplayground.com/email_address_validation/
+					bValid = bValid && checkRegexp( email, /^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i, "eg. ui@jquery.com" );
+					
+					//bValid = bValid && checkRegexp( comentario, /^([0-9a-zA-Z])+$/, "comentario field only allow : a-z 0-9" );
+
+					if ( bValid ) {
+						$( "#users tbody" ).append( "<tr>" +
+							"<td>" + nombre.val() + "</td>" + 
+							"<td>" + email.val() + "</td>" + 
+							"<td>" + comentario.val() + "</td>" +
+						"</tr>" ); 
+						$( "#formComentario" ).submit();
+						$( this ).dialog( "close" );
+					}
+				},
+				Cancel: function() {
+					$( this ).dialog( "close" );
+				}
+			},
+			close: function() {
+				allFields.val( "" ).removeClass( "ui-state-error" );
+			}
+		});
+
+		$( "#hacer-pregunta" )
+			.button()
+			.click(function() {
+				$( "#dialog-form" ).dialog( "open" );
+			});
+	});
+	</script>
 <!-- InstanceEndEditable -->
 
 <meta name="Keywords" content="{keywords}" />
@@ -63,7 +181,7 @@
 
 <meta name="copyright" content="Copyright ? - Alejandro Javier Doglioli" />
 
-<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://www.e-directorioempresa.com/{idioma}/feed" /> 
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="/{idioma}/feed" /> 
      
 <link rel="stylesheet" type="text/css" href="/css/style.css" />
 <script type="text/JavaScript" src="/js/funciones.js"></script>
@@ -90,8 +208,8 @@
 	</div>
 </div>
 <div id="wrapper">
-	<div id="header">
-	  <div id="logo"--> 
+	<div id="header-frontend">
+	  <div id="logo"> 
 			<b><a href="/" title="{empresa}"><img src="/images/logootro.jpg" alt="Campo-Vende" width="190" height="150" /></a></b>
     		<!--<b>{empresa}</b>
 			<p><em>{slogan}</em></p> -->
@@ -246,12 +364,7 @@ CONTADO, TARJETAS DE CREDITO, CHEQUES, CREDITOS PERSONALES, CREDITOS BANCARIOS.<
 						
                         
         	<div class="preguntasv">
-				<div class="cont_titulo">
-					<h2>Preguntas</h2>
-					<a href="#" onclick="mostrar_popup();"  title="Hacer una pregunta" class="hacer_pregunta" style="display:">Hacer una pregunta</a>
-				</div>
 				<ul id="preguntasRespv">
-					
 					<!-- BEGIN block_comentarios -->
 					<li class="preguntav">
 						<strong>{fecha_publicacion} | <span>{nombre}</span></strong>
@@ -270,17 +383,14 @@ CONTADO, TARJETAS DE CREDITO, CHEQUES, CREDITOS PERSONALES, CREDITOS BANCARIOS.<
 				<p class="cont_pregunta" style="display:none;">
 					<img alt="Hacer una pregunta" src="/imagenes/hacer_una_pregunta_des.jpg"/>
 				</p>
-				<p class="cont_pregunta" style="display:;">
-				<a  title="Hacer una pregunta" href="#" style="display: ">
-					<img onclick="mostrar_popup();" alt="Hacer una pregunta" src="/imagenes/hacer_una_pregunta.jpg"/>
-				</a>
+				<p class="cont_pregunta">
+				  <button id="hacer-pregunta" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"><span class="ui-button-text">Hacer una pregunta</span></button>
 				</p>
 		</div>
-
-  <div class="left">                      
-
-						<h3>{traduccion_escribasucomentario} {titulo}:</h3>
-							<form id="formComentario"  enctype="multipart/form-data" method="post" action="/{idioma}/gracias-comentario.htm">
+  
+<div id="dialog-form" title="Create new user">
+	<p class="validateTips">Todos los campos son requeridos.</p>
+<form id="formComentario"  enctype="multipart/form-data" method="post" action="/{idioma}/gracias-comentario-producto.htm">
 							<input name="id_producto" id="id_producto" type="hidden" value="{id_producto}" />
 							<input name="id_subproducto" id="id_subproducto" type="hidden" value="{id_subproducto}" />
 							<input name="id_subsubproducto" id="id_subsubproducto" type="hidden" value="{id_subproducto}" />
@@ -288,11 +398,20 @@ CONTADO, TARJETAS DE CREDITO, CHEQUES, CREDITOS PERSONALES, CREDITOS BANCARIOS.<
 								<p>{traduccion_email}:<br /> <input id="email" name="email"  type="text" value="" size="65" /></p>
 								<p>* {traduccion_comentario}: <br /><textarea id="comentario" name="comentario" cols="75" rows="5" onfocus="this.className=''"></textarea></p>
 								<p style="height:90px;">* Por favor ingrese el codigo que ve en la imagen, sino puede leerlo actualize la pagina.
-								<br /><img src="/include/crear-imagen.php?captcha_texto={captcha_texto_session}" alt="captcha"/><br /><input name="texto_ingresado" type="text" id="texto_ingresado" size="38" onfocus="this.className=''"/></p>
-								<p style="width:200px;margin-right:auto;margin-left:auto;"><input type="button" class="boton" value="{traduccion_enviar}" onclick="return validarFormularioComentario('{captcha_texto_session}');"/></p>
-								<p>{traduccion_camposrequeridos}</p>								
+								<br /><img src="/include/crear-imagen.php?captcha_texto={captcha_texto_session}" alt="captcha"/><br /><input name="captcha" type="text" id="captcha" size="38" onfocus="this.className=''"/></p>
 							</form>
-  </div>
+<!--							
+	<form>
+	<fieldset>
+		<label for="name">Name</label>
+		<input type="text" name="name" id="name" class="text ui-widget-content ui-corner-all" />
+		<label for="email">Email</label>
+		<input type="text" name="email" id="email" value="" class="text ui-widget-content ui-corner-all" />
+		<label for="password">Password</label>
+		<input type="password" name="password" id="password" value="" class="text ui-widget-content ui-corner-all" />
+	</fieldset>
+	</form> -->
+</div>
 	<!-- InstanceEndEditable -->
 				
 				<!-- InstanceBeginEditable name="noticias" --><!-- InstanceEndEditable -->
@@ -348,7 +467,7 @@ CONTADO, TARJETAS DE CREDITO, CHEQUES, CREDITOS PERSONALES, CREDITOS BANCARIOS.<
 			</ul>			  
 			<ul>
 			  <li>
-					<h2>Cotizaciï¿½n Dolar</h2>
+					<h2>Cotización Dolar</h2>
 			  </li> 
 <!-- Inicio Codigo DolarAlDia.com --> 
 <!--script language="JavaScript" src="http://www.dolaraldia.com/rss/botoncotizaciones.php" type="text/javascript">
