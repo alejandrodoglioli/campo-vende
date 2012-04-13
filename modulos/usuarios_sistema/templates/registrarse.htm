@@ -8,7 +8,7 @@
    
 <!-- InstanceBeginEditable name="doctitle" -->
 <title>{title} - {title_empresa}</title>
-
+<script src="/js/jquery/js/formulario.js"></script>
 <!-- InstanceEndEditable -->
 
 <meta http-equiv="Content-Type" content="text/html; charset={charset}" />
@@ -188,6 +188,32 @@
 				</tr>
 				</form>
 									</div>
+                                    
+                                    
+                                    <div id="dialog-form" title="Envie su consulta o comentario">
+	<p class="validateTips">Todos los campos son requeridos.</p>
+<form id="formComentario"  enctype="multipart/form-data" method="post" action="/{idioma}/gracias-comentario-producto.htm">
+							<input name="id_producto" id="id_producto" type="hidden" value="{id_producto}" />
+							<input name="id_subproducto" id="id_subproducto" type="hidden" value="{id_subproducto}" />
+							<input name="id_subsubproducto" id="id_subsubproducto" type="hidden" value="{id_subproducto}" />
+								<p>{traduccion_nombre}:<input id="nombre" name="nombre" type="text" value="" size="50" "/></p>
+								<p>{traduccion_email}:<input id="email" name="email"  type="text" value="" size=50" /></p>
+								<p>{traduccion_comentario}:<textarea id="comentario" name="comentario" cols="50" rows="4" "></textarea></p>
+								<p style="height:40px;">Ingrese el codigo de verificacion.
+								<br /><img src="/include/crear-imagen.php?captcha_texto={captcha_texto_session}" alt="captcha"/><input name="captcha" type="text" id="captcha" size="20" onfocus="this.className=''"/></p>
+							</form>
+<!--							
+	<form>
+	<fieldset>
+		<label for="name">Name</label>
+		<input type="text" name="name" id="name" class="text ui-widget-content ui-corner-all" />
+		<label for="email">Email</label>
+		<input type="text" name="email" id="email" value="" class="text ui-widget-content ui-corner-all" />
+		<label for="password">Password</label>
+		<input type="password" name="password" id="password" value="" class="text ui-widget-content ui-corner-all" />
+	</fieldset>
+	</form> -->
+</div>
 	<!-- InstanceEndEditable -->
 				
 				<!-- InstanceBeginEditable name="noticias" --><!-- InstanceEndEditable -->

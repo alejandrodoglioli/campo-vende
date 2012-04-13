@@ -1,5 +1,5 @@
 <?
-
+echo "pija"; exit;
 include_once("class.Template.php");
 include_once("include.funciones.php");
 include_once("config.php");
@@ -8,6 +8,7 @@ include_once("conexion.php");
 /*************************** Inicializacion de variables por defecto *****************************/ 
 
 if (!isset($lang) &&!isset($idioma)){
+	
 	$idioma = $default_idioma;
 	session_register("idioma");	
 }
@@ -75,7 +76,7 @@ else{
 		if (!poseePermisoSeccion($modulo,$id_categoria_usuario)) {
 			?>
 			<script language="JavaScript" type="text/javascript">
-               alert('Usuario sin permiso para esta sección');
+               alert('Usuario sin permiso para esta secciï¿½n');
 				window.location="./admin/index.php";
 			</script>
 			<?	

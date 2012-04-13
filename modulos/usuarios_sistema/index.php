@@ -51,10 +51,9 @@ function comprobar_aut($email,$pass)
 }
 
 function mostrar_login(){
-
 	global $idioma;
 	$name_tpl="login.htm";
-	$t = new Template("./templates", "remove");
+	$t = new Template("./modulos/usuarios_sistema/templates", "remove");
 	$t->set_file("pl", $name_tpl);
 	setearMenu(&$t);
 	setearVariablesComunes(&$t);

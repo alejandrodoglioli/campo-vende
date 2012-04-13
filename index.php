@@ -71,7 +71,8 @@ if ($action == "listar_albums") {
 	include("include/include.contacto.php");
     gracias_contacto(); 
 }elseif (($action == "login" or $action == "listar_productoxusuario")&& !isset($_SESSION[user_sistema])) {
-	require_once("modulos/usuarios_sistema/login.php");
+	include("modulos/usuarios_sistema/index.php");
+    mostrar_login(); 
 }elseif ($action == "registrar_usuario_sistema") {
 	include("modulos/usuarios_sistema/index.php");
     registrar_usuario_sistema(); 

@@ -8,6 +8,10 @@
    
 <!-- InstanceBeginEditable name="doctitle" -->
 <title>{title} - {title_empresa}</title>
+		<link rel="stylesheet" href="/js/jquery/css/ui-lightness/jquery-ui-1.8.17.custom.css" type="text/css" media="all" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+        <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js" type="text/javascript"></script>
+        <script src="/js/jquery/js/formulario_registrarse.js"></script>
 <!-- InstanceEndEditable -->
 
 <meta http-equiv="Content-Type" content="text/html; charset={charset}" />
@@ -147,9 +151,43 @@
 								</div>
 								<div class="login">
 									<p>Usuario nuevo? Debe registrarse</p>
-									<div class="boton"><a href="/{idioma}/registrarse.htm" title="Registrarse">Registrarse</a></div>
+									
+                                    <p class="cont_pregunta">
+				  <button id="registrarse" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"><span class="ui-button-text">Registrarse</span></button>
+				</p>
 								</div>
 					</div>	
+                    
+                    
+                    
+                    <div id="dialog-form" title="Registrese en Campo-Vende">
+	<p class="validateTips">Complete los Campos requeridos</p>
+<form id="formRegistrarse"  enctype="multipart/form-data" method="post" action="/{idioma}/gracias-comentario-producto.htm">				
+								<p>Nombre:(*)<br/><input id="nombre_usuario" name="nombre_usuario" type="text" value="" size="50" "/></p>
+								<p>Apellido:<br/><input id="apellido_usuario" name="apellido_usuario"  type="text" value="" size=50" /></p>
+								<p>Ciudad:<br/><input id="ciudad" name="ciudad"  type="text" value="" size=50" /></p>
+                                <p>Email: (*)<br/><input id="email" name="email"  type="text" value="" size=50" /></p>                                
+								<p>Password: (*)<br/><input id="password" name="password" type="password" value="" size=50" /></p>
+								<p>Confirme Password: (*)<br/><input id="password_conf" name="password_conf" type="password" value="" size=50"  /></p>
+								<p>Es comercio?: <input id="es_comercio" name="es_comercio" type="checkbox"  /></p>     
+								<p style="height:40px;">Ingrese el codigo de verificacion.
+								<br /><img src="/include/crear-imagen.php?captcha_texto={captcha_texto_session}" alt="captcha"/><br/><input name="captcha" type="text" id="captcha" size="20" onfocus="this.className=''"/></p>
+							</form>
+                            
+                            
+                            
+<!--							
+	<form>
+	<fieldset>
+		<label for="name">Name</label>
+		<input type="text" name="name" id="name" class="text ui-widget-content ui-corner-all" />
+		<label for="email">Email</label>
+		<input type="text" name="email" id="email" value="" class="text ui-widget-content ui-corner-all" />
+		<label for="password">Password</label>
+		<input type="password" name="password" id="password" value="" class="text ui-widget-content ui-corner-all" />
+	</fieldset>
+	</form> -->
+</div>
 	<!-- InstanceEndEditable -->
 				
 				<!-- InstanceBeginEditable name="noticias" --><!-- InstanceEndEditable -->
