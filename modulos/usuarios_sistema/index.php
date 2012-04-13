@@ -56,7 +56,6 @@ function mostrar_login(){
 	$name_tpl="login.htm";
 	$t = new Template("./templates", "remove");
 	$t->set_file("pl", $name_tpl);
-echo "hola";
 	setearMenu(&$t);
 	setearVariablesComunes(&$t);
 	setearBanners(&$t,0);
@@ -101,18 +100,13 @@ function registrar_usuario_sistema(){
 }
 
 function insertar_usuarios_sistema_ok(){
-<<<<<<< HEAD
-	alert("pepe");
-	global $tof_usuarios_sistema,$nombre_usuario,$apellido_usuario,$email_usuario,$password_usuario,$domicilio_usuario,$ciudad_usuario,$provincia_usuario,$cp_usuario,$telefono_usuario,$celular_usuario,$es_comercio_usuario;
-=======
 	global $tof_usuarios_sistema,$nombre_usuario,$apellido_usuario,$email_usuario,$password_usuario,$domicilio_usuario,$ciudad_usuario,$provincia_usuario,$cp_usuario,$telefono_usuario,$celular_usuario,$es_comercio_usuario,$idioma;
->>>>>>> a8c34de7ac4bc038805f632151ea6891314ee044
 
 	if (isset($es_comercio_usuario))
 		$es_comercio_usuario=1;
 	else
 		$es_comercio_usuario=0;
-echo "sisisisisi";
+
 	mysql_query("insert into ".$tof_usuarios_sistema." values('NULL','".$nombre_usuario."','".$apellido_usuario."','".$email_usuario."','".$password_usuario."','".$domicilio_usuario."','".$ciudad_usuario."','".$provincia_usuario."','".$cp_usuario."','".$telefono_usuario."','".$celular_usuario."',".$es_comercio_usuario.",'NULL','NULL','NULL')");
 	
 	$id=mysql_insert_id();

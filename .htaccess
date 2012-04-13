@@ -20,7 +20,6 @@ RewriteRule ^(.*)/(.*)-([0-9]+)/(.*)-([0-9]+)/contacto\.htm$ $1/contacto.htm [L,
 #usuarios sistema
 RewriteRule ^(.*)/login.htm$ index.php?action=login&idioma=$1 [L,NC]
 RewriteRule ^(.*)/registrarse.htm$ index.php?action=registrar_usuario_sistema&idioma=$1 [L,NC]
-RewriteRule ^(.*)/registrarse.htm$ index.php?action=registrar_usuario_sistema&idioma=$1 [L,NC]
 RewriteRule ^(.*)/listar_productoxusuario$ index.php?action=listar_productoxusuario&idioma=$1 [L,NC]
 RewriteRule ^(.*)/(.*)_productoxusuario/([0-9]+)$ index.php?action=$2_productoxusuario&id_producto=$3&idioma=$1 [L,NC]
 RewriteRule ^(.*)/(.*)_productoxusuario$ index.php?action=$2_productoxusuario&idioma=$1 [L,NC]
@@ -50,12 +49,7 @@ RewriteRule ^(.*)/nouvelles/(.*)-([0-9]+).htm$ index.php?action=mostrar_modulo&m
 #Productos
 RewriteRule ^(.*)/(.*)/(.*)-([0-9]+)-([0-9]+)/(.*)_([0-9]+).htm$ index.php?action=mostrar_producto&id_producto=$7&id_seccion=$4&id_subseccion=$5&idioma=$1 [L,NC]
 RewriteRule ^(.*)/(.*)-([0-9]+)/(.*)_([0-9]+).htm$ index.php?action=mostrar_producto&id_producto=$5&id_seccion=$3&idioma=$1 [L,NC]
-<<<<<<< HEAD
-RewriteRule ^(.*)/producto/gracias-comentario.htm$ index.php?action=gracias_comentario_producto&idioma=$1 [L,NC]
-RewriteRule ^(.*)/producto/consulta.htm$ index.php?action=consulta&idioma=$1 [L,NC]
-=======
 RewriteRule ^(.*)/gracias-comentario-producto.htm$ index.php?action=gracias_comentario_producto&idioma=$1 [L,NC]
->>>>>>> a8c34de7ac4bc038805f632151ea6891314ee044
 
 #Secciones 
 RewriteRule ^(.*)/(.*)/(.*)/(.*)-([0-9]+)-([0-9]+)-([0-9]+).htm$ index.php?action=mostrar_seccion&id_seccion=$5&id_subseccion=$6&id_subsubseccion=$7&idioma=$1 [L,NC]

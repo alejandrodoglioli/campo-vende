@@ -1,12 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="{idioma}"><!-- InstanceBegin template="/Templates/plantilla.dwt" codeOutsideHTMLIsLocked="false" -->
+<html xmlns:fb="http://ogp.me/ns/fb#" xmlns="http://www.w3.org/1999/xhtml" xml:lang="{idioma}"><!-- InstanceBegin template="/Templates/plantilla.dwt" codeOutsideHTMLIsLocked="false" -->
 <head> 
-
-     
       <link rel="shortcut icon" href="/images/favicon.ico" >
 
 
-   
+
    
 <!-- InstanceBeginEditable name="doctitle" -->
 <title>{title} - {title_empresa}</title>
@@ -23,27 +21,7 @@
 
 	<script src="/js/colorbox/jquery.colorbox.js"></script>
 
-	<script>
-
-		$(document).ready(function(){
-
-			//Examples of how to assign the ColorBox event to elements
-
-			$("a[rel='opendialog']").colorbox({transition:"fade",width:"600px", height:"600px"});
-
-			//Example of preserving a JavaScript event for inline calls.
-
-			$("#click").click(function(){ 
-
-				$('#click').css({"background-color":"#f00", "color":"#fff", "cursor":"inherit"}).text("Open this window again and this message will still be here.");
-
-				return false;
-
-			});
-
-		});
-
-	</script>
+	
 	
 		<link rel="stylesheet" href="/js/jquery/css/ui-lightness/jquery-ui-1.8.17.custom.css" type="text/css" media="all" />
 	
@@ -88,8 +66,18 @@
 		function checkLength( o, n, min, max ) {
 			if ( o.val().length > max || o.val().length < min ) {
 				o.addClass( "ui-state-error" );
-				updateTips( "Length of " + n + " must be between " +
-					min + " and " + max + "." );
+				updateTips( "La longitud de " + n + " debe estar entre " +
+					min + " y " + max + "." );
+				return false;
+			} else {
+				return true;
+			}
+		}
+		
+		function checkEmpty( o, m ) {
+			if ( o.val().length < 1 ) {
+				o.addClass( "ui-state-error" );
+				updateTips( "El campo " + m + " no puede ser vacio." );
 				return false;
 			} else {
 				return true;
@@ -99,7 +87,7 @@
 		function checkCaptcha(o) {
 			if ( o.val()!= '{captcha_texto_session}') {
 				o.addClass( "ui-state-error" );
-				updateTips( "El captcha no coincide (respete mayúsculas y minúsculas).");
+				updateTips( "El captcha no coincide (respete mayï¿½sculas y minï¿½sculas).");
 				return false;
 			} else {
 				return true;
@@ -120,23 +108,23 @@
 		
 		$( "#dialog-form" ).dialog({
 			autoOpen: false,
-			height: 300,
-			width: 350,
+			height: 550,
+			width: 500,
 			modal: true,
+			
 			buttons: {
-				"Create an account": function() {
+				"Enviar Comentario": function() {
 					var bValid = true;
 					allFields.removeClass( "ui-state-error" );
 
-					bValid = bValid && checkLength( nombre, "nombre usuario", 3, 16 );
-					bValid = bValid && checkLength( email, "email", 6, 80 );
-					bValid = bValid && checkLength( comentario, "comentario", 5, 10000 );
-					bValid = bValid && checkCaptcha( captcha );
-
+					bValid = bValid && checkLength( nombre, "'Nombre'", 3, 75 );
 					bValid = bValid && checkRegexp( nombre, /^[a-z]([0-9a-z_])+$/i, "Nombre usuario debe ser caracteres a-z, 0-9, begin with a letter." );
 					// From jquery.validate.js (by joern), contributed by Scott Gonzalez: http://projects.scottsplayground.com/email_address_validation/
-					bValid = bValid && checkRegexp( email, /^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i, "eg. ui@jquery.com" );
+					bValid = bValid && checkRegexp( email, /^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i, "La direccion de 'Email' es invalida" );
 					
+					bValid = bValid && checkEmpty( comentario, "'Comentario'" );
+					bValid = bValid && checkCaptcha( captcha );
+
 					//bValid = bValid && checkRegexp( comentario, /^([0-9a-zA-Z])+$/, "comentario field only allow : a-z 0-9" );
 
 					if ( bValid ) {
@@ -164,6 +152,27 @@
 				$( "#dialog-form" ).dialog( "open" );
 			});
 	});
+	</script>
+    <script>
+
+		$(document).ready(function(){
+
+			//Examples of how to assign the ColorBox event to elements
+
+			$("a[rel='opendialog']").colorbox({transition:"fade",width:"600px", height:"600px"});
+
+			//Example of preserving a JavaScript event for inline calls.
+
+			$("#click").click(function(){ 
+
+				$('#click').css({"background-color":"#f00", "color":"#fff", "cursor":"inherit"}).text("Open this window again and this message will still be here.");
+
+				return false;
+
+			});
+
+		});
+
 	</script>
 <!-- InstanceEndEditable -->
 
@@ -193,6 +202,14 @@
 </style> <![endif]-->
 </head>
 <body {onload} >
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 <div id="contenedorlinksuperior">
 	<div id="linksuperior">
 		<ul>
@@ -203,6 +220,7 @@
 			</li>
 			<li>{link_login_salir}</li>
 			<li>Bienvenido a {empresa} {usuario_logueado}|</li>
+            
 		</ul>
    
 	</div>
@@ -234,7 +252,9 @@
          </ul>
          </div>     
 		<div id="menu">
+        
 			<ul>
+            
 			<li style="width:100%;margin-bottom:50px;"></li>
 <!-- BEGIN block_menu_principal -->
 					<li  class="{classmenu}"><a href="{path}" title="{seccion}" >{seccion}</a>
@@ -388,17 +408,17 @@ CONTADO, TARJETAS DE CREDITO, CHEQUES, CREDITOS PERSONALES, CREDITOS BANCARIOS.<
 				</p>
 		</div>
   
-<div id="dialog-form" title="Create new user">
+<div id="dialog-form" title="Envie su consulta o comentario">
 	<p class="validateTips">Todos los campos son requeridos.</p>
 <form id="formComentario"  enctype="multipart/form-data" method="post" action="/{idioma}/gracias-comentario-producto.htm">
 							<input name="id_producto" id="id_producto" type="hidden" value="{id_producto}" />
 							<input name="id_subproducto" id="id_subproducto" type="hidden" value="{id_subproducto}" />
 							<input name="id_subsubproducto" id="id_subsubproducto" type="hidden" value="{id_subproducto}" />
-								<p>* {traduccion_nombre}:<br /> <input id="nombre" name="nombre" type="text" value="" size="65" onfocus="this.className=''"/></p>
-								<p>{traduccion_email}:<br /> <input id="email" name="email"  type="text" value="" size="65" /></p>
-								<p>* {traduccion_comentario}: <br /><textarea id="comentario" name="comentario" cols="75" rows="5" onfocus="this.className=''"></textarea></p>
-								<p style="height:90px;">* Por favor ingrese el codigo que ve en la imagen, sino puede leerlo actualize la pagina.
-								<br /><img src="/include/crear-imagen.php?captcha_texto={captcha_texto_session}" alt="captcha"/><br /><input name="captcha" type="text" id="captcha" size="38" onfocus="this.className=''"/></p>
+								<p>{traduccion_nombre}:<input id="nombre" name="nombre" type="text" value="" size="50" "/></p>
+								<p>{traduccion_email}:<input id="email" name="email"  type="text" value="" size=50" /></p>
+								<p>{traduccion_comentario}:<textarea id="comentario" name="comentario" cols="50" rows="4" "></textarea></p>
+								<p style="height:40px;">Ingrese el codigo de verificacion.
+								<br /><img src="/include/crear-imagen.php?captcha_texto={captcha_texto_session}" alt="captcha"/><input name="captcha" type="text" id="captcha" size="20" onfocus="this.className=''"/></p>
 							</form>
 <!--							
 	<form>
@@ -467,7 +487,7 @@ CONTADO, TARJETAS DE CREDITO, CHEQUES, CREDITOS PERSONALES, CREDITOS BANCARIOS.<
 			</ul>			  
 			<ul>
 			  <li>
-					<h2>Cotización Dolar</h2>
+					<h2>Cotizaciï¿½n Dolar</h2>
 			  </li> 
 <!-- Inicio Codigo DolarAlDia.com --> 
 <!--script language="JavaScript" src="http://www.dolaraldia.com/rss/botoncotizaciones.php" type="text/javascript">
@@ -491,9 +511,14 @@ CONTADO, TARJETAS DE CREDITO, CHEQUES, CREDITOS PERSONALES, CREDITOS BANCARIOS.<
 </div>
 <div id="footer-content">
 	<div class="column1">
+    
 		<p id="copyright">{traduccion_copyright} <br />	{traduccion_disenadopor} <a href="http://www.alejandro-doglioli.com.ar/">Alejandro Doglioli</a></p>
 	</div>
+    <div class="columnmedio">
+    <fb:like href="http://prod.campo-vende.com.ar" send="true" layout="button_count" width="300" show_faces="true" action="recommend" font="lucida grande"></fb:like>
+    </div>
 	<div class="column2">
+    
 		<ul class="list">
 			<li><a href="/{idioma}/feed" title="RSS"><img src="/images/rss.jpg" alt="RSS" width="60" /></a></li>
 			<li><a href="http://validator.w3.org/check?uri={url_actual}" title="Valid HTML 4.01 Transitional"><img src="http://validator.w3.org/images/valid_icons/valid-xhtml10" alt="Valid HTML 4.01 Transitional" title="Valid XHTML 1.0 Transitional" /></a></li>

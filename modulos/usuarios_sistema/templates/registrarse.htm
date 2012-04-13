@@ -1,15 +1,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="{idioma}"><!-- InstanceBegin template="/Templates/plantilla.dwt" codeOutsideHTMLIsLocked="false" -->
+<html xmlns:fb="http://ogp.me/ns/fb#" xmlns="http://www.w3.org/1999/xhtml" xml:lang="{idioma}"><!-- InstanceBegin template="/Templates/plantilla.dwt" codeOutsideHTMLIsLocked="false" -->
 <head> 
-
-     
       <link rel="shortcut icon" href="/images/favicon.ico" >
 
 
-   
+
    
 <!-- InstanceBeginEditable name="doctitle" -->
 <title>{title} - {title_empresa}</title>
+
 <!-- InstanceEndEditable -->
 
 <meta http-equiv="Content-Type" content="text/html; charset={charset}" />
@@ -42,6 +41,14 @@
 </style> <![endif]-->
 </head>
 <body {onload} >
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 <div id="contenedorlinksuperior">
 	<div id="linksuperior">
 		<ul>
@@ -52,6 +59,7 @@
 			</li>
 			<li>{link_login_salir}</li>
 			<li>Bienvenido a {empresa} {usuario_logueado}|</li>
+            
 		</ul>
    
 	</div>
@@ -83,7 +91,9 @@
          </ul>
          </div>     
 		<div id="menu">
+        
 			<ul>
+            
 			<li style="width:100%;margin-bottom:50px;"></li>
 <!-- BEGIN block_menu_principal -->
 					<li  class="{classmenu}"><a href="{path}" title="{seccion}" >{seccion}</a>
@@ -110,76 +120,6 @@
 				
 				<h1 class="title">{titulo}</h1>			
 
-<<<<<<< HEAD
-				<!-- InstanceBeginEditable name="contenido" -->
-									<div>
-										<form id="formInsertarUsuario" action="/modulos/usuarios_sistema/index.php?action=insertar_usuarios_sistema_ok" method="post">
-			 
-				<tr class="row1" onmouseover="this.className='highlight'" onmouseout="this.className='row1'">
-					  <td width="100%" class="center" style="background-color:#FFFFCC">
-						<table>
-							<tr>
-								<td><span class="required"></span> Nombre Usuario (*)</td>
- 							<td><input id="nombre_usuario" name="nombre_usuario" type="text" style="background-color:#F5EBBE; border-color:#FF0000;"/></td>
-								
-							</tr>
-							<tr>
-								<td>Apellido Usuario</td>
-								<td><input id="apellido_usuario" name="apellido_usuario" type="text"/></td>
-							</tr>
-							<tr>
-								<td><span class="required"></span> Email Usuario (*)</td>
-								<td><input id="email_usuario" name="email_usuario" type="text" style="background-color:#F5EBBE; border-color:#FF0000; " /></td>
-							</tr>
-							<tr>
-								<td><span class="required"></span> Password (*)</td>
-								<td><input id="password_usuario" name="password_usuario" type="password"  style="background-color:#F5EBBE; border-color:#FF0000; "/></td>
-							</tr>
-							<tr>
-								<td><span class="required"></span> Confirmar Password (*)</td>
-								<td><input id="confirmar_password_usuario" name="confirmar_password_usuario" type="password" value="{password_usuario}" style="background-color:#F5EBBE; border-color:#FF0000; "/></td>
-							</tr>
-							<tr>
-								<td>Domicilio</td>
-								<td><input id="domicilio_usuario" name="domicilio_usuario" type="text" /></td>
-							</tr>
-							<tr>
-								<td>Ciudad</td>
-								<td><input id="ciudad_usuario" name="ciudad_usuario" type="text" /></td>
-							</tr>
-							<tr>
-								<td>Provincia</td>
-								<td><input id="provincia_usuario" name="provincia_usuario" type="text" /></td>
-							</tr>
-							<tr>
-								<td>Codigo Postal</td>
-								<td><input id="cp_usuario" name="cp_usuario" type="text" /></td>
-							</tr>
-							<tr>
-								<td>Telefono</td>
-								<td><input id="telefono_usuario" name="telefono_usuario" type="text" /></td>
-							</tr>
-							<tr>
-								<td>Celular</td>
-								<td><input id="celular_usuario" name="celular_usuario" type="text" /></td>
-							</tr>
-							<tr>
-								<td>Es Comercio?</td>
-								<td><input id="es_comercio_usuario" name="es_comercio_usuario" type="checkbox"  /></td>
-							</tr>
-							<tr>
-								<td style="color: #F78181">(*) campo requerido</td>
-							</tr>
-							<tr>
-							 <td><input class="boton" type="reset" value="Cancelar" onclick="history.back(-1);" /></td>
-							 <td><input class="boton" type="button" value="Aceptar" onclick="validarFormularioInsertarUsuario();" /></td>
-							</tr>				
-						</table>
-					</td>
-				</tr>
-				</form>
-									</div>
-=======
 				<!-- InstanceBeginEditable name="contenido" -->
 									<div>
 										<form id="formInsertarUsuario" action="/index.php?action=insertar_usuarios_sistema_ok&idioma=es" method="post">
@@ -248,7 +188,6 @@
 				</tr>
 				</form>
 									</div>
->>>>>>> a8c34de7ac4bc038805f632151ea6891314ee044
 	<!-- InstanceEndEditable -->
 				
 				<!-- InstanceBeginEditable name="noticias" --><!-- InstanceEndEditable -->
@@ -304,8 +243,7 @@
 			</ul>			  
 			<ul>
 			  <li>
-					<h2>Cotizaciï¿½n Dolar</h2>
-                    
+					<h2>Cotización Dolar</h2>
 			  </li> 
 <!-- Inicio Codigo DolarAlDia.com --> 
 <!--script language="JavaScript" src="http://www.dolaraldia.com/rss/botoncotizaciones.php" type="text/javascript">
@@ -329,9 +267,14 @@
 </div>
 <div id="footer-content">
 	<div class="column1">
+    
 		<p id="copyright">{traduccion_copyright} <br />	{traduccion_disenadopor} <a href="http://www.alejandro-doglioli.com.ar/">Alejandro Doglioli</a></p>
 	</div>
+    <div class="columnmedio">
+    <fb:like href="http://prod.campo-vende.com.ar" send="true" layout="button_count" width="300" show_faces="true" action="recommend" font="lucida grande"></fb:like>
+    </div>
 	<div class="column2">
+    
 		<ul class="list">
 			<li><a href="/{idioma}/feed" title="RSS"><img src="/images/rss.jpg" alt="RSS" width="60" /></a></li>
 			<li><a href="http://validator.w3.org/check?uri={url_actual}" title="Valid HTML 4.01 Transitional"><img src="http://validator.w3.org/images/valid_icons/valid-xhtml10" alt="Valid HTML 4.01 Transitional" title="Valid XHTML 1.0 Transitional" /></a></li>
