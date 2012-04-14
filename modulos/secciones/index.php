@@ -153,7 +153,7 @@ function mostrar_seccion(){
 			$resultImages=mysql_query("select id,path,nombre,principio from ".$tof_imagenesxproductos." where id_producto=".$rowProducto[id]." and publicado=1");
 			if(mysql_num_rows($resultImages)){
 				$rowimagen=mysql_fetch_array($resultImages);
-				$t->set_var("imagen_producto", '<p style="width:30%;float:left"><a href="/'.$idioma.'/'.strtolower(sacar_acentos(str_replace(" ","-" ,$row[nombre]))).'/'.strtolower(sacar_acentos(str_replace(" ","-" ,$row1[nombre])))."-".$row[id]."-".$row1[id].'.htm"  ><img src="'.$rowimagen[path].'" alt="'.$rowimagen[nombre].'" width="150" height="150"/></a></p>');
+				$t->set_var("imagen_producto", '<p style="width:30%;float:left"><a href="/'.$idioma.'/'.strtolower(sacar_acentos(str_replace(" ","-" ,$row[nombre]))).'/'.strtolower(sacar_acentos(str_replace(" ","-" ,$row1[nombre])))."-".$row[id]."-".$row1[id].'.htm"  ><img src="'.$rowimagen[path].'" alt="'.$rowimagen[nombre].'" width="100" height="100"/></a></p>');
 				
 			}
 						
@@ -215,10 +215,15 @@ function mostrar_seccion(){
 			$result=mysql_query("select id,path,nombre,principio from ".$tof_imagenesxproductos." where id_producto=".$rowProducto[id]." and publicado=1");
 			if(mysql_num_rows($result)){
 				$rowimagen=mysql_fetch_array($result);
-				$t->set_var("imagen_producto", '<p style="width:30%;float:left"><a href="'.$rowimagen[path].'"  rel="opendialog"><img src="'.$rowimagen[path].'" alt="'.$rowimagen[nombre].'" alt="'.$rowimagen[nombre].'" width="150" height="150" /></a></p>');
+				//$t->set_var("imagen_producto", '<p style="width:30%;float:left"><a href="'.$rowimagen[path].'"  rel="opendialog"><img src="'.$rowimagen[path].'" alt="'.$rowimagen[nombre].'" alt="'.$rowimagen[nombre].'" width="100" height="100" /></a></p>');
+				$t->set_var("imagen_src", $rowimagen[path]);
+				$t->set_var("imagen_nombre",$rowimagen[nombre]);
 				
 			}else{
-				$t->set_var("imagen_producto", '');
+				//$t->set_var("imagen_producto", '');
+					$t->set_var("imagen_src", "/images/productos/default.jpg");
+				    $t->set_var("imagen_nombre","sin foto");
+				
 			
 			}
 						

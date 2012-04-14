@@ -8,6 +8,36 @@
    
 <!-- InstanceBeginEditable name="doctitle" -->
 <title>{title} - {title_empresa}</title>
+	<!-- script imagenes -->
+    <script type="text/javascript" src=" https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/jquery/js/cicle.js"></script>
+
+<script language="javascript">
+$(document).ready(function() { //funcion para documento listo
+
+    $('.topo').cycle({ //nombre de la capa
+
+		fx: 'fade' // Efecto a utilizar
+
+	});
+
+});
+</script>
+
+<script language="javascript">
+ 
+		$(document).ready(function() {
+			$("#gallery_output img").not(":first").hide();
+ 
+			$("#gallery a").click(function() {
+				if ( $("#" + this.rel).is(":hidden") ) {
+					$("#gallery_output img").slideUp();
+					$("#" + this.rel).slideDown();
+				}
+			});
+		});
+ 
+	</script>
 <!-- InstanceEndEditable -->
 
 <meta http-equiv="Content-Type" content="text/html; charset={charset}" />
@@ -136,6 +166,34 @@
 						<!-- END block_paginas -->
 							<li>{siguiente}</li>
 						</ul>
+                        
+                            
+<!--div class="topo">
+    <img src="/images/rss.jpg" height="100" width="100"/>
+	<img src="/images/boton.jpg" height="100" width="100"/>
+	<img src="/images/logootro.jpg" height="100" width="100"/>
+</div-->
+
+
+<div id="gallery">
+	<div id="gallery_nav">
+		<a rel="img1" href="javascript:;"><img src="/images/rss.jpg" height="50" width="50"/></a>
+		<a rel="img2" href="javascript:;"><img src="/images/logootro.jpg" height="50" width="50"/></a>
+		<a rel="img3" href="javascript:;"><img src="/images/rss.jpg" height="50" width="50"/></a>
+		<a rel="img4" href="javascript:;"><img src="/images/boton.jpg" height="50" width="50"/></a>
+	</div>
+ 
+	<div id="gallery_output">
+		<img id="img1" src="/images/rss.jpg" height="250" width="250"/>
+		<img id="img2" src="/images/logootro.jpg" height="250" width="250"/>
+		<img id="img3" src="/images/rss.jpg" height="250" width="250"/>
+		<img id="img4" src="/images/boton.jpg" height="250" width="250"/>
+	</div>
+ 
+	<div class="clear"></div>
+</div>
+    
+    
 	<!-- InstanceEndEditable -->
 				
 				<!-- InstanceBeginEditable name="noticias" --><!-- InstanceEndEditable -->

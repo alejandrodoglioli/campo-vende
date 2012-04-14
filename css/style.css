@@ -733,3 +733,107 @@ width:300px;
 }
 
 
+
+
+
+
+
+
+
+.paginadoTienda {
+    border-bottom: 1px solid #AAAAAA;
+    border-top: 1px solid #CCCCCC;
+    float: right;
+    font-weight: bold;
+    padding: 10px 0;
+    text-align: right;
+    width: 100%;
+    margin-top: 5px;
+}
+
+
+#listado_productos {
+    border: 2px solid #DDDDDD;
+    float: left;
+    padding: 4px;
+    width: 100%;
+}
+
+
+.item_tienda {
+    float: left;
+    font-size: 12px;
+    height: 110px;
+    margin: 5px 0;
+    padding: 10px 1px 1px;
+    width: 800px;
+}
+
+.item_producto {
+    float: left;
+    font-size: 12px;
+    height: 110px;
+    margin: 5px 0;
+    padding: 10px 1px 1px;
+    width: 350px;
+}
+
+.item_producto .precio {
+    font-size: 14px;
+    font-weight: bold;
+}
+.item_producto .imagen {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #C9D6F1;
+    float: left;
+    padding: 5px 6px;
+    text-align: center;
+    width: 110px;
+}
+
+.border {
+    border-right: 2px solid #EEEEEE;
+    margin-right: 6px;
+}
+
+.item_producto .descripcion {
+    float: left;
+    margin-left: 10px;
+    width: 200px;
+}
+#listado_productos .bordeabajo{
+float:left;
+border-bottom: 2px solid #EEE;
+}
+
+
+
+.topo{
+width:100px;
+height:100px;
+overflow:hidden;
+margin:0px auto;
+}
+
+
+#gallery img {
+			border: none;
+		}
+ 
+		#gallery_nav {
+			float: left;
+			width:550px;
+			text-align: center;
+		}
+ 
+		#gallery_output {
+			float: left;
+			width: 600px;
+			height: 550px;
+			overflow: hidden;
+		}
+ 
+		#gallery_output img {
+			display: block;
+			margin: 20px auto 0 auto;
+		}

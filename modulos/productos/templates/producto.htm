@@ -16,12 +16,26 @@
 
 <link media="screen" rel="stylesheet" href="/js/colorbox/colorbox.css" />
 
-
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
-
+	
 	<script src="/js/colorbox/jquery.colorbox.js"></script>
 
-	
+	<!-- script imagenes -->
+    <script type="text/javascript" src=" https://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.js"></script>
+    <script type="text/javascript" src="/js/jquery/js/jquery.pikachoose.js"></script>
+
+<script language="javascript">
+$(document).ready(
+	function (){
+		$("#slider_imagenes").PikaChoose({
+		auto_play: false,
+		thumb_width: 123,
+		thumb_height: 94,
+		buttons_text: { play: "", stop: "", previous: "Anterior", next: "Proxima" }});
+		});
+
+</script>
+
+<!-- fin script imagenes-->
 	
 		<link rel="stylesheet" href="/js/jquery/css/ui-lightness/jquery-ui-1.8.17.custom.css" type="text/css" media="all" />
 	
@@ -187,7 +201,7 @@
       </div-->
       <div id="contenido_producto">
       		<div id="contenido_imagen">
-      			<div class = "imagen_principal">      				
+      			<!--div class = "imagen_principal">      				
                     <p style="margin-bottom:0px;"><a class="opacity" href="/images/foto.jpg"  rel="opendialog"><img src="/images/foto.jpg" alt="/images/foto1.jpg" width="100%" height="100%"/></a></p>
       			</div>
                 <div class = "imagen_izq">
@@ -195,7 +209,9 @@
       			</div>
                 <div class = "imagen_der">
                     <p style="margin-bottom:0px;"><a class="opacity" href="/images/foto.jpg"  rel="opendialog"><img src="/images/foto.jpg" alt="/images/foto1.jpg" width="95px" height="80px"/></a></p>
-      			</div>
+      			</div-->
+                
+               
              </div>
        <div class = "columna_der">
       {description}
@@ -233,10 +249,7 @@ CONTADO, TARJETAS DE CREDITO, CHEQUES, CREDITOS PERSONALES, CREDITOS BANCARIOS.<
     
     
     
-    
-    
-    
-    
+
     
     
 	           
@@ -303,6 +316,11 @@ CONTADO, TARJETAS DE CREDITO, CHEQUES, CREDITOS PERSONALES, CREDITOS BANCARIOS.<
 	</fieldset>
 	</form> -->
 </div>
+
+
+
+
+
 	<!-- InstanceEndEditable -->
 				
 				<!-- InstanceBeginEditable name="noticias" --><!-- InstanceEndEditable -->
