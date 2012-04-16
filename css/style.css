@@ -822,12 +822,14 @@ margin:0px auto;
 			margin-left:5px;
 			border: 1px solid #C9D6F1;
 			text-align: center;
+			padding: 4px 4px;
 		}
  
 		#gallery_nav {
 			float: left;
 			width:250px;
 			text-align: center;
+			
 		}
  
 		#gallery_output {
