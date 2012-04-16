@@ -23,7 +23,7 @@
     <script type="text/javascript" src=" https://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.js"></script>
     <script type="text/javascript" src="/js/jquery/js/jquery.pikachoose.js"></script>
 
-<script language="javascript">
+<!--script language="javascript">
 $(document).ready(
 	function (){
 		$("#slider_imagenes").PikaChoose({
@@ -33,17 +33,43 @@ $(document).ready(
 		buttons_text: { play: "", stop: "", previous: "Anterior", next: "Proxima" }});
 		});
 
-</script>
+</script-->
+
+
+
 
 <!-- fin script imagenes-->
+
+
+
+    
+    
+
 	
 		<link rel="stylesheet" href="/js/jquery/css/ui-lightness/jquery-ui-1.8.17.custom.css" type="text/css" media="all" />
 	
 			<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js" type="text/javascript"></script>
 			<script src="http://jquery-ui.googlecode.com/svn/tags/latest/external/jquery.bgiframe-2.1.2.js" type="text/javascript"></script>
 			<script src="/js/jquery/js/formulario_consulta_productos.js"></script>
-	        <script src="/js/jquery/js/jdialog.js"></script>
-			
+	        <!--script src="/js/jquery/js/jdialog.js"></script-->
+            
+            
+   
+<script language="javascript">
+ 
+		$(document).ready(function() {
+			$("#gallery_output img").not(":first").hide();
+ 
+			$("#gallery a").click(function() {
+				if ( $("#" + this.rel).is(":hidden") ) {
+					$("#gallery_output img").slideUp();
+					$("#" + this.rel).slideDown();
+				}
+			});
+		});
+ 
+	</script>
+
 	
 	<style>
 		body { font-size: 62.5%; }
@@ -173,14 +199,8 @@ $(document).ready(
 				
 
     
-    
-    
-    
-    
-    
-    
-    
-    
+ 
+
 <div id="cuerpo_producto">
   
       <div class="titulo_producto">
@@ -188,7 +208,7 @@ $(document).ready(
                {imagen_principio}
          </div-->        
          <h1>lalallalallalalalalala</h1>
-         <HR width="90%" align="center">
+        
       </div>
       
       <!--div class="titulo_detalle">
@@ -200,7 +220,31 @@ $(document).ready(
          </div>
       </div-->
       <div id="contenido_producto">
+      
       		<div id="contenido_imagen">
+            
+         
+<div id="gallery">
+	
+ 
+	<div id="gallery_output">
+    
+		<img id="img1" src="/images/rss.jpg" height="220" width="220"/>
+		<img id="img2" src="/images/logootro.jpg" height="220" width="220"/>
+		<img id="img3" src="/images/logo.jpg" height="220" width="220"/>
+		<img id="img4" src="/images/boton.jpg" height="220" width="220"/>
+	</div>
+    <div id="gallery_nav">
+		<a rel="img1" href="javascript:;"><img src="/images/rss.jpg" height="50" width="50"/></a>
+		<a rel="img2" href="javascript:;"><img src="/images/logootro.jpg" height="50" width="50"/></a>
+		<a rel="img3" href="javascript:;"><img src="/images/logo.jpg" height="50" width="50"/></a>
+		<a rel="img4" href="javascript:;"><img src="/images/boton.jpg" height="50" width="50"/></a>
+	</div>
+ 
+	
+</div>
+    
+            
       			<!--div class = "imagen_principal">      				
                     <p style="margin-bottom:0px;"><a class="opacity" href="/images/foto.jpg"  rel="opendialog"><img src="/images/foto.jpg" alt="/images/foto1.jpg" width="100%" height="100%"/></a></p>
       			</div>
@@ -221,7 +265,7 @@ $(document).ready(
       {contenido} 
       </div>
       <div class="pie_producto">
-      <HR width="90%" align="center">
+     
       <h2 style="margin:10px;">aca podrian ir datos de fecha de publicacion, usuario, cant visitas.. etc</h2>
       </div>
       </div>

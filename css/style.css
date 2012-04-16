@@ -549,11 +549,13 @@ ul#menulateral li a.current,ul#menulateral li a.current:hover{background:#BAD1F8
 }
 
 #cuerpo_producto .titulo_producto {
-float:left;
-width:100%;
-font-size:16px;
-text-align:center;
-padding-bottom:10px;
+	float:left;
+	width:100%;
+	font-size:16px;
+	text-align:center;
+	padding-bottom:5px;
+	border-bottom: 3px solid #EEE;
+	margin-bottom: 10px;
 }
 
 
@@ -571,7 +573,9 @@ padding-bottom:10px;
 	}
 	
 .pie_producto{
+border-top: 3px solid #EEE;
 width:100%;
+margin-top:5px;
 float:left;
 }	
 	
@@ -581,11 +585,8 @@ width:300px;
 }
 
 #contenido_imagen{
-    width:200px; 
+    width:250px; 
 	float:left;
-	background-color:#CCCCCC;
-	
-	
 }
 #contenido_imagen .imagen_principal{
 	padding:0px 0px 0px 0px;
@@ -817,23 +818,29 @@ margin:0px auto;
 
 
 #gallery img {
-			border: none;
+			margin-top:5px;
+			margin-left:5px;
+			border: 2px solid #C9D6F1;
+			text-align: center;
 		}
  
 		#gallery_nav {
 			float: left;
-			width:550px;
+			width:250px;
 			text-align: center;
 		}
  
 		#gallery_output {
 			float: left;
-			width: 600px;
-			height: 550px;
+            width: 250px;
+			height: 250px;
+			border-bottom: 3px solid #EEE;
 			overflow: hidden;
+			
 		}
  
 		#gallery_output img {
 			display: block;
-			margin: 20px auto 0 auto;
+			margin: 0px auto 0 auto;
+			padding: 10px 10px;
 		}
