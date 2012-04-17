@@ -194,110 +194,39 @@ $(document).ready(
 
 				<!-- InstanceBeginEditable name="contenido" -->
 							<!-- BEGIN block_imagenes_principio--> 
-                            
-                            				
-				
 
-    
- 
 
 <div id="cuerpo_producto">
   
       <div class="titulo_producto">
-    	 <!--div id="galeria" style="height:250px;width:340px; margin:auto; text-align:center; "> 
-               {imagen_principio}
-         </div-->        
-         <h1>lalallalallalalalalala</h1>
-        
+         <h1>{title}</h1>      
       </div>
-      
-      <!--div class="titulo_detalle">
-    	 <div class="izquierda">
-        	<h2>BAJAJ ROUSER 220 N</h2>
-         </div>
-         <div class="izquierda">
-        	<h2 class="precio">Precio final: <span style="display:;">17900.-</span> <span style="display:none;">lalalal- *</span></h2>
-         </div>
-      </div-->
-      <div id="contenido_producto">
-      
+      <div id="contenido_producto">      
       		<div id="contenido_imagen">
-            
-         
-<div id="gallery">
-	
- 
-	<div id="gallery_output">
-    
-		<img id="img1" src="/images/rss.jpg" height="220" width="220"/>
-		<img id="img2" src="/images/logootro.jpg" height="220" width="220"/>
-		<img id="img3" src="/images/logo.jpg" height="220" width="220"/>
-		<img id="img4" src="/images/boton.jpg" height="220" width="220"/>
-	</div>
-    <div id="gallery_nav">
-		<a rel="img1" href="javascript:;"><img src="/images/rss.jpg" height="50" width="50"/></a>
-		<a rel="img2" href="javascript:;"><img src="/images/logootro.jpg" height="50" width="50"/></a>
-		<a rel="img3" href="javascript:;"><img src="/images/logo.jpg" height="50" width="50"/></a>
-		<a rel="img4" href="javascript:;"><img src="/images/boton.jpg" height="50" width="50"/></a>
-	</div>
- 
-	
-</div>
-    
-            
-      			<!--div class = "imagen_principal">      				
-                    <p style="margin-bottom:0px;"><a class="opacity" href="/images/foto.jpg"  rel="opendialog"><img src="/images/foto.jpg" alt="/images/foto1.jpg" width="100%" height="100%"/></a></p>
-      			</div>
-                <div class = "imagen_izq">
-      				<p style="margin-bottom:0px;"><a class="opacity" href="/images/logo.jpg"  rel="opendialog"><img src="/images/logo.jpg" alt="/images/logo.jpg" width="95px" height="80px"/></a></p>
-      			</div>
-                <div class = "imagen_der">
-                    <p style="margin-bottom:0px;"><a class="opacity" href="/images/foto.jpg"  rel="opendialog"><img src="/images/foto.jpg" alt="/images/foto1.jpg" width="95px" height="80px"/></a></p>
-      			</div-->
-                
-               
-             </div>
-       <div class = "columna_der">
-      {description}
-      {description}
-      {description} 
-      {description} 
-      {contenido} 
-      </div>
-      <div class="pie_producto">
-     
-      <h2 style="margin:10px;">aca podrian ir datos de fecha de publicacion, usuario, cant visitas.. etc</h2>
-      </div>
-      </div>
-    
-      
-      <!--div class="col_arriba">
-          <div class="datos_aviso" style="display:;">
-           <p class="p_padding">Motor 220cc<br />
-Arranque el&eacute;ctrico.<br />
-Llanta de aleaci&oacute;n.<br />
-Freno a disco delanfgggggggggggggggggggggggggggggggggggggggggtero y trasero<br />
-Colores: Rojo, azul, gris oscuro, y negrorrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr.<br />
-No Incluye gastos de patentamientvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvo.  </p>
-               <div class="segunda_col">
-                  <h2>Formas de pago</h2>
-                  <p class="p_padding">Consulte precio actual!!!<br />
-CONTADO, TARJETAS DE CREDITO, CHEQUES, CREDITOS PERSONALES, CREDITOS BANCARIOS.</p>
-               </div>
-          </div>
-      </div-->
-      
-     
-</div>
-    
-    
-    
-    
-
-    
-    
-	           
-					
+         			<div id="gallery">            
+						<div id="gallery_output">
+        					<!-- BEGIN block_imagen_prod1 -->
+							<img id="{imagen_nombre}" src="{imagen_src}" height="220" width="220"/>                     
+        					<!-- END block_imagen_prod1 -->
+						</div>
+    					<div id="gallery_nav">
+    						<!-- BEGIN block_imagen_prod2 -->			
+        					<a rel="{imagen_nombre}" href="javascript:;"><img src="{imagen_src}" height="50" width="50"/></a>
+  						    <!-- END block_imagen_prod2 -->	
+						</div>
+					</div>
+                    </div>
+       				<div class = "columna_der">
+      				     {description} 
+      				     {contenido} 
+      				</div>
+                    
+      				<div class="pie_producto">  
+      					<h2 style="margin:10px;">aca podrian ir datos de fecha de publicacion, usuario, cant visitas.. etc</h2>
+      				</div>
+      		</div>
+    </div>
+  					
 						<div id="enlacesubcaegorias" style="{enlacesubcategoriasvisibles}">
 								<h3>{traduccion_enlacesrelacionados} {titulo}:</h3>
 								<ul>
@@ -313,13 +242,14 @@ CONTADO, TARJETAS DE CREDITO, CHEQUES, CREDITOS PERSONALES, CREDITOS BANCARIOS.<
                         
         	<div class="preguntasv">
 				<ul id="preguntasRespv">
-					<!-- BEGIN block_comentarios -->
+                <!-- cambie el nombre aca!!!!!!!!!!!!!!!!!!!  estoy usando el mismo bloque para las imagenes como mierda lo hago con otro nombre>>??????-->
+					<!-- BEGIN block_comentariosNO -->
 					<li class="preguntav">
 						<strong>{fecha_publicacion} | <span>{nombre}</span></strong>
 						<p>{comentario}</p>
 						<p style="display:none;"><a class="responder" href="#" onclick="mostrar_responder(240293);" style="display:;">Responder</a></p>
 					</li>
-					<!-- END block_comentarios -->
+					<!-- END block_comentariosNO -->
 					
 					<li class="respuestav">
 						<strong></strong>
@@ -348,22 +278,13 @@ CONTADO, TARJETAS DE CREDITO, CHEQUES, CREDITOS PERSONALES, CREDITOS BANCARIOS.<
 								<p style="height:40px;">Ingrese el codigo de verificacion.
 								<br /><img src="/include/crear-imagen.php?captcha_texto={captcha_texto_session}" alt="captcha"/><input name="captcha" type="text" id="captcha" size="20" onfocus="this.className=''"/></p>
 							</form>
-<!--							
-	<form>
-	<fieldset>
-		<label for="name">Name</label>
-		<input type="text" name="name" id="name" class="text ui-widget-content ui-corner-all" />
-		<label for="email">Email</label>
-		<input type="text" name="email" id="email" value="" class="text ui-widget-content ui-corner-all" />
-		<label for="password">Password</label>
-		<input type="password" name="password" id="password" value="" class="text ui-widget-content ui-corner-all" />
-	</fieldset>
-	</form> -->
 </div>
 
 
+          
+         
 
-
+    
 
 	<!-- InstanceEndEditable -->
 				

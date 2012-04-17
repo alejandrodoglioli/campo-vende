@@ -213,7 +213,9 @@ class Template {
    * append: append to target handle
    */
   function parse($target, $handle, $append = false) {
+  	
     if (!is_array($handle)) {
+    	
       $str = $this->subst($handle);
       if ($append) {
       	$this->set_text($target, $this->get_text($target) . $str);
@@ -223,6 +225,7 @@ class Template {
         $this->set_var($target, $str);
       }
     } else {
+    	
      reset($handle);
       while(list($i, $h) = each($handle)) {
         $str = $this->subst($h);
@@ -343,11 +346,11 @@ class Template {
       break;
       
       case "remove":
-	      $str = preg_replace('/\\[{([0-9]+)\|([0-9A-Za-z|Á|É|Í|Ó|Ú|á|é|í|ó|ú])([^}]*)([0-9A-Za-z|Á|É|Í|Ó|Ú|á|é|í|ó|ú])}\]/', "", $str);
+	      $str = preg_replace('/\\[{([0-9]+)\|([0-9A-Za-z|ï¿½|ï¿½|ï¿½|ï¿½|ï¿½|ï¿½|ï¿½|ï¿½|ï¿½|ï¿½])([^}]*)([0-9A-Za-z|ï¿½|ï¿½|ï¿½|ï¿½|ï¿½|ï¿½|ï¿½|ï¿½|ï¿½|ï¿½])}\]/', "", $str);
       break;
 
       case "comment":
-        $str = preg_replace('/\\[{([0-9]+)\|([0-9A-Za-z|Á|É|Í|Ó|Ú|á|é|í|ó|ú])([^}]*)([0-9A-Za-z|Á|É|Í|Ó|Ú|á|é|í|ó|ú])}\]/', "<!-- Template $handle: Variable \\1 undefined -->", $str);
+        $str = preg_replace('/\\[{([0-9]+)\|([0-9A-Za-z|ï¿½|ï¿½|ï¿½|ï¿½|ï¿½|ï¿½|ï¿½|ï¿½|ï¿½|ï¿½])([^}]*)([0-9A-Za-z|ï¿½|ï¿½|ï¿½|ï¿½|ï¿½|ï¿½|ï¿½|ï¿½|ï¿½|ï¿½])}\]/', "<!-- Template $handle: Variable \\1 undefined -->", $str);
       break;
     }
     
@@ -432,7 +435,7 @@ class Template {
 	      return false;
 	    }
 	    $str = $this->get_var($handle);
-	    $reg = "/\\[{([0-9]+)\|([0-9A-Za-z|Á|É|Í|Ó|Ú|á|é|í|ó|ú])([^}]*)([0-9A-Za-z|Á|É|Í|Ó|Ú|á|é|í|ó|ú])}\]/";
+	    $reg = "/\\[{([0-9]+)\|([0-9A-Za-z|ï¿½|ï¿½|ï¿½|ï¿½|ï¿½|ï¿½|ï¿½|ï¿½|ï¿½|ï¿½])([^}]*)([0-9A-Za-z|ï¿½|ï¿½|ï¿½|ï¿½|ï¿½|ï¿½|ï¿½|ï¿½|ï¿½|ï¿½])}\]/";
 	    preg_match_all($reg, $str, $m, PREG_SET_ORDER);
     
 	    $return = Array();
