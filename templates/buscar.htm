@@ -115,11 +115,26 @@
 				<h1 class="title">{titulo}</h1>			
 
 				<!-- InstanceBeginEditable name="contenido" -->
+
+					    <div id="listado_productos">
 						<!-- BEGIN resultados_busqueda -->
-							<h2>{seccion}</h2>
-							<p>{descripcion} <a href="{path}" title="{seccion}">{traduccion_vermas}</a></p>
+							 <div class="bordeabajo">
+								<div class= "item_producto border">
+									<p class="imagen">
+									
+									<a href="{path}"  rel="opendialog"><img style="cursor:pointer;border:none;" onerror="this.onError = null; this.src = '/images/default.jpg';" src="{imagen_src}" alt="{imagen_nombre}" height="100" width="100" /></a></p>
+									</p>
+									
+									<div class="descripcion">
+										<p><strong><a href="{path}">{seccion}:</a></strong></p>
+										{traduccion_productos} {descripcion}
+										<p class="precio">Precio: xxx <a href="{path}" title="{seccion}">{traduccion_vermas}</a></p></p>
+										
+									</div>
+								</div>
+							</div>
 						<!-- END resultados_busqueda -->
-						
+           			   </div>              
 						
 	<!-- InstanceEndEditable -->
 				
