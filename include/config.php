@@ -7,6 +7,7 @@ $with_gd=0;
 $photo_per_page=12;
 $comments_per_page=20;
 $noticias_per_page=15;
+$productos_per_page=2;
 $cant_noticias_home=4;
 $row_per_page=20;
 $photo_width=400;

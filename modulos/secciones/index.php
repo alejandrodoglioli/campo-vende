@@ -19,7 +19,7 @@ return chr($valor_aleatorio);
 
 function mostrar_seccion(){
 	
-	global $tof_secciones,$tof_seccionesxidioma,$tof_productos,$tof_productosxidioma,$tof_comentariosxsecciones,$tof_comentariosxseccionesxidioma,$tof_imagenesxproductos,$tof_imagenesxsecciones,$id_seccion,$id_subseccion,$id_subsubseccion,$idioma;
+	global $tof_secciones,$tof_seccionesxidioma,$tof_productos,$tof_productosxidioma,$tof_comentariosxsecciones,$tof_comentariosxseccionesxidioma,$tof_imagenesxproductos,$tof_imagenesxsecciones,$id_seccion,$id_subseccion,$id_subsubseccion,$idioma,$pagina,$productos_per_page;
 
 	$captcha_texto = "";
 
@@ -35,6 +35,14 @@ function mostrar_seccion(){
 	$t->set_var("captcha_texto_session",$captcha_texto);
 	
 	$url = $_SERVER['REQUEST_URI'];
+		
+	if(isset($pagina)){
+		$inicio = ($productos_per_page*($pagina-1));
+	}else{
+		$pagina=1;
+		$inicio = 0;
+	}
+	
 		
 	if (isset($id_subsubseccion)){
 		
@@ -53,12 +61,12 @@ function mostrar_seccion(){
 		
 		$t->set_var("breadcrum",  '>> <a href="/'.$idioma.'/'.strtolower(sacar_acentos(str_replace(" ","-" ,$row2[nombre]))).'-'.$row2[id].'.htm" title="'.$row2[nombre].'">'.$row2[nombre].'</a> >> <a href="/'.$idioma.'/'.strtolower(sacar_acentos(str_replace(" ","-" ,$row2[nombre]))).'/'.strtolower(sacar_acentos(str_replace(" ","-" ,$row1[nombre]))).'-'.$row2[id].'-'.$row1[id].'.htm" title="'.$row1[nombre].'">'.$row1[nombre].'</a> >> '.$row[nombre]);
 		
-		$url_real='/'.$idioma.'/'.strtolower(sacar_acentos(str_replace(" ","-" ,$row2[nombre]))).'/'.strtolower(sacar_acentos(str_replace(" ","-" ,$row1[nombre]))).'/'.strtolower(sacar_acentos(str_replace(" ","-" ,$row[nombre]))).'-'.$row2['id'].'-'.$row1['id'].'-'.$row['id'].'.htm';
+	/*	$url_real='/'.$idioma.'/'.strtolower(sacar_acentos(str_replace(" ","-" ,$row2[nombre]))).'/'.strtolower(sacar_acentos(str_replace(" ","-" ,$row1[nombre]))).'/'.strtolower(sacar_acentos(str_replace(" ","-" ,$row[nombre]))).'-'.$row2['id'].'-'.$row1['id'].'-'.$row['id'].'.htm';
 		if ($url!=$url_real){
 			Header( "HTTP/1.1 301 Moved Permanently" );
 			Header( "Location: /".$url_real);
 		}
-
+*/
 		
 		$separadora = separadorA($idioma,$id_secc);	
 		if (preg_match("/".$separadora."/i",$row[nombre])){
@@ -114,12 +122,12 @@ function mostrar_seccion(){
 		$result1=mysql_query("select si.*,s.id_padre from ".$tof_secciones." s join ".$tof_seccionesxidioma." si on (s.id=si.id) where si.id=".$id_seccion." and si.idioma='".$idioma."'");
 		$row1=mysql_fetch_array($result1);
 		
-		$url_real='/'.$idioma.'/'.strtolower(sacar_acentos(str_replace(" ","-" ,$row1[nombre]))).'/'.strtolower(sacar_acentos(str_replace(" ","-" ,$row[nombre]))).'-'.$row1['id'].'-'.$row['id'].'.htm';
+	/*	$url_real='/'.$idioma.'/'.strtolower(sacar_acentos(str_replace(" ","-" ,$row1[nombre]))).'/'.strtolower(sacar_acentos(str_replace(" ","-" ,$row[nombre]))).'-'.$row1['id'].'-'.$row['id'].'.htm';
 		if ($url!=$url_real){
 			Header( "HTTP/1.1 301 Moved Permanently" );
 			Header( "Location: /".$url_real);
 		}
-		
+		*/
 		$t->set_var("breadcrum", ' >> <a href="/'.$idioma.'/'.strtolower(sacar_acentos(str_replace(" ","-" ,$row1[nombre]))).'-'.$row1[id].'.htm" title="'.$row1[nombre].'">'.$row1[nombre].'</a> >> '.$row[nombre]);
 		
 		$result2=mysql_query("select si.* from ".$tof_secciones." s join ".$tof_seccionesxidioma." si on (s.id=si.id) where s.id_padre=".$id_subseccion." and si.idioma='".$idioma."' order by nombre limit 180");
@@ -136,7 +144,7 @@ function mostrar_seccion(){
 			$t->parse("_b_subcategoria","b_subcategoria",true);		
 		}
 		
-		$resultProducto=mysql_query("select si.* from ".$tof_productos." s join ".$tof_productosxidioma." si on (s.id=si.id) where s.id_seccion=".$id_subseccion." and si.idioma='".$idioma."' order by nombre limit 180");
+		$resultProducto=mysql_query("select si.* from ".$tof_productos." s join ".$tof_productosxidioma." si on (s.id=si.id) where s.id_seccion=".$id_subseccion." and si.idioma='".$idioma."' and publicado=1 order by nombre asc limit ".$inicio.",".$productos_per_page);
 		$t->set_block("pl","b_productos","_b_productos");	
 		while($rowProducto=mysql_fetch_array($resultProducto)){
 			$entro=1;
@@ -171,7 +179,12 @@ function mostrar_seccion(){
 		
 		$result1=mysql_query("select si.*,s.id_padre from ".$tof_secciones." s join ".$tof_seccionesxidioma." si on (s.id=si.id) where s.id_padre=".$id_seccion." and si.idioma='".$idioma."' order by nombre");
 		
-		$url_real='/'.$idioma.'/'.strtolower(sacar_acentos(str_replace(" ","-" ,$row[nombre]))).'-'.$row['id'].'.htm';
+		$url_real='/'.$idioma.'/'.strtolower(sacar_acentos(str_replace(" ","-" ,$row[nombre]))).'-'.$row['id'];
+		if (isset($pagina) && ($pagina!=1)){
+			$url_real.='/pagina-'.$pagina.'.htm';
+		}else{
+			$url_real.='.htm';
+		}
 		if ($url!=$url_real){
 			Header( "HTTP/1.1 301 Moved Permanently" );
 			Header( "Location: /".$url_real);
@@ -196,7 +209,7 @@ function mostrar_seccion(){
 			$t->parse("_b_subcategoria","b_subcategoria",true);		
 		}
 
-		$resultProductos=mysql_query("select si.*,s.id_seccion from ".$tof_productos." s join ".$tof_productosxidioma." si on (s.id=si.id) where s.id_seccion=".$id_seccion." and si.idioma='".$idioma."' order by nombre");
+		$resultProductos=mysql_query("select si.*,s.id_seccion from ".$tof_productos." s join ".$tof_productosxidioma." si on (s.id=si.id) where s.id_seccion=".$id_seccion." and si.idioma='".$idioma."' and publicado=1 order by nombre asc limit ".$inicio.",".$productos_per_page);
 
 		
 		$t->set_block("pl","b_productos","_b_productos");	
@@ -215,16 +228,12 @@ function mostrar_seccion(){
 			$result=mysql_query("select id,path,nombre,principio from ".$tof_imagenesxproductos." where id_producto=".$rowProducto[id]." and publicado=1");
 			if(mysql_num_rows($result)){
 				$rowimagen=mysql_fetch_array($result);
-				//$t->set_var("imagen_producto", '<p style="width:30%;float:left"><a href="'.$rowimagen[path].'"  rel="opendialog"><img src="'.$rowimagen[path].'" alt="'.$rowimagen[nombre].'" alt="'.$rowimagen[nombre].'" width="100" height="100" /></a></p>');
 				$t->set_var("imagen_src", $rowimagen[path]);
 				$t->set_var("imagen_nombre",$rowimagen[nombre]);
 				
 			}else{
-				//$t->set_var("imagen_producto", '');
-					$t->set_var("imagen_src", "/images/productos/default.jpg");
+					$t->set_var("imagen_src", "/images/default.jpg");
 				    $t->set_var("imagen_nombre","sin foto");
-				
-			
 			}
 						
 			$t->parse("_b_productos","b_productos",true);		
@@ -237,6 +246,50 @@ function mostrar_seccion(){
 		$t->set_var("enlacesubcategoriasvisibles", "display:none");
 	
 	}
+
+//paginado
+	$resultcant=mysql_query("select count(*) as cant from ".$tof_productos." n join ".$tof_productosxidioma." ni on (n.id=ni.id) where ni.idioma='".$idioma."' and id_seccion=".$id_secc." and publicado=1 order by ni.nombre desc");
+			
+	$rowcant=mysql_fetch_array($resultcant);
+	$nb=$rowcant[cant];
+		
+	$nb_page=intval(ceil($nb/$productos_per_page));
+	
+	$t->set_var("pagina",$pagina);
+	$t->set_var("cant_paginas",$nb_page);
+		
+	if ($nb_page>1){
+		$t->set_block("pl","block_paginas","_block_paginas");	
+		for($i=1;$i <= $nb_page; $i++){
+			$t->set_var("nro",$i);
+			if($i!=1)
+				$t->set_var("nro_pagina","/pagina-".$i);
+			else
+				$t->set_var("nro_pagina","");
+
+			if($i==$pagina)
+				$t->set_var("selected_pagina",'class="selected_pagina"');
+			else
+				$t->set_var("selected_pagina",'');
+
+			$t->set_var("path",strtolower(sacar_acentos(str_replace(" ","-" ,$row[nombre])))."-".$row[id]);
+			$t->parse("_block_paginas","block_paginas",true);
+		}
+
+
+
+		if ($pagina>1){
+		if ($pagina-1 !=1)
+			$t->set_var("anterior",'<a href="/'.$idioma.'/'.strtolower(sacar_acentos(str_replace(" ","-" ,$row[nombre])))."-".$row[id].'/pagina-'.($pagina-1).'.htm"><< Anterior</a>');
+		else
+			$t->set_var("anterior",'<a href="/'.$idioma.'/'.strtolower(sacar_acentos(str_replace(" ","-" ,$row[nombre])))."-".$row[id].'.htm"><< Anterior</a>');
+			
+		}
+		
+		if ($pagina<$nb_page)
+			$t->set_var("siguiente",'<a href="/'.$idioma.'/'.strtolower(sacar_acentos(str_replace(" ","-" ,$row[nombre])))."-".$row[id].'/pagina-'.($pagina+1).'.htm">Siguiente >></a>');
+	}
+//fin paginado
 
 	$separadora = separadorA($idioma,$row[id]);	
 	if (preg_match("/".$separadora."/i",$row[nombre])){

@@ -156,8 +156,18 @@
 				<!-- END b_productos -->
               </div>              
                 
-           <p class="paginadoTienda">1&nbsp;&nbsp;|&nbsp;&nbsp;<a title=" 2" class="linkLine2Gris11" href="/region.php?action=tiendas_listar&amp;id_tienda=27493&amp;nroPag=2">2</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a title=" 3" class="linkLine2Gris11" href="/region.php?action=tiendas_listar&amp;id_tienda=27493&amp;nroPag=3">3</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a title=" 4" class="linkLine2Gris11" href="/region.php?action=tiendas_listar&amp;id_tienda=27493&amp;nroPag=4">4</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a title=" 5" class="linkLine2Gris11" href="/region.php?action=tiendas_listar&amp;id_tienda=27493&amp;nroPag=5">5</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a title=" 6" class="linkLine2Gris11" href="/region.php?action=tiendas_listar&amp;id_tienda=27493&amp;nroPag=6">6</a>&nbsp;&nbsp;&nbsp;&nbsp;<a title="" class="linkLine2Gris11" href="/region.php?action=tiendas_listar&amp;id_tienda=27493&amp;nroPag=2">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;&nbsp;</p>
-
+			  <div class="divpaginado">
+				  <ul class="paginado">
+						<li>{anterior}</li>
+						<!-- BEGIN block_paginas -->
+						<li>
+							<a href="/{idioma}/{path}{nro_pagina}.htm" {selected_pagina}>{nro}</a>
+						</li>
+						<!-- END block_paginas -->
+						<li>{siguiente}</li>
+					</ul>
+				</div>		
+		   
                             
                             <!-- fin tiendaaaaaaaaaa-->
    						
