@@ -485,6 +485,7 @@ function editar_productos_ok(){
 		}	
 	
 	$array_imagenes;	
+
 	for ($i=1;$i<=$cant_imagenes;$i++){
 		$id_imagen ="id_imagen_".$i;
 		$nombre_imagen ="nombre_imagen_".$i;
@@ -504,6 +505,7 @@ function editar_productos_ok(){
 				$principio_imagen=1;
 			else 
 				$principio_imagen=0;
+
 		$path=$path_images.$path_galeria_productos.$id_producto."_".$_FILES['path_imagen_'.$i]['name'];		
 		if (isset($$id_imagen) and ($$id_imagen!=0)) { //la imagen existia	
 				if (isset($$path_imagen) and ($$path_imagen!="")) {
@@ -520,19 +522,23 @@ function editar_productos_ok(){
 		$path_rel="../../..".$path;
 		$filetype = $_FILES['path_imagen_'.$i]['type'];
 		$type = substr($filetype, (strpos($filetype,"/"))+1);
+
+		if(!isset($filetype) or ($filetype!="") or ($filetype!=" ")){
+			$type =strtolower(substr($_FILES['path_imagen_'.$i]['name'],strpos($_FILES['path_imagen_'.$i]['name'],".")+1));
+		}
 		$types=array("jpeg","gif","png","jpg");
+
 		if (in_array($type, $types) ) {
-						
+
 		$result=mysql_query("select id,path from ".$tof_imagenesxproductos." where id_producto=".$id_producto." and id='".$$id_imagen."'");
 		if (mysql_num_rows($result)){
 			$row=mysql_fetch_array($result);
 		}
 
 		if (!file_exists($path_rel)){ //la imagen es nueva
-		
+
 			$nombre_foto=$_FILES['path_imagen_'.$i]['name'];
 			copy($_FILES['path_imagen_'.$i]['tmp_name'], $path_rel);
-			
 			$filesize = $_FILES['path_imagen_'.$i]['size']; 
 
 			if ($filesize>67000){

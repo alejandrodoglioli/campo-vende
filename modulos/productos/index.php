@@ -77,6 +77,7 @@ function mostrar_producto(){
 				$resultenlace=mysql_query("select si.*,s.id_padre from ".$tof_productos." s join ".$tof_productosxidioma." si on (s.id=si.id) where s.id=".$rowenlace1[id_padre]." and si.idioma='".$idioma."'");
 
 
+
 				$rowenlace=mysql_fetch_array($resultenlace);
 				if (isset($rowenlace) and ($rowenlace!="")){
 					$t->set_var("categoria", strtolower(sacar_acentos(str_replace(" ","-" ,$rowenlace[nombre]))));
@@ -143,7 +144,7 @@ function mostrar_producto(){
 		$id_secc=$id_seccion;
 		$t->set_var("id_producto",$id_secc);
 
-		$result=mysql_query("select si.*,s.id_seccion,s.video from ".$tof_productos." s join ".$tof_productosxidioma." si on (s.id=si.id) where si.id=".$id_producto." and si.idioma='".$idioma."'");
+		$result=mysql_query("select si.*,s.id_seccion,s.id_usuario,s.video from ".$tof_productos." s join ".$tof_productosxidioma." si on (s.id=si.id) where si.id=".$id_producto." and si.idioma='".$idioma."'");
 		$row=mysql_fetch_array($result);
 
 		$result1=mysql_query("select si.*,s.id_padre,s.video from ".$tof_secciones." s join ".$tof_seccionesxidioma." si on (s.id=si.id) where si.id=".$id_secc." and si.idioma='".$idioma."'");
@@ -159,20 +160,23 @@ function mostrar_producto(){
 			Header( "Location: /".$url_real);
 		}
 
+		$resultOtrosproductos=mysql_query("select si.*,s.video from ".$tof_productos." s join ".$tof_productosxidioma." si on (s.id=si.id) where (s.id_seccion=".$id_seccion." or s.id_usuario=".$row['id_usuario'].") and s.id <> ".$id_producto." and si.idioma='".$idioma."'");
+
 		$t->set_block("pl","b_productos","_b_productos");
-		while($row1=mysql_fetch_array($result1)){
+		while($rowOtrosproductos=mysql_fetch_array($resultOtrosproductos)){
+
 			$entro=1;
-			$t->set_var("categoria", strtolower(sacar_acentos(str_replace(" ","-" ,$row[nombre]))));
-			$t->set_var("id_categoria", "-".$row[id]);
-			$t->set_var("subcategoria", strtolower(sacar_acentos(str_replace(" ","-" ,$row1[nombre]))));
-			$t->set_var("id_subcategoria", "-".$row1[id]);
-			$t->set_var("anchor", $row1[nombre]);
-			$t->set_var("contenido_subcategoria", substr(strip_tags($row1[contenido]),0,150)."...");
+			$t->set_var("path", strtolower(sacar_acentos(str_replace(" ","-" ,$row1[nombre])))."-".$row1[id]);
+			$t->set_var("producto", strtolower(sacar_acentos(str_replace(" ","-" ,$rowOtrosproductos[nombre])))."_".$rowOtrosproductos[id]);
+			
+			$t->set_var("anchor", $rowOtrosproductos[nombre]);
+			$t->set_var("contenido_producto", substr(strip_tags($rowOtrosproductos[contenido]),0,150)."...");
 			//select la imagen
-			$result=mysql_query("select id,path,nombre,principio from ".$tof_imagenesxproductos." where (id_producto=".$row[id]." or id_producto=".$row1[id].") and publicado=1");
+			$result=mysql_query("select id,path,nombre,principio from ".$tof_imagenesxproductos." where (id_producto=".$rowOtrosproductos[id]." or id_producto=".$row1[id].") and publicado=1 limit 1");
+
 			if(mysql_num_rows($result)){
 				$rowimagen=mysql_fetch_array($result);
-				$t->set_var("imagen_producto", '<p style="width:30%;float:left"><a href="/'.$idioma.'/'.strtolower(sacar_acentos(str_replace(" ","-" ,$row[nombre]))).'/'.strtolower(sacar_acentos(str_replace(" ","-" ,$row1[nombre])))."-".$row[id]."-".$row1[id].'.htm" ><img src="'.$rowimagen[path].'" alt="'.$rowimagen[nombre].'" width="150" height="150"/></a></p>');
+				$t->set_var("imagen_producto", '<a href="/'.$idioma.'/'.strtolower(sacar_acentos(str_replace(" ","-" ,$row1[nombre])))."-".$row1[id].'/'.strtolower(sacar_acentos(str_replace(" ","-" ,$row[nombre])))."-".$row[id].'.htm" ><img src="'.$rowimagen[path].'" alt="'.$rowimagen[nombre].'" width="90" height="90"/></a>');
 			}
 
 			$t->parse("_b_productos","b_productos",true);

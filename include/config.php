@@ -1,4 +1,10 @@
 <?
+/*
+$dbhost = "mysql16.000webhost.com";
+$db = "a8905711_campo";
+$dblogin = "a8905711_campo";
+$dbpass = "polopatin1980";
+*/
 $dbhost="localhost";
 $dblogin="root";
 $dbpass="root";
