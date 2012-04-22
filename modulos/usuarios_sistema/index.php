@@ -341,7 +341,6 @@ function insertar_productoxusuario_ok(){
 				
 				$nombre_foto=$_FILES['path_imagen_'.$i]['name'];
 				$path=$path_images.$path_galeria_productos.$last_id."_".$_FILES['path_imagen_'.$i]['name'];
-				
 				copy($_FILES['path_imagen_'.$i]['tmp_name'], "../../..".$path);
 				
 				$filesize = $_FILES['path_imagen_'.$i]['size']; 

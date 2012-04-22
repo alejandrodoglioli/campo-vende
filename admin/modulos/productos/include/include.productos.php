@@ -251,6 +251,7 @@ function insertar_productos_ok(){
 						imagedestroy($thumb);
 				}
 				
+				
 				$path=str_replace("../../..","",$path);
 				
 				if(isset($$publicado_imagen))	
