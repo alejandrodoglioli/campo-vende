@@ -27,7 +27,7 @@
 <script type="text/javascript">
 function pedir_productos(valor){
 var id_seccion = valor;
-	jsrsExecute("../modulos/productos/include/include.remotescripting.php", parsear_productos, "obtenerProductos",Array(id_seccion));
+	jsrsExecute("../modulos/productos/include/include.remotescripting.php", parsear_productos, "obtenerProductos",Array(id_seccion),true);
 }
 
 function parsear_productos(retorno){
@@ -156,6 +156,11 @@ function parsear_productos(retorno){
                   <tr>
                     <td valign="top"><span class="required">*</span>Comentario:</td>
                     <td><textarea name="comentario_{lenguaje1}" id="comentario_{lenguaje1}">{comentario}</textarea>
+                      </td>
+                  </tr>
+				  <tr>
+                    <td valign="top"><span class="required">*</span>Respuesta:</td>
+                    <td><textarea name="respuesta_{lenguaje1}" id="respuesta_{lenguaje1}">{respuesta}</textarea>
                       </td>
                   </tr>
                 </table>

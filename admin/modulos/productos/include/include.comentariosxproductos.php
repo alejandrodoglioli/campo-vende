@@ -155,10 +155,11 @@ function insertar_comentariosxproductos_ok(){
 		$nombre ="nombre_".$row[idioma];
 		$email ="email_".$row[idioma];
 		$comentario ="comentario_".$row[idioma];
+		$respuesta ="respuesta_".$row[idioma];
 		
-		global $$nombre,$$email,$$comentario;
+		global $$nombre,$$email,$$comentario,$$respuesta;
 	 	
-	 	mysql_query("insert into ".$tof_comentariosxproductosxidioma." values(".$last_id.",'".$row[idioma]."','".$$nombre."','".$$email."','".$$comentario."')");
+	 	mysql_query("insert into ".$tof_comentariosxproductosxidioma." values(".$last_id.",'".$row[idioma]."','".$$nombre."','".$$email."','".$$comentario."','".$$respuesta."')");
 		}	
 		
 	listar_comentariosxproductos();
@@ -208,6 +209,7 @@ function editar_comentariosxproductos(){
 				$t->set_var("lenguaje1", $row[idioma]);
 				$t->set_var("nombre", $row1[nombre]);
 				$t->set_var("comentario", $row1[comentario]);
+				$t->set_var("respuesta", $row1[respuesta]);
 				$t->set_var("email", $row1[email]);
 				$t->set_var("fecha_publicacion", $row1[fecha_publicacion]);
 				$id_padre=$row1[id_producto];
@@ -225,6 +227,7 @@ function editar_comentariosxproductos(){
 				$t->set_var("fecha_publicacion","");
 				$t->set_var("nombre","");
 				$t->set_var("comentario", "");
+				$t->set_var("respuesta", "");
 				$t->set_var("email", "");		
 				$t->parse("_block_idiomas1","block_idiomas1",true);
 		}
@@ -313,12 +316,13 @@ function editar_comentariosxproductos_ok(){
 	while($row=mysql_fetch_array($result)){
 		$nombre ="nombre_".$row[idioma];
 		$comentario ="comentario_".$row[idioma];
+		$respuesta ="respuesta_".$row[idioma];
 		$email ="email_".$row[idioma];
 		
-		global $$nombre,$$comentario,$$email;
+		global $$nombre,$$comentario,$$email,$$respuesta;
 	 	
 		if (($$nombre!='') and ($$comentario!=''))
-		 	mysql_query("replace ".$tof_comentariosxproductosxidioma." set id=".$id_comentarioxproducto.",idioma='".$row[idioma]."',comentario='".$$comentario."', nombre='".$$nombre."', email='".$$email."'");
+		 	mysql_query("replace ".$tof_comentariosxproductosxidioma." set id=".$id_comentarioxproducto.",idioma='".$row[idioma]."',comentario='".$$comentario."',respuesta='".$$respuesta."', nombre='".$$nombre."', email='".$$email."'");
 
 		}	
 		
@@ -351,6 +355,7 @@ function eliminar_comentariosxproductos(){
 	$t->set_var("nombre",$row[nombre]);
 	$t->set_var("email",$row[email]);
 	$t->set_var("comentario",$row[comentario]);
+	$t->set_var("respuesta",$row[respuesta]);
 	$t->set_var("fecha_publicacion",$row[fecha_publicacion]);
 	$t->set_var("publicado_comentario",$publicado);
 	$t->set_var("nombre_producto",$row1[nombre]);
@@ -371,4 +376,5 @@ function eliminar_comentariosxproductos_ok(){
 
 
 ?>
+
 
