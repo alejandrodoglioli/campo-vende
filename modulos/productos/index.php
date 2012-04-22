@@ -253,7 +253,7 @@ function mostrar_producto(){
 
 	//cambie la consulta
 	//$result=mysql_query("select id,path,nombre,principio from ".$tof_imagenesxproductos." where (id_producto=".$id_secc." or id_producto=".$row[id_padre].") and publicado=1");
-	$result=mysql_query("select id,path,nombre,principio from ".$tof_imagenesxproductos." where (id_producto=".$id_secc.") and publicado=1");
+	$result=mysql_query("select id,path,nombre,principio from ".$tof_imagenesxproductos." where (id_producto=".$id_producto.") and publicado=1");
 	
 	
 			if(mysql_num_rows($result)){
