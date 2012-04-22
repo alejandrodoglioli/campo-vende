@@ -211,18 +211,11 @@ jQuery(function($){
 				<ul id="preguntasRespv">
 					<!-- BEGIN block_comentarios -->
 					<li class="preguntav">
-						<strong>{fecha_publicacion} | <span>{nombre}</span></strong>
+						<span><b>{nombre}</b></span> | {fecha_publicacion}
 						<p>{comentario}</p>
-						<p style="display:none;"><a class="responder" href="#" onclick="mostrar_responder(240293);" style="display:;">Responder</a></p>
+						<p class="respuestav">{respuesta}</p>
 					</li>
 					<!-- END block_comentarios -->
-					
-					<li class="respuestav">
-						<strong></strong>
-						<p>llamame y lo vemos
-						</p>
-					</li>          
-	
 				</ul>
 				<p class="cont_pregunta" style="display:none;">
 					<img alt="Hacer una pregunta" src="/imagenes/hacer_una_pregunta_des.jpg"/>
@@ -235,22 +228,16 @@ jQuery(function($){
 <div id="dialog-form" title="Envie su consulta o comentario">
 	<p class="validateTips">Todos los campos son requeridos.</p>
 <form id="formComentario"  enctype="multipart/form-data" method="post" action="/{idioma}/gracias-comentario-producto.htm">
-							<!--input name="id_producto" id="id_producto" type="hidden" value="{id_producto}" />
-							<input name="id_subproducto" id="id_subproducto" type="hidden" value="{id_subproducto}" />
-							<input name="id_subsubproducto" id="id_subsubproducto" type="hidden" value="{id_subproducto}" /-->
-								<p>{traduccion_nombre}:<input id="nombre" name="nombre" type="text" value="" size="50" "/></p>
-								<p>{traduccion_email}:<input id="email" name="email"  type="text" value="" size=50" /></p>
-								<p>{traduccion_comentario}:<textarea id="comentario" name="comentario" cols="50" rows="4" "></textarea></p>
+								<input id="id_producto" name="id_producto" type="hidden" value="{id_producto}" />
+								<input id="captcha_texto_session" name="captcha_texto_session" type="hidden" value="{captcha_texto_session}" />
+
+								<p>{traduccion_nombre}:<input id="nombre" name="nombre" type="text" value="" size="50" /></p>
+								<p>{traduccion_email}:<br /><input id="email" name="email"  type="text" value="" size="50" /></p>
+								<p>{traduccion_comentario}:<textarea id="comentario" name="comentario" cols="50" rows="4" ></textarea></p>
 								<p style="height:40px;">Ingrese el codigo de verificacion.
-								<br /><img src="/include/crear-imagen.php?captcha_texto={captcha_texto_session}" alt="captcha"/><input name="captcha" type="text" id="captcha" size="20" onfocus="this.className=''"/></p>
+								<br /><img src="/include/crear-imagen.php?captcha_texto={captcha_texto_session}" alt="captcha"/><br /><input name="captcha" type="text" id="captcha" size="20" onfocus="this.className=''"/></p>
 							</form>
 </div>
-
-
-          
-         
-
-    
 
 	<!-- InstanceEndEditable -->
 				

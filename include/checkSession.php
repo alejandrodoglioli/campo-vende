@@ -1,10 +1,12 @@
 <?
-echo "pija"; exit;
-include_once("class.Template.php");
-include_once("include.funciones.php");
-include_once("config.php");
-include_once("lib.inc.php");
-include_once("conexion.php");
+
+include_once("include/class.Template.php");
+
+include_once("include/include.funciones.php");
+include_once("include/config.php");
+include_once("include/lib.inc.php");
+include_once("include/conexion.php");
+
 /*************************** Inicializacion de variables por defecto *****************************/ 
 
 if (!isset($lang) &&!isset($idioma)){
@@ -20,9 +22,9 @@ elseif (isset($lang)){
 /***************************** SECCION DE LOGIN ************** ***********************************/
 
 // si no se ha identificado presenta la pantalla de login
-if (!isset($_SESSION['user_sistema'])&&(!$_REQUEST['email_usuario'])&&($action=="login")) 
-{
+if (!isset($_SESSION['user_sistema'])&&(!$_REQUEST['email_usuario'])&&($action=="login")){
 	include("modulos/usuarios_sistema/index.php");
+	
 	presentar_aut();
 	exit;
 } 
@@ -85,57 +87,4 @@ else{
 		
 }
 
-
-
-
-
-function poseePermisoModulo($modulo)
-{
-	global $db;
-	$id = $_SESSION['user'];
-
-	$qry  = "SELECT pm.id_modulo ";
-	$qry .= "FROM mu_usuarios us ";
-	$qry .= "INNER JOIN permisosxmodulo pm ON (pm.id_categoria = us.id_categoria) ";
-	$qry .= "INNER JOIN modulos m ON (pm.id_modulo = m.id) ";
-	$qry .= "WHERE us.id = " . $id . " AND path = '" . $modulo . "'";
-	
-	
-	$data = $db->query_array($qry, __FILE__, __LINE__);
-
-	if (!empty($data))
-		return true;
-	else
-		return false;
-}
-
-function poseePermisoSeccion($modulo,$id_categoria)
-{
-	global $db;
-	
-
-	$modulo=str_replace('/atraczion/admin/','',$modulo);
-
-	if($modulo=='index.php' || $modulo==''){
-		return (true);
-	}
-	else {
-		$modulo=str_replace('modulos/','',$modulo);
-		$pos=strrpos ( $modulo, '/');
-		$resto = substr ($modulo, 0, $pos); 
-
-		
-		$sql="select m.* from moduloxusuario m ";
-		$sql.="join modulos mo on (mo.id_modulo=m.id_modulo) ";
-		$sql.="where m.id_categoria=".$id_categoria." and mo.path='".$resto."'";
-
-		$data = $db->query_array($sql, __FILE__, __LINE__);
-
-		if (!empty($data))
-			return true;
-		else
-			return false;
-	}
-	
-}
 ?>

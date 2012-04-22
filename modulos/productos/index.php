@@ -274,7 +274,7 @@ function mostrar_producto(){
 						
 			
 
-	/*$result=mysql_query("select si.*,s.fecha_publicacion from ".$tof_comentariosxproductos." s join ".$tof_comentariosxproductosxidioma." si on (s.id=si.id) where s.id_producto=".$id_producto." and publicado=1 and si.idioma='".$idioma."' order by fecha_publicacion desc");
+	$result=mysql_query("select si.*,s.fecha_publicacion from ".$tof_comentariosxproductos." s join ".$tof_comentariosxproductosxidioma." si on (s.id=si.id) where s.id_producto=".$id_producto." and publicado=1 and si.idioma='".$idioma."' order by fecha_publicacion desc");
 
 	if(mysql_num_rows($result)){
 		$t->set_var("comentariosvisibles", "");
@@ -282,12 +282,13 @@ function mostrar_producto(){
 		while($row=mysql_fetch_array($result)){
 			$t->set_var("nombre", $row[nombre]);
 			$t->set_var("comentario", $row[comentario]);
+			$t->set_var("respuesta", $row[respuesta]);
 			$t->set_var("fecha_publicacion", $row[fecha_publicacion]);
 			$t->parse("_block_comentarios","block_comentarios",true);
 		}
 	}else{
 		$t->set_var("comentariosvisibles", "display:none;");
-	}*/
+	}
 
 	setearMenu(&$t,$id_secc);
 	setearVariablesComunes(&$t);
@@ -347,13 +348,12 @@ function insertar_comentario(){
 	mysql_query("insert into ".$tof_comentariosxproductos." values('NULL','".date("Y-m-d")."',0,".$id_secc.")");
 	$last_id = mysql_insert_id();
 
-
-
-	mysql_query("insert into ".$tof_comentariosxproductosxidioma." values(".$last_id.",'".$idioma."','".$nombre."','".$email."','".$comentario."')");
+echo "insert into ".$tof_comentariosxproductos." values('NULL','".date("Y-m-d")."',0,".$id_secc.")";
+	mysql_query("insert into ".$tof_comentariosxproductosxidioma." values(".$last_id.",'".$idioma."','".$nombre."','".$email."','".$comentario."','')");
 
 	$t->set_var("titulo", "Gracias por su comentario");
-	$t->set_var("contenido", "Gracias por su comentario, el mismo ser� publicado cuando sea validado por nuestro equipo.");
-	$t->set_var("description", "Gracias por su comentario, el mismo ser� publicado cuando sea validado por nuestro equipo.");
+	$t->set_var("contenido", "Gracias por su comentario, el mismo ser&aacute; publicado cuando sea validado por nuestro equipo.");
+	$t->set_var("description", "Gracias por su comentario, el mismo ser&aacute; publicado cuando sea validado por nuestro equipo.");
 	$t->set_var("title", "Gracias por su comentario");
 	$t->set_var("keywords", "");
 	$t->set_var("idioma", $idioma);

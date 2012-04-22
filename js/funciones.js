@@ -132,7 +132,7 @@ var captcha_texto = captcha_texto_session;
 	if (document.getElementById("email").value!=""){
 		if(!isEmailAddress(document.getElementById("email"))){
 			document.getElementById("email").className="succes";
-			error+="Ingrese una direcci�n de correo v�lida.\n";
+			error+="Ingrese una dirección de correo válida.\n";
 			}
 	}
 

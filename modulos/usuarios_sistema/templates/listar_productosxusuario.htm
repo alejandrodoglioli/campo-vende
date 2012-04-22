@@ -162,28 +162,29 @@
 
   <table class="list">
     <tr>
-            <th class="center"></th>
+            <th></th>
 
-            <th class="left">                
+            <th class="left" width="200">                
 			<form action="/admin/index.php?controller=category&action=page" method="post" enctype="multipart/form-data" onclick="this.submit();">
          Nombre producto                
 		  <input type="hidden" name="sort" value="cd.name" />
         </form>
              </th>
-			 <th class="left">Padre</th>
-			 <th class="left">Publicado?</th>
-              <th class="right">                Action                      </th>
+			 <th class="left" width="250">Sección</th>
+			 <th class="left" >Publicado?</th>
+              <th class="right" width="70">                Action                      </th>
           </tr>
 		  <!-- BEGIN block_productos -->
             <tr class="row1" onmouseover="this.className='highlight'" onmouseout="this.className='row1'">
                   <td width="30" class="center">
 				  	<a href="/admin/modulos/productos/index.php?action=editar_productos&id_producto={id_producto}"><img src="/admin/images/folder.png" /></a></td>
-                        <td class="left">{nombre_producto}</td>
-						<td class="left">{nombre_padre}</td>
-						<td class="left">{publicado_producto}</td>
+                        <td class="left" width="200">{nombre_producto}</td>
+						<td class="left" width="250">{nombre_padre}</td>
+						<td class="left" >{publicado_producto}</td>
                          <td class="right">
-							<a href="/{idioma}/editar_productoxusuario/{id_producto}"><img src="/admin/images/update.png" alt="Update" title="Update" /></a>
-                			<a href="/{idioma}/eliminar_productoxusuario/{id_producto}"><img src="/admin/images/delete.png" alt="Delete" title="Delete" /></a>
+							<a href="/{idioma}/editar_productoxusuario/{id_producto}"><img src="/admin/images/update.png" alt="Actualizar" title="Actualizar" /></a>
+                			<a href="/{idioma}/eliminar_productoxusuario/{id_producto}"><img src="/admin/images/delete.png" alt="Borrar" title="Borrar" /></a>
+							<a href="/{idioma}/listarpregunta_productoxusuario/{id_producto}"><img src="/admin/images/order.png" alt="Preguntas" title="Preguntas" /></a>
        					 </td>
                 </tr>
 			<!-- END block_productos -->

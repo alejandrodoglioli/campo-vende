@@ -71,8 +71,8 @@ if ($action == "listar_albums") {
 	include("include/include.contacto.php");
     gracias_contacto(); 
 }elseif (($action == "login" or $action == "listar_productoxusuario")&& !isset($_SESSION[user_sistema])) {
-	include("modulos/usuarios_sistema/index.php");
-    mostrar_login(); 
+	include("modulos/usuarios_sistema/login.php");
+    #mostrar_login(); 
 }elseif ($action == "registrar_usuario_sistema") {
 	include("modulos/usuarios_sistema/index.php");
     registrar_usuario_sistema(); 
@@ -100,6 +100,21 @@ if ($action == "listar_albums") {
 }elseif ($action == "eliminar_productoxusuario_ok") {
 	include("modulos/usuarios_sistema/index.php");
  	eliminar_productoxusuario_ok(); 
+}elseif ($action == "listarpregunta_productoxusuario") {
+	include("modulos/usuarios_sistema/index.php");
+ 	mostrarpregunta_productoxusuario(); 
+}elseif ($action == "editarpregunta_productoxusuario") {
+	include("modulos/usuarios_sistema/index.php");
+ 	editarpregunta_productoxusuario(); 
+}elseif ($action == "editarpregunta_productoxusuario_ok") {
+	include("modulos/usuarios_sistema/index.php");
+	editarpregunta_productoxusuario_ok(); 
+}elseif ($action == "eliminarpregunta_productoxusuario") {
+	include("modulos/usuarios_sistema/index.php");
+	eliminarpregunta_productoxusuario(); 
+}elseif ($action == "eliminarpregunta_productoxusuario_ok") {
+	include("modulos/usuarios_sistema/index.php");
+ 	eliminarpregunta_productoxusuario_ok(); 
 }elseif ($action == "logout_productoxusuario") {
  	require_once("modulos/usuarios_sistema/login.php");
 }else{

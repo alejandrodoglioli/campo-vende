@@ -1,7 +1,6 @@
 <?PHP
 
 
-
 function presentar_aut(){
 	global $urlSite,$idioma;
 
@@ -29,6 +28,7 @@ function presentar_aut(){
 
 function comprobar_aut($email,$pass) 
 {
+
 	global $tof_usuarios_sistema;
 
 	$sql=mysql_query("select * from ".$tof_usuarios_sistema." where email='".$email."' and password='".$pass."'");
@@ -754,6 +754,102 @@ function eliminar_productoxusuario_ok(){
 	mysql_query("delete from ".$tof_imagenesxproductos." where id_producto=".$id_producto);
 	
 	mostrar_usuario_sistema();
+}
+
+function mostrarpregunta_productoxusuario($id_usuario=NULL){
+	global $tof_usuarios_sistema,$tof_productos,$tof_productosxidioma,$tof_secciones,$tof_seccionesxidioma,$idioma,$row_per_page,$inicio,$id_producto,$tof_comentariosxproductosxidioma,$tof_comentariosxproductos,$id_producto;
+
+	$name_tpl="listarpregunta_productosxusuario.htm";
+	$t = new Template("./modulos/usuarios_sistema/templates", "remove");
+	$t->set_file("pl", $name_tpl);
+	
+	if(!isset($id_usuario))
+		$id_usuario=$_SESSION['user_sistema'];
+	
+	$t->set_var("title", "Listar preguntas productos x usuario");
+	$t->set_var("categoria_modulo", "usuario");
+
+	$t->set_var("action", "listarpregunta_productoxusuario");
+	$t->set_var("id_producto", $id_producto);
+	
+	if(isset($page)){
+		$inicio = ($row_per_page*($page-1));
+	}else{
+		$page=1;
+		$inicio = 0;
+	}
+
+	global $id_seccion;
+	if(isset($id_seccion) && ($id_seccion!="") && ($id_seccion!=0))
+		$filtro=" and se.id=".$id_seccion;
+	else
+		$filtro="";
+	
+	$result=mysql_query("select pi.nombre as nombre_producto,si.*,s.publicado from ".$tof_comentariosxproductos." s join ".$tof_comentariosxproductosxidioma." si on (s.id=si.id) join ".$tof_productosxidioma." pi on (s.id_producto=pi.id) where si.idioma='".$idioma."' and s.id_producto=".$id_producto."  order by fecha_publicacion desc limit ".$inicio.",".$row_per_page);
+;
+	$resultcant=mysql_query("select count(*) as cant from ".$tof_comentariosxproductos." s join ".$tof_comentariosxproductosxidioma." si where si.idioma='".$idioma."' and s.id_producto=".$id_producto." order by fecha_publicacion");
+		
+	$t->set_block("pl","block_comentariosproductos","_block_comentariosproductos");	
+    while($row=mysql_fetch_array($result))
+    {
+      $t->set_var("nombre_cliente",$row[nombre]);
+      $t->set_var("publicado_comentario",$row[publicado]);
+	  $t->set_var("comentario",$row[comentario]);
+	  $t->set_var("respuesta",$row[respuesta]);
+      $t->set_var("id_comentario",$row[id]);
+	$t->set_var("nombre_producto","Preguntas acerca de producto:".$row[nombre_producto]);	
+      $t->parse("_block_comentariosproductos","block_comentariosproductos",true);
+    }
+
+	
+	
+	$rowcant=mysql_fetch_array($resultcant);
+	$nb=$rowcant[cant];
+	$nb_page=intval(ceil($nb/$row_per_page));
+	
+	$t->set_var("page",$page);
+	$t->set_var("cant_pages",$nb_page);
+	$t->set_block("pl","block_paginas","_block_paginas");	
+    for($i=1;$i <= $nb_page; $i++){
+		$t->set_var("nro_pag",$i);
+		if($i==$page)
+			$t->set_var("selected_pag","selected");
+		else
+			$t->set_var("selected_pag","");
+		$t->parse("_block_paginas","block_paginas",true);
+	}
+	
+	$result=mysql_query("select * from ".$tof_productos." s join ".$tof_productosxidioma." si on (s.id=si.id) where idioma='es' and s.id_usuario =".$_SESSION['user_sistema']." order by nombre");
+	$t->set_block("pl","block_padre","_block_padre");	
+
+    while($row=mysql_fetch_array($result))
+    {
+		$t->set_var("id_padre",$row[id]);
+		$t->set_var("nombre_padre",$row[nombre]);
+		if($row[id]==$id_seccion)
+			$t->set_var("selected_producto","selected");
+		else
+			$t->set_var("selected_producto","");
+		if ($row[id_padre]==0)
+				$t->set_var("color", "#000000");
+			else
+				$t->set_var("color", "#0000FF");
+		$t->parse("_block_padre","block_padre",true);
+	}
+	
+	
+	
+	$result=mysql_query("select * from ".$tof_usuarios_sistema." u where u.id=".$id_usuario);
+	$row=mysql_fetch_array($result);
+	$t->set_var("usuario_logueado", $row[nombre]." ".$row[apellido]);
+	$t->set_var("titulo", "Preguntas");
+	
+	setearMenu(&$t);
+	setearVariablesComunes(&$t);
+	
+	$t->parse("MAIN", "pl");
+    $t->p("MAIN");
+	
 }
 
 ?>
