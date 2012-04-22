@@ -755,7 +755,7 @@ function eliminar_productoxusuario_ok(){
 	mostrar_usuario_sistema();
 }
 
-function mostrarpregunta_productoxusuario($id_usuario=NULL){
+function mostrarpregunta_productoxusuario($id_producto=NULL){
 	global $tof_usuarios_sistema,$tof_productos,$tof_productosxidioma,$tof_secciones,$tof_seccionesxidioma,$idioma,$row_per_page,$inicio,$id_producto,$tof_comentariosxproductosxidioma,$tof_comentariosxproductos,$id_producto;
 
 	$name_tpl="listarpregunta_productosxusuario.htm";
@@ -848,7 +848,156 @@ function mostrarpregunta_productoxusuario($id_usuario=NULL){
 	
 	$t->parse("MAIN", "pl");
     $t->p("MAIN");
-	
 }
 
+function editarpregunta_productoxusuario(){
+	global $tof_productos, $tof_productosxidioma,$tof_comentariosxproductos, $tof_comentariosxproductosxidioma,$tof_idioma,$id_comentario,$tof_usuarios_sistema,$idioma,$id_comentario;
+
+	$id_usuario=$_SESSION['user_sistema'];
+	
+	$name_tpl="editarpregunta_productoxusuario.htm";
+	$t = new Template("./modulos/usuarios_sistema/templates", "remove");
+	$t->set_file("pl", $name_tpl);
+
+	$t->set_var("idioma", $idioma);
+	
+	setearMenu(&$t);
+	setearVariablesComunes(&$t);
+	
+	$t->set_var("title", "Editar comentario productos");
+	$t->set_var("categoria_modulo", "Editar comentario");
+	
+	$result=mysql_query("select idioma, nombre from ".$tof_idioma." where publicado=1");
+	$t->set_block("pl","block_idioma","_block_idioma");
+	while($row=mysql_fetch_array($result)){
+		$t->set_var("idioma_nombre", $row[nombre]);
+		$t->parse("_block_idioma","block_idioma",true);
+		}
+		
+	$result=mysql_query("select idioma, nombre from ".$tof_idioma." where publicado=1");
+	$t->set_block("pl","block_idiomas1","_block_idiomas1");	
+
+	while($row=mysql_fetch_array($result)){
+	
+		$resultComentario=mysql_query("select si.*,s.* from ".$tof_comentariosxproductos." s join ".$tof_comentariosxproductosxidioma." si on (s.id=si.id) where s.id=".$id_comentario." and si.idioma='".$row[idioma]."'");
+		
+	
+		if (mysql_num_rows($resultComentario)){
+
+			while($rowComentario=mysql_fetch_array($resultComentario)){
+				$id_usuario=$rowProducto[id_usuario];
+				$t->set_var("lenguaje1", $row[idioma]);
+				$t->set_var("nombre_cliente", $rowComentario[nombre]);
+				$t->set_var("email_cliente", $rowComentario[email]);
+				$t->set_var("comentario", $rowComentario[comentario]);
+				$t->set_var("fecha_publicacion", $rowComentario[fecha_publicacion]);
+				$t->set_var("publicado", $rowComentario[publicado]);
+				$t->set_var("respuesta", $rowComentario[respuesta]);
+								
+				$t->parse("_block_idiomas1","block_idiomas1",true);
+			}
+		}else{
+			$t->set_var("lenguaje1", $row[idioma]);
+				$t->set_var("nombre_cliente", "");
+				$t->set_var("email_cliente", "");
+				$t->set_var("comentario", "");
+				$t->set_var("fecha_publicacion", "");
+				$t->set_var("publicado", "");
+				$t->set_var("respuesta", "");
+								
+				$t->parse("_block_idiomas1","block_idiomas1",true);
+		}
+	}
+	
+	$result1=mysql_query("select se.id,p.id_producto,p.publicado from ".$tof_productos." se join ".$tof_comentariosxproductos." p on (p.id_producto=se.id) where p.id=".$id_comentario);
+	$row1=mysql_fetch_array($result1);
+	if($row1[publicado]==1)
+		$publicado='checked';
+	else
+		$publicado='';
+		
+	$t->set_var("publicado", $publicado);
+	$t->set_var("id_comentario", $id_comentario);
+	$t->set_var("id_producto", $row1[id_producto]);
+
+
+	$t->set_var("nombre_usuario",$row[nickname]);
+	$t->set_var("es_administrador_usuario",$es_administrador);
+	$t->set_var("password_usuario",$row[password]);
+	$t->set_var("id_usuario",$row[ID]);
+    
+	$result=mysql_query("select * from ".$tof_usuarios_sistema." u where u.id=".$id_usuario);
+	$row=mysql_fetch_array($result);
+	$t->set_var("usuario", $row[nombre]." ".$row[apellido]);
+	$t->set_var("titulo", "Usuario");
+	
+	$t->parse("MAIN", "pl");
+    $t->p("MAIN");
+}
+
+function editarpregunta_productoxusuario_ok(){
+	global $tof_productos, $tof_productosxidioma,$tof_comentariosxproductos, $tof_comentariosxproductosxidioma,$tof_idioma,$id_comentario,$tof_usuarios_sistema,$id_producto,$id_producto;
+	
+	$id_usuario=$_SESSION['user_sistema'];
+	
+	if (isset($nombre_subseccion)and($nombre_subseccion!=0))
+		$nombre_padre=$nombre_subseccion;
+		
+	global $respuesta;
+	 
+	 	mysql_query("update ".$tof_comentariosxproductosxidioma." set respuesta='".$respuesta."' where id=".$id_comentario);
+
+	mostrarpregunta_productoxusuario($id_producto);
+}
+
+function eliminarpregunta_productoxusuario(){
+	global $tof_usuarios_sistema,$tof_productos, $tof_productosxidioma,$tof_comentariosxproductos, $tof_comentariosxproductosxidioma, $id_comentario;
+	$id_usuario=$_SESSION['user_sistema'];
+
+
+	$name_tpl="eliminarpregunta_productoxusuario.htm";
+	$t = new Template("./modulos/usuarios_sistema/templates", "remove");
+	$t->set_file("pl", $name_tpl);
+	
+	setearMenu(&$t);
+setearVariablesComunes(&$t);
+	
+	$t->set_var("title", "Eliminar pregunta producto");
+	$t->set_var("categoria_modulo", "Eliminar pregunta");
+
+	$result=mysql_query("select si.*,s.id_producto,s.publicado,s.fecha_publicacion from ".$tof_comentariosxproductos." s join ".$tof_comentariosxproductosxidioma." si on (s.id=si.id) where s.id=".$id_comentario);
+	echo "select si.*,s.publicado,s.fecha_publicacion from ".$tof_comentariosxproductos." s join ".$tof_comentariosxproductosxidioma." si on (s.id=si.id) where s.id=".$id_comentario;
+	
+	$row=mysql_fetch_array($result);
+    if($row[publicado]==1)
+		$publicado="Si";
+	else
+		$publicado="No";
+		
+	$t->set_var("id_producto",$row[id_producto]);
+	$t->set_var("nombre_cliente",$row[nombre]);
+	$t->set_var("email_cliente",$row[email]);
+	$t->set_var("fecha_publicacion",$row[fecha_publicacion]);
+	$t->set_var("comentario",$row[comentario]);
+	$t->set_var("respuesta",$row[respuesta]);
+	$t->set_var("publicado",$publicado);
+	$t->set_var("id_comentario",$row[id]);
+
+	$result=mysql_query("select * from ".$tof_usuarios_sistema." u where u.id=".$id_usuario);
+	$row=mysql_fetch_array($result);
+	$t->set_var("usuario", $row[nombre]." ".$row[apellido]);
+	$t->set_var("titulo", "Usuario");
+    	
+	$t->parse("MAIN", "pl");
+    $t->p("MAIN");
+}
+
+function eliminarpregunta_productoxusuario_ok(){
+	global $tof_comentariosxproductos,$tof_comentariosxproductosxidioma,$tof_imagenesxproductos,$id_comentario,$id_producto;
+
+	mysql_query("delete from ".$tof_comentariosxproductos." where id=".$id_comentario);
+	mysql_query("delete from ".$tof_comentariosxproductosxidioma." where id=".$id_comentario);
+
+	mostrarpregunta_productoxusuario($id_producto);
+}
 ?>
