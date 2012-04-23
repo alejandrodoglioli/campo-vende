@@ -1,5 +1,21 @@
 <?PHP
 
+function caracter_aleatorio() {
+	mt_srand((double)microtime()*1000000);
+	$valor_aleatorio = mt_rand(1,3);
+	switch ($valor_aleatorio) {
+		case 1:
+			$valor_aleatorio = mt_rand(97, 122);
+			break;
+		case 2:
+			$valor_aleatorio = mt_rand(48, 57);
+			break;
+		case 3:
+			$valor_aleatorio = mt_rand(65, 90);
+			break;
+	}
+	return chr($valor_aleatorio);
+}
 
 function presentar_aut(){
 	global $urlSite,$idioma;
@@ -19,6 +35,14 @@ function presentar_aut(){
 	$t->set_var("keywords", "Login usuario");
 	$t->set_var("idioma", $idioma);
 	$t->set_var("action", "login");
+	
+	$captcha_texto = "";
+	for ($i = 1; $i <= 6; $i++) {
+		$captcha_texto .= caracter_aleatorio();
+	}
+
+	$t->set_var("SID",$SID);
+	$t->set_var("captcha_texto_session",$captcha_texto);
 	
 	$t->set_var("breadcrum", ' >> Login Usuario');
 		
@@ -113,8 +137,7 @@ function insertar_usuarios_sistema_ok(){
 	$_SESSION['user_sistema']=$id;
 	$_SESSION['email_sistema']=$email_usuario;
 	$_SESSION['pass_sistema']=$password_usuario;
-	$_SESSION['nombre_user_sistema']=$result[nombre_usuario]." ".$result[apellido_usuario];		
-	
+	$_SESSION['nombre_user_sistema']=$nombre_usuario." ".$apellido_usuario;	
 	mostrar_usuario_sistema();
 }
 
