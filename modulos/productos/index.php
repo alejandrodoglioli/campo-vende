@@ -301,7 +301,7 @@ function mostrar_producto(){
 }
 
 function insertar_comentario(){
-	global $tof_productos,$tof_productosxidioma,$tof_comentariosxproductos,$tof_comentariosxproductosxidioma,$id_producto,$id_subsubproducto,$id_subproducto,$nombre, $email, $comentario,$idioma;
+	global $tof_productos,$tof_productosxidioma,$tof_comentariosxproductos,$tof_comentariosxproductosxidioma,$id_producto,$id_subsubproducto,$id_subproducto,$nombre, $email, $comentario,$idioma,$tof_usuarios_sistema,$urlSite;
 
 	$name_tpl="gracias-comentario.htm";
 	$t = new Template("modulos/productos/templates", "remove");
@@ -340,7 +340,7 @@ function insertar_comentario(){
 	}else{
 
 		$id_secc=$id_producto;
-		$result=mysql_query("select si.* from ".$tof_productos." s join ".$tof_productosxidioma." si on (s.id=si.id) where si.id=".$id_producto." and si.idioma='".$idioma."'");
+		$result=mysql_query("select si.*,s.id_usuario from ".$tof_productos." s join ".$tof_productosxidioma." si on (s.id=si.id) where si.id=".$id_producto." and si.idioma='".$idioma."'");
 		$row=mysql_fetch_array($result);
 		$t->set_var("breadcrum", ' >> <a href="/'.$idioma.'/'.strtolower(sacar_acentos(str_replace(" ","-" ,$row[nombre]))).'-'.$row[id].'.htm" title="'.$row[nombre].'">'.$row[nombre].'</a> >> Gracias');
 	}
@@ -348,7 +348,6 @@ function insertar_comentario(){
 	mysql_query("insert into ".$tof_comentariosxproductos." values('NULL','".date("Y-m-d")."',0,".$id_secc.")");
 	$last_id = mysql_insert_id();
 
-echo "insert into ".$tof_comentariosxproductos." values('NULL','".date("Y-m-d")."',0,".$id_secc.")";
 	mysql_query("insert into ".$tof_comentariosxproductosxidioma." values(".$last_id.",'".$idioma."','".$nombre."','".$email."','".$comentario."','')");
 
 	$t->set_var("titulo", "Gracias por su comentario");
@@ -358,8 +357,32 @@ echo "insert into ".$tof_comentariosxproductos." values('NULL','".date("Y-m-d").
 	$t->set_var("keywords", "");
 	$t->set_var("idioma", $idioma);
 
-	$t->parse("MAIN", "pl");
-	$t->p("MAIN");
+	 //Enviar email
+ 	include_once("include/mail.php");
+	$resultUsuario=mysql_query("select * from ".$tof_usuarios_sistema." s where s.id=".$row[id_usuario]);
+	$rowUsuario=mysql_fetch_array($resultUsuario);
+	
+	$From=$email;
+	$FromName=$nombre;
+	$To=$rowUsuario[email];
+	$emailto=$rowUsuario[email];	
+	$body='<p>'.$comentario.' puede ver el comentario en <a href="'.$urlSite.'/'.$idioma.'/editarpregunta_productoxusuario/'.$last_id.'">Ver comentario</a></p>';
+	$subject="Comentario desde campo-vende.com.ar";
+	
+	$resultado=enviar_email($From,$FromName,$To,$body,$subject,$emailto);
+	if($resultado==0){
+		?>
+		<script language="JavaScript" type="text/javascript">
+			alert("Error: no se pede enviar email.");	
+			history.back(1);
+		</script>
+		<?
+	
+	}else{
+		$t->parse("MAIN", "pl");
+		$t->p("MAIN");
+	}
+
 
 }
 ?>
