@@ -967,7 +967,7 @@ setearVariablesComunes(&$t);
 	$t->set_var("categoria_modulo", "Eliminar pregunta");
 
 	$result=mysql_query("select si.*,s.id_producto,s.publicado,s.fecha_publicacion from ".$tof_comentariosxproductos." s join ".$tof_comentariosxproductosxidioma." si on (s.id=si.id) where s.id=".$id_comentario);
-	echo "select si.*,s.publicado,s.fecha_publicacion from ".$tof_comentariosxproductos." s join ".$tof_comentariosxproductosxidioma." si on (s.id=si.id) where s.id=".$id_comentario;
+
 	
 	$row=mysql_fetch_array($result);
     if($row[publicado]==1)
