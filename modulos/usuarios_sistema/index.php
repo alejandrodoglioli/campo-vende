@@ -1018,8 +1018,16 @@ function recuperar_password(){
 	$From = "vizzito@hotmail.com";
 	$FromName = "Campo Vende";
 			
-	$result=mysql_query("select u.* from ".$tof_usuarios_sistema." u where u.email=".$email." and si.idioma='".$idioma."'");
+	$result=mysql_query("select * from ".$tof_usuarios_sistema." where email='".$email."'");
 	$row=mysql_fetch_array($result);
+	
+	
+	
+	if(mysql_num_rows($sql)){
+
+		$result=mysql_fetch_array($sql);
+	}
+	
 	
 	
 	$To= "martinvizzolini@gmail.com";
