@@ -118,8 +118,8 @@ if ($action == "listar_albums") {
 }elseif ($action == "logout_productoxusuario") {
  	require_once("modulos/usuarios_sistema/login.php");
 }elseif ($action == "recuperar_password") {
-	echo "recuperoooooooo";exit;
- 	require_once("modulos/usuarios_sistema/recuperar_password.php");
+ 	require_once("modulos/usuarios_sistema/index.php");
+ 	recuperar_password();
 }else{
 	mostrarHome();
 }
