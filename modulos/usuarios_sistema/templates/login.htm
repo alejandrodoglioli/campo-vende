@@ -8,6 +8,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
         <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js" type="text/javascript"></script>
         <script src="/js/jquery/js/formulario_registrarse.js"></script>
+        <script src="/js/jquery/js/olvidepass.js"></script>
 <!-- InstanceEndEditable -->
 
 <meta http-equiv="Content-Type" content="text/html; charset={charset}" />
@@ -170,19 +171,22 @@
 							</form>
                             
                             
-                            
-<!--							
-	<form>
-	<fieldset>
-		<label for="name">Name</label>
-		<input type="text" name="name" id="name" class="text ui-widget-content ui-corner-all" />
-		<label for="email">Email</label>
-		<input type="text" name="email" id="email" value="" class="text ui-widget-content ui-corner-all" />
-		<label for="password">Password</label>
-		<input type="password" name="password" id="password" value="" class="text ui-widget-content ui-corner-all" />
-	</fieldset>
-	</form> -->
 </div>
+
+ <div id="dialog-form-pass" title="Recupere su password">
+	<p class="validateTips">Ingrese el mail con el que se registro a Campo-Vende</p>
+<form id="formOlvidePAss"  enctype="multipart/form-data" method="post" action="/{idioma}/recuperar-password.htm">				
+								<p>Email: (*)<br/><input id="email" name="email"  type="text" value="" size=50" /></p>                                
+								<p style="height:40px;">Ingrese el codigo de verificacion.
+								<br /><img src="/include/crear-imagen.php?captcha_texto={captcha_texto_session}" alt="captcha"/><br/><input name="captcha" type="text" id="captcha" size="20" onfocus="this.className=''"/></p>
+							</form>
+                            
+                            
+</div>
+
+
+<button id="olvidepass" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"><span class="ui-button-text">olvide password</span></button>
+
 	<!-- InstanceEndEditable -->
 				
 				<!-- InstanceBeginEditable name="noticias" --><!-- InstanceEndEditable -->

@@ -28,6 +28,7 @@ RewriteRule ^(.*)/(.*)_productoxusuario/([0-9]+)$ index.php?action=$2_productoxu
 RewriteRule ^(.*)/(.*)_productoxusuario$ index.php?action=$2_productoxusuario&idioma=$1 [L,NC]
 RewriteRule ^(.*)/(.*)_productoxusuario_ok/([0-9]+)$ index.php?action=$2_productoxusuario_ok&id_producto=$3&idioma=$1 [L,NC]
 RewriteRule ^(.*)/(.*)_productoxusuario_ok$ index.php?action=$2_productoxusuario_ok&idioma=$1 [L,NC]
+RewriteRule ^(.*)/recuperar_password.htm$ index.php?action=recuperar_password&idioma=$1 [L,NC]
 
 #home
 #RewriteRule ^$ /es/ [L,NC] 

@@ -117,6 +117,9 @@ if ($action == "listar_albums") {
  	eliminarpregunta_productoxusuario_ok(); 
 }elseif ($action == "logout_productoxusuario") {
  	require_once("modulos/usuarios_sistema/login.php");
+}elseif ($action == "recuperar_password") {
+	echo "recuperoooooooo";exit;
+ 	require_once("modulos/usuarios_sistema/recuperar_password.php");
 }else{
 	mostrarHome();
 }
