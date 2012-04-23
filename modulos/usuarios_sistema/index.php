@@ -1024,7 +1024,7 @@ function eliminarpregunta_productoxusuario_ok(){
 	mostrarpregunta_productoxusuario($id_producto);
 }
 
-function recuperar_password(){
+function recuperar_password($email){
 	global $tof_usuarios_sistema;
 	
     $name_tpl="gracias-comentario.htm";
@@ -1046,17 +1046,26 @@ function recuperar_password(){
 	
 	
 	
-	if(mysql_num_rows($sql)){
+	if(mysql_num_rows($result)){
 
-		$result=mysql_fetch_array($sql);
+		$row=mysql_fetch_array($result);
+		$To= "martinvizzolini@gmail.com";
+		$emailto= "martinvizzolini@gmail.com";
+		$body = $row[password];
+		$subject = "recuperacion password Campo-Vende.com.ar";
+		
 	}
+	else
+	{
+		?>
+		<script language="JavaScript" type="text/javascript">
+			alert("Error: El mail ingresado no corresponde a un usuario registrado previamente");	
+			history.back(1);
+		</script>
+		<?
+	}	
 	
 	
-	
-	$To= "martinvizzolini@gmail.com";
-	$emailto= "martinvizzolini@gmail.com";
-	$body = "lallalalalla";
-	$subject = "prueva";
 	$resultado=enviar_email($From,$FromName,$To,$body,$subject,$emailto);
 	if($resultado==0){
 		?>
