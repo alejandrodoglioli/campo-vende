@@ -1002,17 +1002,26 @@ function eliminarpregunta_productoxusuario_ok(){
 }
 
 function recuperar_password(){
+	global $tof_usuarios_sistema;
+	
     $name_tpl="gracias-comentario.htm";
 	$t = new Template("modulos/productos/templates", "remove");
 	$t->set_file("pl", $name_tpl);
 
 	setearMenu(&$t);
 	setearVariablesComunes(&$t);
-
+    
+	$t->set_var("titulo", "Mail Enviado Satisfactoriamente");
+	$t->set_var("contenido", "Un mail con su password fue enviado a :");
 	
 	include_once("include/mail.php");
 	$From = "vizzito@hotmail.com";
-	$FromName = "vizzito@hotmail.com";
+	$FromName = "Campo Vende";
+			
+	$result=mysql_query("select u.* from ".$tof_usuarios_sistema." u where u.email=".$email." and si.idioma='".$idioma."'");
+	$row=mysql_fetch_array($result);
+	
+	
 	$To= "martinvizzolini@gmail.com";
 	$emailto= "martinvizzolini@gmail.com";
 	$body = "lallalalalla";
