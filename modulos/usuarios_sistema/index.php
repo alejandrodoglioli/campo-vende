@@ -124,14 +124,14 @@ function registrar_usuario_sistema(){
 }
 
 function insertar_usuarios_sistema_ok(){
-	global $tof_usuarios_sistema,$nombre_usuario,$apellido_usuario,$email_usuario,$password_usuario,$domicilio_usuario,$ciudad_usuario,$provincia_usuario,$cp_usuario,$telefono_usuario,$celular_usuario,$es_comercio_usuario,$idioma;
+	global $tof_usuarios_sistema,$nombre_usuario,$apellido_usuario,$email,$password,$domicilio_usuario,$ciudad_usuario,$provincia_usuario,$cp_usuario,$telefono_usuario,$celular_usuario,$idioma;
 
 	if (isset($es_comercio_usuario))
 		$es_comercio_usuario=1;
 	else
 		$es_comercio_usuario=0;
 
-	mysql_query("insert into ".$tof_usuarios_sistema." values('NULL','".$nombre_usuario."','".$apellido_usuario."','".$email_usuario."','".$password_usuario."','".$domicilio_usuario."','".$ciudad_usuario."','".$provincia_usuario."','".$cp_usuario."','".$telefono_usuario."','".$celular_usuario."',".$es_comercio_usuario.",'NULL','NULL','NULL')");
+	mysql_query("insert into ".$tof_usuarios_sistema." values('NULL','".$nombre_usuario."','".$apellido_usuario."','".$email."','".$password."','".$domicilio_usuario."','".$ciudad_usuario."','".$provincia_usuario."','".$cp_usuario."','".$telefono_usuario."','".$celular_usuario."',1)");
 	
 	$id=mysql_insert_id();
 	
@@ -1025,15 +1025,10 @@ function eliminarpregunta_productoxusuario_ok(){
 	mostrarpregunta_productoxusuario($id_producto);
 }
 
-function recuperar_password(){
-	?>
-		<script language="JavaScript" type="text/javascript">
-		$( "#dialog-form-pass" ).dialog( "open" );
-		</script>
-		
-		<?
-	global $tof_usuarios_sistema;
-	$email = $_POST['email_recu'];
+
+function recuperar_password($email){
+	global $tof_usuarios_sistema,$emailSite,$email_rec;
+	
     $name_tpl="gracias-comentario.htm";
 	$t = new Template("modulos/productos/templates", "remove");
 	$t->set_file("pl", $name_tpl);
@@ -1042,24 +1037,24 @@ function recuperar_password(){
 	setearVariablesComunes(&$t);
     
 	$t->set_var("titulo", "Mail Enviado Satisfactoriamente");
-	$t->set_var("contenido", "Un mail con su password fue enviado a :");
+	
 	
 	include_once("include/mail.php");
-	$From = "vizzito@hotmail.com";
+	$From = $emailSite;
 	$FromName = "Campo Vende";
 			
-	$result=mysql_query("select * from ".$tof_usuarios_sistema." where email='".$email."'");
+	$result=mysql_query("select * from ".$tof_usuarios_sistema." where email='".$email_rec."'");
 	$row=mysql_fetch_array($result);
 	
-	
+	$t->set_var("contenido", "Un mail con su password fue enviado a :".$row[email]);
 	
 	if(mysql_num_rows($result)){
 
 		$row=mysql_fetch_array($result);
-		$To= "martinvizzolini@gmail.com";
-		$emailto= "martinvizzolini@gmail.com";
+		$To= $row[email];
+		$emailto= $row[email];
 		$body = $row[password];
-		$subject = "recuperacion password Campo-Vende.com.ar";
+		$subject = "Recuperar password Campo-Vende.com.ar";
 		
 	}
 	else

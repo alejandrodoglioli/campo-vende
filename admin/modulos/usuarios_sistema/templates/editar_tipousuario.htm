@@ -63,8 +63,8 @@
     ],
 	_cmSplit,	
 	  [null, 'Customers', null, null, null, 	  
-	    ['<img src="/admin/images/customer.png" />', 'Usuarios', '/admin/modulos/usuarios_sistema/index.php', null, null],
-	    ['<img src="/admin/images/order.png" />', 'Tipo Usuario', '/admin/modulos/usuarios_sistema/index.php?action=listar_tipousuario', null, null],
+	    ['<img src="/admin/images/customer.png" />', 'Customer', '/admin/modulos/usuarios_sistema/index.php', null, null],
+	    ['<img src="/admin/images/order.png" />', 'Order', '/admin/index.php?controller=order', null, null],
 	    ['<img src="/admin/images/mail.png" />', 'Mail', '/admin/index.php?controller=mail', null, null],
 		['<img src="/admin/images/newsletter.png" />', 'Newsletter', '/admin/index.php?controller=newsletter', null, null],
     ],	
@@ -84,8 +84,8 @@
 
   <!-- InstanceBeginEditable name="menu" -->
   <div class="task">
-  <div class="enabled" onmouseover="className='hover'" onmouseout="className='enabled'" onclick="location='/admin/modulos/secciones/index.php?action=listar_secciones'"><img src="../../images/list_enabled.png" alt="Listar" />Listar</div>
-    <div class="enabled" onmouseover="className='hover'" onmouseout="className='enabled'" onclick="location='/admin/modulos/secciones/index.php?action=insertar_secciones'"><img src="../../images/insert_enabled.png" alt="Insertar" />Insertar</div>
+  <div class="enabled" onmouseover="className='hover'" onmouseout="className='enabled'" onclick="location='/admin/modulos/usuarios_sistema/index.php?action=listar_tipousuario'"><img src="../../images/list_enabled.png" alt="Listar" />Listar</div>
+    <div class="enabled" onmouseover="className='hover'" onmouseout="className='enabled'" onclick="location='/admin/modulos/usuarios_sistema/index.php?action=insertar_tipousuario'"><img src="../../images/insert_enabled.png" alt="Insertar" />Insertar</div>
     <div class="disabled"><img src="../../images/update_disabled.png" alt="Editar" />Editar</div>
 
   <div class="disabled"><img src="../../images/delete_disabled.png" alt="Borrar" />Borrar</div>
@@ -94,41 +94,44 @@
 </div>
 <div class="heading">{categoria_modulo}</div>
 <div class="description">You can edit your product categories here.</div>
+
 <div id="list">
-    <!-- InstanceEndEditable -->
+  <!-- InstanceEndEditable -->
   <!-- InstanceBeginEditable name="contenido" -->
   <table class="list">
     		<tr>
             <th class="center"></th>
           </tr>
-		 <form  action="/admin/modulos/secciones/index.php?action=eliminar_secciones_ok" method="post">
-		 <input type="hidden" id="id_seccion" name="id_seccion" value="{id_seccion}" />
+		 <form  action="/admin/modulos/usuarios_sistema/index.php?action=editar_tipousuario_ok" method="post">
+		 <input id="id_tipousuario" name="id_tipousuario" type="hidden" value="{id_tipousuario}"/>
             <tr class="row1" onmouseover="this.className='highlight'" onmouseout="this.className='row1'">
                   <td width="100%" class="center" style="background-color:#FFFFCC">
 				  	<table>
-						<tr><td colspan="2"><b>Está seguro de querer eliminar la sección:</b></td></tr>
 						<tr>
-							<td>Nombre Sección: </td>
-							<td>{nombre_seccion}</td>
+							<td>Nombre Tipo Usuario</td>
+							<td><input id="nombre_tipousuario" name="nombre_tipousuario" type="text" value="{nombre_tipousuario}"/></td>
 						</tr>
 						<tr>
-							<td>Publicada? </td>
-							<td>{publicado_seccion}</td>
+							<td>Cantidad Productos Destacados</td>
+							<td><input id="cantidad_destacados" name="cantidad_destacados" type="text" value="{cantidad_destacados}"/></td>
 						</tr>
 						<tr>
-							<td>Fecha Publicación: </td>
-							<td>{fecha_publicacion_seccion}</td>
+							<td>Cantidad Productos</td>
+							<td><input id="cantidad_productos" name="cantidad_productos" type="text" value="{cantidad_productos}" /></td>
+						</tr>
+						<tr>
+							<td>Publicado</td>
+							<td><input id="publicado_tipousuario" name="publicado_tipousuario" type="checkbox"  {publicado_tipousuario} /></td>
 						</tr>
 						<tr>
 						 <td><input type="submit" value="Aceptar" /></td>
-						 <td><input type="button" value="Cancelar" onclick="history.back(-1);" /></td>
+						 <td><input type="reset" value="Cancelar" onclick="history.back(-1);" /></td>
 						</tr>				
 					</table>
                 </td>
 			</tr>
 			</form>
-			
-			<!-- END block_secciones -->
+			<!-- END block_idiomas -->
             
       </table>
 	  </div>
