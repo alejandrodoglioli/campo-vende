@@ -124,4 +124,7 @@ $(function() {
 			.click(function() {
 				$( "#dialog-form-pass" ).dialog( "open" );
 			});
+		
+		
+	
 	});

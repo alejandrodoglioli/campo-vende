@@ -1,5 +1,10 @@
 <?PHP
 function mostrar_noticias(){
+        ?>
+		<script type="text/javascript">
+			$( "#dialog-modal1" ).dialog({autoOpen: true});
+		</script>
+		<?
 	global $tof_noticias,$tof_noticiasxidioma,$tof_modulos,$tof_imagenesxnoticias,$tof_modulosxidioma,$idioma,$pagina,$noticias_per_page;
 	$name_tpl="noticias.htm";
 	$t = new Template("modulos/noticias/templates", "remove");

@@ -75,6 +75,7 @@ function comprobar_aut($email,$pass)
 }
 
 function mostrar_login(){
+	
 	global $idioma;
 	$name_tpl="login.htm";
 	$t = new Template("./modulos/usuarios_sistema/templates", "remove");
@@ -1024,9 +1025,15 @@ function eliminarpregunta_productoxusuario_ok(){
 	mostrarpregunta_productoxusuario($id_producto);
 }
 
-function recuperar_password($email){
+function recuperar_password(){
+	?>
+		<script language="JavaScript" type="text/javascript">
+		$( "#dialog-form-pass" ).dialog( "open" );
+		</script>
+		
+		<?
 	global $tof_usuarios_sistema;
-	
+	$email = $_POST['email_recu'];
     $name_tpl="gracias-comentario.htm";
 	$t = new Template("modulos/productos/templates", "remove");
 	$t->set_file("pl", $name_tpl);
@@ -1057,11 +1064,12 @@ function recuperar_password($email){
 	}
 	else
 	{
+	
 		?>
 		<script language="JavaScript" type="text/javascript">
-			alert("Error: El mail ingresado no corresponde a un usuario registrado previamente");	
-			history.back(1);
+			$( "#dialog-modal1" ).dialog();
 		</script>
+		
 		<?
 	}	
 	
