@@ -32,7 +32,7 @@ $cant_fotos_home=6;
 
 
 $urlSite="http://prod.campo-vende.com.ar";
-       
+$emailSite="alejandro_doglioli@hotmail.com";
 $lang="es";
 $charset="ISO-8859-1";
 
@@ -67,4 +67,5 @@ $tof_configuracion="configuracion";
 $tof_feeds="feeds";
 $tof_feedsxidioma="feedsxidioma";
 $tof_usuarios_sistema="usuarios_sistema";
+$tof_tipousuario="tipousuario";
 ?>

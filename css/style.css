@@ -1122,3 +1122,6 @@ ol#pagination li.next {
     cursor: default;
     background-position: 0 -96px;
 }
+
+#formRegistrarse ul {width:100%;list-style:none}
+#formRegistrarse ul li {width:48%;float:left;}
