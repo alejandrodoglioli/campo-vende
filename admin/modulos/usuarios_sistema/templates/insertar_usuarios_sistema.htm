@@ -107,7 +107,7 @@
                   <td width="100%" class="center" style="background-color:#FFFFCC">
 				  	<table>
 						<tr>
-							<td bgcolor="#00FFFF"> Nombre Usuarirrro</td>
+							<td> Nombre Usuario</td>
 							<td><input id="nombre_usuario" name="nombre_usuario" type="text"/></td>
 						</tr>
 						<tr>
@@ -139,11 +139,11 @@
 							<td><input id="provincia_usuario" name="provincia_usuario" type="text" /></td>
 						</tr>
 						<tr>
-							<td>CÃ³digo Postal</td>
+							<td>Código Postal</td>
 							<td><input id="cp_usuario" name="cp_usuario" type="text" /></td>
 						</tr>
 						<tr>
-							<td>TelÃ©fono</td>
+							<td>Teléfono</td>
 							<td><input id="telefono_usuario" name="telefono_usuario" type="text" /></td>
 						</tr>
 						<tr>
@@ -151,8 +151,16 @@
 							<td><input id="celular_usuario" name="celular_usuario" type="text" /></td>
 						</tr>
 						<tr>
-							<td>Es Comercio?</td>
-							<td><input id="es_comercio_usuario" name="es_comercio_usuario" type="checkbox"  /></td>
+							<td>Tipo usuario</td>
+							<td>
+							
+								<select name="tipousuario" id="tipousuario">
+									<option value="0">Sin Tipo Usuario</option>
+									<!-- BEGIN block_tipousuario -->
+									<option value="{id_tipousuario}" style="color:{color}">{tipousuario}</option>
+									<!-- END block_tipousuario -->
+								</select>
+							</td>
 						</tr>
 						<tr>
 						 <td><input type="submit" value="Aceptar" /></td>
@@ -162,8 +170,8 @@
                 </td>
 			</tr>
 			</form>
-		   
       </table>
+
 	  </div>
   <!-- InstanceEndEditable -->
   

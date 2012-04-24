@@ -147,8 +147,16 @@
 							<td><input id="celular_usuario" name="celular_usuario" type="text" value="{celular_usuario}" /></td>
 						</tr>
 						<tr>
-							<td>Es Comercio?</td>
-							<td><input id="es_comercio_usuario" name="es_comercio_usuario" type="checkbox" {es_comercio_usuario} /></td>
+							<td>Tipo usuario</td>
+							<td>
+								<select name="tipousuario" id="tipousuario">
+									<option value="0">Sin Tipo Usuario</option>
+									<!-- BEGIN block_tipousuario -->
+									<option value="{id_tipousuario}" style="color:{color}" {selected_tipousuario}>{tipousuario}</option>
+									<!-- END block_tipousuario -->
+								</select>
+							</td>
+						</tr>
 						</tr>
 						<tr>
 						 <td><input type="submit" value="Aceptar" /></td>
@@ -158,7 +166,6 @@
                 </td>
 			</tr>
 			</form>
-			</
 			<!-- END block_usuarios_sistema -->
             
       </table>
