@@ -144,7 +144,7 @@ function mostrar_producto(){
 		$id_secc=$id_seccion;
 		$t->set_var("id_producto",$id_secc);
 
-		$result=mysql_query("select si.*,s.id_seccion,s.id_usuario,s.video from ".$tof_productos." s join ".$tof_productosxidioma." si on (s.id=si.id) where si.id=".$id_producto." and si.idioma='".$idioma."'");
+		$result=mysql_query("select si.*,s.id_seccion,s.id_usuario,s.video,s.precio from ".$tof_productos." s join ".$tof_productosxidioma." si on (s.id=si.id) where si.id=".$id_producto." and si.idioma='".$idioma."'");
 		$row=mysql_fetch_array($result);
 
 		$result1=mysql_query("select si.*,s.id_padre,s.video from ".$tof_secciones." s join ".$tof_seccionesxidioma." si on (s.id=si.id) where si.id=".$id_secc." and si.idioma='".$idioma."'");
@@ -160,7 +160,7 @@ function mostrar_producto(){
 			Header( "Location: /".$url_real);
 		}
 
-		$resultOtrosproductos=mysql_query("select si.*,s.video from ".$tof_productos." s join ".$tof_productosxidioma." si on (s.id=si.id) where (s.id_seccion=".$id_seccion." or s.id_usuario=".$row['id_usuario'].") and s.id <> ".$id_producto." and si.idioma='".$idioma."'");
+		$resultOtrosproductos=mysql_query("select si.*,s.video,s.precio from ".$tof_productos." s join ".$tof_productosxidioma." si on (s.id=si.id) where (s.id_seccion=".$id_seccion." or s.id_usuario=".$row['id_usuario'].") and s.id <> ".$id_producto." and si.idioma='".$idioma."'");
 
 		$t->set_block("pl","b_productos","_b_productos");
 		while($rowOtrosproductos=mysql_fetch_array($resultOtrosproductos)){
@@ -228,6 +228,8 @@ function mostrar_producto(){
 	$t->set_var("id_producto", $id_producto);
 	$t->set_var("titulo", $row[nombre]);
 	$t->set_var("contenido", $row[contenido]);
+	if (isset($row[precio]) && ($row[precio]!=0))
+		$t->set_var("precio", "Precio: $ ".$row[precio]);
 	//$t->set_var("imagen_producto", '<p style="width:30%;float:left"><a href="/'.$idioma.'/'.strtolower(sacar_acentos(str_replace(" ","-" ,$row[nombre]))).'/'.strtolower(sacar_acentos(str_replace(" ","-" ,$row1[nombre])))."-".$row[id]."-".$row1[id].'.htm" ><img src="/images/productos/_P1030880.JPG" alt="'.$rowimagen[nombre].'" width="150" height="150"/></a></p>');
 
 

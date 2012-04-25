@@ -172,7 +172,7 @@ function insertar_productos_ok(){
 	global $tof_productos, $tof_productosxidioma,$tof_idioma,$tof_imagenesxproductos,$path_images,$path_galeria_productos,$id_usuario;
 	
 	
-	global $publicado,$orden, $nombre_padre,$nombre_subseccion,$menu_lateral,$cant_imagenes,$video;
+	global $publicado,$orden, $nombre_padre,$nombre_subseccion,$menu_lateral,$cant_imagenes,$video,$precio,$destacado;
 	
 	if (isset($nombre_subseccion)and($nombre_subseccion!=0))
 		$nombre_padre=$nombre_subseccion;
@@ -181,8 +181,13 @@ function insertar_productos_ok(){
 		$publicado=1;
 	else
 		$publicado=0;
+		
+	if (isset($destacado))
+		$destacado=1;
+	else
+		$destacado=0;
 	
-	mysql_query("insert into ".$tof_productos." values('NULL',".$nombre_padre.",".$id_usuario.",".$publicado.",'".$orden."','now()','".$video."')");
+	mysql_query("insert into ".$tof_productos." values('NULL',".$nombre_padre.",".$id_usuario.",".$publicado.",'".$orden."','now()','".$video."','".$precio."',".$destacado.")");
 
 	$last_id = mysql_insert_id();
 	
@@ -310,7 +315,7 @@ function editar_productos(){
 	$t->set_block("pl","block_idiomas1","_block_idiomas1");	
 	while($row=mysql_fetch_array($result)){
 	
-		$resultProducto=mysql_query("select si.*,s.publicado,s.video,s.id_usuario from ".$tof_productos." s join ".$tof_productosxidioma." si on (s.id=si.id) where s.id=".$id_producto." and si.idioma='".$row[idioma]."'");
+		$resultProducto=mysql_query("select si.*,s.publicado,s.video,s.precio,s.destacado,s.id_usuario from ".$tof_productos." s join ".$tof_productosxidioma." si on (s.id=si.id) where s.id=".$id_producto." and si.idioma='".$row[idioma]."'");
 		
 		if (mysql_num_rows($resultProducto)){
 
@@ -339,7 +344,7 @@ function editar_productos(){
 		}
 	}
 	
-	$result1=mysql_query("select se.id,se.id_padre,p.id_seccion,p.video,p.orden,p.publicado from ".$tof_secciones." se join ".$tof_productos." p on (p.id_seccion=se.id) where p.id=".$id_producto);
+	$result1=mysql_query("select se.id,se.id_padre,p.id_seccion,p.video,p.orden,p.publicado,p.precio,p.destacado from ".$tof_secciones." se join ".$tof_productos." p on (p.id_seccion=se.id) where p.id=".$id_producto);
 	$row1=mysql_fetch_array($result1);
 		
 	$result4=mysql_query("select se.* from ".$tof_secciones." se where se.id=".$row1[id_padre]);
@@ -349,10 +354,17 @@ function editar_productos(){
 		$publicado='checked';
 	else
 		$publicado='';
+
+	if($row1[destacado]==1)
+		$destacado='checked';
+	else
+		$destacado='';
 		
 	$t->set_var("publicado", $publicado);
+	$t->set_var("destacado", $destacado);
 	$t->set_var("orden", $row1[orden]);
 	$t->set_var("video", $row1[video]);
+	$t->set_var("precio", $row1[precio]);
 	$t->set_var("id_producto", $id_producto);
 
 	$t->set_block("pl","block_padre","_block_padre");	
@@ -455,7 +467,7 @@ function editar_productos(){
 }
 
 function editar_productos_ok(){
-	global $tof_productos, $tof_productosxidioma,$tof_secciones, $tof_seccionesxidioma,$tof_tipoproducto,$tof_idioma,$id_producto,$publicado,$orden,$nombre_padre,$nombre_subseccion,$tof_imagenesxproductos,$path_images,$path_galeria_productos,$cant_imagenes,$video,$tof_usuarios_sistema,$id_usuario;
+	global $tof_productos, $tof_productosxidioma,$tof_secciones, $tof_seccionesxidioma,$tof_tipoproducto,$tof_idioma,$id_producto,$publicado,$orden,$destacado,$precio,$nombre_padre,$nombre_subseccion,$tof_imagenesxproductos,$path_images,$path_galeria_productos,$cant_imagenes,$video,$tof_usuarios_sistema,$id_usuario;
 	
 	if (isset($nombre_subseccion)and($nombre_subseccion!=0))
 		$nombre_padre=$nombre_subseccion;
@@ -465,11 +477,16 @@ function editar_productos_ok(){
 	else
 		$publicado=0;
 		
+	if (isset($destacado))
+		$destacado=1;
+	else
+		$destacado=0;
+		
 	if (isset($orden))
-		mysql_query("update ".$tof_productos." set publicado=".$publicado.", id_seccion=".$nombre_padre.",id_usuario=".$id_usuario.",orden='".$orden."',video='".$video."' where id=".$id_producto);
+		mysql_query("update ".$tof_productos." set publicado=".$publicado.", id_seccion=".$nombre_padre.",id_usuario=".$id_usuario.",orden='".$orden."',video='".$video."',precio='".$precio."',destacado=".$destacado." where id=".$id_producto);
 		
 	else
-		mysql_query("update ".$tof_productos." set publicado=".$publicado.",id_seccion=".$nombre_padre.",id_usuario=".$id_usuario.",video='".$video."' where id=".$id_producto);
+		mysql_query("update ".$tof_productos." set publicado=".$publicado.",id_seccion=".$nombre_padre.",id_usuario=".$id_usuario.",video='".$video."',precio='".$precio."',destacado=".$destacado." where id=".$id_producto);
 		
 
 	$result=mysql_query("select idioma, nombre from ".$tof_idioma." where publicado=1");
@@ -599,7 +616,7 @@ setearVariablesComunes(&$t);
 	$t->set_var("title", "Eliminar producto");
 	$t->set_var("categoria_modulo", "productos");
 
-	$result=mysql_query("select si.*,s.publicado,s.fecha_publicacion from ".$tof_productos." s join ".$tof_productosxidioma." si on (s.id=si.id) where s.id=".$id_producto);
+	$result=mysql_query("select si.*,s.publicado,s.destacado,s.precio,s.fecha_publicacion from ".$tof_productos." s join ".$tof_productosxidioma." si on (s.id=si.id) where s.id=".$id_producto);
 	
 	$row=mysql_fetch_array($result);
     if($row[publicado]==1)
@@ -607,9 +624,16 @@ setearVariablesComunes(&$t);
 	else
 		$publicado="No";
 		
+	if($row[destacado]==1)
+		$destacado="Si";
+	else
+		$destacado="No";
+		
 	$t->set_var("nombre_producto",$row[nombre]);
 	$t->set_var("fecha_publicacion_producto",$row[fecha_publicacion]);
 	$t->set_var("publicado_producto",$publicado);
+	$t->set_var("destacado_producto",$destacado);
+	$t->set_var("precio_producto",$row[precio]);
 	$t->set_var("id_producto",$row[id]);
     	
 	$t->parse("MAIN", "pl");
