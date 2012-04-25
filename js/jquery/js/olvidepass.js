@@ -2,7 +2,7 @@ $(function() {
 		// a workaround for a flaw in the demo system (http://dev.jqueryui.com/ticket/4375), ignore!
 		$( "#dialog:ui-dialog" ).dialog( "destroy" );
 		
-		var email = $( "#email" ),
+		var email = $( "#email_rec" ),
 		 	
 			allFields = $( [] ).add( email ),
 			captcha = $( "#captcha" ),
