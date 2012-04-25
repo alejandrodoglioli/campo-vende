@@ -14,7 +14,7 @@
 <script type="text/javascript" src="/admin/js/fckeditor/fckeditor.js"></script>
 <script type="text/javascript" src="/admin/js/jsrsClient.js"></script>
 <script type="text/javascript" src="/admin/js/funciones_generales.js"></script>
-<script type="text/javascript" src="/include/funciones.js"></script>
+<script type="text/javascript" src="/js/funciones.js"></script>
 <script type="text/javascript">
 function pedir_subsecciones(valor){
 var id_subseccion = valor;
@@ -171,7 +171,7 @@ function parsear_subsecciones(retorno){
                   </tr>
 				 
                   <tr>
-                    <td valign="top"><span class="required">*</span>Descripci?n:</td>
+                    <td valign="top"><span class="required">*</span>Descripción:</td>
                     <td><textarea name="contenido_{lenguaje1}" id="contenido_{lenguaje1}">{contenido}</textarea>
                       </td>
                   </tr>
@@ -186,7 +186,7 @@ function parsear_subsecciones(retorno){
                     <td valign="top"><span class="required">*</span>Categor?a</td>
                     <td>
 						<select name="nombre_padre" id="nombre_padre" onChange="pedir_subsecciones(this.value);">
-							<option value="0">Sin Categor?a Padre</option>
+							<option value="0">Sin Categoría Padre</option>
 							<!-- BEGIN block_padre -->
 							<option value="{id}" style="color:{color}">{nombre_padre}</option>
 							<!-- END block_padre -->
@@ -198,12 +198,16 @@ function parsear_subsecciones(retorno){
                     <td id="subsecciones">{subsecciones}</td>
 			 </tr>
 			<tr>
-                 <td valign="top">C?digo Video:</td>
+                 <td valign="top">Precio:</td>
+                 <td><input name="precio" id="precio" value="" size="50"  /></td>
+            </tr>
+			<tr>
+                 <td valign="top">Código Video:</td>
                  <td><input name="video" id="video" value="" size="50"  /></td>
             </tr>
 			<tr>
 				 <td colspan="2">
-						<strong>Im?genes del producto</strong>
+						<strong>Imágenes del producto</strong>
 					</td>
 					</tr>
 				  <tr>
@@ -226,11 +230,15 @@ function parsear_subsecciones(retorno){
 									<td valign="top">Publicado</td>
 									<td><input name="publicado_imagen_1" id="publicado_imagen_1" value=""  type="checkbox"   /></td>
 								</tr>
+								<input name="max_productos" id="max_productos" value="{max_productos}" type="hidden" />
+								<input name="max_destacados" id="max_destacados" value="{max_destacados}" type="hidden" />
+								<input name="cant_productos" id="cant_productos" value="{cant_productos}" type="hidden" />
+								<input name="cant_destacados" id="cant_destacados" value="{cant_destacados}" type="hidden" />								
 							</table>
 							</div>
 					</td>
                   </tr>
-				  <tr><td colspan="2"><a href="#" title="Eliminar ?ltima" onClick="eliminarFoto(document.getElementById('cant_imagenes').value); return false;" style="text-decoration:underline;color:#FF0000">Eliminar ?ltima</a> - <a href="#" title="A?adir m?s fotos" onClick="addFoto(document.getElementById('cant_imagenes').value); return false;" style="text-decoration:underline;color:#FF0000">A?adir m?s Im?genes</a></td></tr>
+				  <tr><td colspan="2"><a href="#" title="Eliminar última" onClick="eliminarFoto(document.getElementById('cant_imagenes').value); return false;" style="text-decoration:underline;color:#FF0000">Eliminar última</a> - <a href="#" title="Añadir más fotos" onClick="addFoto(document.getElementById('cant_imagenes').value); return false;" style="text-decoration:underline;color:#FF0000">Añadir más Imágenes</a></td></tr>
           </table>
         </div>
 
