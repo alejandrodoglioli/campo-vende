@@ -84,7 +84,7 @@ function validarForm(){
 		error+="El email no puede estar vacio.\n";
 		}else if(!isEmailAddress(document.getElementById("email"))){
 			document.getElementById("email").className="succes";
-			error+="Ingrese una direcci�n de correo v�lida.\n";
+			error+="Ingrese una dirección de correo válida.\n";
 	}
 	
 	if (document.getElementById("comentario").value==""){
@@ -110,7 +110,7 @@ function validarFormNewsletter(){
 		error+="El email no puede estar vacio.\n";
 		}else if(!isEmailAddress(document.getElementById("email_contacto"))){
 			document.getElementById("email_contacto").className="succes";
-			error+="Ingrese una direcci�n de correo v�lida.\n";
+			error+="Ingrese una dirección de correo válida.\n";
 	}
 	
 	if (error=="")
@@ -164,11 +164,11 @@ function validarFormularioInsertarUsuario(){
 	if (document.getElementById("email_usuario").value!=""){
 		if(!isEmailAddress(document.getElementById("email_usuario"))){
 			document.getElementById("email_usuario").className="succes";
-			error+="Ingrese una direcci�n de correo v�lida.\n";
+			error+="Ingrese una dirección de correo válida.\n";
 			}
 	}else{
 			document.getElementById("email_usuario").className="succes";
-			error+="Ingrese una direcci�n de correo v�lida.\n";
+			error+="Ingrese una dirección de correo válida.\n";
 	
 	}
 
@@ -184,7 +184,7 @@ function validarFormularioInsertarUsuario(){
 	
 	if (document.getElementById("password_usuario").value!=document.getElementById("confirmar_password_usuario").value){
 		document.getElementById("confirmar_password_usuario").className="succes";
-		error+="El password no y la confirmaci�n del password son distintos.\n";
+		error+="El password no y la confirmación del password son distintos.\n";
 	}
 
 	if (error=="")
@@ -192,7 +192,7 @@ function validarFormularioInsertarUsuario(){
 	else
 		alert(error);
 }
-
+		 
 function validarFormularioInsertarProductoxusuario(){
 
 	var error="";
@@ -209,7 +209,16 @@ function validarFormularioInsertarProductoxusuario(){
 	
 	if (document.getElementById("nombre_padre").value=="0"){
 		document.getElementById("nombre_padre").className="succes";
-		error+="Debe elegir una categor�a para el producto.\n";
+		error+="Debe elegir una categoría para el producto.\n";
+	}
+	
+	/*
+	if (document.getElementById("cant_destacados").value+document.getElementById("destacado").value > document.getElementById("max_destacados").value){
+		error+="Ya tiene demasiados productos destacados. Para ampliar los servicios de campo-vende contáctenos.\n";
+	}*/
+
+	if (document.getElementById("cant_productos").value+1>document.getElementById("max_productos").value){
+		error+="Ya tiene demasiados productos cargados. Su categoría de usuario le permite cargar "+document.getElementById("max_productos").value+" como máximo. Para ampliar los servicios de campo-vende contáctenos.\n";
 	}
 
 

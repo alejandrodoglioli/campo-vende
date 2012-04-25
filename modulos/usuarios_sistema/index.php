@@ -240,7 +240,7 @@ function mostrar_usuario_sistema($id_usuario=NULL){
 }
 
 function insertar_productoxusuario(){
-	global $tof_secciones,$tof_seccionesxidioma,$tof_productos,$tof_productosxidioma,$tof_tipoproducto,$tof_usuarios_sistema,$tof_idioma,$idioma;	
+	global $tof_secciones,$tof_seccionesxidioma,$tof_productos,$tof_productosxidioma,$tof_tipoproducto,$tof_usuarios_sistema,$tof_idioma,$idioma,$tof_tipousuario;	
 
 	$id_usuario=$_SESSION['user_sistema'];
 	
@@ -304,10 +304,22 @@ function insertar_productoxusuario(){
 			$t->parse("_block_tipoproducto","block_tipoproducto",true);
 		}
 
-	$result=mysql_query("select * from ".$tof_usuarios_sistema." u where u.id=".$id_usuario);
+	$result=mysql_query("select * from ".$tof_usuarios_sistema." u left join ".$tof_tipousuario." tu on (u.id_tipousuario=tu.id) where u.id=".$id_usuario);
 	$row=mysql_fetch_array($result);
+	
+	$t->set_var("max_destacados", $row[cant_destacados]);
+	$t->set_var("max_productos", $row[cant_productos]);
+	
+	
 	$t->set_var("usuario", $row[nombre]." ".$row[apellido]);
 	$t->set_var("titulo", "Usuario");
+	
+	$result=mysql_query("select count(*) as cant_productos, sum(destacado) as cant_destacados from ".$tof_productos." where id_usuario=".$id_usuario." group by id_usuario");
+
+	$row=mysql_fetch_array($result);
+	
+	$t->set_var("cant_destacados", $row[cant_destacados]);
+	$t->set_var("cant_productos", $row[cant_productos]);
 	
 	$t->parse("MAIN", "pl");
     $t->p("MAIN");
