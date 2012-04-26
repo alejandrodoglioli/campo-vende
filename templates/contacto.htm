@@ -4,6 +4,19 @@
       <link rel="shortcut icon" href="/images/favicon.ico" >   
 <!-- InstanceBeginEditable name="doctitle" -->
 <title>{title} - {title_empresa}</title>
+
+
+<link rel="stylesheet" href="/js/jquery/css/ui-lightness/jquery-ui-1.8.17.custom.css" type="text/css" media="all" />
+<!--link media="screen" rel="stylesheet" href="/js/colorbox/colorbox.css" /-->
+
+	<!--script src="/js/colorbox/jquery.colorbox.js"></script-->
+<!-- script imagenes -->
+    <script type="text/javascript" src=" https://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.js"></script>
+    
+<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js" type="text/javascript"></script>
+<script src="http://jquery-ui.googlecode.com/svn/tags/latest/external/jquery.bgiframe-2.1.2.js" type="text/javascript"></script>
+<script src="/js/jquery/js/consulta_gral.js"></script>
+
 <!-- InstanceEndEditable -->
 
 <meta http-equiv="Content-Type" content="text/html; charset={charset}" />
@@ -116,8 +129,23 @@
 				<h1 class="title">{titulo}</h1>			
 
 				<!-- InstanceBeginEditable name="contenido" -->
-						
-						<p>Para contactar con <b>{empresa}</b> envie un mail a <a href="mailto:{mail_empresa}" title="{mail_empresa}">{mail_empresa}</a> o complete el siguiente formulario:</p>
+	       		
+<div id="dialog-form" title="Envie su consulta o comentario">
+	<p class="validateTips">Todos los campos son requeridos.</p>
+<form id="formComentario"  enctype="multipart/form-data" method="post" action="/{idioma}/gracias-comentario-producto.htm">
+								<input id="id_producto" name="id_producto" type="hidden" value="{id_producto}" />
+								<input id="captcha_texto_session" name="captcha_texto_session" type="hidden" value="{captcha_texto_session}" />
+
+								<p>{traduccion_nombre}:<input id="nombre" name="nombre" type="text" value="" size="50" /></p>
+								<p>{traduccion_email}:<br /><input id="email" name="email"  type="text" value="" size="50" /></p>
+								<p>{traduccion_comentario}:<textarea id="comentario" name="comentario" cols="50" rows="4" ></textarea></p>
+								<p style="height:40px;">Ingrese el codigo de verificacion.
+								<br /><img src="/include/crear-imagen.php?captcha_texto={captcha_texto_session}" alt="captcha"/><br /><input name="captcha" type="text" id="captcha" size="20" onfocus="this.className=''"/></p>
+							</form>
+</div>
+                        
+              
+						<!--p>Para contactar con <b>{empresa}</b> envie un mail a <a href="mailto:{mail_empresa}" title="{mail_empresa}">{mail_empresa}</a> o complete el siguiente formulario:</p>
 						
 						
 						<form id="formcontacto" action="/{idioma}/enviar-contacto.htm"  enctype="multipart/form-data" method="post">
@@ -150,7 +178,9 @@
 							
 						  </div>
 						</div>
-						</form>
+						</form-->
+                       
+   
 						
 	<!-- InstanceEndEditable -->
 				

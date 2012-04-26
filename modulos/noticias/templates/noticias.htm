@@ -6,12 +6,29 @@
 <title>{title} - {title_empresa}</title>
 	<!-- script imagenes -->
     <link rel="stylesheet" href="/js/jquery/css/ui-lightness/jquery-ui-1.8.17.custom.css" type="text/css" media="all" />
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
-         <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js" type="text/javascript"></script>
+    
+    <script type="text/javascript" src=" https://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.js"></script>
+<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js" type="text/javascript"></script>
+        <!--script src="/js/jquery/js/alerta.js"></script-->
+       <script>
+	$(function() {
+		// a workaround for a flaw in the demo system (http://dev.jqueryui.com/ticket/4375), ignore!
+		$( "#dialog:ui-dialog" ).dialog( "destroy" );
+	
+		$( "#dialog-modal" ).dialog({
+			height: 140,
+			modal: true,
+			autoOpen: true
+		});
+	});
+	</script>
 
+<<<<<<< HEAD
         <script src="/js/jquery/js/alerta.js"></script>
 		
 
+=======
+>>>>>>> f1240cc117f408eefea7ffea1deb7e0c3f66c473
 <!-- InstanceEndEditable -->
 
 <meta http-equiv="Content-Type" content="text/html; charset={charset}" />
@@ -140,7 +157,24 @@
 						<!-- END block_paginas -->
 							<li>{siguiente}</li>
 						</ul>
+<<<<<<< HEAD
              
+=======
+
+
+
+
+<div id="dialog-modal" title="Basic modal dialog">
+	<p>Adding the modal overlay screen makes the dialog look more prominent because it dims out the page content.</p>
+</div>
+
+
+
+
+
+
+
+>>>>>>> f1240cc117f408eefea7ffea1deb7e0c3f66c473
 
 	<!-- InstanceEndEditable -->
 				
