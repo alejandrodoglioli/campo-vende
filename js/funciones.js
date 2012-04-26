@@ -149,8 +149,13 @@ var captcha_texto = captcha_texto_session;
 
 	if (error=="")
 		document.getElementById("formComentario").submit();
-	else
-		alert(error);
+	else{
+		document.getElementById("dialog").innerHTML=error;
+		$( "#dialog" ).dialog( "open" );
+			return false;
+		//alert(error);
+		
+	}
 }
 
 function validarFormularioInsertarUsuario(){
@@ -199,7 +204,7 @@ function validarFormularioInsertarProductoxusuario(){
 
 	if (document.getElementById("titulo_es").value==""){
 		document.getElementById("titulo_es").className="succes";
-		error+="El nombre no puede estar vacio.\n";
+		error+="- El nombre no puede estar vacio.<br /><br />";
 	}
 
 	/*if (document.getElementById("contenido_es").value==""){
@@ -209,7 +214,7 @@ function validarFormularioInsertarProductoxusuario(){
 	
 	if (document.getElementById("nombre_padre").value=="0"){
 		document.getElementById("nombre_padre").className="succes";
-		error+="Debe elegir una categoría para el producto.\n";
+		error+="- Debe elegir una categor&iacute;a para el producto.<br /><br />";
 	}
 	
 	/*
@@ -218,12 +223,17 @@ function validarFormularioInsertarProductoxusuario(){
 	}*/
 
 	if (document.getElementById("cant_productos").value+1>document.getElementById("max_productos").value){
-		error+="Ya tiene demasiados productos cargados. Su categoría de usuario le permite cargar "+document.getElementById("max_productos").value+" como máximo. Para ampliar los servicios de campo-vende contáctenos.\n";
+		error+="- Ya tiene demasiados productos cargados. Su categor&iacute;a de usuario le permite cargar "+document.getElementById("max_productos").value+" como m&aacute;ximo. Para ampliar los servicios de campo-vende cont&aacute;ctenos.<br />";
 	}
 
 
 	if (error=="")
 		document.getElementById("forminsertarproducto").submit();
-	else
-		alert(error);
+	else{
+		//alert(error);
+	
+		document.getElementById("dialog").innerHTML=error;
+		$( "#dialog" ).dialog( "open" );
+			return false;
+	}
 }
