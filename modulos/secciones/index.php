@@ -442,9 +442,9 @@ global $tof_secciones,$tof_seccionesxidioma,$tof_comentariosxsecciones,$tof_come
 	
 	mysql_query("insert into ".$tof_comentariosxseccionesxidioma." values(".$last_id.",'".$idioma."','".$nombre."','".$email."','".$comentario."')");
 
-	$t->set_var("titulo", "Gracias por su comentario");
-	$t->set_var("contenido", "Gracias por su comentario, el mismo ser� publicado cuando sea validado por nuestro equipo.");
-	$t->set_var("description", "Gracias por su comentario, el mismo ser� publicado cuando sea validado por nuestro equipo.");
+	$t->set_var("titulo", "Comentario enviado correctamente");
+	$t->set_var("contenido", "Gracias por contactarse con Campo-Vende.com.ar");
+	$t->set_var("description", "En caso que lo haya solicitado nuestro equipo se pondra en contacto con usted a la brevedad");
 	$t->set_var("title", "Gracias por su comentario");
 	$t->set_var("keywords", "");
 	$t->set_var("idioma", $idioma);

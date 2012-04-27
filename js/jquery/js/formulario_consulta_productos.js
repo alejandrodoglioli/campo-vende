@@ -62,13 +62,20 @@ $(function() {
 		}
 		
 
+$( "#ui-dialog " ).dialog({
+					  position: [0,1000],
+
+					   
+					   });
 		
 		$( "#dialog-form" ).dialog({
 			autoOpen: false,
 			height: 550,
 			width: 500,
 			modal: true,
-			
+			resizable: false,
+
+
 			buttons: {
 				"Enviar Comentario": function() {
 					var bValid = true;

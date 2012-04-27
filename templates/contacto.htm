@@ -16,7 +16,7 @@
 <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js" type="text/javascript"></script>
 <script src="http://jquery-ui.googlecode.com/svn/tags/latest/external/jquery.bgiframe-2.1.2.js" type="text/javascript"></script>
 <script src="/js/jquery/js/consulta_gral.js"></script>
-
+  
 <!-- InstanceEndEditable -->
 
 <meta http-equiv="Content-Type" content="text/html; charset={charset}" />
@@ -129,10 +129,13 @@
 				<h1 class="title">{titulo}</h1>			
 
 				<!-- InstanceBeginEditable name="contenido" -->
-	       		
-<div id="dialog-form" title="Envie su consulta o comentario">
+
+              
+              
+              
+    <div id="dialog-form" title="Envie su consulta o comentario">
 	<p class="validateTips">Todos los campos son requeridos.</p>
-<form id="formComentario"  enctype="multipart/form-data" method="post" action="/{idioma}/gracias-comentario-producto.htm">
+<form id="formContacto"  enctype="multipart/form-data" method="post" action="/{idioma}/gracias-consulta.htm">
 								<input id="id_producto" name="id_producto" type="hidden" value="{id_producto}" />
 								<input id="captcha_texto_session" name="captcha_texto_session" type="hidden" value="{captcha_texto_session}" />
 
@@ -143,43 +146,8 @@
 								<br /><img src="/include/crear-imagen.php?captcha_texto={captcha_texto_session}" alt="captcha"/><br /><input name="captcha" type="text" id="captcha" size="20" onfocus="this.className=''"/></p>
 							</form>
 </div>
-                        
-              
-						<!--p>Para contactar con <b>{empresa}</b> envie un mail a <a href="mailto:{mail_empresa}" title="{mail_empresa}">{mail_empresa}</a> o complete el siguiente formulario:</p>
-						
-						
-						<form id="formcontacto" action="/{idioma}/enviar-contacto.htm"  enctype="multipart/form-data" method="post">
-						
-						  <div id="contact">
-							<div class="d">
-							  <table>
-								<tr>
-								  <td>* {traduccion_nombre}:</td>
-								</tr>
-								<tr>
-								  <td><input type="text" id="nombre" name="nombre" value="" class="" size="30" onfocus="this.className=''"/>									</td>
-								</tr>
-								<tr>
-								  <td>* {traduccion_email}:</td>
-								</tr>
-								<tr>
-								  <td><input type="text" id="email" name="email" value="" class="" size="30" onfocus="this.className=''"/>									</td>
-								</tr>
-								<tr>
-								  <td>* {traduccion_comentario}:</td>
-								</tr>
-								<tr>
-								  <td><textarea  id="comentario" name="comentario" value="" class="" cols="45" rows="10" onfocus="this.className=''"></textarea></td>
-								</tr>
-								<tr>
-								<td align="right"><input type="button" value="{traduccion_enviar}" class="botonbuscar" onclick="validarForm();" /></td>
-							  </tr>
-							  </table>
-							
-						  </div>
-						</div>
-						</form-->
-                       
+
+
    
 						
 	<!-- InstanceEndEditable -->

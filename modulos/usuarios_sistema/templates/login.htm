@@ -12,6 +12,35 @@
         <script src="/js/jquery/js/formulario_registrarse.js"></script>
         <script src="/js/jquery/js/olvidepass.js"></script>
         <script src="/js/jquery/js/alerta.js"></script>
+  
+        <script>
+		function mostrar(data) {
+     $("#dialog-modal1").dialog("open");
+   }
+
+				$(document).ready(function verificar(){
+			
+			
+	        $( "#formOlvidePass" ).submit(function(){
+			 var parametros = {
+		                "mailPost1" : "mensaje1",
+		                "mailPost2" : "mensaje2"
+		        };
+	         $.ajax({
+	         data: parametros,
+	         type: "GET",
+	         dataType: "json",
+	         url: "../index.php",
+			  beforeSend: function () {
+		                        $("#inf").html("Procesando, espere por favor...");
+	         success: function(data){  mostrar(data);
+			 }
+	   });
+	  });
+	});
+
+
+		</script>
                 
         
 <!--script>
@@ -171,8 +200,7 @@
 								</div>
 					</div>	
                     
-                    
-                    
+               
                     <div id="dialog-form" title="Registrese en Campo-Vende">
 	<p class="validateTips">Complete los Campos requeridos</p>
 <form action="/index.php?action=insertar_usuarios_sistema_ok&idioma=es" method="post"  enctype="multipart/form-data" class="comments" id="formRegistrarse">	

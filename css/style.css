@@ -1127,3 +1127,10 @@ ol#pagination li.next {
 #formRegistrarse ul li {width:48%;float:left;}
 
 .precio{font-size:22px;color:#990000;}
+
+
+#borde_consulta {
+    border: 2px solid #DDDDDD;
+    width: 800px;
+    height: 600px;
+}

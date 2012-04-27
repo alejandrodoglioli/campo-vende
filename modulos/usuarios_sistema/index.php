@@ -1040,7 +1040,9 @@ function eliminarpregunta_productoxusuario_ok(){
 
 function recuperar_password($email){
 	global $tof_usuarios_sistema,$emailSite,$email_rec;
+	$mailPost = $_GET['mailPost1'];
 	
+   
     $name_tpl="gracias-comentario.htm";
 	$t = new Template("modulos/productos/templates", "remove");
 	$t->set_file("pl", $name_tpl);
@@ -1058,13 +1060,13 @@ function recuperar_password($email){
 	$result=mysql_query("select * from ".$tof_usuarios_sistema." where email='".$email_rec."'");
 	$row=mysql_fetch_array($result);
 	
-	$t->set_var("contenido", "Un mail con su password fue enviado a :".$row[email]);
+	$t->set_var("contenido", "Un mail con su password fue enviado a :".$row[$email_rec]);
 	
 	if(mysql_num_rows($result)){
 
 		$row=mysql_fetch_array($result);
-		$To= $row[email];
-		$emailto= $row[email];
+		$To= $row[$email_rec];
+		$emailto= $row[$email_rec];
 		$body = $row[password];
 		$subject = "Recuperar password Campo-Vende.com.ar";
 		
@@ -1072,12 +1074,17 @@ function recuperar_password($email){
 	else
 	{
 	
-		?>
+		/*?>
 		<script language="JavaScript" type="text/javascript">
 			$( "#dialog-modal1" ).dialog();
 		</script>
 		
-		<?
+		<?*/
+//echo "ddddd";exit;
+     $jsondata['mensaje'] = "mensaje de error";    
+      $jsondata['mensaje2'] = "mensaje de error 2";  
+     echo json_encode($jsondata);
+	
 	}	
 	
 	

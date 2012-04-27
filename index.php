@@ -22,7 +22,7 @@ if ($action == "listar_albums") {
 }elseif ($action == "mostrar_seccion") {
 	include("modulos/secciones/index.php");
     mostrar_seccion(); 
-}elseif ($action == "gracias_comentario") {
+}elseif ($action == "gracias_consulta") {
 	include("modulos/secciones/index.php");
     insertar_comentario(); 
 }elseif ($action == "mostrar_producto") {
