@@ -81,7 +81,7 @@ $(function() {
 		
 		function checkLongPassword(p){
 			if(p < 6){
-				o.addClass( "ui-state-error" );
+				p.addClass( "ui-state-error" );
 				updateTips( "La Password debe contener al menos 6 caracteres");
 				return false;
 			}

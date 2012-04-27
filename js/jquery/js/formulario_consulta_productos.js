@@ -42,7 +42,7 @@ $(function() {
 		}
 
 		function checkCaptcha(o) {
-			if ( o.val()!= captcha_texto_session.val()) {
+			if ( o.val().toLowerCase()!= captcha_texto_session.val().toLowerCase()) {
 				o.addClass( "ui-state-error" );
 				updateTips( "El captcha no coincide (respete may&uacute;sculas y min&uacute;sculas).");
 				return false;

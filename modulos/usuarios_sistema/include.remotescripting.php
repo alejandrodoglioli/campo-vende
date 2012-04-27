@@ -10,6 +10,7 @@ jsrsDispatch( "recuperarEmail" );
 function recuperarEmail($email){
 
 	global $tof_usuarios_sistema;
+	
 	/*
 	$name_tpl="error.htm";
 	$t = new Template("templates", "remove");
@@ -17,7 +18,7 @@ function recuperarEmail($email){
 	*/
 
 	$result=mysql_query("select * from ".$tof_usuarios_sistema." u where u.email='".$email."'");
-	echo "select * from ".$tof_usuarios_sistema." u where u.email='".$email."'";
+	//echo "select * from ".$tof_usuarios_sistema." u where u.email='".$email."'";
 	$row=mysql_fetch_array($result);
 
 	if (mysql_num_rows($result)<=0){

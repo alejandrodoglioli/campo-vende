@@ -251,6 +251,7 @@ function jsrsGetContextID(){
 }
 
 function jsrsExecute( rspage, callback, func, parms, visibility ){
+	
   // call a server routine from client code
   //
   // rspage      - href to asp file
@@ -264,17 +265,18 @@ function jsrsExecute( rspage, callback, func, parms, visibility ){
 
   // get context
   var contextObj = jsrsContextPool[ jsrsGetContextID() ];
+
   contextObj.callback = callback;
 
   var vis = (visibility == null)? false : visibility;
   contextObj.setVisibility( vis );
 
   if ( jsrsPOST && ((jsrsBrowser == 'IE') || (jsrsBrowser == 'MOZ'))){
-    contextObj.POST( rspage, func, parms );
+	contextObj.POST( rspage, func, parms );
+	
   } else {
     contextObj.GET( rspage, func, parms );
   }  
-  
   return contextObj.id;
 }
 

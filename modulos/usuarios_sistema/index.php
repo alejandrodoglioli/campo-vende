@@ -1040,9 +1040,7 @@ function eliminarpregunta_productoxusuario_ok(){
 
 function recuperar_password($email){
 	global $tof_usuarios_sistema,$emailSite,$email_rec;
-	$mailPost = $_GET['mailPost1'];
 	
-   
     $name_tpl="gracias-comentario.htm";
 	$t = new Template("modulos/productos/templates", "remove");
 	$t->set_file("pl", $name_tpl);
@@ -1060,7 +1058,7 @@ function recuperar_password($email){
 	$result=mysql_query("select * from ".$tof_usuarios_sistema." where email='".$email_rec."'");
 	$row=mysql_fetch_array($result);
 	
-	$t->set_var("contenido", "Un mail con su password fue enviado a :".$row[$email_rec]);
+	$t->set_var("contenido", "Un mail con su password fue enviado a: <b>".$email_rec."</b>");
 	
 	if(mysql_num_rows($result)){
 

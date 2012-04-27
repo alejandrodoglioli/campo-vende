@@ -4,7 +4,7 @@
 // jsrsServer.php - javascript remote scripting server include
 //
 // Orginal Author:  Brent Ashley [jsrs@megahuge.com]
-// PHP version   :  Sébastien Cramatte [sebastien@webeclaireur.com] 
+// PHP version   :  Sï¿½bastien Cramatte [sebastien@webeclaireur.com] 
 //		    Pierre Cailleux [cailleux@noos.fr] 
 // Date		 :  May 2001 
 // 
