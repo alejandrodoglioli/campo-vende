@@ -12,37 +12,53 @@
         <script src="/js/jquery/js/formulario_registrarse.js"></script>
         <script src="/js/jquery/js/olvidepass.js"></script>
         <script src="/js/jquery/js/alerta.js"></script>
-  
-        <script>
-		function mostrar(data) {
-     $("#dialog-modal1").dialog("open");
-   }
 
-				$(document).ready(function verificar(){
-			
-			
-	        $( "#formOlvidePass" ).submit(function(){
-			 var parametros = {
-		                "mailPost1" : "mensaje1",
-		                "mailPost2" : "mensaje2"
-		        };
-	         $.ajax({
-	         data: parametros,
-	         type: "GET",
-	         dataType: "json",
-	         url: "../index.php",
-			  beforeSend: function () {
-		                        $("#inf").html("Procesando, espere por favor...");
-	         success: function(data){  mostrar(data);
-			 }
-	   });
-	  });
+	    <script type="text/javascript" src="/admin/js/jsrsClient.js"></script>
+		
+		<script>
+
+	// increase the default animation speed to exaggerate the effect
+	$.fx.speeds._default = 1000;
+	$(function() {
+	
+		
+		$( "#dialog" ).dialog({
+			autoOpen: false,
+			show: "blind",
+			hide: "explode"
+		});
+
+		$( "#opener" ).click(function() {
+			$( "#dialog" ).dialog( "open" );
+			return false;
+		});
 	});
+	</script>
+    
+	<script>
+	function validar_email(email){
+		jsrsExecute("../../modulos/usuarios_sistema/include.remotescripting.php", parsear_error, "recuperarEmail",Array(email),true);
 
+}
 
-		</script>
-                
-        
+function parsear_error(retorno,bvalid){
+	if (retorno==1){
+	
+	  document.getElementById("emailExiste").value=retorno;
+		 return true;
+	 }else{
+	  	 //document.getElementById("dialog").innerHTML=retorno;
+    	//$( "#dialog" ).dialog( "open" );
+	  document.getElementById("emailExiste").value=retorno;
+		return false;
+	 }
+	 
+
+	 
+}
+
+	</script>    
+	
 <!--script>
 	$(function() {
 		// a workaround for a flaw in the demo system (http://dev.jqueryui.com/ticket/4375), ignore!
@@ -232,22 +248,20 @@
  <div id="dialog-form-pass" title="Recupere su password">
 	<p class="validateTips">Ingrese el mail con el que se registro a Campo-Vende</p>
 <form id="formOlvidePass"  enctype="multipart/form-data" method="post" action="/{idioma}/recuperar_password.htm">				
-								<p>Email: (*)<br/><input id="email_rec" name="email_rec"  type="text" value="" size=50" /></p>                                
+								<p>Email: (*)<br/><input id="email_rec" name="email_rec"  type="text" value="" size="50" /></p>                                
 								<p style="height:40px;">Ingrese el codigo de verificacion.
 								<br /><img src="/include/crear-imagen.php?captcha_texto={captcha_texto_session}" alt="captcha"/><br/><input name="captcha" type="text" id="captcha" size="20" onfocus="this.className=''"/></p>
+
+<input id="emailExiste" type="hidden" value="3" />
 							</form>
                             
                             
 </div>
 
 
-<button id="olvidepass" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"><span class="ui-button-text">olvide password</span></button>
 
+<button id="olvidepass" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"><span class="ui-button-text">Olvid\E9 password</span></button>
 
-
-<div id="dialog-modal1" title="ERROR">
-	<p>Adding the modal overlay screen makes the dialog look more prominent because it dims out the page content.</p>
-</div>
 
 
 	<!-- InstanceEndEditable -->

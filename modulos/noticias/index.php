@@ -1,5 +1,8 @@
 <?PHP
 function mostrar_noticias(){
+<<<<<<< HEAD
+        
+=======
 	
 	
 		?>
@@ -8,6 +11,7 @@ function mostrar_noticias(){
 		</script>
 		<?
 	
+>>>>>>> f1240cc117f408eefea7ffea1deb7e0c3f66c473
 	global $tof_noticias,$tof_noticiasxidioma,$tof_modulos,$tof_imagenesxnoticias,$tof_modulosxidioma,$idioma,$pagina,$noticias_per_page;
 	$name_tpl="noticias.htm";
 	$t = new Template("modulos/noticias/templates", "remove");
