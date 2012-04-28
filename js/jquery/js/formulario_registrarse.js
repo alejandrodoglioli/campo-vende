@@ -94,7 +94,7 @@ $(function() {
 		
 		$( "#dialog-form" ).dialog({
 			autoOpen: false,
-			height: 480,
+			height: 490,
 			width: 700,
 			modal: true,
 			

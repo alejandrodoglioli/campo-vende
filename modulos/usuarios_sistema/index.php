@@ -2,7 +2,7 @@
 
 function caracter_aleatorio() {
 	mt_srand((double)microtime()*1000000);
-	$valor_aleatorio = mt_rand(1,3);
+	$valor_aleatorio = mt_rand(1,2);
 	switch ($valor_aleatorio) {
 		case 1:
 			$valor_aleatorio = mt_rand(97, 122);
@@ -10,9 +10,9 @@ function caracter_aleatorio() {
 		case 2:
 			$valor_aleatorio = mt_rand(48, 57);
 			break;
-		case 3:
+	/*	case 3:
 			$valor_aleatorio = mt_rand(65, 90);
-			break;
+			break;*/
 	}
 	return chr($valor_aleatorio);
 }
@@ -1041,9 +1041,9 @@ function eliminarpregunta_productoxusuario_ok(){
 }
 
 
-function recuperar_password($email){
-	global $tof_usuarios_sistema,$emailSite,$email_rec;
-	
+function recuperar_password(){
+	global $tof_usuarios_sistema,$emailSite,$email_rec,$urlSite;
+
     $name_tpl="gracias-comentario.htm";
 	$t = new Template("modulos/productos/templates", "remove");
 	$t->set_file("pl", $name_tpl);
@@ -1058,36 +1058,40 @@ function recuperar_password($email){
 	$From = $emailSite;
 	$FromName = "Campo Vende";
 			
-	$result=mysql_query("select * from ".$tof_usuarios_sistema." where email='".$email_rec."'");
-	$row=mysql_fetch_array($result);
-	
 	$t->set_var("contenido", "Un mail con su password fue enviado a: <b>".$email_rec."</b>");
-	
+	$result=mysql_query("select * from ".$tof_usuarios_sistema." where email='".$email_rec."'");
+
+
 	if(mysql_num_rows($result)){
 
 		$row=mysql_fetch_array($result);
-		$To= $row[$email_rec];
-		$emailto= $row[$email_rec];
+		$To= $email_rec;
+		$emailto= $email_rec;
 		$body = $row[password];
 		$subject = "Recuperar password Campo-Vende.com.ar";
 		
+		$name_tpl_email="plantilla-email.htm";
+		$t_email = new Template("templates", "remove");
+	    $t_email->set_file("pl", $name_tpl_email);
+		$contenido = "Sr/a ".$row[nombre]." ".$row[apellido].":<br /> Su email para su cuenta de email <b>".$email_rec."</b> es: <b class='red'>".$row[password]."</b>.";
+		$t_email->set_var("contenido", $contenido);
+		$t_email->set_var("empresa", $urlSite);
+		
+		
+		setearVariablesComunes(&$t_email);
+				
+		$body = $t_email->parse("MAIN", "pl");
+			
 	}
 	else
 	{
-	
-		/*?>
+		?>
 		<script language="JavaScript" type="text/javascript">
 			$( "#dialog-modal1" ).dialog();
 		</script>
 		
-		<?*/
-//echo "ddddd";exit;
-     $jsondata['mensaje'] = "mensaje de error";    
-      $jsondata['mensaje2'] = "mensaje de error 2";  
-     echo json_encode($jsondata);
-	
+		<?
 	}	
-	
 	
 	$resultado=enviar_email($From,$FromName,$To,$body,$subject,$emailto);
 	if($resultado==0){

@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
+<title>Aviso - {empresa}</title>
+
+<style type="text/css">
+body {
+    color: #5A554E;
+    font-family: Georgia,"Times New Roman",Times,serif;
+    font-size: 14px;
+}
+
+#wrapper {
+    margin-top: 30px;
+    padding: 0;
+}
+
+#page {
+    background: none repeat scroll 0 0 #FFFFFF;
+    margin: 0 auto;
+    padding: 0 10px 0 0;
+    width: 980px;
+}
+
+#content {
+    
+    width: 980px;
+}
+#header-frontend {
+    border-bottom: 3px solid #000099;
+    margin: 0 auto;
+    padding: 0;
+    width: 1000px;
+}
+
+#contenedorlinksuperior {
+    background-color:#000066;
+    background-repeat: repeat-x;
+    position: fixed;
+    top: 0;
+    width: 100%;
+	color:#FFFFFF
+}
+
+#contenedorlinksuperior  a{ color:#FFFFFF}
+
+#linksuperior {
+    height: 25px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+#linksuperior ul {
+    color: #FFFFFF;
+    float: right;
+    font-size: 12px;
+    list-style: none outside none;
+    padding: 0 15px;
+    text-align: right;
+    width: 95%;
+}
+
+#footer-content {
+    border-top: 3px solid #000099;
+    color: #82A2B9;
+    font-size: 12px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+#footer-content .column1 {
+    float: left;
+    width: 300px;
+}
+
+#footer-content .column2 {
+    float: right;
+    padding-top: 5px;
+    width: 273px;
+}
+
+p, ul, ol {
+    font-family: "Trebuchet MS",Georgia,"Times New Roman",Times,serif;
+    line-height: 200%;
+    margin-top: 0;
+}
+
+#linksuperior ul {
+    color: #FFFFFF;
+    float: right;
+    font-size: 12px;
+    list-style: none outside none;
+    padding: 0 15px;
+    text-align: right;
+    width: 970px;
+}
+
+ul, ol {
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
+}
+
+p, ul, ol {
+    font-family: "Trebuchet MS",Georgia,"Times New Roman",Times,serif;
+    line-height: 200%;
+    margin-top: 0;
+}
+
+.red{color:#FF0000;}
+</style>
+</head>
+
+<body>
+<div id="contenedorlinksuperior">
+	<div id="linksuperior">
+		<ul>
+			<li><a href="{empresa}" title="{empresa}">Ir a {empresa}</a></li>
+			<li> | </li>
+			<li>{link_login_salir}</li>
+		</ul>
+   
+	</div>
+</div>
+<div id="wrapper">
+	<div id="header-frontend">
+	  <div id="logo"> 
+			<b><a href="{empresa}" title="{empresa}"><img src="http://www.campo-vende.com.ar/images/logootro.jpg" alt="Campo-Vende" width="190" height="150" /></a></b>
+		</div>
+		<div style="clear:both"></div>	
+	</div>
+
+	<div id="page">
+		<div id="content" style="width:100%;">
+			{contenido}
+		</div>
+		
+		<div style="clear: both;">&nbsp;</div>
+			
+			</div>
+	</div>
+	<!-- end #page -->
+
+<div id="footer-content">
+	<div class="column1">
+    
+		<p id="copyright">{traduccion_copyright} <br />	{traduccion_disenadopor} <a href="http://www.alejandro-doglioli.com.ar/">Alejandro Doglioli</a></p>
+	</div>
+	<div class="column2">
+    
+	</div>
+</div>
+
+</body>
+</html>
