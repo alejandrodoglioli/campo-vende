@@ -32,9 +32,18 @@
 			tips = $( ".validateTips" );
 			
 	function validarusuario(email){
-	    id = jsrsExecute("../../modulos/usuarios_sistema/include.remotescriptinglogin.php", parsear_error, "recuperarEmail",email.val(),true);
+	    id = jsrsExecute("../../modulos/usuarios_sistema/include/include.remotescriptinglogin.php", parsear_error, "recuperarEmail",email.val(),true);
     }
 
+	function parsear_error(retorno){
+		if (retorno==1){
+			 existe = true;		
+		 }else{
+			existe = false;
+		 }
+		validartodo(existe);
+		}
+		
 	function checkmailvalid(valido,o){
 
 		if(!valido){
@@ -64,17 +73,6 @@
 				}		
 		}	
 	
-
-	function parsear_error(retorno){
-
-		if (retorno==1){
-			 existe = true;		
-		 }else{
-			existe = false;
-		 }
-		validartodo(existe);
-		}
-
 
 		function updateTips( t ) {
 			tips
