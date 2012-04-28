@@ -143,7 +143,7 @@ function insertar_usuarios_sistema_ok(){
 }
 
 function mostrar_usuario_sistema($id_usuario=NULL){
-	global $tof_usuarios_sistema,$tof_productos,$tof_productosxidioma,$tof_secciones,$tof_seccionesxidioma,$idioma,$row_per_page,$inicio;
+	global $tof_usuarios_sistema,$tof_productos,$tof_productosxidioma,$tof_secciones,$tof_seccionesxidioma,$idioma,$row_per_page,$inicio,$tof_imagenesxproductos;
 
 	$name_tpl="listar_productosxusuario.htm";
 	$t = new Template("./modulos/usuarios_sistema/templates", "remove");
@@ -174,18 +174,19 @@ function mostrar_usuario_sistema($id_usuario=NULL){
 		$filtro=" and se.id=".$id_seccion;
 	else
 		$filtro="";
-	
-	$result=mysql_query("select si.*,s.publicado,s.id_seccion,se.nombre as nombre_seccion from ".$tof_productos." s join ".$tof_productosxidioma." si on (s.id=si.id) join ".$tof_seccionesxidioma." se on (se.id=s.id_seccion) and si.idioma='".$idioma."' and se.idioma='".$idioma."' and s.id_usuario=".$id_usuario.$filtro." order by nombre limit ".$inicio.",".$row_per_page);
-	$resultcant=mysql_query("select count(*) as cant from ".$tof_productos." s join ".$tof_productosxidioma." si on (s.id=si.id) join ".$tof_seccionesxidioma." se on (se.id=s.id_seccion) and si.idioma='".$idioma."' and se.idioma='".$idioma."' and s.id_usuario=".$id_usuario.$filtro);
+		$result=mysql_query("select ip.nombre as nombreimagen,ip.path,si.*,s.publicado,s.id_seccion,se.nombre as nombre_seccion from ".$tof_productos." s join ".$tof_productosxidioma." si on (s.id=si.id) join ".$tof_seccionesxidioma." se on (se.id=s.id_seccion) and si.idioma='".$idioma."' and se.idioma='".$idioma."' and s.id_usuario=".$id_usuario.$filtro." left join ".$tof_imagenesxproductos." ip on(ip.id_producto=si.id) order by nombre limit ".$inicio.",".$row_per_page);
+		$resultcant=mysql_query("select count(*) as cant from ".$tof_productos." s join ".$tof_productosxidioma." si on (s.id=si.id) join ".$tof_seccionesxidioma." se on (se.id=s.id_seccion) and si.idioma='".$idioma."' and se.idioma='".$idioma."' and s.id_usuario=".$id_usuario.$filtro);
 		
 	$t->set_block("pl","block_productos","_block_productos");	
     while($row=mysql_fetch_array($result))
     {
-      $t->set_var("nombre_producto",$row[nombre]);
-      $t->set_var("publicado_producto",$row[publicado]);
-	  $t->set_var("nombre_padre",$row[nombre_seccion]);
-      $t->set_var("id_producto",$row[id]);
-		
+      $t->set_var("nombre_producto",$row['nombre']);
+      $t->set_var("publicado_producto",$row['publicado']);
+	  $t->set_var("nombre_padre",$row['nombre_seccion']);
+      $t->set_var("id_producto",$row['id']);
+      $t->set_var("imagen_src",$row['path']);
+	  $t->set_var("imagen_nombre",$row['nombreimagen']);
+			
       $t->parse("_block_productos","block_productos",true);
     }
 
@@ -320,6 +321,8 @@ function insertar_productoxusuario(){
 	
 	$t->set_var("cant_destacados", $row[cant_destacados]);
 	$t->set_var("cant_productos", $row[cant_productos]);
+	
+
 	
 	$t->parse("MAIN", "pl");
     $t->p("MAIN");

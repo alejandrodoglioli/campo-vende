@@ -563,7 +563,7 @@ ul#menulateral li a.current,ul#menulateral li a.current:hover{background:#BAD1F8
     width: 170px;
 }
 
-#tituloUsuario {
+.tituloUsuario {
     float: left;
     font-size: 14px;
     font-weight: bold;
@@ -571,19 +571,10 @@ ul#menulateral li a.current,ul#menulateral li a.current:hover{background:#BAD1F8
     text-align: center;
     width: 100%;
 }
-#tituloUsuario .tituloUsuarioBorde {
+.tituloUsuarioBorde {
     border-bottom: 2px solid #EEE;
 }
 
-#tituloUsuarioBorde2 {
-    float: left;
-    font-size: 14px;
-    font-weight: bold;
-    padding: 5px 0 5px;
-    text-align: center;
-    width: 100%;
-    border-bottom: 2px solid #EEE;
-}
 
 #usuarioRegistrar {
 	border-color: #DDDDDD #DDDDDD #DDDDDD -moz-use-text-color;
@@ -842,6 +833,15 @@ width:300px;
     width: 350px;
 }
 
+.item_producto_user {
+    float: left;
+    font-size: 12px;
+    height: 80px;
+    margin: 5px 0;
+    padding: 10px 1px 1px;
+    width: 90%;
+}
+
 .item_producto .precio {
     font-size: 14px;
     font-weight: bold;
@@ -853,6 +853,15 @@ width:300px;
     padding: 5px 6px;
     text-align: center;
     width: 110px;
+}
+
+.item_producto_user .imagen {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #C9D6F1;
+    float: left;
+    padding: 2px 3px;
+    text-align: center;
+    width: 80px;
 }
 
 .border {
@@ -868,15 +877,6 @@ width:300px;
 #listado_productos .bordeabajo{
 float:left;
 border-bottom: 2px solid #EEE;
-}
-
-
-
-.topo{
-width:100px;
-height:100px;
-overflow:hidden;
-margin:0px auto;
 }
 
 

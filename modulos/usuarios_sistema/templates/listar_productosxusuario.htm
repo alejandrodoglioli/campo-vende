@@ -160,7 +160,7 @@
 	</form>
   </table>
 
-  <table class="list">
+  <!--table class="list">
     <tr>
             <th></th>
 
@@ -174,8 +174,7 @@
 			 <th class="left" >Publicado?</th>
               <th class="right" width="70">                Action                      </th>
           </tr>
-		  <!-- BEGIN block_productos -->
-            <tr class="row1" onmouseover="this.className='highlight'" onmouseout="this.className='row1'">
+		      <tr class="row1" onmouseover="this.className='highlight'" onmouseout="this.className='row1'">
                   <td width="30" class="center">
 				  	<a href="/admin/modulos/productos/index.php?action=editar_productos&id_producto={id_producto}"><img src="/admin/images/folder.png" /></a></td>
                         <td class="left" width="200">{nombre_producto}</td>
@@ -187,10 +186,68 @@
 							<a href="/{idioma}/listarpregunta_productoxusuario/{id_producto}"><img src="/admin/images/order.png" alt="Preguntas" title="Preguntas" /></a>
        					 </td>
                 </tr>
+			         
+      </table-->
+      <table class="list">
+    <tr>
+            <th></th>
+
+            <th class="left" width="200">                
+			<form action="/admin/index.php?controller=category&action=page" method="post" enctype="multipart/form-data" onclick="this.submit();">
+         Nombre producto                
+		  <input type="hidden" name="sort" value="cd.name" />
+        </form>
+             </th>
+			 <th class="left" width="220">Sección</th>
+			 <th class="left" >Publicado?</th>
+             <th class="right" width="90">                Opciones                      </th>
+          </tr>
+		  <!-- BEGIN block_productos -->
+         
+            <tr style="border-bottom:2px solid #DDDDDD" class="" onmouseover="this.className='highlight'" onmouseout="this.className=''" >
+             
+                  <td width="80" class="center">
+				  	<a href="/admin/modulos/productos/index.php?action=editar_productos&id_producto={id_producto}"><img style="cursor:pointer;border:none;" onerror="this.onError = null; this.src = '/images/default.jpg';" src="{imagen_src}" alt="{imagen_nombre}" height="75" width="75" /></a></td>
+                        <td class="left" width="200">{nombre_producto}</td>
+						<td class="left" width="250">{nombre_padre}</td>
+						<td class="left" >{publicado_producto}</td>
+                         <td class="right">
+							<a href="/{idioma}/editar_productoxusuario/{id_producto}"><img src="/admin/images/update.png" alt="Actualizar" title="Actualizar" /></a>
+                			<a href="/{idioma}/eliminar_productoxusuario/{id_producto}"><img src="/admin/images/delete.png" alt="Borrar" title="Borrar" /></a>
+							<a href="/{idioma}/listarpregunta_productoxusuario/{id_producto}"><img src="/admin/images/order.png" alt="Preguntas" title="Preguntas" /></a>
+       					 </td>
+                         
+                
+                </tr>
+                
+               
 			<!-- END block_productos -->
 			         
       </table>
+	
 	  </div>
+      
+      
+              <div id="listado_productos">
+	             <!-- BEGIN b_productos -->
+             	 <div class="bordeabajo">
+              		<div class= "item_producto_user border">
+              			<p class="imagen">
+                        
+                        <a href="{imagen_src}"  rel="opendialog"><img style="cursor:pointer;border:none;" onerror="this.onError = null; this.src = '/images/default.jpg';" src="{imagen_src}" alt="{imagen_nombre}" height="100" width="100" /></a></p>
+                        
+                			
+              			</p>
+                        
+              			<div class="descripcion">
+              				<p><strong><a href="/{idioma}/{categoria}{subcategoria}{id_categoria}{id_subcategoria}{producto}{id_producto}.htm">{anchor}:</a></strong></p>
+              				{traduccion_productos} {contenido_producto}
+              				<p class="precio">Precio: xxx</p>
+              			</div>
+              		</div>
+              	</div>
+				<!-- END b_productos -->
+              </div>  
 	<!-- InstanceEndEditable -->
 				
 				<!-- InstanceBeginEditable name="noticias" --><!-- InstanceEndEditable -->
