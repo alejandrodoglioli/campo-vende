@@ -498,6 +498,7 @@ ul.paginado li a.selected_pagina {text-decoration:none;color:#666666;}
 .botonbuscar{cursor:pointer;background-image:url(../images/fondobarraarriba.jpg);width:80px;color:#FFF;font-weight:bold}
 /*.boton,.boton:focus{cursor:pointer;background-image:url(/images/fondobarraarriba.jpg);color:#FFF;size:auto;font-weight:bold;text-align:center;vertical-align:middle}*/
 .boton,.boton:focus{cursor:pointer;background-image:url(/images/fondobarraarriba.jpg);color:#FFF;width:80px;font-weight:bold}
+.botongrande{cursor:pointer;background-image:url(/images/fondobarraarriba.jpg);color:#FFF;width:120px;font-weight:bold}
 .boton a{cursor:pointer;background-image:url(/images/fondobarraarriba.jpg);color:#FFF;width:80px;font-weight:bold}
 input, input:focus, input:visited {border:1px solid #cedeef;background-color:#ececec;}
 .succes{background-color:#FFFF99;border:1px solid #ff0000;}
@@ -527,10 +528,78 @@ ul#menulateral li a:hover{background:#BAD1F8 url("/images/vert-one_arrow.gif") n
 ul#menulateral li a.current,ul#menulateral li a.current:hover{background:#BAD1F8 url("images/vert-one_arrow.gif") no-repeat 0 13px;}
 
 /*USUARIOS*/
-#usuario{width:100%;}
+#cuerpoIngreso {
+    margin-left:10px;
+    text-align: center;
+    background-image:url(/images/sombra.jpg);
+    background-repeat:repeat-x;
+    float:left;
+    border: 1px solid #DDDDDD;
+    padding: 10px;
+	width:75%;
+}
+
+#usuarioLogin {
+	border: 1px solid #DDDDDD;
+    float: left;
+    height: 170px;
+    width: 69%;
+}
+#usuarioLogin .linea {
+    float: left;
+    font-size: 12px;
+    width: 100%;
+}
+
+#usuarioLogin .linea label {
+    float: left;
+    font-weight: bold;
+    padding-right: 15px;
+    text-align: right;
+    width: 114px;
+}
+#usuarioLogin .linea input { 
+    float: left;
+    width: 170px;
+}
+
+#tituloUsuario {
+    float: left;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 5px 0 5px;
+    text-align: center;
+    width: 100%;
+}
+#tituloUsuario .tituloUsuarioBorde {
+    border-bottom: 2px solid #EEE;
+}
+
+#tituloUsuarioBorde2 {
+    float: left;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 5px 0 5px;
+    text-align: center;
+    width: 100%;
+    border-bottom: 2px solid #EEE;
+}
+
+#usuarioRegistrar {
+	border-color: #DDDDDD #DDDDDD #DDDDDD -moz-use-text-color;
+    border-style: solid solid solid none;
+    border-width: 1px 1px 1px 0;
+    float: right;
+    height: 170px;
+    width: 30%;
+}
 #usuario .login{float:left;margin-right:10px;padding:10px;}
 .left{float:left}
 
+
+
+
+/*FIN USUARIOS*/
 
 
 

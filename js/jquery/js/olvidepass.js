@@ -108,7 +108,7 @@ $(function() {
 		});
 
 		$( "#olvidepass" )
-			.button()
+			
 			.click(function() {
 				$( "#dialog-form-pass" ).dialog( "open" );
 			});
