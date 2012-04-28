@@ -21,7 +21,7 @@ function recuperarEmail($email){
 		//$t->set_var("error", "NO existe un usuario con ese email, pruebe de nuevo.");
 		return 0;
 	}else{
-		return 1;
+		return $row['password'];
 	}
 	
 }
