@@ -10,7 +10,7 @@ $(function() {
 			
 		
 	function validar_email(email){
-	    jsrsExecute("../../modulos/usuarios_sistema/include.remotescripting.php", parsear_error, "recuperarEmail",email.val(),true);
+	    jsrsExecute("../../modulos/usuarios_sistema/include/include.remotescripting.php", parsear_error, "recuperarEmail",email.val());
     }
 	
 	function checkmailvalid(valido,o){
