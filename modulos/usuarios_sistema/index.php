@@ -265,14 +265,14 @@ function insertar_productoxusuario(){
 		$t->parse("_block_idioma","block_idioma",true);
 	}
 	
-	$result=mysql_query("select idioma, nombre from ".$tof_idioma." where publicado=1");
+/*	$result=mysql_query("select idioma, nombre from ".$tof_idioma." where publicado=1");
 	$t->set_block("pl","block_idiomas1","_block_idiomas1");	
     while($row=mysql_fetch_array($result)){
 		$t->set_var("lenguaje1", $row[idioma]);
-		$t->set_var("_block_padre","");
+		//$t->set_var("_block_padre","");
 		$t->parse("_block_idiomas1","block_idiomas1",true);
 	}
-	
+	*/
 	$result=mysql_query("select idioma, nombre from ".$tof_idioma." where publicado=1");
 	$t->set_block("pl","block_idiomas2","_block_idiomas2");	
     while($row=mysql_fetch_array($result)){
