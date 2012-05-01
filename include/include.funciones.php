@@ -224,10 +224,10 @@ function setearVariablesComunes(&$t){
 	
 	if(isset($_SESSION[nombre_user_sistema])){
 		$t->set_var("usuario_logueado", $_SESSION[nombre_user_sistema]);
-		$t->set_var("link_login_salir",'<a href='.$urlSite.'"/es/login.htm" title="Mi Cuenta">Mi Cuenta</a> | <a href="/es/logout_productoxusuario" title="Salir">Salir</a>');
+		$t->set_var("link_login_salir",'<a href="'.$urlSite.'/es/login.htm" title="Mi Cuenta">Mi Cuenta</a> | <a href="/es/logout_productoxusuario" title="Salir">Salir</a>');
 	}else{
 		$t->set_var("usuario_logueado", "");
-		$t->set_var("link_login_salir",'<a href='.$urlSite.'"/es/login.htm" title="Login / Registrarse">Login / Registrarse</a>');
+		$t->set_var("link_login_salir",'<a href="'.$urlSite.'/es/login.htm" title="Login / Registrarse">Login / Registrarse</a>');
 	}
 	$t->set_var("empresa", $row[nombre_empresa]);
 	$t->set_var("title_empresa", strip_tags($row[nombre_empresa]));
