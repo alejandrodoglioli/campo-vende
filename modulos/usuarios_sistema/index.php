@@ -824,7 +824,6 @@ function mostrarpregunta_productoxusuario($id_producto=NULL){
 		$filtro="";
 	
 	$result=mysql_query("select pi.nombre as nombre_producto,si.*,s.publicado from ".$tof_comentariosxproductos." s join ".$tof_comentariosxproductosxidioma." si on (s.id=si.id) join ".$tof_productosxidioma." pi on (s.id_producto=pi.id) where si.idioma='".$idioma."' and s.id_producto=".$id_producto."  order by fecha_publicacion desc limit ".$inicio.",".$row_per_page);
-;
 	$resultcant=mysql_query("select count(*) as cant from ".$tof_comentariosxproductos." s join ".$tof_comentariosxproductosxidioma." si where si.idioma='".$idioma."' and s.id_producto=".$id_producto." order by fecha_publicacion");
 		
 	$t->set_block("pl","block_comentariosproductos","_block_comentariosproductos");	
@@ -835,7 +834,7 @@ function mostrarpregunta_productoxusuario($id_producto=NULL){
 	  $t->set_var("comentario",$row[comentario]);
 	  $t->set_var("respuesta",$row[respuesta]);
       $t->set_var("id_comentario",$row[id]);
-	$t->set_var("nombre_producto","Preguntas acerca de producto:".$row[nombre_producto]);	
+	  $t->set_var("nombre_producto","Preguntas acerca de producto:".$row[nombre_producto]);	
       $t->parse("_block_comentariosproductos","block_comentariosproductos",true);
     }
 

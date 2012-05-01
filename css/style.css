@@ -1203,3 +1203,73 @@ ol#pagination li.next {
     width: 800px;
     height: 600px;
 }
+
+
+
+/*PREGUNTAS*/
+
+
+#cuerpoPreguntas {
+    margin-left:10px;
+    margin-top:30px;
+    text-align: center;
+    background-image:url(/images/sombra.jpg);
+    background-repeat:repeat-x;
+    float:left;
+    border: 1px solid #DDDDDD;
+    padding: 10px;
+	width:60%%;
+}
+
+
+#cuerpoPreguntas .linea {
+    float: left;
+    font-size: 12px;
+  
+}
+.campo {
+    float: left;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 5px 0 5px;
+    text-align: left;
+    
+}
+
+#cuerpoPreguntas .titulo {
+    float: left;
+    font-size: 14px;
+    padding: 5px 0 5px;
+    text-align: center;
+    width: 100%;
+    border-bottom: 3px solid #DDDDDD;
+}
+
+#cuerpoPreguntas .contenido {
+    font-size: 14px;
+    
+    padding: 5px 0 5px;
+
+}
+
+#container .contenido {
+    font-size: 14px;
+    
+    padding: 5px 0 5px;
+
+}
+
+#container .titulo {
+    border-bottom: 2px solid #dddddd;
+    padding: 5px 0 5px;
+    margin-bottom: 20px;
+}
+
+select {
+    border: 1px solid #696969;
+    color: #655C61;
+    padding: 1px 0;
+
+}
+/*FIN PREGUNTAS*/
+

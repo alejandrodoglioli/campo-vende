@@ -133,7 +133,7 @@ function parsear_subsecciones(retorno){
 				<h1 class="title">{titulo}</h1>			
 
 				<!-- InstanceBeginEditable name="contenido" -->
-<div class="task">
+<!--div class="task">
     <div class="enabled" onmouseover="className='hover'" onmouseout="className='enabled'" onclick="location='/{idioma}/listarpregunta_productoxusuario/{id_producto}'"><img src="/admin/images/list_enabled.png" alt="Listar" />Listar</div>
     <div class="disabled"><img src="/admin/images/insert_enabled.png" alt="Insertar" />Insertar</div>
 
@@ -143,83 +143,60 @@ function parsear_subsecciones(retorno){
   <div class="disabled"><img src="/admin/images/save_disabled.png" alt="Guardar" />Guardar</div>
   <div class="disabled"><img src="/admin/images/cancel_disabled.png" alt="Cancelar" />Cancelar</div>
   <div class="enabled" onmouseover="className='hover'" onmouseout="className='enabled'" onclick="location='/{idioma}/logout_productoxusuario'"><img src="/admin/images/logout.png" alt="Salir" />Salir</div>
-</div>
-<div class="heading">{categoria_modulo}</div>
-<div class="description">You can edit your product categories here.</div>
-<div id="list">
-		<form id="forminsertarproducto" action="/{idioma}/editarpregunta_productoxusuario_ok/{id_comentario}" method="post" enctype="multipart/form-data">
-  <input type="hidden" id="id_comentario" name="id_comentario" value="{id_comentario}" />
-    <input type="hidden" id="id_producto" name="id_producto" value="{id_producto}" />
-  <div class="tab" id="tab">
-    <div class="pages">
-      <div class="page">
+</div-->
 
-        <div id="tabmini">
-          <div class="tabs">
-		  <!-- BEGIN block_idioma -->
-             <a>{nombre_idioma}</a>
-		  <!-- END block_idioma --> 
-          </div>
-		  
-          <div class="pages">
-             <!-- BEGIN block_idiomas1 -->
-			 <div class="page">
-              <div class="minipad">
-                <table>
-				  <tr>
-                    <td width="185"><span class="required">*</span> Nombre Cliente:</td>
-                    <td><input id="nombre_cliente_{lenguaje1}" name="nombre_cliente_{lenguaje1}" value="{nombre_cliente}" disabled="disabled" />
-                      </td>
-                  </tr>
-				  <tr>
-                    <td width="185"><span class="required">*</span> Email Cliente:</td>
-                    <td><input id="email_cliente_{lenguaje1}" name="email_cliente_{lenguaje1}" value="{email_cliente}" disabled="disabled" />
-                      </td>
-                  </tr>
-				  <tr>
-                    <td width="185"><span class="required">*</span> Fecha publicación:</td>
-                    <td><input id="fecha_publicacion_{lenguaje1}" name="fecha_publicacion_{lenguaje1}" value="{fecha_publicacion}" disabled="disabled" />
-                      </td>
-                  </tr>
-                  <tr>
-                    <td valign="top"><span class="required">*</span>Comentario:</td>
-                    <td><textarea name="comentario_{lenguaje1}" id="comentario_{lenguaje1}" disabled="disabled" rows="10" cols="50">{comentario}</textarea>
-                      </td>
-                  </tr>
-				  <tr>
-                    <td width="185"><span class="required">*</span> Publicado:</td>
-                    <td><input id="publicado_{lenguaje1}" name="publicado_{lenguaje1}" value="{fecha_publicacion}" disabled="disabled" type="checkbox" {publicado} />
-                      </td>
-                  </tr>
-				  
-                </table>
-              </div>
-            </div>
-			<!-- END block_idiomas1 -->
 
-			<div class="pad">
-			  <table>
-				  <tr>
-						<td valign="top"><span class="required">*</span>Respuesta:</td>
-						<td><textarea name="respuesta" id="respuesta" rows="10" cols="50">{respuesta}</textarea></td>
-				  </tr>
-			  </table>
-			</div>
-
-            </div>
-        </div>
-      </div>
-    </div>
+<div align="left"><a href= "/{idioma}/listarpregunta_productoxusuario/{id_producto}">Volver</a></div>
+<div style="width:100%">
+<div id="cuerpoPreguntas"> 
+  <div id="titulo">    
+     <h2>Responder Pregunta</h2>
   </div>
-<div style="text-align:center">
-	<input type="button" value="Aceptar" onclick="document.getElementById('forminsertarproducto').submit();" />
-	<input type="reset" value="Cancelar" onclick="history.back(-1);" />
-</div>	
   
-
+  <div id="contenido"> 
+  <div>  
+   <form id="editarPregunta" action="/{idioma}/editarpregunta_productoxusuario_ok/{id_comentario}" method="post" enctype="multipart/form-data">
+          <!-- BEGIN block_idioma -->
+          <!-- END block_idioma --> 
+          
+             <!-- BEGIN block_idiomas1 -->
+			
+              <div class="formcomentario campo">
+              
+               <table>
+              
+              					 <tr><td><p style="text-align:right">Cliente: </td><td><input id="nombre_cliente_{lenguaje1}" name="nombre_cliente_{lenguaje1}" value="{nombre_cliente}" disabled="disabled" /></p></td> </tr>
+								 <tr><td><p style="text-align:right"> Fecha publicación: <br /></td><td><input id="fecha_publicacion_{lenguaje1}" name="fecha_publicacion_{lenguaje1}" value="{fecha_publicacion}" disabled="disabled" /></p></td> </tr>
+								 <tr><td><p style="text-align:right">Pregunta: </td><td><textarea name="comentario_{lenguaje1}" id="comentario_{lenguaje1}" disabled="disabled" rows="5" cols="30">{comentario}</textarea></p></td> </tr>
+                                 <tr><td><p style="text-align:right">Respuesta: </td><td><textarea name="respuesta" id="respuesta" rows="5" cols="30" style="background-color:#FFFFFF">{respuesta}</textarea></p></td> </tr>
+							  </table>	
+            
+			<!-- END block_idiomas1 -->
+            
+              </div>
+              </div>
+      <div>
+      
+<input class="botongrande" value="Aceptar" onclick="document.getElementById('forminsertarproducto').submit();" style="text-align:center"/>
+</div>	
+ 
 </form>
 </div>
+</div>
+  </div>
   
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+
+
 	<!-- InstanceEndEditable -->
 				
 				<!-- InstanceBeginEditable name="noticias" --><!-- InstanceEndEditable -->

@@ -152,6 +152,155 @@ function parsear_subsecciones(retorno){
 				<h1 class="title">{titulo}</h1>			
 
 				<!-- InstanceBeginEditable name="contenido" -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+               
+                
+<div align="left"><a href= "/{idioma}/listarpregunta_productoxusuario/{id_producto}">Volver</a></div>
+<div style="width:100%">
+<div id="container"> 
+  <div class="titulo">    
+     <h2>Nueva Publicacion</h2>
+  </div>
+  
+  <div id="contenido"> 
+  <div>  
+   <form id="editarPregunta" action="/{idioma}/editarpregunta_productoxusuario_ok/{id_comentario}" method="post" enctype="multipart/form-data">
+          <!-- BEGIN block_idioma -->
+          <!-- END block_idioma --> 
+          
+             <!-- BEGIN block_idiomas1 -->
+			
+              <div class="formcomentario campo">
+              
+               <table>              
+              		<tr>
+                       <td width="80"><p style="text-align:right"><span class="required">*</span>Titulo:</td>
+                       <td><input id="titulo_{lenguaje1}" name="titulo_{lenguaje1}" value="" style="width:250px;" /></p></td>   
+                    </tr>
+                    
+		            <tr>
+                    	<td valign="top"><p style="text-align:right"><span class="required">*</span>Categoria</td>
+                    	<td>
+						<select name="nombre_padre" id="nombre_padre" onChange="pedir_subsecciones(this.value);" style="width:250px;">
+							<option value="0">Sin Categoría Padre</option>
+							<!-- BEGIN block_padre -->
+							<option value="{id}" style="color:{color}">{nombre_padre}</option>
+							<!-- END block_padre -->
+						</select>
+                      </td></p>
+             </tr>
+                  <tr>
+                    <td valign="top"><p style="text-align:right"><span class="required">*</span>Descripción:</td>
+                    <td><textarea name="contenido_{lenguaje1}" id="contenido_{lenguaje1}">{contenido}</textarea>
+                      </p></td>
+                  </tr>
+			 <!--tr>
+					<td valign="top">Subcategoria</td>
+                    <td id="subsecciones">{subsecciones}</td>
+			 </tr-->
+             		<tr>
+                       <td width="80"><p style="text-align:right"><span class="required">*</span>Tipo:</td>
+                       <td><select id="tipo" class="venta" name="tipo" style="width:150px;">
+							<option value="0">Nuevo</option>
+							<option value="1">Usado</option>
+							</select>
+						</p></td>   
+                    </tr>
+                    
+                    <tr>
+                       <td width="80"><p style="text-align:right">Precio:</td>
+                       <td><select id="tipo" class="venta" name="tipo">
+							<option value="0">$</option>
+							<option value="1">U$D</option>
+                            <option value="2">€</option>
+                            
+							</select>
+                            <input  name="precio" id="precio" type="text" value="" style="width:90px; ">
+						</p></td>   
+                    </tr>
+		     
+             
+		
+			<!--tr>
+                 <td valign="top">Código Video:</td>
+                 <td><input name="video" id="video" value="" size="50"  /></td>
+            </tr-->
+     
+			<tr>
+					</tr>
+				  <tr>
+				  	<td colspan="2">
+					<div id="my1Div" style=" width:80%;  padding:7px 0px; clear:both">
+						  <table cellpadding="0" cellspacing="1" border="0" style="border:1px solid #dcdcdc;padding:10px;">
+								
+								<tr>
+									<td valign="top"><p style="text-align:right">Imagen:</td>
+									<td><input name="path_imagen_1" id="path_imagen_1" value=""  type="file" size="50"/></td></p>
+								</tr>
+                                <tr>
+									<td valign="top" width="100"><p style="text-align:right">Descripcion:</td>
+									<td><input name="nombre_imagen_1" id="nombre_imagen_1" value=""  type="text" size="50"/></td></p>
+								</tr>
+								<tr>
+									<td valign="top"><p style="text-align:right">Principal?</td>
+									<td><input name="principio_imagen_1" id="principio_imagen_1" value=""  type="checkbox"/></p></td>
+								</tr>
+								<!--tr>
+									<td valign="top">Publicado</td>
+									<td><input name="publicado_imagen_1" id="publicado_imagen_1" value=""  type="checkbox"   /></td>
+								</tr-->
+								<input name="max_productos" id="max_productos" value="{max_productos}" type="hidden" />
+								<input name="max_destacados" id="max_destacados" value="{max_destacados}" type="hidden" />
+								<input name="cant_productos" id="cant_productos" value="{cant_productos}" type="hidden" />
+								<input name="cant_destacados" id="cant_destacados" value="{cant_destacados}" type="hidden" />								
+							</table>
+							</div>
+					</td>
+                  </tr>
+				  <tr><td colspan="2"><a href="#" title="Eliminar última" onClick="eliminarFoto(document.getElementById('cant_imagenes').value); return false;">Eliminar última</a> - <a href="#" title="Añadir más fotos" onClick="addFoto(document.getElementById('cant_imagenes').value); return false;">Añadir más Imágenes</a></td></tr>
+                  </table>
+			<!-- END block_idiomas1 -->
+            
+              </div>
+              </div>
+      <div>
+      
+<input class="botongrande" value="Aceptar" onclick="document.getElementById('forminsertarproducto').submit();" style="text-align:center"/>
+</div>	
+ 
+</form>
+</div>
+</div>
+  </div>                
+                
+                
+                
+                
+                
+                
+                
+                
+            
+                
+                
 <div class="task">
    <div class="enabled" onmouseover="className='hover'" onmouseout="className='enabled'" onclick="location='/{idioma}/listar_productoxusuario'"><img src="/admin/images/list_enabled.png" alt="Listar" />Listar</div>
     <div class="enabled" onmouseover="className='hover'" onmouseout="className='enabled'" onclick="location='/{idioma}/insertar_productoxusuario'"><img src="/admin/images/insert_enabled.png" alt="Insertar" />Insertar</div>

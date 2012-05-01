@@ -10,6 +10,13 @@
 <!-- InstanceBeginEditable name="head" -->
 
 <link href="/admin/css/style.css" rel="stylesheet" type="text/css">
+
+
+<link rel="stylesheet" href="/js/jquery/css/ui-lightness/jquery-ui-1.8.17.custom.css" type="text/css" media="all" />
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+        <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js" type="text/javascript"></script>
+        <script src="/js/jquery/js/responder_pregunta.js"></script>
+	  
 <!-- InstanceEndEditable -->
 
 <meta name="Keywords" content="{keywords}" />
@@ -117,7 +124,7 @@
 				<h1 class="title">{titulo}</h1>			
 
 				<!-- InstanceBeginEditable name="contenido" -->
-									<div class="task">
+									<!--div class="task">
   <div class="enabled" onmouseover="className='hover'" onmouseout="className='enabled'" onclick="location='/{idioma}/listarpregunta_productoxusuario/{id_producto}'"><img src="/admin/images/list_enabled.png" alt="listarpregunta" />Listar</div>
     <div class="disabled"><img src="/admin/images/insert_enabled.png" alt="incertarpregunta" />Incertar</div>
     <div class="disabled"><img src="/admin/images/update_disabled.png" alt="editarpregunta" />Editar</div>
@@ -128,14 +135,24 @@
   <div class="enabled" onmouseover="className='hover'" onmouseout="className='enabled'" onclick="location='/{idioma}/logout_productoxusuario'"><img src="/admin/images/logout.png" alt="Salir" />Salir</div>
 </div>
 <div class="heading">{nombre_producto}</div>
-<div class="description">You can edit your product categories here.</div>
+<div class="description">You can edit your product categories here.</div-->
+
+<div style="width:100%">
+<table style="border-bottom:3px solid #30559C;width:100%;">
+ <tr>
+  <td style="width:200px"><a href="/{idioma}/insertar_productoxusuario">Publicar Nuevo</a></td>
+  <td width="70%"> </td>
+  <td style="float:right"><a href="/{idioma}/logout_productoxusuario">Salir</a></td>
+  </tr>
+  </table>
+ 
 <div id="list">
  <table class="a">
 <form method="post" action="/{idioma}/listarpregunta_productoxusuario" id="formSearch">
 	<input type="hidden" id="action" name="action" value="{action}" />
 	<tr>
 		<td class="c">
-				Producto Padre
+				Preguntas por Producto
 				<select id="id_producto" name="id_producto" onchange="document.location.href='/{idioma}/listarpregunta_productoxusuario/'+this.value">
 					<option id="padre_todos" name="padre_todos" value="0">Todos</option>
 					<!-- BEGIN block_padre -->
@@ -149,49 +166,60 @@
 				   <!-- END block_paginas -->
              <!-- </select></td>-->
               
-      <td class="d">
-          Results {page} of {cant_pages} pages
-        </td>
-
-      <td class="e">
-          Search           <input type="input" name="search" value="" />
-        </td>
-    </tr>
+          </tr>
 	</form>
   </table>
-
+  
+ {page} de {cant_pages} paginas
   <table class="list">
     <tr>
-            <th></th>
-
-            <th class="left" width="150">                
+            <th class="center" width="200">                
 			<form action="/admin/index.php?controller=category&action=page" method="post" enctype="multipart/form-data" onclick="this.submit();">
          Nombre cliente                
 		  <input type="hidden" name="sort" value="cd.name" />
         </form>
              </th>
-			 <th class="left" width="150">Comentario</th>
-			 <th class="left" width="175">Respuesta</th>
-			 <th class="left" >Publicado?</th>
-              <th class="right" width="70">                Action                      </th>
+			 <th class="center" width="220">Comentario</th>
+			 <th class="center" width="175">Respuesta</th>
+			 <th class="center" >Publicado?</th>
+              <th class="center" width="70">                Action                      </th>
           </tr>
 		  <!-- BEGIN block_comentariosproductos -->
-            <tr class="row1" onmouseover="this.className='highlight'" onmouseout="this.className='row1'">
-                  <td width="30" class="center">
-				  	<a href="/admin/modulos/productos/index.php?action=editarpregunta_productoxusuario&id_comentario={id_comentario}"><img src="/admin/images/folder.png" /></a></td>
-                        <td class="left" width="150">{nombre_cliente}</td>
-						<td class="left" width="175">{comentario}</td>
-						<td class="left" width="175">{respuesta}</td>
-						<td class="left" >{publicado_comentario}</td>
-                         <td class="right">
-							<a href="/{idioma}/editarpregunta_productoxusuario/{id_comentario}"><img src="/admin/images/update.png" alt="Actualizar" title="Actualizar" /></a>
-                			<a href="/{idioma}/eliminarpregunta_productoxusuario/{id_comentario}"><img src="/admin/images/delete.png" alt="Borrar" title="Borrar" /></a>
+            <tr class="row1" onmouseover="this.className='highlight'" onmouseout="this.className='row1'" height="75">
+                        <td class="center" width="150">{nombre_cliente}</td>
+						<td class="center" width="175">{comentario}</td>
+						<td class="center" width="175">{respuesta}</td>
+						<td class="center" >{publicado_comentario}</td>
+                         <td class="center">
+							<a href="/{idioma}/editarpregunta_productoxusuario/{id_comentario}"><img src="/admin/images/nedit.png" alt="Editar" title="Editar" /></a>                           
+                			<a href="/{idioma}/eliminarpregunta_productoxusuario/{id_comentario}"><img src="/admin/images/ndelete.png" alt="Borrar" title="Borrar" /></a>
 						 </td>
                 </tr>
 			<!-- END block_comentariosproductos -->
 			         
       </table>
 	  </div>
+      
+      
+      
+      
+      
+      <!--div id="dialog-form" title="Responder Pregunta">
+	<p class="validateTips">Complete los Campos requeridos</p>
+<form action="/{idioma}/editarpregunta_productoxusuario_ok/{id_comentario}" method="post"  enctype="multipart/form-data" class="comments" id="responderPregunta">	
+								<ul>
+									<li>Usuario:<br/><input id="nombre_cliente" name="nombre_cliente" value="{nombre_cliente}" disabled="disabled" /></li>
+									<li>Fecha Publicacion:<br/><input id="fecha_publicacion" name="fecha_publicacion" value="{fecha_publicacion}" disabled="disabled" /></li>								
+									<li>Pregunta:<br/><textarea name="pregunta_cliente" id="pregunta_cliente" disabled="disabled" rows="10" cols="50">{comentario}</textarea></li>
+									<li>Respuesta:<br/><textarea name="respuesta_usuario" id="respuesta_usuario" rows="10" cols="50">{respuesta}</textarea></li>							
+								</ul>
+					  </form>                                                        
+</div-->
+      
+      
+      
+      
+      </div>
 	<!-- InstanceEndEditable -->
 				
 				<!-- InstanceBeginEditable name="noticias" --><!-- InstanceEndEditable -->
