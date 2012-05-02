@@ -241,7 +241,7 @@ function mostrar_usuario_sistema($id_usuario=NULL){
 }
 
 function insertar_productoxusuario(){
-	global $tof_secciones,$tof_seccionesxidioma,$tof_productos,$tof_productosxidioma,$tof_tipoproducto,$tof_usuarios_sistema,$tof_idioma,$idioma,$tof_tipousuario;	
+	global $tof_secciones,$tof_seccionesxidioma,$tof_productos,$tof_productosxidioma,$tof_tipoproducto,$tof_usuarios_sistema,$tof_idioma,$idioma,$tof_tipousuario,$tof_moneda;	
 
 	$id_usuario=$_SESSION['user_sistema'];
 	
@@ -297,13 +297,22 @@ function insertar_productoxusuario(){
 		}
 	
 
-	$t->set_block("pl","block_tipoproducto","_block_tipoproducto");	
-	$result1=mysql_query("select * from ".$tof_tipoproducto);
-		 while($row1=mysql_fetch_array($result1)){
-			$t->set_var("id", $row1[id]);
-			$t->set_var("nombre_tipoproducto", $row1[nombre]);
-			$t->parse("_block_tipoproducto","block_tipoproducto",true);
-		}
+	$resulttipo=mysql_query("select * from ".$tof_tipoproducto." where publicado=1");
+	$t->set_block("pl","block_tproducto","_block_tproducto");	
+	while($rowtipo=mysql_fetch_array($resulttipo)){
+		$t->set_var("id_tipoproducto", $rowtipo[id]);
+		$t->set_var("nombre_tipoproducto", $rowtipo[nombre]);
+		$t->parse("_block_tproducto","block_tproducto",true);
+	}
+
+	$resultmoneda=mysql_query("select * from ".$tof_moneda." where publicado=1");
+	$t->set_block("pl","block_moneda","_block_moneda");	
+	while($rowmoneda=mysql_fetch_array($resultmoneda)){
+		$t->set_var("id_moneda", $rowmoneda[id]);
+		$t->set_var("simbolo_moneda", $rowmoneda[simbolo]);
+		$t->parse("_block_moneda","block_moneda",true);
+	}
+
 
 	$result=mysql_query("select * from ".$tof_usuarios_sistema." u left join ".$tof_tipousuario." tu on (u.id_tipousuario=tu.id) where u.id=".$id_usuario);
 	$row=mysql_fetch_array($result);

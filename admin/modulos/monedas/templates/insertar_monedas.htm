@@ -84,8 +84,8 @@
 
   <!-- InstanceBeginEditable name="menu" -->
   <div class="task">
-  <div class="enabled" onmouseover="className='hover'" onmouseout="className='enabled'" onclick="location='/admin/modulos/albums/index.php?action=listar_fotos'"><img src="../../images/list_enabled.png" alt="Listar" />Listar</div>
-    <div class="enabled" onmouseover="className='hover'" onmouseout="className='enabled'" onclick="location='/admin/modulos/albums/index.php?action=insertar_fotos'"><img src="../../images/insert_enabled.png" alt="Insertar" />Insertar</div>
+  <div class="enabled" onmouseover="className='hover'" onmouseout="className='enabled'" onclick="location='/admin/modulos/monedas/index.php?action=listar_monedas'"><img src="../../images/list_enabled.png" alt="Listar" />Listar</div>
+    <div class="enabled" onmouseover="className='hover'" onmouseout="className='enabled'" onclick="location='/admin/modulos/monedas/index.php?action=insertar_usuario'"><img src="../../images/insert_enabled.png" alt="Insertar" />Insertar</div>
     <div class="disabled"><img src="../../images/update_disabled.png" alt="Editar" />Editar</div>
 
   <div class="disabled"><img src="../../images/delete_disabled.png" alt="Borrar" />Borrar</div>
@@ -94,61 +94,30 @@
 </div>
 <div class="heading">{categoria_modulo}</div>
 <div class="description">You can edit your product categories here.</div>
+
 <div id="list">
-  <table class="a">
-
-    <tr>
-      <td class="c">Results 1 - 3 of 3</td>
-      <td class="d"><form action="/admin/index.php?controller=category&action=page" method="post" enctype="multipart/form-data">
-          Page          <select name="page" onchange="this.form.submit();">
-                                    <option value="1">1 of 1</option>
-                                  </select>
-        </form></td>
-
-      <td class="e"><form action="/admin/index.php?controller=category&action=page" method="post" enctype="multipart/form-data">
-          Search           <input type="input" name="search" value="" />
-        </form></td>
-    </tr>
-  </table>
   <!-- InstanceEndEditable -->
   <!-- InstanceBeginEditable name="contenido" -->
   <table class="list">
     		<tr>
             <th class="center"></th>
           </tr>
-		 <form  action="/admin/modulos/albums/index.php?action=editar_fotos_ok" method="post">
-		 <input type="hidden" id="id_foto" name="id_foto" value="{id_foto}" />
+		 <form  action="/admin/modulos/monedas/index.php?action=insertar_monedas_ok" method="post">
+		 
             <tr class="row1" onmouseover="this.className='highlight'" onmouseout="this.className='row1'">
-                   <td width="100%" class="center" style="background-color:#FFFFCC">
+                  <td width="100%" class="center" style="background-color:#FFFFCC">
 				  	<table>
 						<tr>
-							<td>Nombre Foto</td>
-							<td><input id="nombre_foto" name="nombre_foto" type="text" value="{nombre_foto}"/></td>
+							<td>Nombre Moneda</td>
+							<td><input id="nombre_moneda" name="nombre_moneda" type="text"/></td>
 						</tr>
 						<tr>
-							<td>Album</td>
-							<td>
-								<select id="id_album" name="id_album">
-									<!-- BEGIN block_albums -->
-									<option id="album_{id_album}" name="album_{id_album}" value="{id_album}" {selected_album}>{nombre_album}</option>
-									<!-- END block_albums -->
-								</select>
-							</td>
+							<td>Símbolo Moneda</td>
+							<td><input id="simpolo_moneda" name="simbolo_moneda" type="text"  /></td>
 						</tr>
 						<tr>
-							<td>Comentarios: </td>
-							<td>{comentarios_foto}</td>
-						</tr>
-						<tr>
-							<td>Vistas: </td>
-							<td>{vistas_foto}</td>
-						</tr>
-						<tr>
-							<td>Publicado?</td>
-							<td><input id="publicado_foto" name="publicado_foto" type="checkbox" {publicado_foto} /></td>
-						</tr>
-						<tr>
-							<td colspan="2"><img src="{path_imagen}" alt="" width="150" /></td>
+							<td>Publicado</td>
+							<td><input id="publicado_moneda" name="publicado_moneda" type="checkbox"  /></td>
 						</tr>
 						<tr>
 						 <td><input type="submit" value="Aceptar" /></td>
@@ -158,7 +127,8 @@
                 </td>
 			</tr>
 			</form>
-						           
+			<!-- END block_monedas -->
+            
       </table>
 	  </div>
   <!-- InstanceEndEditable -->

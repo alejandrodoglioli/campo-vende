@@ -48,6 +48,7 @@ $tof_comentariosxsecciones="comentariosxsecciones";
 $tof_comentariosxseccionesxidioma="comentariosxseccionesxidioma";
 $tof_productos="productos";
 $tof_productosxidioma="productosxidioma";
+$tof_tipoproducto="tipoproducto";
 $tof_imagenesxproductos="imagenesxproductos";
 $tof_comentariosxproductos="comentariosxproductos";
 $tof_comentariosxproductosxidioma="comentariosxproductosxidioma";
@@ -68,4 +69,5 @@ $tof_feeds="feeds";
 $tof_feedsxidioma="feedsxidioma";
 $tof_usuarios_sistema="usuarios_sistema";
 $tof_tipousuario="tipousuario";
+$tof_moneda="moneda";
 ?>

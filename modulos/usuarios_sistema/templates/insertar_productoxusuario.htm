@@ -170,7 +170,7 @@ function parsear_subsecciones(retorno){
   </div>
   
   <div id="contenido"> 
-  <div>  
+  <div>
    <form id="editarPregunta" action="/{idioma}/editarpregunta_productoxusuario_ok/{id_comentario}" method="post" enctype="multipart/form-data">
           <!-- BEGIN block_idioma -->
           <!-- END block_idioma --> 
@@ -201,15 +201,13 @@ function parsear_subsecciones(retorno){
                     <td><textarea name="contenido_{lenguaje1}" id="contenido_{lenguaje1}">{contenido}</textarea>
                       </p></td>
                   </tr>
-			 <!--tr>
-					<td valign="top">Subcategoria</td>
-                    <td id="subsecciones">{subsecciones}</td>
-			 </tr-->
+
              		<tr>
                        <td width="80"><p style="text-align:right"><span class="required">*</span>Tipo:</td>
-                       <td><select id="tipo" class="venta" name="tipo" style="width:150px;">
-							<option value="0">Nuevo</option>
-							<option value="1">Usado</option>
+                       <td><select id="tipoproducto" class="venta" name="tipoproducto" style="width:150px;">
+							<!-- BEGIN block_tproducto -->
+							<option value="{id_tipoproducto}">{nombre_tipoproducto}</option>
+							<!-- END block_tproducto -->
 							</select>
 						</p></td>   
                     </tr>
@@ -217,23 +215,15 @@ function parsear_subsecciones(retorno){
                     <tr>
                        <td width="80"><p style="text-align:right">Precio:</td>
                        <td><select id="tipo" class="venta" name="tipo">
-							<option value="0">$</option>
-							<option value="1">U$D</option>
-                            <option value="2">€</option>
-                            
+						   <!-- BEGIN block_moneda -->
+							<option value="{id_moneda}">{simbolo_moneda}</option>
+							<!-- END block_moneda -->                            
 							</select>
                             <input  name="precio" id="precio" type="text" value="" style="width:90px; ">
 						</p></td>   
                     </tr>
 		     
-             
-		
-			<!--tr>
-                 <td valign="top">Código Video:</td>
-                 <td><input name="video" id="video" value="" size="50"  /></td>
-            </tr-->
-     
-			<tr>
+				<tr>
 					</tr>
 				  <tr>
 				  	<td colspan="2">
@@ -252,10 +242,7 @@ function parsear_subsecciones(retorno){
 									<td valign="top"><p style="text-align:right">Principal?</td>
 									<td><input name="principio_imagen_1" id="principio_imagen_1" value=""  type="checkbox"/></p></td>
 								</tr>
-								<!--tr>
-									<td valign="top">Publicado</td>
-									<td><input name="publicado_imagen_1" id="publicado_imagen_1" value=""  type="checkbox"   /></td>
-								</tr-->
+	
 								<input name="max_productos" id="max_productos" value="{max_productos}" type="hidden" />
 								<input name="max_destacados" id="max_destacados" value="{max_destacados}" type="hidden" />
 								<input name="cant_productos" id="cant_productos" value="{cant_productos}" type="hidden" />
@@ -268,7 +255,6 @@ function parsear_subsecciones(retorno){
                   </table>
 			<!-- END block_idiomas1 -->
             
-              </div>
               </div>
       <div>
       
