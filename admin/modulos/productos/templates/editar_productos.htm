@@ -201,9 +201,25 @@ function parsear_subsecciones(retorno){
 						</select>
                       </td>
              </tr>
-			<tr>
-              <td width="185">Precio:</td>
-              <td><input id="precio" name="precio" value="{precio}" size="5" /></td>
+			 <tr>
+                       <td valign="top"><span class="required">*</span>Tipo:</td>
+                       <td><select id="id_tipoproducto" class="venta" name="id_tipoproducto" style="width:150px;">
+							<!-- BEGIN block_tproducto -->
+							<option value="{id_tipoproducto}" {selected_tipoproducto}>{nombre_tipoproducto}</option>
+							<!-- END block_tproducto -->
+							</select>
+						</td>   
+                    </tr>
+                    
+                    <tr>
+                       <td valign="top">Precio:</td>
+                       <td><select id="id_moneda" class="venta" name="id_moneda">
+						   <!-- BEGIN block_moneda -->
+							<option value="{id_moneda}" {selected_moneda}>{simbolo_moneda}</option>
+							<!-- END block_moneda -->                            
+							</select>
+                            <input  name="precio" id="precio" type="text" value="{precio}" style="width:90px; ">
+						</td>   
             </tr>
 			<tr>
               <td width="185">Producto destacado:</td>
