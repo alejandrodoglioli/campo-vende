@@ -134,41 +134,36 @@ function parsear_subsecciones(retorno){
 
 				<!-- InstanceBeginEditable name="contenido" -->
 <div class="task">
-    <div class="enabled" onmouseover="className='hover'" onmouseout="className='enabled'" onclick="location='/{idioma}/listar_productoxusuario'"><img src="/admin/images/list_enabled.png" alt="Listar" />Listar</div>
+   <div class="enabled" onmouseover="className='hover'" onmouseout="className='enabled'" onclick="location='/{idioma}/listar_productoxusuario'"><img src="/admin/images/list_enabled.png" alt="Listar" />Listar</div>
     <div class="enabled" onmouseover="className='hover'" onmouseout="className='enabled'" onclick="location='/{idioma}/insertar_productoxusuario'"><img src="/admin/images/insert_enabled.png" alt="Insertar" />Insertar</div>
-
-    <div class="disabled"><img src="/admin/images/update_disabled.png" alt="Editar" />Editar</div>
-
-  <div class="disabled"><img src="/admin/images/delete_disabled.png" alt="Borrar" />Borrar</div>
-  <div class="disabled"><img src="/admin/images/save_disabled.png" alt="Guardar" />Guardar</div>
-  <div class="disabled"><img src="/admin/images/cancel_disabled.png" alt="Cancelar" />Cancelar</div>
   <div class="enabled" onmouseover="className='hover'" onmouseout="className='enabled'" onclick="location='/{idioma}/logout_productoxusuario'"><img src="/admin/images/logout.png" alt="Salir" />Salir</div>
 </div>
-<div class="heading">{categoria_modulo}</div>
-<div class="description">You can edit your product categories here.</div>
-<div id="list">
-		<form id="forminsertarproducto" action="/{idioma}/editar_productoxusuario_ok/{id_producto}" method="post" enctype="multipart/form-data">
-  <input type="hidden" id="id_producto" name="id_producto" value="{id_producto}" />
- <input type="hidden" id="cant_imagenes" name="cant_imagenes" value="{cant_imagenes}" />
-  <div class="tab" id="tab">
-    <div class="pages">
-      <div class="page">
 
-        <div id="tabmini">
-          <div class="tabs">
-		  <!-- BEGIN block_idioma -->
-             <a>{nombre_idioma}</a>
+
+<div style="width:100%">
+<div id="container"> 
+  <div class="titulo">    
+     <h2>Nueva Publicacion</h2>
+  </div>
+  
+  <div id="contenido"> 
+  <div>
+
+
+<form id="forminsertarproducto" action="/{idioma}/editar_productoxusuario_ok/{id_producto}" method="post" enctype="multipart/form-data">
+  <input type="hidden" id="id_producto" name="id_producto" value="{id_producto}" />
+  <input type="hidden" id="cant_imagenes" name="cant_imagenes" value="{cant_imagenes}" />
+ 		  <!-- BEGIN block_idioma -->
+          
 		  <!-- END block_idioma --> 
-          </div>
-		  
-          <div class="pages">
+    	  
+         
              <!-- BEGIN block_idiomas1 -->
-			 <div class="page">
-              <div class="minipad">
+			 <div class="formcomentario campo">
                 <table>
 				  <tr>
-                    <td width="185"><span class="required">*</span> Nombre Producto:</td>
-                    <td><input id="titulo_{lenguaje1}" name="titulo_{lenguaje1}" value="{titulo}" />
+                    <td width="80"><span class="required">*</span> Nombre Producto:</td>
+                    <td><input id="titulo_{lenguaje1}" name="titulo_{lenguaje1}" value="{titulo}" style="width:250px;" />
                       </td>
                   </tr>
                   <tr>
@@ -177,16 +172,15 @@ function parsear_subsecciones(retorno){
                       </td>
                   </tr>
                 </table>
-              </div>
-            </div>
+             
 			<!-- END block_idiomas1 -->
 
-        <div class="pad">
+       
           <table>
 		  	<tr>
                   <td valign="top"><span class="required">*</span>Categor?a Padre:</td>
                     <td>
-						<select name="nombre_padre" id="nombre_padre" onChange="pedir_subsecciones(this.value);">
+						<select name="nombre_padre" id="nombre_padre" onChange="pedir_subsecciones(this.value);" style="width:250px;">
 							<option value="0">Sin categor&iacute;a Padre</option>
 							<!-- BEGIN block_padre -->
 							<option value="{id_padre}" {selected}>{nombre_padre}</option>
@@ -194,17 +188,17 @@ function parsear_subsecciones(retorno){
 						</select>
                       </td>
              </tr>
-			 <tr>
+			 <!--tr>
                   <td valign="top">Subcategor?a Padre:</td>
                     <td id="subsecciones">
 						<select id="nombre_subseccion" name="nombre_subseccion">
-							<option id="0" name="0" value="0" >Sin Subcategor&iacute;a Padre</option>
+							<option id="0" name="0" value="0" >Sin Subcategor&iacute;a Padre</option-->
 							<!-- BEGIN block_spadre -->
-							<option value="{id_sub_padre}" {selected_sub}>{nombre_sub_padre}</option>
+							<!--option value="{id_sub_padre}" {selected_sub}>{nombre_sub_padre}</option-->
 							<!-- END block_spadre -->
-						</select>
+						<!--/select>
                       </td>
-             </tr>
+             </tr-->
 			<tr>
                  <td valign="top">C&oacute;digo Video:</td>
                  <td><input name="video" id="video" value="{video}" size="50"  /></td>
@@ -218,28 +212,28 @@ function parsear_subsecciones(retorno){
 			<!-- BEGIN block_imagenes -->
 			<tr>
 				<td colspan="2">
-					<div id="my{nro}Div" style=" width:90%;  padding:7px 0px; clear:both">
+					<div id="my{nro}Div" style=" width:80%;  padding:7px 0px; clear:both">
 							<input type="hidden" id="id_imagen_{nro}" name="id_imagen_{nro}" value="{id_imagen}" />
-						  <table cellpadding="0" cellspacing="1" border="0" style="border:1px solid #dcdcdc;padding:10px;">
+						 <table cellpadding="0" cellspacing="1" border="0" style="border:1px solid #dcdcdc;padding:10px;">
 								<tr>
-									<td valign="top" width="180">Nombre:</td>
-									<td><input name="nombre_imagen_{nro}" id="nombre_imagen_{nro}" value="{nombre_imagen}" type="text" size="50"  /></td>
-								</tr>
-								<tr>
-									<td valign="top">Path:</td>
+									<td valign="top" width="100"><p style="text-align:right">Imagen:</td>
 									<td>
 										<input name="path_imagen_{nro}" id="path_imagen_{nro}" value="{path_imagen}" type="file" size="55"  />
 										<input name="path_imagen_existente_{nro}" id="path_imagen_existente_{nro}" value="{path_imagen}" type="hidden" />
-									</td>
+									</td></p>
 								</tr>
 								<tr>
-									<td valign="top">Imagen principio?</td>
-									<td><input name="principio_imagen_{nro}" id="principio_imagen_{nro}"  type="checkbox"  {checked_principio_imagen} /></td>
+									<td valign="top"><p style="text-align:right">Descripcion:</td>
+									<td><input name="nombre_imagen_{nro}" id="nombre_imagen_{nro}" value="{nombre_imagen}" type="text" size="50"  /></td></p>
 								</tr>
-								<tr>
+                        		<tr>
+									<td valign="top">principal?</td>
+									<td><input name="principio_imagen_{nro}" id="principio_imagen_{nro}"  type="checkbox"  {checked_principio_imagen} /></td></p>
+								</tr>
+								<!--tr>
 									<td valign="top">Publicado</td>
 									<td><input name="publicado_imagen_{nro}" id="publicado_imagen_{nro}"  type="checkbox"  {checked_publicado_imagen} /></td>
-								</tr>
+								</tr-->
 								<tr><td><img src="{path_imagen}" alt="{nombre_imagen}" width="85" height="85"/></td></tr>
 							</table>
 						  </div>
@@ -247,18 +241,16 @@ function parsear_subsecciones(retorno){
 			</tr>
 				  
 				   <!-- END block_imagenes -->
-				  <tr><td colspan="2"><a href="#" title="Eliminar ?ltima" onClick="var c=document.getElementById('cant_imagenes').value; eliminarFoto(c); return false;" style="text-decoration:underline;color:#FF0000">Eliminar ?ltima</a> - <a href="#" title="A?adir m?s Im?genes" onClick="addFoto(document.getElementById('cant_imagenes').value); return false;" style="text-decoration:underline;color:#FF0000">A?adir m?s Im?genes</a></td></tr>
+				  <tr><td colspan="2"><a href="#" title="Eliminar ?ltima" onClick="var c=document.getElementById('cant_imagenes').value; eliminarFoto(c); return false;" style="text-decoration:underline;">Eliminar ultima</a> - <a href="#" title="A?adir m?s Im?genes" onClick="addFoto(document.getElementById('cant_imagenes').value); return false;" style="text-decoration:underline;">A?adir mqs Imagenes</a></td></tr>
           </table>
         </div>
-
+</div>
             </div>
-        </div>
-      </div>
-    </div>
+   
   </div>
 <div style="text-align:center">
-	<input type="button" value="Aceptar" onclick="validarFormularioInsertarProductoxusuario();" />
-	<input type="reset" value="Cancelar" onclick="history.back(-1);" />
+	<input class="botongrande" value="Aceptar" onclick="validarFormularioInsertarProductoxusuario();" style="text-align:center"/>
+
 </div>	
   <script type="text/javascript"><!--
   tabview_initialize('tab');
@@ -289,7 +281,7 @@ function parsear_subsecciones(retorno){
   //--></script>
 </form>
 </div>
-  
+
 	<!-- InstanceEndEditable -->
 				
 				<!-- InstanceBeginEditable name="noticias" --><!-- InstanceEndEditable -->
