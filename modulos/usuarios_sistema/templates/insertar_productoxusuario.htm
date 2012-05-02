@@ -174,6 +174,7 @@ function parsear_subsecciones(retorno){
    <form id="editarPregunta" action="/{idioma}/editarpregunta_productoxusuario_ok/{id_comentario}" method="post" enctype="multipart/form-data">
  <input type="hidden" id="cant_imagenes" name="cant_imagenes" value="{cant_imagenes}" />
           <!-- BEGIN block_idioma -->
+
           <!-- END block_idioma --> 
           
              <!-- BEGIN block_idiomas1 -->
@@ -195,12 +196,12 @@ function parsear_subsecciones(retorno){
 							<option value="{id}" style="color:{color}">{nombre_padre}</option>
 							<!-- END block_padre -->
 						</select>
-                      </td></p>
+                      </td>
              </tr>
                   <tr>
                     <td valign="top"><p style="text-align:right"><span class="required">*</span>Descripción:</td>
                     <td><textarea name="contenido_{lenguaje1}" id="contenido_{lenguaje1}">{contenido}</textarea>
-                      </p></td>
+                      </td>
                   </tr>
 
              		<tr>
@@ -210,7 +211,7 @@ function parsear_subsecciones(retorno){
 							<option value="{id_tipoproducto}">{nombre_tipoproducto}</option>
 							<!-- END block_tproducto -->
 							</select>
-						</p></td>   
+						</td>   
                     </tr>
                     
                     <tr>
@@ -221,7 +222,7 @@ function parsear_subsecciones(retorno){
 							<!-- END block_moneda -->                            
 							</select>
                             <input  name="precio" id="precio" type="text" value="" style="width:90px; ">
-						</p></td>   
+						</td>   
                     </tr>
 		     
 				<tr>
@@ -237,11 +238,11 @@ function parsear_subsecciones(retorno){
 								</tr>
                                 <tr>
 									<td valign="top" width="100"><p style="text-align:right">Descripcion:</td>
-									<td><input name="nombre_imagen_1" id="nombre_imagen_1" value=""  type="text" size="50"/></td></p>
+									<td><input name="nombre_imagen_1" id="nombre_imagen_1" value=""  type="text" size="50"/></td>
 								</tr>
 								<tr>
 									<td valign="top"><p style="text-align:right">Principal?</td>
-									<td><input name="principio_imagen_1" id="principio_imagen_1" value=""  type="checkbox"/></p></td>
+									<td><input name="principio_imagen_1" id="principio_imagen_1" value=""  type="checkbox"/></td>
 								</tr>
 	
 								<input name="max_productos" id="max_productos" value="{max_productos}" type="hidden" />

@@ -265,14 +265,19 @@ function insertar_productoxusuario(){
 		$t->parse("_block_idioma","block_idioma",true);
 	}
 	
-/*	$result=mysql_query("select idioma, nombre from ".$tof_idioma." where publicado=1");
+	$result=mysql_query("select idioma, nombre from ".$tof_idioma." where publicado=1");
+	
+	$t->set_block("pl","block_padre","_block_padre");	
+	$t->set_block("pl","block_tproducto","_block_tproducto");	
+	$t->set_block("pl","block_moneda","_block_moneda");	
+		
 	$t->set_block("pl","block_idiomas1","_block_idiomas1");	
     while($row=mysql_fetch_array($result)){
 		$t->set_var("lenguaje1", $row[idioma]);
 		//$t->set_var("_block_padre","");
 		$t->parse("_block_idiomas1","block_idiomas1",true);
 	}
-	*/
+	
 	$result=mysql_query("select idioma, nombre from ".$tof_idioma." where publicado=1");
 	$t->set_block("pl","block_idiomas2","_block_idiomas2");	
     while($row=mysql_fetch_array($result)){
@@ -287,18 +292,16 @@ function insertar_productoxusuario(){
 		$t->parse("_block_idiomas3","block_idiomas3",true);
 	}
 	
-	$t->set_block("pl","block_padre","_block_padre");	
+	
 	$result1=mysql_query("select si.*,s.id_padre from ".$tof_secciones." s join ".$tof_seccionesxidioma." si on (s.id=si.id) where si.idioma='es' and publicado=1 and id_padre=0");
-
-		 while($row1=mysql_fetch_array($result1)){
-			$t->set_var("id", $row1[id]);
-			$t->set_var("nombre_padre", $row1[nombre]);
-			$t->parse("_block_padre","block_padre",true);
-		}
+	 while($row1=mysql_fetch_array($result1)){
+		$t->set_var("id", $row1[id]);
+		$t->set_var("nombre_padre", $row1[nombre]);
+		$t->parse("_block_padre","block_padre",true);
+	}
 	
 
 	$resulttipo=mysql_query("select * from ".$tof_tipoproducto." where publicado=1");
-	$t->set_block("pl","block_tproducto","_block_tproducto");	
 	while($rowtipo=mysql_fetch_array($resulttipo)){
 		$t->set_var("id_tipoproducto", $rowtipo[id]);
 		$t->set_var("nombre_tipoproducto", $rowtipo[nombre]);
@@ -306,7 +309,6 @@ function insertar_productoxusuario(){
 	}
 
 	$resultmoneda=mysql_query("select * from ".$tof_moneda." where publicado=1");
-	$t->set_block("pl","block_moneda","_block_moneda");	
 	while($rowmoneda=mysql_fetch_array($resultmoneda)){
 		$t->set_var("id_moneda", $rowmoneda[id]);
 		$t->set_var("simbolo_moneda", $rowmoneda[simbolo]);
