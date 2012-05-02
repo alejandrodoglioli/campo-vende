@@ -323,6 +323,8 @@ function insertar_productoxusuario(){
 	$t->set_var("max_destacados", $row[cant_destacados]);
 	$t->set_var("max_productos", $row[cant_productos]);
 	
+	$t->set_var("cant_imagenes", "1");
+	
 	
 	$t->set_var("usuario", $row[nombre]." ".$row[apellido]);
 	$t->set_var("titulo", "Usuario");
