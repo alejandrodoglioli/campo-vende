@@ -30,7 +30,11 @@ function parsear_subsecciones(retorno){
 	document.getElementById("subsecciones").innerHTML=retorno;
 }
 </script>
-
+<script>
+$("#path_imagen_1").change( function() {
+  alert("Hey, you changed me!");
+}
+</script>
 <script>
 	// increase the default animation speed to exaggerate the effect
 	$.fx.speeds._default = 1000;
@@ -44,7 +48,28 @@ function parsear_subsecciones(retorno){
 		
 	});
 	</script>
+<script>
+function gen(){
+var divProgress = document.getElementById('progress');
+var imagen = document.createElement('img');
+var texto = document.createElement('span');;
+ 
+imagen.setAttribute('src','http://www.google.com/images/logos/ps_logo2.png');
+imagen.setAttribute('id','ajaxLoader');
+ 
+texto.innerHTML = '<br/>EL proceso de carga puede durar varios minutos.<br/> (aprox. 1 minuto por imagen, aunque puede variar dependiendo de la conexion a internet. No cierre la pagina.<br/>';
+ 
+// la siguiente condicion es para que no se agregue otra imagen si se vuelve a dar click en el boton
+ 
+if(document.getElementById('ajaxLoader') == undefined){
+divProgress.appendChild(imagen);
+divProgress.appendChild(texto);
+}
+}
 
+
+
+</script>
 <!-- InstanceEndEditable -->
 
 <meta name="Keywords" content="{keywords}" />
@@ -233,7 +258,7 @@ function parsear_subsecciones(retorno){
 								
 								<tr>
 									<td valign="top"><p style="text-align:right">Imagen:</td>
-									<td><input name="path_imagen_1" id="path_imagen_1" value=""  type="file" size="50"/></td></p>
+									<td><input name="path_imagen_1" id="path_imagen_1" value=""  type="file" size="50" onselect="gen()"/></td></p>
 								</tr>
                                 <tr>
 									<td valign="top" width="100"><p style="text-align:right">Descripcion:</td>
@@ -243,7 +268,7 @@ function parsear_subsecciones(retorno){
 									<td valign="top"><p style="text-align:right">Principal?</td>
 									<td><input name="principio_imagen_1" id="principio_imagen_1" value=""  type="checkbox"/></td>
 								</tr>
-	
+	                           <tr><td><img src="/images/default.jpg" alt="{nombre_imagen}" width="85" height="85"/></td></tr> 
 								<input name="max_productos" id="max_productos" value="{max_productos}" type="hidden" />
 								<input name="max_destacados" id="max_destacados" value="{max_destacados}" type="hidden" />
 								<input name="cant_productos" id="cant_productos" value="{cant_productos}" type="hidden" />
@@ -267,10 +292,48 @@ function parsear_subsecciones(retorno){
 </div>
   </div>                
                 
-                
-                
-                
+<!--div class="formImagenesProd">                
+	<div class ="imagenes_prod">
+		<div class="img_tumb">
+			<div class="preview">
+  		  		<img id="img_1" src="/images/default.jpg" width="80" height="80"/>
+                <a id="img_borrar1" href="#" style="display:block">Agregar Imagen</a>
+			</div>
+	   		<div class="borrar">
+            
+   		 	</div>
+		
+		<input type="hidden" name="img_1" />
+		</div>
+        <div class="img_tumb">
+			<div class="preview">
+		    	<img id="img_2" src="/images/default.jpg" width="80" height="80"/>
+                            <a id="img_borrar2" href="#" style="display:block">Agregar Imagen</a>
+
+			</div>
+   			<div class="borrar">
+   			</div>
+		
+		<input type="hidden" name="img_2" />
+		</div>
+        <div class="img_tumb">
+			<div class="preview">
+	   	 		<img id="img_3" src="/images/default.jpg" width="80" height="80"/>
+                <a id="img_borrar3" href="#" style="display:block">Agregar Imagen</a>
+			</div>
+   	 		<div class="borrar">
+    			
+    		</div>
+		
+		<input type="hidden" name="img_3" />
+        </div>
+	</div>                
+</div-->                
     
+    
+    <button onclick="gen()">Click</button>
+ 
+<div id="progress"></div>
 
 <div id="dialog" title="ERROR al insertar Producto">
 	

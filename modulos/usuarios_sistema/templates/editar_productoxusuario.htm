@@ -143,7 +143,7 @@ function parsear_subsecciones(retorno){
 <div style="width:100%">
 <div id="container"> 
   <div class="titulo">    
-     <h2>Nueva Publicacion</h2>
+     <h2>Editar Publicacion</h2>
   </div>
   
   <div id="contenido"> 
@@ -159,26 +159,16 @@ function parsear_subsecciones(retorno){
     	  
          
              <!-- BEGIN block_idiomas1 -->
+             <!-- END block_idiomas1 -->
 			 <div class="formcomentario campo">
                 <table>
 				  <tr>
-                    <td width="80"><span class="required">*</span> Nombre Producto:</td>
+                    <td width="80"><p style="text-align:right"><span class="required">*</span>Titulo:</td>
                     <td><input id="titulo_{lenguaje1}" name="titulo_{lenguaje1}" value="{titulo}" style="width:250px;" />
-                      </td>
+                      </p></td>
                   </tr>
-                  <tr>
-                    <td valign="top"><span class="required">*</span>Descripci?n:</td>
-                    <td><textarea name="contenido_{lenguaje1}" id="contenido_{lenguaje1}">{contenido}</textarea>
-                      </td>
-                  </tr>
-                </table>
-             
-			<!-- END block_idiomas1 -->
-
-       
-          <table>
-		  	<tr>
-                  <td valign="top"><span class="required">*</span>Categor?a Padre:</td>
+                  	<tr>
+                  <td valign="top"><p style="text-align:right"><span class="required">*</span>Categoria</td>
                     <td>
 						<select name="nombre_padre" id="nombre_padre" onChange="pedir_subsecciones(this.value);" style="width:250px;">
 							<option value="0">Sin categor&iacute;a Padre</option>
@@ -188,6 +178,18 @@ function parsear_subsecciones(retorno){
 						</select>
                       </td>
              </tr>
+                  <tr>
+                     <td valign="top"><p style="text-align:right"><span class="required">*</span>Descripción:</td>
+                    <td><textarea name="contenido_{lenguaje1}" id="contenido_{lenguaje1}">{contenido}</textarea>
+                      </td>
+                  </tr>
+                </table>
+             
+			
+
+       
+          <table>
+		  
 			 <!--tr>
                   <td valign="top">Subcategor?a Padre:</td>
                     <td id="subsecciones">
@@ -200,14 +202,28 @@ function parsear_subsecciones(retorno){
                       </td>
              </tr-->
 			<tr>
-                 <td valign="top">C&oacute;digo Video:</td>
-                 <td><input name="video" id="video" value="{video}" size="50"  /></td>
-            </tr>
+                       <td width="80"><p style="text-align:right"><span class="required">*</span>Tipo:</td>
+                       <td><select id="tipoproducto" class="venta" name="tipoproducto" style="width:150px;">
+							<!-- BEGIN block_tproducto -->
+							<option value="{id_tipoproducto}">{nombre_tipoproducto}</option>
+							<!-- END block_tproducto -->
+							</select>
+						</td>   
+                    </tr>
+                    
+                     <tr>
+                       <td width="80"><p style="text-align:right">Precio:</td>
+                       <td><select id="tipo" class="venta" name="tipo">
+						   <!-- BEGIN block_moneda -->
+							<option value="{id_moneda}">{simbolo_moneda}</option>
+							<!-- END block_moneda -->                            
+							</select>
+                            <input  name="precio" id="precio" type="text" value="" style="width:90px; ">
+						</td>   
+                    </tr>
 
 			<tr>
-				  	<td colspan="2">
-						<strong>Im&aacute;genes del producto</strong>
-					</td>
+				
 			</tr>
 			<!-- BEGIN block_imagenes -->
 			<tr>
@@ -215,19 +231,20 @@ function parsear_subsecciones(retorno){
 					<div id="my{nro}Div" style=" width:80%;  padding:7px 0px; clear:both">
 							<input type="hidden" id="id_imagen_{nro}" name="id_imagen_{nro}" value="{id_imagen}" />
 						 <table cellpadding="0" cellspacing="1" border="0" style="border:1px solid #dcdcdc;padding:10px;">
+                         
 								<tr>
-									<td valign="top" width="100"><p style="text-align:right">Imagen:</td>
+								<td valign="top"><p style="text-align:right">Imagen:</td>
 									<td>
-										<input name="path_imagen_{nro}" id="path_imagen_{nro}" value="{path_imagen}" type="file" size="55"  />
+										<input name="path_imagen_{nro}" id="path_imagen_{nro}" value="{path_imagen}" type="file" size="50"  />
 										<input name="path_imagen_existente_{nro}" id="path_imagen_existente_{nro}" value="{path_imagen}" type="hidden" />
 									</td></p>
 								</tr>
 								<tr>
-									<td valign="top"><p style="text-align:right">Descripcion:</td>
+									<td valign="top" width="100"><p style="text-align:right">Descripcion:</td>
 									<td><input name="nombre_imagen_{nro}" id="nombre_imagen_{nro}" value="{nombre_imagen}" type="text" size="50"  /></td></p>
 								</tr>
                         		<tr>
-									<td valign="top">principal?</td>
+									<td valign="top"><p style="text-align:right">Principal?</td>
 									<td><input name="principio_imagen_{nro}" id="principio_imagen_{nro}"  type="checkbox"  {checked_principio_imagen} /></td></p>
 								</tr>
 								<!--tr>

@@ -1273,3 +1273,34 @@ select {
 }
 /*FIN PREGUNTAS*/
 
+/*
+.formImagenesProd {
+    background: url("/imagenes/sombra.jpg") repeat-y scroll right top transparent;
+    border: 1px solid #DDDDDD;
+    float: left;
+    margin-bottom: 35px;
+    padding-bottom: 15px;
+    width: 744px;
+}
+
+.imagenes_prod {
+    float: left;
+    padding: 15px;
+    width: 554px;
+}
+
+.img_tumb{
+    float: left;
+    padding-top: 10px;
+    width: 180px;
+}
+
+.preview {
+    padding-left: 20px;
+}
+
+.borrar {
+    float: left;
+    font-size: 12px;
+    padding-left: 15px;
+}*/
