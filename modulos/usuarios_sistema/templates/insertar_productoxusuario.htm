@@ -208,7 +208,7 @@ divProgress.appendChild(texto);
                <table>              
               		<tr>
                        <td width="80"><p style="text-align:right"><span class="required">*</span>Titulo:</td>
-                       <td><input id="titulo_{lenguaje1}" name="titulo_{lenguaje1}" value="" style="width:250px;" /></p></td>   
+                       <td><input id="titulo_{lenguaje1}" name="titulo_{lenguaje1}" value="" style="width:250px;" /></td> </p>  
                     </tr>
                     
 		            <tr>
@@ -220,12 +220,13 @@ divProgress.appendChild(texto);
 							<option value="{id}" style="color:{color}">{nombre_padre}</option>
 							<!-- END block_padre -->
 						</select>
-                      </td>
+                      </td></p>
              </tr>
+                 
                   <tr>
-                    <td valign="top"><p style="text-align:right"><span class="required">*</span>Descripción:</td>
+                     <td valign="top"><p style="text-align:right"><span class="required">*</span>Descripción:</td>
                     <td><textarea name="contenido_{lenguaje1}" id="contenido_{lenguaje1}">{contenido}</textarea>
-                      </td>
+                      </td></p>
                   </tr>
 
              		<tr>
@@ -235,7 +236,7 @@ divProgress.appendChild(texto);
 							<option value="{id_tipoproducto}">{nombre_tipoproducto}</option>
 							<!-- END block_tproducto -->
 							</select>
-						</td>   
+						</td></p>   
                     </tr>
                     
                     <tr>
@@ -246,35 +247,41 @@ divProgress.appendChild(texto);
 							<!-- END block_moneda -->                            
 							</select>
                             <input  name="precio" id="precio" type="text" value="" style="width:90px; ">
-						</td>   
+						</td>   </p>
                     </tr>
 		     
 				<tr>
 					</tr>
 				  <tr>
 				  	<td colspan="2">
-					<div id="my1Div" style=" width:80%;  padding:7px 0px; clear:both">
-						  <table cellpadding="0" cellspacing="1" border="0" style="border:1px solid #dcdcdc;padding:10px;">
+					
+                    <div class="formImagenesProd">
+                    	<div id="my1Div" style=" width:60%; clear:both; float:left;">
+						  <table cellpadding="0" cellspacing="1" border="0" style="padding:10px;">
 								
 								<tr>
 									<td valign="top"><p style="text-align:right">Imagen:</td>
-									<td><input name="path_imagen_1" id="path_imagen_1" value=""  type="file" size="50" onselect="gen()"/></td></p>
+									<td><input name="path_imagen_1" id="path_imagen_1" value=""  type="file" size="30" onselect="gen()"/></td></p>
 								</tr>
                                 <tr>
 									<td valign="top" width="100"><p style="text-align:right">Descripcion:</td>
-									<td><input name="nombre_imagen_1" id="nombre_imagen_1" value=""  type="text" size="50"/></td>
+									<td><input name="nombre_imagen_1" id="nombre_imagen_1" value=""  type="text" size="30"/></td></p>
 								</tr>
 								<tr>
 									<td valign="top"><p style="text-align:right">Principal?</td>
-									<td><input name="principio_imagen_1" id="principio_imagen_1" value=""  type="checkbox"/></td>
+									<td><input name="principio_imagen_1" id="principio_imagen_1" value=""  type="checkbox"/></td></p>
 								</tr>
-	                           <tr><td><img src="/images/default.jpg" alt="{nombre_imagen}" width="85" height="85"/></td></tr> 
+	                           <!--tr><td><img src="/images/default.jpg" alt="{nombre_imagen}" width="85" height="85"/></td></tr--> 
 								<input name="max_productos" id="max_productos" value="{max_productos}" type="hidden" />
 								<input name="max_destacados" id="max_destacados" value="{max_destacados}" type="hidden" />
 								<input name="cant_productos" id="cant_productos" value="{cant_productos}" type="hidden" />
 								<input name="cant_destacados" id="cant_destacados" value="{cant_destacados}" type="hidden" />								
 							</table>
-							</div>
+						</div>
+                    	<div class="imagenNuevoProd">
+                        	 <img src="/images/default.jpg" alt="{nombre_imagen}" width="85" height="85"/>
+                    	</div>
+                    </div>
 					</td>
                   </tr>
 				  <tr><td colspan="2"><a href="#" title="Eliminar última" onClick="eliminarFoto(document.getElementById('cant_imagenes').value); return false;">Eliminar última</a> - <a href="#" title="Añadir más fotos" onClick="addFoto(document.getElementById('cant_imagenes').value); return false;">Añadir más Imágenes</a></td></tr>

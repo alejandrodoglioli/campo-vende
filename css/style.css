@@ -1273,16 +1273,13 @@ select {
 }
 /*FIN PREGUNTAS*/
 
-/*
+
 .formImagenesProd {
-    background: url("/imagenes/sombra.jpg") repeat-y scroll right top transparent;
     border: 1px solid #DDDDDD;
     float: left;
-    margin-bottom: 35px;
-    padding-bottom: 15px;
-    width: 744px;
+    padding: 5px 6px;
 }
-
+/*
 .imagenes_prod {
     float: left;
     padding: 15px;
@@ -1304,3 +1301,13 @@ select {
     font-size: 12px;
     padding-left: 15px;
 }*/
+
+.imagenNuevoProd {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #C9D6F1;
+    float: right;
+    padding: 5px 6px;
+    text-align: center;
+    width: 110px;
+    margin-top: 10px;
+}
