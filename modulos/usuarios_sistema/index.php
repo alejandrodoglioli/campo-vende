@@ -270,6 +270,7 @@ function insertar_productoxusuario(){
 	$t->set_block("pl","block_padre","_block_padre");	
 	$t->set_block("pl","block_tproducto","_block_tproducto");	
 	$t->set_block("pl","block_moneda","_block_moneda");	
+	
 		
 	$t->set_block("pl","block_idiomas1","_block_idiomas1");	
     while($row=mysql_fetch_array($result)){
