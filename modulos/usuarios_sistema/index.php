@@ -143,12 +143,10 @@ function insertar_usuarios_sistema_ok(){
 }
 
 function mostrar_usuario_sistema($id_usuario=NULL){
-	global $tof_usuarios_sistema,$tof_productos,$tof_productosxidioma,$tof_secciones,$tof_seccionesxidioma,$idioma,$row_per_page,$inicio,$tof_imagenesxproductos;
-
+	global $tof_usuarios_sistema,$tof_productos,$tof_productosxidioma,$tof_secciones,$tof_seccionesxidioma,$idioma,$row_per_page,$inicio,$tof_imagenesxproductos, $id_seccion,$padre_todos;
 	$name_tpl="listar_productosxusuario.htm";
 	$t = new Template("./modulos/usuarios_sistema/templates", "remove");
 	$t->set_file("pl", $name_tpl);
-	
 	
 	if(!isset($id_usuario))
 		$id_usuario=$_SESSION['user_sistema'];
@@ -168,13 +166,14 @@ function mostrar_usuario_sistema($id_usuario=NULL){
 		$page=1;
 		$inicio = 0;
 	}
+	
 
-	global $id_seccion;
 	if(isset($id_seccion) && ($id_seccion!="") && ($id_seccion!=0))
 		$filtro=" and se.id=".$id_seccion;
 	else
 		$filtro="";
 		$result=mysql_query("select ip.nombre as nombreimagen,ip.path,si.*,s.publicado,s.id_seccion,se.nombre as nombre_seccion from ".$tof_productos." s join ".$tof_productosxidioma." si on (s.id=si.id) join ".$tof_seccionesxidioma." se on (se.id=s.id_seccion) and si.idioma='".$idioma."' and se.idioma='".$idioma."' and s.id_usuario=".$id_usuario.$filtro." left join ".$tof_imagenesxproductos." ip on(ip.id_producto=si.id) order by nombre limit ".$inicio.",".$row_per_page);
+		
 		$resultcant=mysql_query("select count(*) as cant from ".$tof_productos." s join ".$tof_productosxidioma." si on (s.id=si.id) join ".$tof_seccionesxidioma." se on (se.id=s.id_seccion) and si.idioma='".$idioma."' and se.idioma='".$idioma."' and s.id_usuario=".$id_usuario.$filtro);
 		
 	$t->set_block("pl","block_productos","_block_productos");	
@@ -208,8 +207,8 @@ function mostrar_usuario_sistema($id_usuario=NULL){
 	}
 	
 	$result=mysql_query("select * from ".$tof_secciones." s join ".$tof_seccionesxidioma." si on (s.id=si.id) where idioma='es' and s.id in (select distinct(id_seccion) from ".$tof_productos." p where p.id_usuario=".$_SESSION['user_sistema'].") order by nombre");
+	//echo "select * from ".$tof_secciones." s join ".$tof_seccionesxidioma." si on (s.id=si.id) where idioma='es' and s.id in (select distinct(id_seccion) from ".$tof_productos." p where p.id_usuario=".$_SESSION['user_sistema'].") order by nombre";exit;
 	$t->set_block("pl","block_padre","_block_padre");	
-
     while($row=mysql_fetch_array($result))
     {
 		$t->set_var("id_seccion",$row[id]);
@@ -344,7 +343,7 @@ function insertar_productoxusuario(){
 
 function insertar_productoxusuario_ok(){
 	global $tof_productos, $tof_productosxidioma,$tof_idioma,$tof_imagenesxproductos,$path_images,$path_galeria_productos,$idioma;
-	global $publicado,$orden, $nombre_padre,$nombre_subseccion,$menu_lateral,$cant_imagenes,$video;
+	global $publicado,$orden, $nombre_padre,$nombre_subseccion,$menu_lateral,$cant_imagenes,$video,$id_moneda,$id_tipoproducto,$precio;
 	
 	$id_usuario=$_SESSION['user_sistema'];
 	
@@ -355,8 +354,7 @@ function insertar_productoxusuario_ok(){
 		$publicado=1;
 	else*/
 		$publicado=0;
-	
-	mysql_query("insert into ".$tof_productos." values('NULL',".$nombre_padre.",".$id_usuario.",".$publicado.",'".$orden."','now()','".$video."')");
+	mysql_query("insert into ".$tof_productos." values(NULL,".$nombre_padre.",".$id_usuario.",".$id_tipoproducto.",".$id_moneda.",".$publicado.",'".$orden."','now()','".$video."',".$precio.",0)");
 
 	$last_id = mysql_insert_id();
 	
@@ -369,7 +367,7 @@ function insertar_productoxusuario_ok(){
 		$keywords ="keywords_".$row[idioma];
 		$padre ="nombre_padre_".$row[idioma];
 		
-		//preguntar ale
+		
 		global $$titulo,$$contenido,$$title,$$description,$$keywords,$$video;
 
 		mysql_query("insert into ".$tof_productosxidioma." values(".$last_id.",'".$row[idioma]."','".$$contenido."','".$$titulo."','".$$description."','".$$keywords."','".$$title."')");
@@ -435,7 +433,9 @@ function insertar_productoxusuario_ok(){
 					$principio_imagen=1;
 				else 
 					$publicado_imagen=0;
-						
+
+					
+				
 				mysql_query("insert into ".$tof_imagenesxproductos." values(NULL,'".$$nombre_imagen."','".$path."','".$principio_imagen."','".$publicado_imagen."','".$last_id."')");
 				
 				}
@@ -446,7 +446,7 @@ function insertar_productoxusuario_ok(){
 	}
 
 function editar_productoxusuario(){
-	global $tof_productos, $tof_productosxidioma,$tof_secciones, $tof_seccionesxidioma,$tof_imagenesxproductos,$tof_tipoproducto,$tof_idioma,$id_producto,$tof_usuarios_sistema,$idioma;
+	global $tof_productos, $tof_productosxidioma,$tof_secciones, $tof_seccionesxidioma,$tof_imagenesxproductos,$tof_tipoproducto,$tof_idioma,$id_producto,$tof_usuarios_sistema,$idioma,$tof_moneda;
 
 	$id_usuario=$_SESSION['user_sistema'];
 	
@@ -488,20 +488,20 @@ function editar_productoxusuario(){
 
 	while($row=mysql_fetch_array($result)){
 	
-		$resultProducto=mysql_query("select si.*,s.publicado,s.video,s.id_usuario from ".$tof_productos." s join ".$tof_productosxidioma." si on (s.id=si.id) where s.id=".$id_producto." and si.idioma='".$row[idioma]."'");
+		$resultProducto=mysql_query("select si.*,s.precio,s.publicado,s.video,s.id_usuario,s.id_moneda, s.id_tipoproducto from ".$tof_productos." s join ".$tof_productosxidioma." si on (s.id=si.id) where s.id=".$id_producto." and si.idioma='".$row[idioma]."'");
 		
 		if (mysql_num_rows($resultProducto)){
-
 			while($rowProducto=mysql_fetch_array($resultProducto)){
+				
 				$id_usuario=$rowProducto[id_usuario];
-				$t->set_var("lenguaje1", $row[idioma]);
-				$t->set_var("titulo", $rowProducto[nombre]);
-				$t->set_var("contenido", $rowProducto[contenido]);
+				$t->set_var("lenguaje1", $rowProducto[idioma]);
+				$t->set_var("titulo", $rowProducto['nombre']);
+				$t->set_var("contenido", $rowProducto['contenido']);
 				$t->set_var("title", $rowProducto[title]);
 				$t->set_var("description", $rowProducto[description]);
 				$t->set_var("video", $rowProducto[video]);
 				$t->set_var("keywords", $rowProducto[keywords]);
-				
+				$t->set_var("precio",$rowProducto[precio]);
 				$t->parse("_block_idiomas1","block_idiomas1",true);
 			}
 		}else{
@@ -512,7 +512,7 @@ function editar_productoxusuario(){
 				$t->set_var("description", "");
 				$t->set_var("video","");
 				$t->set_var("keywords", "");
-				
+				$t->set_var("precio","");
 				$t->parse("_block_idiomas1","block_idiomas1",true);
 		}
 	}
@@ -608,6 +608,32 @@ function editar_productoxusuario(){
 	else
 		$t->set_var("cant_imagenes", 1);
 	
+
+	$t->set_block("pl","block_tproducto","_block_tproducto");
+	$resulttipo=mysql_query("select * from ".$tof_tipoproducto." where publicado=1");
+	while($rowtipo=mysql_fetch_array($resulttipo)){
+		$t->set_var("id_tipoproducto", $rowtipo[id]);
+		$t->set_var("nombre_tipoproducto", $rowtipo[nombre]);
+		if($rowtipo[id]==$rowProducto[id_tipoproducto])
+			$t->set_var("selected_tipoproducto", "selected");
+		else 
+			$t->set_var("selected_tipoproducto", "");
+		$t->parse("_block_tproducto","block_tproducto",true);
+	}
+
+	$t->set_block("pl","block_moneda","_block_moneda");
+	$resultmoneda=mysql_query("select * from ".$tof_moneda." where publicado=1");
+	while($rowmoneda=mysql_fetch_array($resultmoneda)){
+		$t->set_var("id_moneda", $rowmoneda[id]);
+		$t->set_var("simbolo_moneda", $rowmoneda[simbolo]);
+		if($rowmoneda[id]==$rowProducto[id_moneda])
+			$t->set_var("selected_moneda", "selected");
+		else
+		$t->set_var("selected_moneda", ""); 
+			
+	    $t->parse("_block_moneda","block_moneda",true);
+	}
+	
 	$t->set_var("nombre_usuario",$row[nickname]);
 	$t->set_var("es_administrador_usuario",$es_administrador);
 	$t->set_var("password_usuario",$row[password]);
@@ -623,7 +649,7 @@ function editar_productoxusuario(){
 }
 
 function editar_productoxusuario_ok(){
-	global $tof_productos, $tof_productosxidioma,$tof_secciones, $tof_seccionesxidioma,$tof_tipoproducto,$tof_idioma,$id_producto,$publicado,$orden,$nombre_padre,$nombre_subseccion,$tof_imagenesxproductos,$path_images,$path_galeria_productos,$cant_imagenes,$video,$tof_usuarios_sistema;
+	global $tof_productos, $tof_productosxidioma,$tof_secciones, $tof_seccionesxidioma,$tof_tipoproducto,$tof_idioma,$id_producto,$publicado,$orden,$nombre_padre,$nombre_subseccion,$tof_imagenesxproductos,$path_images,$path_galeria_productos,$cant_imagenes,$video,$tof_usuarios_sistema,$id_tipoproducto,$id_moneda,$titulo,$precio;
 	
 	$id_usuario=$_SESSION['user_sistema'];
 	
@@ -639,10 +665,10 @@ function editar_productoxusuario_ok(){
 		$publicado=$rowProducto[publicado];
 		
 	if (isset($orden))
-		mysql_query("update ".$tof_productos." set publicado=".$publicado.", id_seccion=".$nombre_padre.",id_usuario=".$id_usuario.",orden='".$orden."',video='".$video."' where id=".$id_producto);
+		mysql_query("update ".$tof_productos." set publicado=".$publicado.", precio=".$precio.", id_moneda=".$id_moneda.", id_tipoproducto=".$id_tipoproducto.", id_seccion=".$nombre_padre.",id_usuario=".$id_usuario.",orden='".$orden."',video='".$video."' where id=".$id_producto);
 		
 	else
-		mysql_query("update ".$tof_productos." set publicado=".$publicado.",id_seccion=".$nombre_padre.",id_usuario=".$id_usuario.",video='".$video."' where id=".$id_producto);
+		mysql_query("update ".$tof_productos." set publicado=".$publicado.", precio=".$precio.", id_moneda=".$id_moneda.", id_tipoproducto=".$id_tipoproducto.", id_seccion=".$nombre_padre.",id_usuario=".$id_usuario.",video='".$video."' where id=".$id_producto);
 		
 
 	$result=mysql_query("select idioma, nombre from ".$tof_idioma." where publicado=1");

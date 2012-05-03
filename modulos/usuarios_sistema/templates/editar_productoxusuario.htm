@@ -150,7 +150,7 @@ function parsear_subsecciones(retorno){
   <div>
 
 
-<form id="forminsertarproducto" action="/{idioma}/editar_productoxusuario_ok/{id_producto}" method="post" enctype="multipart/form-data">
+<form id="formeditarproducto" action="/{idioma}/editar_productoxusuario_ok/{id_producto}" method="post" enctype="multipart/form-data">
   <input type="hidden" id="id_producto" name="id_producto" value="{id_producto}" />
   <input type="hidden" id="cant_imagenes" name="cant_imagenes" value="{cant_imagenes}" />
  		  <!-- BEGIN block_idioma -->
@@ -164,7 +164,7 @@ function parsear_subsecciones(retorno){
                 <table>
 				  <tr>
                     <td width="80"><p style="text-align:right"><span class="required">*</span>Titulo:</td>
-                    <td><input id="titulo_{lenguaje1}" name="titulo_{lenguaje1}" value="{titulo}" style="width:250px;" />
+                    <td><input id="titulo_{lenguaje1}" name="titulo_{lenguaje1}" value="{titulo}" style="width:250px;background-color:#FFFFFF;" />
                       </p></td>
                   </tr>
                   	<tr>
@@ -205,7 +205,7 @@ function parsear_subsecciones(retorno){
                        <td width="80"><p style="text-align:right"><span class="required">*</span>Tipo:</td>
                        <td><select id="tipoproducto" class="venta" name="tipoproducto" style="width:150px;">
 							<!-- BEGIN block_tproducto -->
-							<option value="{id_tipoproducto}">{nombre_tipoproducto}</option>
+							<option value="{id_tipoproducto}" {selected_tipoproducto}>{nombre_tipoproducto}</option>
 							<!-- END block_tproducto -->
 							</select>
 						</td>   
@@ -215,10 +215,10 @@ function parsear_subsecciones(retorno){
                        <td width="80"><p style="text-align:right">Precio:</td>
                        <td><select id="tipo" class="venta" name="tipo">
 						   <!-- BEGIN block_moneda -->
-							<option value="{id_moneda}">{simbolo_moneda}</option>
+							<option value="{id_moneda}" {selected_moneda}>{simbolo_moneda}</option>
 							<!-- END block_moneda -->                            
 							</select>
-                            <input  name="precio" id="precio" type="text" value="" style="width:90px; ">
+                            <input  name="precio" id="precio" type="text" value="{precio}" style="width:90px;background-color:#FFFFFF; ">
 						</td>   
                     </tr>
 
@@ -241,7 +241,7 @@ function parsear_subsecciones(retorno){
 								</tr>
 								<tr>
 									<td valign="top" width="100"><p style="text-align:right">Descripcion:</td>
-									<td><input name="nombre_imagen_{nro}" id="nombre_imagen_{nro}" value="{nombre_imagen}" type="text" size="50"  /></td></p>
+									<td><input name="nombre_imagen_{nro}" id="nombre_imagen_{nro}" value="{nombre_imagen}" type="text" size="50" style="background-color:#FFFFFF;" /></td></p>
 								</tr>
                         		<tr>
 									<td valign="top"><p style="text-align:right">Principal?</td>
@@ -266,7 +266,7 @@ function parsear_subsecciones(retorno){
    
   </div>
 <div style="text-align:center">
-	<input class="botongrande" value="Aceptar" onclick="validarFormularioInsertarProductoxusuario();" style="text-align:center"/>
+	<input class="botongrande" value="Aceptar" onclick="validarFormularioEditarProductoxusuario();" style="text-align:center"/>
 
 </div>	
   <script type="text/javascript"><!--

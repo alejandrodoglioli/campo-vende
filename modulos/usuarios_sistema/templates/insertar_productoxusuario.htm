@@ -31,11 +31,6 @@ function parsear_subsecciones(retorno){
 }
 </script>
 <script>
-$("#path_imagen_1").change( function() {
-  alert("Hey, you changed me!");
-}
-</script>
-<script>
 	// increase the default animation speed to exaggerate the effect
 	$.fx.speeds._default = 1000;
 	$(function() {
@@ -196,7 +191,7 @@ divProgress.appendChild(texto);
   
   <div id="contenido"> 
   <div>
-   <form id="editarPregunta" action="/{idioma}/editarpregunta_productoxusuario_ok/{id_comentario}" method="post" enctype="multipart/form-data">
+   <form id="forminsertarproducto" action="/{idioma}/insertar_productoxusuario_ok" method="post" enctype="multipart/form-data">
  <input type="hidden" id="cant_imagenes" name="cant_imagenes" value="{cant_imagenes}" />
           <!-- BEGIN block_idioma -->
           <!-- END block_idioma --> 
@@ -208,7 +203,7 @@ divProgress.appendChild(texto);
                <table>              
               		<tr>
                        <td width="80"><p style="text-align:right"><span class="required">*</span>Titulo:</td>
-                       <td><input id="titulo_{lenguaje1}" name="titulo_{lenguaje1}" value="" style="width:250px;" /></td> </p>  
+                       <td><input id="titulo_{lenguaje1}" name="titulo_{lenguaje1}" value="" style="width:250px;background-color:#FFFFFF;" /></td> </p>  
                     </tr>
                     
 		            <tr>
@@ -231,7 +226,7 @@ divProgress.appendChild(texto);
 
              		<tr>
                        <td width="80"><p style="text-align:right"><span class="required">*</span>Tipo:</td>
-                       <td><select id="tipoproducto" class="venta" name="tipoproducto" style="width:150px;">
+                       <td><select id="id_tipoproducto" class="venta" name="id_tipoproducto" style="width:150px;">
 							<!-- BEGIN block_tproducto -->
 							<option value="{id_tipoproducto}">{nombre_tipoproducto}</option>
 							<!-- END block_tproducto -->
@@ -241,12 +236,12 @@ divProgress.appendChild(texto);
                     
                     <tr>
                        <td width="80"><p style="text-align:right">Precio:</td>
-                       <td><select id="tipo" class="venta" name="tipo">
+                       <td><select id="id_moneda" class="venta" name="id_moneda">
 						   <!-- BEGIN block_moneda -->
 							<option value="{id_moneda}">{simbolo_moneda}</option>
 							<!-- END block_moneda -->                            
 							</select>
-                            <input  name="precio" id="precio" type="text" value="" style="width:90px; ">
+                            <input  name="precio" id="precio" type="text" value="" style="width:90px;background-color:#FFFFFF; ">
 						</td>   </p>
                     </tr>
 		     
@@ -265,7 +260,7 @@ divProgress.appendChild(texto);
 								</tr>
                                 <tr>
 									<td valign="top" width="100"><p style="text-align:right">Descripcion:</td>
-									<td><input name="nombre_imagen_1" id="nombre_imagen_1" value=""  type="text" size="30"/></td></p>
+									<td><input name="nombre_imagen_1" id="nombre_imagen_1" value=""  type="text" size="30" style="background-color:#FFFFFF;"/></td></p>
 								</tr>
 								<tr>
 									<td valign="top"><p style="text-align:right">Principal?</td>
