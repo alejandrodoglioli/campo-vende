@@ -20,6 +20,10 @@
 <script type="text/javascript" src="/admin/js/jsrsClient.js"></script>
 <script type="text/javascript" src="/admin/js/funciones_generales.js"></script>
 <script type="text/javascript" src="/js/funciones.js"></script>
+
+<script type="text/javascript" language="javascript" src="/js/uploader/jquery.js"></script>
+<script type="text/javascript" language="javascript" src="/js/uploader/ajaxfileupload.js"></script>
+
 <script type="text/javascript">
 function pedir_subsecciones(valor){
 var id_subseccion = valor;
@@ -30,11 +34,7 @@ function parsear_subsecciones(retorno){
 	document.getElementById("subsecciones").innerHTML=retorno;
 }
 </script>
-<script>
-$("#path_imagen_1").change( function() {
-  alert("Hey, you changed me!");
-}
-</script>
+
 <script>
 	// increase the default animation speed to exaggerate the effect
 	$.fx.speeds._default = 1000;
@@ -48,28 +48,6 @@ $("#path_imagen_1").change( function() {
 		
 	});
 	</script>
-<script>
-function gen(){
-var divProgress = document.getElementById('progress');
-var imagen = document.createElement('img');
-var texto = document.createElement('span');;
- 
-imagen.setAttribute('src','http://www.google.com/images/logos/ps_logo2.png');
-imagen.setAttribute('id','ajaxLoader');
- 
-texto.innerHTML = '<br/>EL proceso de carga puede durar varios minutos.<br/> (aprox. 1 minuto por imagen, aunque puede variar dependiendo de la conexion a internet. No cierre la pagina.<br/>';
- 
-// la siguiente condicion es para que no se agregue otra imagen si se vuelve a dar click en el boton
- 
-if(document.getElementById('ajaxLoader') == undefined){
-divProgress.appendChild(imagen);
-divProgress.appendChild(texto);
-}
-}
-
-
-
-</script>
 <!-- InstanceEndEditable -->
 
 <meta name="Keywords" content="{keywords}" />
@@ -261,15 +239,29 @@ divProgress.appendChild(texto);
 								
 								<tr>
 									<td valign="top"><p style="text-align:right">Imagen:</td>
-									<td><input name="path_imagen_1" id="path_imagen_1" value=""  type="file" size="30" onselect="gen()"/></td></p>
+									<td><!-- <input name="path_imagen_1" id="path_imagen_1" value=""  type="file" size="30" onchange="document.getElementById('imagen_mostrar_1').src=document.getElementById('imagen_mostrar_1').files.item(0).getAsDataURL()"/> -->
+									<input type="file" onchange="this.form.abc.value+=';' + this.value; return true;" multiple>
+									
+
+<label for="blogpic">Blog Thumbnail Picture:</label>
+<input type="file" size="23" id="blogpic" name="blogpic" onChange="javascript:previewImage(this.value)"/>
+<div id="preview-image">
+    <div id="imagethumb"></div>
+    <input type="text" id="allocatedimagename" name="allocatedimagename" />
+    <div id="loading" style="visibility:hidden"><img src="/images/loading.gif" alt="loading" title="loading" /></div>
+    <div id="supportedfiles"><p class="nomargin">Supported file types: jpg, jpeg, png (max 1mb) <br/>Your image will be resized to 110 by 110 px (40 by 40 for blog thumbs)</p></div>
+ 
+    <div id="removebutton"><button id="buttonremove" onclick="javascript:removeImage()">Remove</button></div>
+</div>
+									</td>
 								</tr>
                                 <tr>
 									<td valign="top" width="100"><p style="text-align:right">Descripcion:</td>
-									<td><input name="nombre_imagen_1" id="nombre_imagen_1" value=""  type="text" size="30"/></td></p>
+									<td><input name="nombre_imagen_1" id="nombre_imagen_1" value=""  type="text" size="30"/></td>
 								</tr>
 								<tr>
 									<td valign="top"><p style="text-align:right">Principal?</td>
-									<td><input name="principio_imagen_1" id="principio_imagen_1" value=""  type="checkbox"/></td></p>
+									<td><input name="principio_imagen_1" id="principio_imagen_1" value=""  type="checkbox"/></td>
 								</tr>
 	                           <!--tr><td><img src="/images/default.jpg" alt="{nombre_imagen}" width="85" height="85"/></td></tr--> 
 								<input name="max_productos" id="max_productos" value="{max_productos}" type="hidden" />
@@ -279,7 +271,7 @@ divProgress.appendChild(texto);
 							</table>
 						</div>
                     	<div class="imagenNuevoProd">
-                        	 <img src="/images/default.jpg" alt="{nombre_imagen}" width="85" height="85"/>
+                        	 <img src="/images/default.jpg" alt="{nombre_imagen}" width="85" height="85" id="imagen_mostrar_1"/>
                     	</div>
                     </div>
 					</td>
