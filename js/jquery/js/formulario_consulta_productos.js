@@ -115,4 +115,5 @@ $( "#ui-dialog " ).dialog({
 			.click(function() {
 				$( "#dialog-form" ).dialog( "open" );
 			});
+		
 	});

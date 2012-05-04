@@ -42,6 +42,8 @@
 
 <script type="text/javascript" src="/js/funciones.js"></script>
 
+<script type="text/javascript" src="/js/jquery/js/validar_nuevo_producto.js"></script>
+
 <script type="text/javascript">
 
 function pedir_subsecciones(valor){
@@ -383,7 +385,7 @@ divProgress.appendChild(texto);
   <div id="contenido"> 
 
   <div>
-
+   
    <form id="forminsertarproducto" action="/{idioma}/insertar_productoxusuario_ok" method="post" enctype="multipart/form-data">
 
  <input type="hidden" id="cant_imagenes" name="cant_imagenes" value="{cant_imagenes}" />
@@ -422,7 +424,7 @@ divProgress.appendChild(texto);
 
 						<select name="nombre_padre" id="nombre_padre" onChange="pedir_subsecciones(this.value);" style="width:250px;">
 
-							<option value="0">Sin Categor\EDa Padre</option>
+							<option value="0">Sin Categoria</option>
 
 								<!-- BEGIN block_padre -->
 
@@ -440,7 +442,7 @@ divProgress.appendChild(texto);
 
                   <tr>
 
-                     <td valign="top"><p style="text-align:right"><span class="required">*</span>Descripci\F3n:</td>
+                     <td valign="top"><p style="text-align:right"><span class="required">*</span>Descripcion:</td>
 
                     <td><textarea name="contenido_{lenguaje1}" id="contenido_{lenguaje1}">{contenido}</textarea>
 
@@ -560,7 +562,7 @@ divProgress.appendChild(texto);
 
                   </tr>
 
-				  <tr><td colspan="2"><a href="#" title="Eliminar \FAltima" onClick="eliminarFoto(document.getElementById('cant_imagenes').value); return false;">Eliminar \FAltima</a> - <a href="#" title="A\F1adir m\E1s fotos" onClick="addFoto(document.getElementById('cant_imagenes').value); return false;">A\F1adir m\E1s Im\E1genes</a></td></tr>
+				  <tr><td colspan="2"><a href="#" title="Eliminar \FAltima" onClick="eliminarFoto(document.getElementById('cant_imagenes').value); return false;">Eliminar \FAltima</a> - <a href="#" title="A\F1adir m\E1s fotos" onClick="addFoto(document.getElementById('cant_imagenes').value); return false;">Agregar mas Imagenes</a></td></tr>
 
                   </table>
 
@@ -570,13 +572,11 @@ divProgress.appendChild(texto);
 
               </div>
 
-      <div>
-
-      
-
-<input class="botongrande" value="Aceptar" onclick="document.getElementById('forminsertarproducto').submit();" style="text-align:center"/>
-
-</div>	
+      <div style="width:100%">
+         <b><p class="validateTips" style=" ;float:left; padding:5px;width:99%; text-align:center;"></p></b> 
+		 <input  id="boton_nuevo_producto" class="botongrande" value="Aceptar" style="text-align:center"/>      
+         <!--input  id="nuevo_producto" class="botongrande" value="Aceptar" onclick="document.getElementById('forminsertarproducto').submit();" style="text-align:center"/-->
+      </div>	
 
  
 

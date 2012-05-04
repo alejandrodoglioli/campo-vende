@@ -15,7 +15,18 @@
 <script type="text/javascript" src="/admin/js/jsrsClient.js"></script>
 <script type="text/javascript" src="/admin/js/funciones_generales.js"></script>
 <script type="text/javascript" src="/js/funciones.js"></script>
+
+<link rel="stylesheet" href="/js/jquery/css/ui-lightness/jquery-ui-1.8.17.custom.css" type="text/css" media="all" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="/js/jquery/js/check.js"></script>
+<script type="text/javascript" src="/js/jquery/js/validar_editar_producto.js"></script>
+
+
+
+
 <script type="text/javascript">
+
 function pedir_subsecciones(valor){
 var id_subseccion = valor;
 	jsrsExecute("../modulos/productos/include/include.remotescripting.php", parsear_subsecciones, "obtenerSubsecciones",Array(id_subseccion));
@@ -266,7 +277,8 @@ function parsear_subsecciones(retorno){
    
   </div>
 <div style="text-align:center">
-	<input class="botongrande" value="Aceptar" onclick="validarFormularioEditarProductoxusuario();" style="text-align:center"/>
+    <b><p class="validateTips" style=" ;float:left; padding:5px;width:99%; text-align:center;"></p></b> 
+	<input class="botongrande" id="boton_editar_producto" value="Aceptar" style="text-align:center"/>
 
 </div>	
   <script type="text/javascript"><!--
