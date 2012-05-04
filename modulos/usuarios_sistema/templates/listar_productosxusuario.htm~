@@ -150,7 +150,7 @@
 	<select id="id_seccion" name="id_seccion" onchange="document.location.href='/{idioma}/listar_productoxusuario/'+this.value">
 					<option id="padre_todos" name="padre_todos" value="0">Todos</option>
 					<!-- BEGIN block_padre -->
-					<option id="seccion_{id_seccion}" name="seccion_{id_seccion}" value="{id_seccion}" {selected_seccion} style="color:{color}">{nombre_padre}</option>
+					<option id="seccion_{id_seccion}" name="seccion_{id_grupo}" value="{id_seccion}" {selected_seccion} style="color:{color}">{nombre_padre}</option>
 					<!-- END block_padre -->
 				</select>
 </form>
