@@ -237,3 +237,25 @@ function validarFormularioInsertarProductoxusuario(){
 			return false;
 	}
 }
+
+function validarFormularioEditarProductoxusuario(){
+
+	var error="";
+
+	if (document.getElementById("titulo_es").value==""){
+		document.getElementById("titulo_es").className="succes";
+		error+="- El nombre no puede estar vacio.<br /><br />";
+	}
+	if (document.getElementById("nombre_padre").value=="0"){
+		document.getElementById("nombre_padre").className="succes";
+		error+="- Debe elegir una categor&iacute;a para el producto.<br /><br />";
+	}
+	if (error=="")
+		document.getElementById("formeditarproducto").submit();
+	else{
+		document.getElementById("dialog").innerHTML=error;
+		$( "#dialog" ).dialog( "open" );
+			return false;
+	}
+}
+
