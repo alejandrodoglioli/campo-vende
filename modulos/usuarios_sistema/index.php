@@ -488,14 +488,14 @@ function editar_productoxusuario(){
 
 	while($row=mysql_fetch_array($result)){
 	
-		$resultProducto=mysql_query("select si.*,s.precio,s.publicado,s.video,s.id_usuario,s.id_moneda, s.id_tipoproducto from ".$tof_productos." s join ".$tof_productosxidioma." si on (s.id=si.id) where s.id=".$id_producto." and si.idioma='".$row[idioma]."'");
+		$resultProducto=mysql_query("select si.*,s.precio,s.publicado,s.video,s.id_usuario,s.id_moneda, s.id_tipoproducto,s.precio from ".$tof_productos." s join ".$tof_productosxidioma." si on (s.id=si.id) where s.id=".$id_producto." and si.idioma='".$row[idioma]."'");
 		
 		if (mysql_num_rows($resultProducto)){
 			while($rowProducto=mysql_fetch_array($resultProducto)){
 				
 				$id_usuario=$rowProducto[id_usuario];
 				$t->set_var("lenguaje1", $rowProducto[idioma]);
-				$t->set_var("titulo", $rowProducto['nombre']);
+				$t->set_var("nombre_producto", $rowProducto['nombre']);
 				$t->set_var("contenido", $rowProducto['contenido']);
 				$t->set_var("title", $rowProducto[title]);
 				$t->set_var("description", $rowProducto[description]);
@@ -506,7 +506,7 @@ function editar_productoxusuario(){
 			}
 		}else{
 			$t->set_var("lenguaje1", $row[idioma]);
-				$t->set_var("titulo","");
+				$t->set_var("nombre_producto","");
 				$t->set_var("contenido","");
 				$t->set_var("title", "");
 				$t->set_var("description", "");
@@ -517,7 +517,7 @@ function editar_productoxusuario(){
 		}
 	}
 	
-	$result1=mysql_query("select se.id,se.id_padre,p.id_seccion,p.video,p.orden,p.publicado from ".$tof_secciones." se join ".$tof_productos." p on (p.id_seccion=se.id) where p.id=".$id_producto);
+	$result1=mysql_query("select se.id,se.id_padre,p.id_seccion,p.video,p.orden,p.publicado,p.precio from ".$tof_secciones." se join ".$tof_productos." p on (p.id_seccion=se.id) where p.id=".$id_producto);
 	$row1=mysql_fetch_array($result1);
 		
 	$result4=mysql_query("select se.* from ".$tof_secciones." se where se.id=".$row1[id_padre]);
@@ -531,6 +531,7 @@ function editar_productoxusuario(){
 	$t->set_var("publicado", $publicado);
 	$t->set_var("orden", $row1[orden]);
 	$t->set_var("video", $row1[video]);
+	$t->set_var("precio", $row1[precio]);
 	$t->set_var("id_producto", $id_producto);
 
 	$t->set_block("pl","block_padre","_block_padre");	
@@ -659,9 +660,9 @@ function editar_productoxusuario_ok(){
 	$resultProducto=mysql_query("select si.*,s.publicado,s.video,s.id_usuario from ".$tof_productos." s join ".$tof_productosxidioma." si on (s.id=si.id) where s.id=".$id_producto." and si.idioma='".$row[idioma]."'");
 	$rowProducto=mysql_fetch_array($resultProducto);
 
-	/*if (isset($publicado))
-		$publicado=1;
-	else*/
+	if (!isset($publicado))
+		$publicado=0;
+	else
 		$publicado=$rowProducto[publicado];
 		
 	if (isset($orden))
@@ -669,6 +670,8 @@ function editar_productoxusuario_ok(){
 		
 	else
 		mysql_query("update ".$tof_productos." set publicado=".$publicado.", precio=".$precio.", id_moneda=".$id_moneda.", id_tipoproducto=".$id_tipoproducto.", id_seccion=".$nombre_padre.",id_usuario=".$id_usuario.",video='".$video."' where id=".$id_producto);
+
+echo "update ".$tof_productos." set publicado=".$publicado.", precio=".$precio.", id_moneda=".$id_moneda.", id_tipoproducto=".$id_tipoproducto.", id_seccion=".$nombre_padre.",id_usuario=".$id_usuario.",video='".$video."' where id=".$id_producto;
 		
 
 	$result=mysql_query("select idioma, nombre from ".$tof_idioma." where publicado=1");
