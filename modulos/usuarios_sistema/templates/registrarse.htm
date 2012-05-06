@@ -4,7 +4,14 @@
       <link rel="shortcut icon" href="/images/favicon.ico" >   
 <!-- InstanceBeginEditable name="doctitle" -->
 <title>{title} - {title_empresa}</title>
+
+	<link rel="stylesheet" href="/js/jquery/css/ui-lightness/jquery-ui-1.8.17.custom.css" type="text/css" media="all" />
+<script src="/js/jquery/js/check.js"></script>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+        <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js" type="text/javascript"></script>
 <script src="/js/jquery/js/formulario.js"></script>
+<script src="/js/jquery/js/pedir_info_empresas.js"></script>
+<script src="/js/jquery/js/validar_registro.js"></script>
 
 <!-- InstanceEndEditable -->
 
@@ -184,9 +191,18 @@
 				</tr>
 				</form>
 									</div-->
-                                
-                                
-<div style="width:70%;text-align:center;">
+   
+<div id="dialog-form-empresa" title="Obtenga su propia tienda online!">
+<form id="es_empresa_form" action="/{idioma}/enviar_mail_solicitud.htm" enctype="multipart/form-data" method="post">  
+           <div id="mensajeEmpresa">
+				<p>Publique todos sus productos en Campo-Vende a traves de una tienda online personalizada</p>
+                <p><b>Desea recibir mas info al respecto?</b></p>
+			</div>
+</form>
+</div>
+
+                                                          
+<div style="width:80%;text-align:center;">
   <div id="container"> 
      <div class="titulo">    
          <h2>Registrese en Campo Vende</h2>
@@ -195,14 +211,14 @@
      <div id="contenido"> 
        
            <form action="/index.php?action=insertar_usuarios_sistema_ok&idioma=es" method="post"  enctype="multipart/form-data" id="formRegistrarse">	
-           <input id="captcha_texto_session" name="captcha_texto_session" type="hidden" value="{captcha_texto_session}" />			
-           
+			<input id="captcha_texto_session" name="captcha_texto_session" type="hidden" value="{captcha_texto_session}" />	           
               <div class="formcomentario campo">
 
             
-
+<div id="usuarioRegistro" class="sombra">
+<p class="tituloUsuario tituloUsuarioBorde" style="color:#32639A">Datos de Registro</p>
 <table>              
-   <tr><td width="50"><p style="text-align:right"><span class="required">*</span>Nombre:</td>
+   <tr><td width="150"><p style="text-align:right"><span class="required">*</span>Nombre:</td>
        <td><input id="nombre_usuario" name="nombre_usuario" value="" size="25%"  /></td> </p>  
    </tr>         
    <tr><td width="50"><p style="text-align:right"><span class="required">*</span>Apellido:</td>
@@ -212,40 +228,54 @@
    		<td><input id="email" name="email"  type="text" value="" size="25%" /></td>
    </tr>
    <tr><td width="50"><p style="text-align:right"><span class="required">*</span>Confirme Email:</td>
-   		<td><input id="email" name="email"  type="text" value="" size="25%" /></td>
+   		<td><input id="email_conf" name="email_conf"  type="text" value="" size="25%" /></td>
    </tr>              
-   <tr><td width="80"><p style="text-align:right"><span class="required">*</span>Password:</td>
+   <tr><td width="50"><p style="text-align:right"><span class="required">*</span>Password:</td>
   		 <td><input id="password" name="password" type="password" value="" size="25%" /></td></p>
    </tr>
-   <tr><td width="80"><p style="text-align:right"><span class="required">*</span>Confirme Password:</td>
+   <tr><td width="50"><p style="text-align:right"><span class="required">*</span>Confirme Password:</td>
  		  <td><input id="password_conf" name="password_conf" type="password" value="" size="25%" /></td></p>
    </tr>
-   <tr><td width="80"><p style="text-align:right">Domicilio:</td>
-  		 <td><input id="domicilio_usuario" name="domicilio_usuario"  type="text" value="" size="25%" /></td></p>
-   </tr>
-   <tr><td width="80"><p style="text-align:right">Ciudad:</td>
+   </table>
+   </br>
+   </div>
+  <div id="usuarioRegistro" class="sombra">
+<p class="tituloUsuario tituloUsuarioBorde" style="color:#32639A">Datos Personales</p>
+   <table>
+    <tr><td width="150"><p style="text-align:right">Ciudad:</td>
 		   <td><input id="ciudad_usuario" name="ciudad_usuario"  type="text" value="" size="25%" /></td></p>
    </tr>
-    <tr><td width="80"><p style="text-align:right">CP:</td>
+    <tr><td width="50"><p style="text-align:right">CP:</td>
  		  <td><input id="cp_usuario" name="cp_usuario"  type="text" value="" size="25%" /></td></p>
    </tr>
-   <tr><td width="80"><p style="text-align:right">Tel&eacute;fono:</td>
+   <tr><td width="50"><p style="text-align:right">Tel&eacute;fono:</td>
  		  <td><input id="telefono_usuario" name="telefono_usuario"  type="text" value="" size="25%" /></td></p>
    </tr>
-   <tr> <td width="80"><p style="text-align:right;height:40px;"><span class="required">*</span> Ingrese el codigo de verificacion.</td></p></tr>
-   <tr><td><img src="/include/crear-imagen.php?captcha_texto={captcha_texto_session}" alt="captcha" />
- 		  <td><input name="captcha" type="text" id="captcha" size="20" onfocus="this.className=''" /></td>
-   </tr>				
+   			
 </table>
+</br>
+</div>
+  <div id="usuarioRegistro" class="sombra">
+<p class="tituloUsuario tituloUsuarioBorde" style="color:#32639A">Tipo de Usuario</p>
+   <table>
+   <tr><td width="150"><p style="text-align:right">Es Empresa?</td>
+  		 <td><input id="tipo_usuario" name="tipo_usuario" type="checkbox" value="bnbn" size="25%" /></td></p>
+   </tr>
+   <tr> <td width="150"><p style="text-align:left;"><span class="required">*</span> Codigo de verificacion:</td></p></tr>
+   <tr><td><img src="/include/crear-imagen.php?captcha_texto={captcha_texto_session}" alt="captcha"/><br /><input name="captcha" type="text" id="captcha" size="20" onfocus="this.className=''"/></td>
+   </tr>	
+   </table>		
+
+</div>
 
       </div>
-
+ <b><p class="mostrar_error" style="float:left;padding:10px;width:96%;"></p></b> 
+     
       <div style="width:100%">
-         <b><p class="validateTips" style=" ;float:left; padding:5px;width:99%; text-align:left;"></p></b> 
-		 <input  id="boton_nuevo_producto" class="botongrande" value="Registrarme" style="text-align:center"/>      
+     	 <input  id="boton_registrar" class="botongrande" value="Registrarme" style="text-align:center"/>      
          <!--input  id="nuevo_producto" class="botongrande" value="Aceptar" onclick="document.getElementById('forminsertarproducto').submit();" style="text-align:center"/-->
       </div>	
-
+     
  
 
 </form>
@@ -255,12 +285,7 @@
 </div>
 
   </div>                
-
-                                
-                                
-                                
-                                
-                                
+                 
                                 
                                 
                                 

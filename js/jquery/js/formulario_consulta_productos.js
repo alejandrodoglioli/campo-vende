@@ -111,9 +111,10 @@ $( "#ui-dialog " ).dialog({
 		});
 
 		$( "#hacer-pregunta" )
-			.button()
-			.click(function() {
-				$( "#dialog-form" ).dialog( "open" );
-			});
+		.button()
+		.click(function() {
+		$( "#dialog-form" ).dialog( "open" );
+		});
+
 		
 	});

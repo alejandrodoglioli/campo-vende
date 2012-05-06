@@ -539,6 +539,19 @@ ul#menulateral li a.current,ul#menulateral li a.current:hover{background:#BAD1F8
 	width:75%;
 }
 
+#mensajeEmpresa {
+    text-align: center;
+    background-image:url(/images/sombra.jpg);
+    background-repeat:repeat-x;
+    float:left;
+    border: 1px solid #DDDDDD;
+}
+#usuarioRegistro {
+	border: 1px solid #DDDDDD;
+    float: left;
+    height: auto;
+    width: 100%;
+}
 #usuarioLogin {
 	border: 1px solid #DDDDDD;
     float: left;
@@ -609,7 +622,9 @@ ul#menulateral li a.current,ul#menulateral li a.current:hover{background:#BAD1F8
     padding: 10px;
 	width:95%;
 }
-
+.sombra{
+	background:url(/images/sombra.jpg) repeat-x left top;
+}
 #cuerpo_producto .titulo_producto {
 	float:left;
 	width:100%;
@@ -1311,4 +1326,14 @@ select {
     width: 110px;
     margin-top: 10px;
 }
+
+
+
+
+
+
+
+
+
+
 
