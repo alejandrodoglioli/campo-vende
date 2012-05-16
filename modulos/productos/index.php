@@ -18,7 +18,7 @@ function caracter_aleatorio() {
 }
 
 function mostrar_producto(){
-	global $tof_productos,$tof_productosxidioma,$tof_secciones,$tof_seccionesxidioma,$tof_comentariosxproductos,$tof_comentariosxproductosxidioma,$tof_imagenesxproductos,$id_producto,$id_seccion,$id_subseccion,$idioma,$tof_moneda,$tof_tipoproducto;
+	global $tof_productos,$tof_productosxidioma,$tof_usuarios_sistema,$tof_secciones,$tof_seccionesxidioma,$tof_comentariosxproductos,$tof_comentariosxproductosxidioma,$tof_imagenesxproductos,$id_producto,$id_seccion,$id_subseccion,$idioma,$tof_moneda,$tof_tipoproducto;
 
 	$captcha_texto = "";
 	for ($i = 1; $i <= 6; $i++) {
@@ -144,7 +144,7 @@ function mostrar_producto(){
 		$id_secc=$id_seccion;
 		$t->set_var("id_producto",$id_secc);
 
-		$result=mysql_query("select si.*,s.id_seccion,s.id_usuario,s.video,s.precio,m.simbolo as simbolo_moneda,tp.nombre as tipoproducto from ".$tof_productos." s join ".$tof_productosxidioma." si on (s.id=si.id) right join ".$tof_moneda." m on (m.id=s.id_moneda) right join ".$tof_tipoproducto." tp on (tp.id=s.id_tipoproducto) where si.id=".$id_producto." and si.idioma='".$idioma."'");
+		$result=mysql_query("select si.*,s.id_seccion,s.id_usuario,s.video,s.precio,s.fecha_publicacion,m.simbolo as simbolo_moneda,tp.nombre as tipoproducto from ".$tof_productos." s join ".$tof_productosxidioma." si on (s.id=si.id) right join ".$tof_moneda." m on (m.id=s.id_moneda) right join ".$tof_tipoproducto." tp on (tp.id=s.id_tipoproducto) where si.id=".$id_producto." and si.idioma='".$idioma."'");
 		
 
 		$row=mysql_fetch_array($result);
@@ -229,8 +229,11 @@ function mostrar_producto(){
 	$t->set_var("id_producto", $id_producto);
 	$t->set_var("titulo", $row[nombre]);
 	$t->set_var("contenido", $row[contenido]);
+	$t->set_var("fecha_publicacion", $row[fecha_publicacion]);
 	if (isset($row[precio]) && ($row[precio]!=0))
 		$t->set_var("precio", "Precio: ".$row[simbolo_moneda]." ".$row[precio]);
+		else
+			$t->set_var("precio", "Precio: consultar");	
 	$t->set_var("tipoproducto", $row[tipoproducto]);
 	//$t->set_var("imagen_producto", '<p style="width:30%;float:left"><a href="/'.$idioma.'/'.strtolower(sacar_acentos(str_replace(" ","-" ,$row[nombre]))).'/'.strtolower(sacar_acentos(str_replace(" ","-" ,$row1[nombre])))."-".$row[id]."-".$row1[id].'.htm" ><img src="/images/productos/_P1030880.JPG" alt="'.$rowimagen[nombre].'" width="150" height="150"/></a></p>');
 
@@ -294,6 +297,12 @@ function mostrar_producto(){
 		$t->set_var("comentariosvisibles", "display:none;");
 	}
 
+	$result=mysql_query("select s.nombre,s.ciudad from ".$tof_usuarios_sistema." s where s.id=".$row['id_usuario']);
+	$rowUser=mysql_fetch_array($result);
+	$t->set_var("vendedor",$rowUser[nombre]);
+	$t->set_var("localidad",$rowUser[ciudad]);
+	
+	
 	setearMenu(&$t,$id_secc);
 	setearVariablesComunes(&$t);
 	setearBanners(&$t,$id_secc);
