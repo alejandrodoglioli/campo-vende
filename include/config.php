@@ -70,4 +70,6 @@ $tof_feedsxidioma="feedsxidioma";
 $tof_usuarios_sistema="usuarios_sistema";
 $tof_tipousuario="tipousuario";
 $tof_moneda="moneda";
+$tof_localidades="localidades";
+$tof_provincias = "provincias";
 ?>

@@ -549,9 +549,12 @@ ul#menulateral li a.current,ul#menulateral li a.current:hover{background:#BAD1F8
 #usuarioRegistro {
 	border: 1px solid #DDDDDD;
     float: left;
+    text-align:center;
     height: auto;
-    width: 100%;
+    width: 90%;
+    margin-bottom: 15px;
 }
+#usuarioRegistro input:focus, input:visited {border:1px solid #cedeef;background-color:#FFFFFF;}
 #usuarioLogin {
 	border: 1px solid #DDDDDD;
     float: left;
@@ -654,6 +657,8 @@ border-top: 3px solid #EEE;
 width:100%;
 margin-top:5px;
 float:left;
+font-family: Arial,Helvetica,sans-serif;
+font-size: 10px;
 }	
 	
 
@@ -1210,7 +1215,11 @@ ol#pagination li.next {
 #formRegistrarse ul {width:100%;list-style:none}
 #formRegistrarse ul li {width:48%;float:left;}
 
-.precio{font-size:22px;color:#990000;}
+.precio{color:#000000;
+font-family: Arial,Helvetica,sans-serif;
+font-size: 18px;
+text-align: right;
+float: right;}
 
 
 #borde_consulta {
@@ -1233,7 +1242,7 @@ ol#pagination li.next {
     float:left;
     border: 1px solid #DDDDDD;
     padding: 10px;
-	width:60%%;
+	width:60%;
 }
 
 
@@ -1333,7 +1342,18 @@ select {
 
 
 
-
+div#login-box form#login fieldset, div#col-unica form fieldset, div#col-principal form#registro fieldset, div#col-principal form#contacto fieldset, form#forgot fieldset {
+    padding-top: 0 !important;
+deganados.css (line 1713)
+div#col-unica div#accion div#wrap-buy-article, div#login-box form#login fieldset, div#col-unica form fieldset, div#col-principal form#registro fieldset, div#col-principal form#contacto fieldset, form#forgot fieldset {
+    border: 1px solid #A9AAAC;
+    margin-bottom: 30px;
+    padding: 30px 80px 10px 30px;
+}
+deganados.css (line 1706)
+fieldset {
+    border: medium none;
+}
 
 
 

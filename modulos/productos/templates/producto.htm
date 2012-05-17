@@ -21,6 +21,7 @@
 <script src="/js/jquery/js/formulario_consulta_productos.js"></script>
 <script type="text/javascript" src="/js/jquery/js/easypaginate.js"></script>
 <script type="text/javascript" src="/js/jquery/js/loginforzado.js"></script>
+<script type="text/javascript" src="/js/jquery/js/contactar_vendedor.js"></script>
 <!--script src="/js/jquery/js/jdialog.js"></script-->
                      
 <script language="javascript">
@@ -169,7 +170,7 @@ jQuery(function($){
       <div class="titulo_producto">
          <h1>{title}</h1>      
       </div>
-      <div id="contenido_producto">      
+    <div id="contenido_producto">      
       		<div id="contenido_imagen">
          			<div id="gallery">            
 						<div id="gallery_output">
@@ -183,22 +184,42 @@ jQuery(function($){
   						    <!-- END block_imagen_prod2 -->	
 						</div>
 					</div>
-                    </div>
-       				<div class = "columna_der">
-      				     {description} 
-						 <br />
-						 <strong class="precio">{precio}</strong>
-						 <br />
-						<strong>Tipo producto: </strong>{tipoproducto}
-						 <br />
-      				     {contenido} 
+            </div>
+       		<div class = "columna_der">
+                         <strong class="precio">{simbolo}{precio}</strong><br /><br />
+      				     {contenido}  
+						<br />
+						 
       				</div>
                     
       				<div class="pie_producto">  
-      					<h2 style="margin:10px;">aca podrian ir datos de fecha de publicacion, usuario, cant visitas.. etc</h2>
+                       <div style="width:70%;float:left;">
+  	                      <table>                    
+                   	        <tr><td width="150"><strong>Tipo producto: </strong></td><td>{tipoproducto}<br /></td></tr>                                                                     
+						    <tr><td width="150"><strong>Fecha Publicacion: </strong></td><td>{fecha_publicacion} <br /></td> </tr> 
+							<tr><td width="150"><strong>Vendedor: </strong></td><td>{vendedor} <br /></td> </tr> 
+							<tr><td width="150"><strong>Localidad: </strong></td><td>{localidad}</td> </tr>                        
+						  </table>
+                       </div>
+                       <div style="float:left;width:30%;color:#3466cb;">
+                <p class="cont_pregunta">
+				  <button id="contactar" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"><span class="ui-button-text" style="color:#3466cb;">Contactar Vendedor</span></button>
+				</p>
+                
+                        </div>                         
       				</div>
       		</div>
     </div>
+    
+    <div id="dialog-form-contacto" title="Obtenga su propia tienda online!">
+		<form id="contactar_form" action="/{idioma}/contactar.htm" enctype="multipart/form-data" method="post">  
+           <div id="mensajeEmpresa">
+				<p>Se ha enviado un mail a .... con los datos del vendedor</p>
+                <p><b>gracias por utilizar Campo-Vende</b></p>
+			</div>
+		</form>
+    </div>
+    
    <div id="container">
 	   <h2>Otros productos de este vendedor y/o categoría</h2>	
 		<ul id="items">
