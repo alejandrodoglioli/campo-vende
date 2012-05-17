@@ -5,14 +5,16 @@
 <!-- InstanceBeginEditable name="doctitle" -->
 <title>{title} - {title_empresa}</title>
 
-	<link rel="stylesheet" href="/js/jquery/css/ui-lightness/jquery-ui-1.8.17.custom.css" type="text/css" media="all" />
+<link href="/admin/css/style.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="/js/jquery/css/ui-lightness/jquery-ui-1.8.17.custom.css" type="text/css" media="all" />
 <script src="/js/jquery/js/check.js"></script>
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
-        <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js" type="text/javascript"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js" type="text/javascript"></script>
 <script src="/js/jquery/js/formulario.js"></script>
 <script src="/js/jquery/js/pedir_info_empresas.js"></script>
 <script src="/js/jquery/js/validar_registro.js"></script>
-<script type="text/javascript">
+<script src="/js/jquery/js/select_provincias_ciudades.js"></script>
+<!--script type="text/javascript">
 
 
 
@@ -25,7 +27,7 @@ function cargar_provincias()
 		}
 		else
 		{
-			$('#provincia').append(provincias);			
+			$('#provincia_usuario').append(provincias);			
 		}
 	});	
 }
@@ -40,23 +42,23 @@ function cargar_ciudades()
 		}
 		else
 		{
-		$("#ciudad").attr("disabled",false);
-		document.getElementById("ciudad").options.length=1;
-		$('#ciudad').append(ciudades);			
+		$("#ciudad_usuario").attr("disabled",false);
+		document.getElementById("ciudad_usuario").options.length=1;
+		$('#ciudad_usuario').append(ciudades);			
 		}
 	});	
 }
 
 $(document).ready(function(){
 	cargar_provincias();	
-	$("#provincia").change(function(){
+	$("#provincia_usuario").change(function(){
 		cargar_ciudades();
 	});
 	//$("#estado").change(function(){dependencia_ciudad();});
-	//$("#ciudad").attr("disabled",true);
+	$("#ciudad_usuario").attr("disabled",true);
 	//$("#ciudad").attr("disabled",true);
 });
-</script>
+</script-->
 <!-- InstanceEndEditable -->
 
 <meta http-equiv="Content-Type" content="text/html; charset={charset}" />
@@ -292,19 +294,19 @@ $(document).ready(function(){
    <table>
     <tr><td width="150"><p style="text-align:right">Provincia:</td>
 		   <!--td><input id="ciudad_usuario" name="ciudad_usuario"  type="text" value="" size="25%" /></td></p-->
-           <td><select  style="width:300px;" id="provincia" name="provincia"><option value="0">Selecciona Provincia...</option></select></td></p>
+           <td><select  style="width:300px;" id="provincia_usuario" name="provincia_usuario"><option value="0">Selecciona Provincia...</option></select></td></p>
    </tr>
    <tr><td width="150"><p style="text-align:right">Ciudad:</td>
 		   <!--td><input id="ciudad_usuario" name="ciudad_usuario"  type="text" value="" size="25%" /></td></p-->
-           <td><select style="width:300px;" id="ciudad" name="ciudad"><option value="0">Selecciona Ciudad...</option></select></td></p>
+           <td><select style="width:300px;" id="ciudad_usuario" name="ciudad_usuario"><option value="0">Selecciona Ciudad...</option></select></td></p>
    </tr>
     <tr><td width="50"><p style="text-align:right">CP:</td>
- 		  <td><input id="cp_usuario" name="cp_usuario"  type="text" value="" size="27%" /></td></p>
+ 		  <td><input id="cp_usuario" name="cp_usuario"  type="text" value="" size="30%" /></td></p>
    </tr>
    <tr>
    		  <td width="50"><p style="text-align:right">Tel&eacute;fono:</td></p>
- 		  <td>(<input id="telefono_usuario" name="telefono_usuario"  type="text" value="" size="4%" />)
- 		  <input id="telefono_usuario" name="telefono_usuario"  type="text" value="" size="16%" /></td>
+ 		  <td>(<input id="carac_usuario" name="carac_usuario"  type="text" value="" size="6%" />)
+ 		  <input id="telefono_usuario" name="telefono_usuario"  type="text" value="" size="20%" /></td>
    </tr>
    			
 </table>

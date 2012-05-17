@@ -7,7 +7,7 @@ include("../../../include/conexion.php");
 
 function listar_productos(){
 	global $tof_productos,$tof_productosxidioma,$tof_seccionesxidioma,$id_padre,$row_per_page,$page,$default_idioma,$tof_usuarios_sistema;
-	
+
 	$name_tpl="listar_productos.htm";
 	$t = new Template("./templates", "remove");
 	$t->set_file("pl", $name_tpl);

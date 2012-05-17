@@ -4,13 +4,13 @@ $(function() {
 		
 		var nombre_usuario = $( "#nombre_usuario" ),
 		    apellido_usuario = $( "#apellido_usuario" ),
-		    ciudad = $( "#ciudad" ),
 		    email = $( "#email" ),
 		    email_conf = $( "#email_conf" ),
 		    password = $( "#password" ),
 		    password_conf = $( "#password_conf" ),
 		    tipo_us = $( "#es_comercio" ),
 		    ciudad = $( "#ciudad_usuario" ),
+		    provincia = $( "#provincia_usuario" ),
 		    cp = $( "#cp_usuario" ),
 		    telefono = $( "#telefono_usuario" ),
 		    tipo_usuario = $( "#tipo_usuario" ),
@@ -22,7 +22,7 @@ $(function() {
 
 
 		function validarform(){
-            alert(mas_info.val());
+         
 			var bValid = true;
 			allFields.removeClass( "ui-state-error" );
 				

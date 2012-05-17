@@ -79,9 +79,15 @@ if ($action == "listar_albums") {
 }elseif ($action == "insertar_usuarios_sistema_ok") {
 	include("modulos/usuarios_sistema/index.php");
     insertar_usuarios_sistema_ok(); 
+}elseif ($action == "modificar_usuario_sistema_ok") {
+	include("modulos/usuarios_sistema/index.php");
+    modificar_usuario_sistema_ok();     
 }elseif (($action == "login" or $action == "listar_productoxusuario") && isset($_SESSION[user_sistema])) {
 	include("modulos/usuarios_sistema/index.php");
 	mostrar_usuario_sistema(); 
+}elseif (($action == "mostrar_datos_usuario") && isset($_SESSION[user_sistema])) {
+	include("modulos/usuarios_sistema/index.php");
+	mostrar_datos_usuario(); 
 }elseif ($action == "insertar_productoxusuario") {
 	include("modulos/usuarios_sistema/index.php");
  	insertar_productoxusuario(); 

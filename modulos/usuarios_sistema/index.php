@@ -124,14 +124,14 @@ function registrar_usuario_sistema(){
 }
 
 function insertar_usuarios_sistema_ok(){
-	global $tof_usuarios_sistema,$nombre_usuario,$apellido_usuario,$email,$password,$domicilio_usuario,$ciudad_usuario,$provincia_usuario,$cp_usuario,$telefono_usuario,$celular_usuario,$idioma,$tipo_usuario;
+	global $tof_usuarios_sistema,$nombre_usuario,$apellido_usuario,$email,$password,$domicilio_usuario,$ciudad_usuario,$provincia_usuario,$cp_usuario,$carac_usuario,$telefono_usuario,$idioma,$tipo_usuario;
 
 	if (isset($es_comercio_usuario))
 		$es_comercio_usuario=1;
 	else
 		$es_comercio_usuario=0;
 
-	mysql_query("insert into ".$tof_usuarios_sistema." values('NULL','".$nombre_usuario."','".$apellido_usuario."','".$email."','".$password."','".$domicilio_usuario."','".$ciudad_usuario."','".$provincia_usuario."','".$cp_usuario."','".$telefono_usuario."','".$celular_usuario."','".$tipo_usuario."')");
+	mysql_query("insert into ".$tof_usuarios_sistema." values('NULL','".$nombre_usuario."','".$apellido_usuario."','".$email."','".$password."','".$domicilio_usuario."','".$carac_usuario."','".$telefono_usuario."','".$cp_usuario."','".$tipo_usuario."','".$provincia_usuario."','".$ciudad_usuario."')");
 	
 	$id=mysql_insert_id();
 	
@@ -172,8 +172,7 @@ function mostrar_usuario_sistema($id_usuario=NULL){
 		$filtro=" and se.id=".$id_seccion;
 	else
 		$filtro="";
-		$result=mysql_query("select ip.nombre as nombreimagen,ip.path,si.*,s.publicado,s.id_seccion,se.nombre as nombre_seccion from ".$tof_productos." s join ".$tof_productosxidioma." si on (s.id=si.id) join ".$tof_seccionesxidioma." se on (se.id=s.id_seccion) and si.idioma='".$idioma."' and se.idioma='".$idioma."' and s.id_usuario=".$id_usuario.$filtro." left join ".$tof_imagenesxproductos." ip on(ip.id_producto=si.id) order by nombre limit ".$inicio.",".$row_per_page);
-		
+		$result=mysql_query("select ip.nombre as nombreimagen,ip.path,si.*,s.publicado,s.id_seccion,se.nombre as nombre_seccion from ".$tof_productos." s join ".$tof_productosxidioma." si on (s.id=si.id) join ".$tof_seccionesxidioma." se on (se.id=s.id_seccion) and si.idioma='".$idioma."' and se.idioma='".$idioma."' and s.id_usuario=".$id_usuario.$filtro." left join ".$tof_imagenesxproductos." ip on(ip.id_producto=si.id) and ip.principio = 1 order by nombre limit ".$inicio.",".$row_per_page);		
 		$resultcant=mysql_query("select count(*) as cant from ".$tof_productos." s join ".$tof_productosxidioma." si on (s.id=si.id) join ".$tof_seccionesxidioma." se on (se.id=s.id_seccion) and si.idioma='".$idioma."' and se.idioma='".$idioma."' and s.id_usuario=".$id_usuario.$filtro);
 		
 	$t->set_block("pl","block_productos","_block_productos");	
@@ -183,7 +182,9 @@ function mostrar_usuario_sistema($id_usuario=NULL){
       $t->set_var("publicado_producto",$row['publicado']);
 	  $t->set_var("nombre_padre",$row['nombre_seccion']);
       $t->set_var("id_producto",$row['id']);
-      $t->set_var("imagen_src",$row['path']);
+      if($row['path']!='')
+          $t->set_var("imagen_src",$row['path']);
+          else $t->set_var("imagen_src","/images/default.jpg");
 	  $t->set_var("imagen_nombre",$row['nombreimagen']);
 			
       $t->parse("_block_productos","block_productos",true);
@@ -354,10 +355,11 @@ function insertar_productoxusuario_ok(){
 		$publicado=1;
 	else*/
 		$publicado=0;
-	mysql_query("insert into ".$tof_productos." values(NULL,".$nombre_padre.",".$id_usuario.",".$id_tipoproducto.",".$id_moneda.",".$publicado.",'".$orden."','now()','".$video."',".$precio.",0)");
+	
+	mysql_query("insert into ".$tof_productos." values(NULL,".$nombre_padre.",".$id_usuario.",".$id_tipoproducto.",".$id_moneda.",".$publicado.",'".$orden."',now(),'".$video."',".$precio.",0)");
 
 	$last_id = mysql_insert_id();
-	
+																																									
 	$result=mysql_query("select idioma, nombre from ".$tof_idioma." where publicado=1");
 	while($row=mysql_fetch_array($result)){
 		$titulo ="titulo_".$row[idioma];
@@ -670,8 +672,6 @@ function editar_productoxusuario_ok(){
 		
 	else
 		mysql_query("update ".$tof_productos." set publicado=".$publicado.", precio=".$precio.", id_moneda=".$id_moneda.", id_tipoproducto=".$id_tipoproducto.", id_seccion=".$nombre_padre.",id_usuario=".$id_usuario.",video='".$video."' where id=".$id_producto);
-
-echo "update ".$tof_productos." set publicado=".$publicado.", precio=".$precio.", id_moneda=".$id_moneda.", id_tipoproducto=".$id_tipoproducto.", id_seccion=".$nombre_padre.",id_usuario=".$id_usuario.",video='".$video."' where id=".$id_producto;
 		
 
 	$result=mysql_query("select idioma, nombre from ".$tof_idioma." where publicado=1");
@@ -1082,6 +1082,48 @@ function eliminarpregunta_productoxusuario_ok(){
 	mostrarpregunta_productoxusuario($id_producto);
 }
 
+function mostrar_datos_usuario(){
+	global $tof_usuarios_sistema,$tof_localidades,$tof_provincias;
+	$id_usuario=$_SESSION['user_sistema'];
+	$name_tpl="mostrar_datos_usuario.htm";
+	$t = new Template("./modulos/usuarios_sistema/templates", "remove");
+	$t->set_file("pl", $name_tpl);
+	
+	
+	$result=mysql_query("select * from ".$tof_usuarios_sistema." where id=".$id_usuario);
+	$row = mysql_fetch_array($result);
+	
+	$t->set_var("nombre",$row[nombre]);
+	$t->set_var("apellido",$row[apellido]);
+	$t->set_var("email",$row[email]);
+	$t->set_var("password",$row[password]);
+	$t->set_var("caracteristica",$row[caracteristica]);
+	$t->set_var("telefono",$row[telefono]);
+	$t->set_var("cp",$row[cp]);
+	$t->set_var("tipo_usuario",$row[id_tipousuario]);
+	$t->set_var("provincia",$row[provincia]);
+	$t->set_var("ciudad",$row[ciudad]);
+	
+	$result=mysql_query("select nombre from ".$tof_localidades." where id=".$row[ciudad]);
+	$rowc = mysql_fetch_array($result);	
+	$t->set_var("nombre_ciudad",$rowc[nombre]);
+	
+	$result=mysql_query("select nombre from ".$tof_provincias." where id=".$row[provincia]);
+	$rowp = mysql_fetch_array($result);	
+	$t->set_var("nombre_prov",$rowp[nombre]);
+	
+	setearMenu(&$t);
+	setearVariablesComunes(&$t);
+	
+	$t->parse("MAIN", "pl");
+    $t->p("MAIN");
+}
+
+function modificar_usuario_sistema_ok(){
+	global $tof_usuarios_sistema,$nombre_usuario,$apellido_usuario,$email,$password,$ciudad_usuario,$provincia_usuario,$cp_usuario,$carac_usuario,$telefono_usuario,$idioma,$tipo_usuario;
+	mysql_query("update ".$tof_usuarios_sistema." set nombre = '".$nombre_usuario."', apellido='" .$apellido_usuario."', email='".$email."', password='".$password."', caracteristica='".$carac_usuario."', telefono='".$telefono_usuario."', cp='".$cp_usuario."',id_tipousuario=".$tipo_usuario.",provincia=".$provincia_usuario.",ciudad=".$ciudad_usuario);
+	mostrar_usuario_sistema();
+}
 
 function recuperar_password(){
 	global $tof_usuarios_sistema,$emailSite,$email_rec,$urlSite;

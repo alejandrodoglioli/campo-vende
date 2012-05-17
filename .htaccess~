@@ -20,6 +20,7 @@ RewriteRule ^(.*)/(.*)-([0-9]+)/(.*)-([0-9]+)/contacto\.htm$ $1/contacto.htm [L,
 #usuarios sistema
 RewriteRule ^(.*)/login.htm$ index.php?action=login&idioma=$1 [L,NC]
 RewriteRule ^(.*)/registrarse.htm$ index.php?action=registrar_usuario_sistema&idioma=$1 [L,NC]
+RewriteRule ^(.*)/mostrar_datos_usuario$ index.php?action=mostrar_datos_usuario&idioma=$1 [L,NC]
 RewriteRule ^(.*)/listar_productoxusuario$ index.php?action=listar_productoxusuario&idioma=$1 [L,NC]
 RewriteRule ^(.*)/listarpregunta_productoxusuario/([0-9]+)$ index.php?action=listarpregunta_productoxusuario&id_producto=$2&idioma=$1 [L,NC]
 RewriteRule ^(.*)/editarpregunta_productoxusuario/([0-9]+)$ index.php?action=editarpregunta_productoxusuario&id_comentario=$2&idioma=$1 [L,NC]
