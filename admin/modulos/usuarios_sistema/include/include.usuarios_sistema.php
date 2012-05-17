@@ -31,7 +31,8 @@ setearVariablesComunes(&$t);
       $t->set_var("apellido_usuario",$row[apellido]);
       $t->set_var("nombre_usuario",$row[nombre]);
       $t->set_var("email_usuario",$row[email]);
-	   $t->set_var("tipo_usuario",$row[tipo_usuario]);
+	  $t->set_var("tipo_usuario",$row[tipo_usuario]);
+	  $t->set_var("activo_usuario",$row[activo]);
 	  $t->set_var("id_usuario",$row[id]);
       $t->parse("_block_usuarios_sistema","block_usuarios_sistema",true);
     }
@@ -88,9 +89,14 @@ setearVariablesComunes(&$t);
 }
 
 function insertar_usuarios_sistema_ok(){
-	global $tof_usuarios_sistema,$nombre_usuario,$apellido_usuario,$email_usuario,$password_usuario,$domicilio_usuario,$ciudad_usuario,$provincia_usuario,$cp_usuario,$telefono_usuario,$celular_usuario,$tipousuario;
+	global $tof_usuarios_sistema,$nombre_usuario,$apellido_usuario,$email_usuario,$password_usuario,$domicilio_usuario,$ciudad_usuario,$provincia_usuario,$cp_usuario,$telefono_usuario,$celular_usuario,$tipousuario,$activo;
 
-	mysql_query("insert into ".$tof_usuarios_sistema." values('NULL','".$nombre_usuario."','".$apellido_usuario."','".$email_usuario."','".$password_usuario."','".$domicilio_usuario."','".$ciudad_usuario."','".$provincia_usuario."','".$cp_usuario."','".$telefono_usuario."','".$celular_usuario."',".$tipousuario.")");
+	if (isset($activo))
+		$activo=1;
+	else
+		$activo=0;
+		
+	mysql_query("insert into ".$tof_usuarios_sistema." values('NULL','".$nombre_usuario."','".$apellido_usuario."','".$email_usuario."','".$password_usuario."','".$domicilio_usuario."','".$ciudad_usuario."','".$provincia_usuario."','".$cp_usuario."','".$telefono_usuario."','".$celular_usuario."',".$tipousuario.",".$activo.")");
 		
 	listar_usuarios_sistema();
 }
@@ -109,9 +115,12 @@ setearVariablesComunes(&$t);
 
 	$result=mysql_query("select * from ".$tof_usuarios_sistema." where id=".$id_usuario);
 	$row=mysql_fetch_array($result);
-    if($row[comercio]==1)
-		$es_comercio="checked";
-	
+    
+	if($row1[publicado]==1)
+		$activo='checked';
+	else
+		$activo='';
+		
 	$t->set_var("apellido_usuario",$row[apellido]);
 	$t->set_var("nombre_usuario",$row[nombre]);
 	$t->set_var("email_usuario",$row[email]);
@@ -122,6 +131,8 @@ setearVariablesComunes(&$t);
 	$t->set_var("cp_usuario",$row[cp]);	
 	$t->set_var("telefono_usuario",$row[telefono]);	
 	$t->set_var("celular_usuario",$row[celular]);	
+	$t->set_var("activo",$activo);	
+	
 	
 	$resultTipousuario=mysql_query("select * from ".$tof_tipousuario." tu order by id");
 	$t->set_block("pl","block_tipousuario","_block_tipousuario");	
@@ -144,9 +155,14 @@ setearVariablesComunes(&$t);
 }
 
 function editar_usuarios_sistema_ok(){
-	global $tof_usuarios_sistema,$id_usuario,$apellido_usuario,$nombre_usuario,$email_usuario,$password_usuario,$domicilio_usuario,$ciudad_usuario,$provincia_usuario,$cp_usuario,$telefono_usuario,$celular_usuario,$tipousuario;
+	global $tof_usuarios_sistema,$id_usuario,$apellido_usuario,$nombre_usuario,$email_usuario,$password_usuario,$domicilio_usuario,$ciudad_usuario,$provincia_usuario,$cp_usuario,$telefono_usuario,$celular_usuario,$tipousuario,$activo;
+	
+	if (isset($activo))
+		$activo=1;
+	else
+		$activo=0;
 		
-	mysql_query("update ".$tof_usuarios_sistema." set apellido='".$apellido_usuario."',nombre='".$nombre_usuario."',email='".$email_usuario."',password='".$password_usuario."',domicilio='".$domicilio_usuario."',ciudad='".$ciudad_usuario."',provincia='".$provincia_usuario."',cp='".$cp_usuario."',telefono='".$telefono_usuario."',celular='".$celular_usuario."',id_tipousuario=".$tipousuario." where id=".$id_usuario);
+	mysql_query("update ".$tof_usuarios_sistema." set apellido='".$apellido_usuario."',nombre='".$nombre_usuario."',email='".$email_usuario."',password='".$password_usuario."',domicilio='".$domicilio_usuario."',ciudad='".$ciudad_usuario."',provincia='".$provincia_usuario."',cp='".$cp_usuario."',telefono='".$telefono_usuario."',celular='".$celular_usuario."',id_tipousuario=".$tipousuario.",activo=".$activo." where id=".$id_usuario);
 		
 	listar_usuarios_sistema();
 }

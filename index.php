@@ -120,6 +120,12 @@ if ($action == "listar_albums") {
 }elseif ($action == "recuperar_password") {
  	require_once("modulos/usuarios_sistema/index.php");
  	recuperar_password();
+}if ($action == "listar_comercios") {
+    include("modulos/comercios/index.php");
+	listar_comercioss(); 
+}elseif ($action == "mostrar_comercio") {
+    include("modulos/comercios/index.php");
+	mostrar_comercio(); 
 }else{
 	mostrarHome();
 }
