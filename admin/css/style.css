@@ -416,3 +416,8 @@ form {
 	margin-left: -300px;
 }
 
+
+.boton,.boton:focus{cursor:pointer;background-image:url(/images/fondobarraarriba.jpg);color:#FFF;width:80px;font-weight:bold}
+.botongrande{cursor:pointer;background-image:url(/images/fondobarraarriba.jpg);color:#FFF;width:120px;font-weight:bold}
+.boton a{cursor:pointer;background-image:url(/images/fondobarraarriba.jpg);color:#FFF;width:80px;font-weight:bold}
+

@@ -124,15 +124,15 @@ function registrar_usuario_sistema(){
 }
 
 function insertar_usuarios_sistema_ok(){
-	global $tof_usuarios_sistema,$nombre_usuario,$apellido_usuario,$email,$password,$domicilio_usuario,$ciudad_usuario,$provincia_usuario,$cp_usuario,$carac_usuario,$telefono_usuario,$idioma,$tipo_usuario;
+	global $tof_usuarios_sistema,$nombre_usuario,$apellido_usuario,$email_usuario,$password_usuario,$domicilio_usuario,$ciudad_usuario,$provincia_usuario,$cp_usuario,$direccion_usuario,$carac_usuario,$telefono_usuario,$idioma,$tipo_usuario;
 
-	if (isset($es_comercio_usuario))
-		$es_comercio_usuario=1;
+	if (isset($tipo_usuario))
+		$tipo_usuario=1;
 	else
-		$es_comercio_usuario=0;
+		$tipo_usuario=0;
 
-	mysql_query("insert into ".$tof_usuarios_sistema." values('NULL','".$nombre_usuario."','".$apellido_usuario."','".$email."','".$password."','".$domicilio_usuario."','".$carac_usuario."','".$telefono_usuario."','".$cp_usuario."','".$tipo_usuario."','".$provincia_usuario."','".$ciudad_usuario."')");
-	
+	mysql_query("insert into ".$tof_usuarios_sistema." values('NULL','".$nombre_usuario."','".$apellido_usuario."','".$email_usuario."','".$password_usuario."','".$carac_usuario."','".$telefono_usuario."','".$cp_usuario."','".$tipo_usuario."','".$provincia_usuario."','".$ciudad_usuario."','".$direccion_usuario."',1)");		
+			
 	$id=mysql_insert_id();
 	
 	$_SESSION['user_sistema']=$id;
@@ -1089,7 +1089,6 @@ function mostrar_datos_usuario(){
 	$t = new Template("./modulos/usuarios_sistema/templates", "remove");
 	$t->set_file("pl", $name_tpl);
 	
-	
 	$result=mysql_query("select * from ".$tof_usuarios_sistema." where id=".$id_usuario);
 	$row = mysql_fetch_array($result);
 	
@@ -1100,6 +1099,7 @@ function mostrar_datos_usuario(){
 	$t->set_var("caracteristica",$row[caracteristica]);
 	$t->set_var("telefono",$row[telefono]);
 	$t->set_var("cp",$row[cp]);
+	$t->set_var("direccion",$row[direccion]);
 	$t->set_var("tipo_usuario",$row[id_tipousuario]);
 	$t->set_var("provincia",$row[provincia]);
 	$t->set_var("ciudad",$row[ciudad]);
@@ -1120,9 +1120,16 @@ function mostrar_datos_usuario(){
 }
 
 function modificar_usuario_sistema_ok(){
-	global $tof_usuarios_sistema,$nombre_usuario,$apellido_usuario,$email,$password,$ciudad_usuario,$provincia_usuario,$cp_usuario,$carac_usuario,$telefono_usuario,$idioma,$tipo_usuario;
-	mysql_query("update ".$tof_usuarios_sistema." set nombre = '".$nombre_usuario."', apellido='" .$apellido_usuario."', email='".$email."', password='".$password."', caracteristica='".$carac_usuario."', telefono='".$telefono_usuario."', cp='".$cp_usuario."',id_tipousuario=".$tipo_usuario.",provincia=".$provincia_usuario.",ciudad=".$ciudad_usuario);
-	mostrar_usuario_sistema();
+
+		global $tof_usuarios_sistema,$nombre_usuario,$apellido_usuario,$email_usuario,$password_usuario,$ciudad_usuario,$provincia_usuario,$cp_usuario,$carac_usuario,$telefono_usuario,$idioma,$tipo_usuario,$direccion_usuario,$id_usuario;
+		$id_usuario=$_SESSION['user_sistema'];
+		
+		//sacar estooooooooo
+		$tipo_usuario= 1;
+		///////////////////////
+		
+		mysql_query("update ".$tof_usuarios_sistema." set nombre = '".$nombre_usuario."', apellido='" .$apellido_usuario."', email='".$email_usuario."', password='".$password_usuario."', caracteristica='".$carac_usuario."', telefono='".$telefono_usuario."', cp='".$cp_usuario."',id_tipousuario=".$tipo_usuario.",provincia=".$provincia_usuario.",ciudad=".$ciudad_usuario.",direccion='".$direccion_usuario."' where id = ".$id_usuario);	
+		mostrar_usuario_sistema();
 }
 
 function recuperar_password(){

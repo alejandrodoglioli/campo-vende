@@ -4,19 +4,20 @@ $(function() {
 		
 		var nombre_usuario = $( "#nombre_usuario" ),
 		    apellido_usuario = $( "#apellido_usuario" ),
-		    email = $( "#email" ),
+		    email = $( "#email_usuario" ),
 		    email_conf = $( "#email_conf" ),
-		    password = $( "#password" ),
+		    password = $( "#password_usuario" ),
 		    password_conf = $( "#password_conf" ),
 		    tipo_us = $( "#es_comercio" ),
 		    ciudad = $( "#ciudad_usuario" ),
 		    provincia = $( "#provincia_usuario" ),
 		    cp = $( "#cp_usuario" ),
+		    direccion = $( "#direccion_usuario" ),
 		    telefono = $( "#telefono_usuario" ),
 		    tipo_usuario = $( "#tipo_usuario" ),
 			captcha = $( "#captcha" ),
 			captcha_texto_session = $( "#captcha_texto_session" ),
-			allFields = $( [] ).add( captcha ).add( captcha_texto_session ).add( nombre_usuario ).add( apellido_usuario ).add( ciudad ).add( email ).add( email_conf ).add( cp ).add( tipo_us ).add( password ).add( password_conf ),
+			allFields = $( [] ).add( captcha ).add( captcha_texto_session ).add( nombre_usuario ).add( apellido_usuario ).add( ciudad ).add( email ).add( email_conf ).add( cp ).add( direccion ).add( tipo_us ).add( password ).add( password_conf ),
 			
 			tips = $( ".mostrar_error" );
 
@@ -39,6 +40,9 @@ $(function() {
 			bValid = bValid && checkSame(tips,email,email_conf,"Los Emails no coinciden");
 			bValid = bValid && checkSame(tips,password,password_conf,"Las Passwords no coinciden");
 			
+			
+			
+		
 			//bValid = bValid && checkCaptcha(tips, captcha, captcha_texto_session );
 
 		

@@ -119,7 +119,8 @@
   <table class="list">
     <tr>
             <th class="center"></th>
-			<th class="left">Apellido</th>
+			<th class="left">ID Usuario</th>
+            <th class="left">Apellido</th>
 
             <th class="left">                
 			<form action="/admin/index.php?controller=category&action=page" method="post" enctype="multipart/form-data" onclick="this.submit();">
@@ -135,9 +136,10 @@
             <tr class="row1" onmouseover="this.className='highlight'" onmouseout="this.className='row1'">
                   <td width="30" class="center">
 				  	<a href="/admin/modulos/usuarios_sistema/index.php?action=editar_usuarios_sistema&id_usuario={id_usuario}"><img src="../../images/folder.png" /></a></td>
-					<td class="left">{apellido_usuario}</td>
-                        <td class="left">{nombre_usuario}</td>
-						<td class="left">{email_usuario}</td>
+    					<td class="left">{id_usuario}</td>
+                        <td class="left">{apellido}</td>                        
+                        <td class="left">{nombre}</td>
+						<td class="left">{email}</td>
 						<td class="left">{tipo_usuario}</td>
                          <td class="right">
 							<a href="/admin/modulos/usuarios_sistema/index.php?action=editar_usuarios_sistema&id_usuario={id_usuario}"><img src="../../images/update.png" alt="Update" title="Update" /></a>

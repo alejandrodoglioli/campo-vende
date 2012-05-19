@@ -11,7 +11,7 @@ function listar_usuarios(){
 	$t->set_file("pl", $name_tpl);
 	
 	setear_menu(&$t);
-setearVariablesComunes(&$t);
+    setearVariablesComunes(&$t);
 	
 	$t->set_var("title", "Listar usuarios");
 	$t->set_var("categoria_modulo", "Usuarios");
