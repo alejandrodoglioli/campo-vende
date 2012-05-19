@@ -93,11 +93,12 @@ setearVariablesComunes(&$t);
 
 function insertar_usuarios_sistema_ok(){
     global $tof_usuarios_sistema,$nombre_usuario,$apellido_usuario,$email_usuario,$password_usuario,$ciudad_usuario,$provincia_usuario,$cp_usuario,$direccion_usuario,$carac_usuario,$telefono_usuario,$idioma,$tipo_usuario;
-    if (isset($tipo_usuario))
-		$tipo_usuario=1;
+    if (isset($activo))
+		$activo=1;
 	else
-		$tipo_usuario=0;
+		$activo=0;
 	mysql_query("insert into ".$tof_usuarios_sistema." values('NULL','".$nombre_usuario."','".$apellido_usuario."','".$email_usuario."','".$password_usuario."','".$carac_usuario."','".$telefono_usuario."','".$cp_usuario."','".$tipo_usuario."','".$provincia_usuario."','".$ciudad_usuario."','".$direccion_usuario."',1)");		
+
 	listar_usuarios_sistema();
 }
 
@@ -115,9 +116,11 @@ function editar_usuarios_sistema(){
 
 	$result=mysql_query("select * from ".$tof_usuarios_sistema." where id=".$id_usuario);
 	$row=mysql_fetch_array($result);
-    //if($row[comercio]==1)
-		//$es_comercio="checked";
-	
+
+   if($row1[publicado]==1)
+		$activo='checked';
+	else
+		$activo='';
 	
 	$t->set_var("nombre",$row[nombre]);
 	$t->set_var("apellido",$row[apellido]);
@@ -139,7 +142,6 @@ function editar_usuarios_sistema(){
 	$rowp = mysql_fetch_array($result);	
 	$t->set_var("nombre_prov",$rowp[nombre]);
 	
-	
 	$resultTipousuario=mysql_query("select * from ".$tof_tipousuario." tu order by id");
 	$t->set_block("pl","block_tipousuario","_block_tipousuario");	
     while($rowTipousuario=mysql_fetch_array($resultTipousuario)){
@@ -159,7 +161,12 @@ function editar_usuarios_sistema(){
 }
 
 function editar_usuarios_sistema_ok(){
+
 	global $tof_usuarios_sistema,$nombre_usuario,$apellido_usuario,$email_usuario,$password_usuario,$ciudad_usuario,$provincia_usuario,$cp_usuario,$carac_usuario,$telefono_usuario,$idioma,$tipo_usuario,$direccion_usuario,$id_usuario;
+	if (isset($activo))
+		$activo=1;
+	else
+		$activo=0;
 	mysql_query("update ".$tof_usuarios_sistema." set nombre = '".$nombre_usuario."', apellido='" .$apellido_usuario."', email='".$email_usuario."', password='".$password_usuario."', caracteristica='".$carac_usuario."', telefono='".$telefono_usuario."', cp='".$cp_usuario."',id_tipousuario=".$tipo_usuario.",provincia=".$provincia_usuario.",ciudad=".$ciudad_usuario.",direccion='".$direccion_usuario."'  where id = ".$id_usuario);	
 	listar_usuarios_sistema();
 }

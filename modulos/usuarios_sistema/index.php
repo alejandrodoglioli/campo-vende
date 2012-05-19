@@ -55,7 +55,7 @@ function comprobar_aut($email,$pass)
 
 	global $tof_usuarios_sistema;
 
-	$sql=mysql_query("select * from ".$tof_usuarios_sistema." where email='".$email."' and password='".$pass."'");
+	$sql=mysql_query("select * from ".$tof_usuarios_sistema." where email='".$email."' and password='".$pass."' and activo=1");
 	
 	if(mysql_num_rows($sql)){
 
@@ -132,7 +132,7 @@ function insertar_usuarios_sistema_ok(){
 		$tipo_usuario=0;
 
 	mysql_query("insert into ".$tof_usuarios_sistema." values('NULL','".$nombre_usuario."','".$apellido_usuario."','".$email_usuario."','".$password_usuario."','".$carac_usuario."','".$telefono_usuario."','".$cp_usuario."','".$tipo_usuario."','".$provincia_usuario."','".$ciudad_usuario."','".$direccion_usuario."',1)");		
-			
+
 	$id=mysql_insert_id();
 	
 	$_SESSION['user_sistema']=$id;
