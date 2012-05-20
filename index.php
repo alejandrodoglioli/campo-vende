@@ -10,6 +10,8 @@ session_start();
 
 $action=$_GET['action'];
 
+
+
 if ($action == "listar_albums") {
     include("modulos/albums/index.php");
 	listar_albums(); 
