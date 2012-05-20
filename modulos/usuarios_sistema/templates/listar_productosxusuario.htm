@@ -188,35 +188,8 @@
   </table>
   
           {page} de {cant_pages} paginas
+		  
   
-  <!--table class="list">
-    <tr>
-            <th></th>
-
-            <th class="left" width="200">                
-			<form action="/admin/index.php?controller=category&action=page" method="post" enctype="multipart/form-data" onclick="this.submit();">
-         Nombre producto                
-		  <input type="hidden" name="sort" value="cd.name" />
-        </form>
-             </th>
-			 <th class="left" width="250">Secci\F3n</th>
-			 <th class="left" >Publicado?</th>
-              <th class="right" width="70">                Action                      </th>
-          </tr>
-		      <tr class="row1" onmouseover="this.className='highlight'" onmouseout="this.className='row1'">
-                  <td width="30" class="center">
-				  	<a href="/admin/modulos/productos/index.php?action=editar_productos&id_producto={id_producto}"><img src="/admin/images/folder.png" /></a></td>
-                        <td class="left" width="200">{nombre_producto}</td>
-						<td class="left" width="250">{nombre_padre}</td>
-						<td class="left" >{publicado_producto}</td>
-                         <td class="right">
-							<a href="/{idioma}/editar_productoxusuario/{id_producto}"><img src="/admin/images/update.png" alt="Actualizar" title="Actualizar" /></a>
-                			<a href="/{idioma}/eliminar_productoxusuario/{id_producto}"><img src="/admin/images/delete.png" alt="Borrar" title="Borrar" /></a>
-							<a href="/{idioma}/listarpregunta_productoxusuario/{id_producto}"><img src="/admin/images/order.png" alt="Preguntas" title="Preguntas" /></a>
-       					 </td>
-                </tr>
-			         
-      </table-->
       <table class="list">
          <tr>
             <th></th>
@@ -255,6 +228,7 @@
 	
 	  </div>
       </div>
+
   
 	<!-- InstanceEndEditable -->
 				
@@ -283,20 +257,7 @@
 					</ul>
 				</li>
 			</ul>
-			<!--ul>	
-				<li>
-					<div class="menu">
-					  <h2>Newsletter</h2>
-						<h3>{traduccion_slogannewsletter}</h3>
-						<form action="/{idioma}/gracias-newsletter.htm" name="formnewsletter" id="formnewsletter" enctype="multipart/form-data" method="post">
-						<p class="center"><label>Nombre:</label> <input id="nombre_contacto" name="nombre_contacto" type="text"/></p>
-						<p class="center"><label>Apellido:</label> <input id="apellido_contacto" name="apellido_contacto" type="text" /></p>
-						<p class="center"><label>Email:</label> <input id="email_contacto" name="email_contacto" type="text" /></p>
-						<p class="center" style="margin-top:10px;"><input type="button" value="Subscribirse" class="boton" onclick="validarFormNewsletter()" /></p>
-						</form>
-					</div>	
-				</li>
-			</ul-->
+
 			<ul>	
 				<li>
 					<div class="menu">
@@ -311,16 +272,9 @@
 			</ul>			  
 			<ul>
 			  <li>
-					<h2>Cotizaci\F3n Dolar</h2>
-			  </li> 
-<!-- Inicio Codigo DolarAlDia.com --> 
-<!--script language="JavaScript" src="http://www.dolaraldia.com/rss/botoncotizaciones.php" type="text/javascript">
-</script><!-- Fin DolarAlDia.com --> 
-
-
-<div id="preciodolar-ar1"><h2><a href="http://www.preciodolar.com">Precio del dolar</a></h2><a href="http://www.preciodolar.com/cotizacion-del-dolar">Cotizacion del dolar</a></div><script type="text/javascript" src="http://www.preciodolar.com/js/get_preciodolar_ar1.js"></script>
-
-
+					<h2>Cotización Dolar</h2>
+			  </li>
+			 
           </ul>
       </div>
 		
@@ -365,6 +319,6 @@
   })();
 
 </script>
-<!--Fin estadisticas-->
 </body>
 <!-- InstanceEnd --></html>
+
