@@ -17,6 +17,7 @@ function setearTraducciones(&$t){
 	$t->set_var("traduccion_copyright", $traduccion_copyright);
 	$t->set_var("traduccion_disenadopor", $traduccion_disenadopor);
 	$t->set_var("traduccion_slogannewsletter", $traduccion_slogannewsletter);
+	$t->set_var("traduccion_comercios", $traduccion_comercios);
 	
 	//Traducciones Contacto
 	$t->set_var("traduccion_nombre", $traduccion_nombre);

@@ -14,6 +14,7 @@ $photo_per_page=12;
 $comments_per_page=20;
 $noticias_per_page=15;
 $productos_per_page=20;
+$comercios_per_page=20;
 $cant_noticias_home=4;
 $row_per_page=200;
 $photo_width=400;

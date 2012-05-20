@@ -9,6 +9,7 @@ include_once("modulos/albums/auth.php");
 session_start();
 
 $action=$_GET['action'];
+
 if ($action == "listar_albums") {
     include("modulos/albums/index.php");
 	listar_albums(); 
@@ -160,9 +161,9 @@ if ($action == "listar_albums") {
  	require_once("modulos/usuarios_sistema/index.php");
  	recuperar_password();
 		break;
-}if ($action == "listar_comercios") {
+}if ($action == "mostrar_comercios") {
     include("modulos/comercios/index.php");
-	listar_comercioss(); 
+	mostrar_comercios(); 
 		break;
 }elseif ($action == "mostrar_comercio") {
     include("modulos/comercios/index.php");

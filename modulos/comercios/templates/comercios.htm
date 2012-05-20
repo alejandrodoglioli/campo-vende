@@ -136,24 +136,24 @@
                             
                                    <!-- tiienda productos-->
               <div id="listado_productos">
-	             <!-- BEGIN b_productos -->
+	             <!-- BEGIN b_comercios -->
              	 <div class="bordeabajo">
               		<div class= "item_producto border">
               			<p class="imagen">
                         
-                        <a href="{imagen_src}"  rel="opendialog"><img style="cursor:pointer;border:none;" onerror="this.onError = null; this.src = '/images/default.jpg';" src="{imagen_src}" alt="{imagen_nombre}" height="100" width="100" /></a></p>
+                        <a href="/{idioma}/comercios/{comercio}-{id_comercio}.htm"  rel="opendialog"><img style="cursor:pointer;border:none;" onerror="this.onError = null; this.src = '/images/default.jpg';" src="{imagen_src}" alt="{nombre_comercio}" height="100" width="100" /></a></p>
                         
                 			
               			</p>
                         
               			<div class="descripcion">
-              				<p><strong><a href="/{idioma}/{categoria}{subcategoria}{id_categoria}{id_subcategoria}{producto}{id_producto}.htm">{anchor}:</a></strong></p>
-              				{traduccion_productos} {contenido_producto}
-              				<p class="precio">Precio: xxx</p>
+              				<p><strong><a href="/{idioma}/comercios/{comercio}-{id_comercio}.htm">{nombre_comercio}:</a></strong></p>
+              				{contenido_comercio}
+              				<p>Productos: {cant_productos}</p>
               			</div>
               		</div>
               	</div>
-				<!-- END b_productos -->
+				<!-- END b_comercios -->
               </div>              
                 
 			  <div class="divpaginado">
@@ -167,18 +167,6 @@
 						<li>{siguiente}</li>
 					</ul>
 				</div>		
-		   
-                            
-                            <!-- fin tiendaaaaaaaaaa-->
-   						
-						<!--div id="enlacesubcaegorias" style="{enlacesubcategoriasvisibles}">
-								<h3>{traduccion_enlacesrelacionados} {titulo}:</h3>
-								<ul>
-								
-									<li><a href="/{idioma}/{categoria}/{subcategoria}{subsubcategoria}{id_categoria}{id_subcategoria}{id_subsubcategoria}.htm" title="{anchor}">{anchor}</a></li>
-								</ul>
-
-						</div-->
 
 	<!-- InstanceEndEditable -->
 				
@@ -192,8 +180,20 @@
 		</div>
 		<!-- end #content -->
 		<div id="sidebar">
-					
-		    <ul id="menulateral">
+			<ul id="menulateral">	
+				<li>
+					<div class="menu">
+						<h2>{traduccion_comercios}</h2>
+						<ul id="lotes">
+							<li {onmouse} >
+								<a href="/{idioma}/comercios.htm" title="Comercios" class="{classmenulateral}">Listado de comercios adheridos</a>
+							</li>
+						</ul>
+					</div>
+				</li>
+			</ul>		
+		    
+			<ul id="menulateral">
 				
 				<li>
 					<h2>{traduccion_secciones} {categoria_seccion}</h2>

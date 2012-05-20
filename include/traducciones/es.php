@@ -10,6 +10,7 @@ $traduccion_etiquetas = "Lo m&aacute;s buscado";
 $traduccion_copyright= "Copyright (c) 2012. Todos los derechos reservados.";
 $traduccion_disenadopor= "Diseñado por";
 $traduccion_slogannewsletter= "Suscribete al NewsLetter";
+$traduccion_comercios = "Visite nuestros comercios";
 
 //Traducciones Contacto
 $traduccion_nombre = "Nombre";

@@ -36,8 +36,6 @@ RewriteRule ^(.*)/mostrar_datos_usuario$ index.php?action=mostrar_datos_usuario&
 #RewriteRule ^$ /es/ [L,NC] 
 RewriteRule ^([a-z][a-z])/$ index.php?idioma=$1 [L,NC] 
 
-
-
 #newsletter
 RewriteRule ^(.*)/gracias-newsletter.htm$ index.php?action=gracias-newsletter&idioma=$1 [L,NC]
 
@@ -57,6 +55,10 @@ RewriteRule ^(.*)/(.*)/(.*)-([0-9]+)-([0-9]+)/(.*)_([0-9]+).htm$ index.php?actio
 RewriteRule ^(.*)/(.*)-([0-9]+)/(.*)_([0-9]+).htm$ index.php?action=mostrar_producto&id_producto=$5&id_seccion=$3&idioma=$1 [L,NC]
 RewriteRule ^(.*)/gracias-comentario-producto.htm$ index.php?action=gracias_comentario_producto&idioma=$1 [L,NC]
 RewriteRule ^(.*)/gracias-consulta.htm$ index.php?action=gracias_consulta&idioma=$1 [L,NC]
+
+#Comercios
+RewriteRule ^(.*)/comercios.htm$ index.php?action=mostrar_comercios&idioma=$1 [L,NC]
+RewriteRule ^(.*)/comercios/(.*)-(.*).htm$ index.php?action=mostrar_comercio&id_comercio=$3&idioma=$1 [L,NC]
 
 #Secciones 
 RewriteRule ^(.*)/(.*)/(.*)/(.*)-([0-9]+)-([0-9]+)-([0-9]+)/pagina-([0-9]+).htm$ index.php?action=mostrar_seccion&id_seccion=$5&id_subseccion=$6&id_subsubseccion=$7&idioma=$1&pagina=$8 [L,NC]
